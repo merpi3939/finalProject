@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	<!--JAVASCRIPT-->
+	<!--=================================================-->
+
+	<!--jQuery [ REQUIRED ]-->
+	<script src="js/jquery-2.1.1.min.js"></script>
+
+
+	<!--BootstrapJS [ RECOMMENDED ]-->
+	<script src="js/bootstrap.min.js"></script>
+
+
+	<!--Fast Click [ OPTIONAL ]-->
+	<script src="plugins/fast-click/fastclick.min.js"></script>
+
+	
+	<!--Nifty Admin [ RECOMMENDED ]-->
+	<script src="js/nifty.min.js"></script>
+
+
+	<!--Switchery [ OPTIONAL ]-->
+	<script src="plugins/switchery/switchery.min.js"></script>
+
+
+	<!--Bootstrap Select [ OPTIONAL ]-->
+	<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+
+	<!--Demo script [ DEMONSTRATION ]-->
+	<script src="js/demo/nifty-demo.min.js"></script>
