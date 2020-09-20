@@ -9,7 +9,7 @@
 				<!--================================-->
 				<div class="navbar-header">
 					<a href="index.html" class="navbar-brand">
-						<img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+						<img src="${pageContext.request.contextPath }/admin/img/logo.png" alt="Nifty Logo" class="brand-icon">
 						<div class="brand-title">
 							<span class="brand-text">Nifty</span>
 						</div>
@@ -56,7 +56,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="img/av2.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/img/av2.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Andy sent you a message</div>
@@ -69,7 +69,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/img/av4.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Lucy sent you a message</div>
@@ -82,7 +82,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/img/av3.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Jackson sent you a message</div>
@@ -95,7 +95,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="img/av6.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/img/av6.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Donna sent you a message</div>
@@ -108,7 +108,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/img/av4.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Lucy sent you a message</div>
@@ -121,7 +121,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/img/av3.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Jackson sent you a message</div>
@@ -380,7 +380,7 @@
 						<li class="dropdown">
 							<a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
 								<span class="lang-selected">
-									<img class="lang-flag" src="img/flags/united-kingdom.png" alt="English">
+									<img class="lang-flag" src="${pageContext.request.contextPath }/admin/img/flags/united-kingdom.png" alt="English">
 									<span class="lang-id">EN</span>
 									<span class="lang-name">English</span>
 								</span>
@@ -391,7 +391,7 @@
 								<li>
 									<!--English-->
 									<a href="#" class="active">
-										<img class="lang-flag" src="img/flags/united-kingdom.png" alt="English">
+										<img class="lang-flag" src="${pageContext.request.contextPath }/admin/img/flags/united-kingdom.png" alt="English">
 										<span class="lang-id">EN</span>
 										<span class="lang-name">English</span>
 									</a>
@@ -399,7 +399,7 @@
 								<li>
 									<!--France-->
 									<a href="#">
-										<img class="lang-flag" src="img/flags/france.png" alt="France">
+										<img class="lang-flag" src="${pageContext.request.contextPath }/admin/img/flags/france.png" alt="France">
 										<span class="lang-id">FR</span>
 										<span class="lang-name">Fran&ccedil;ais</span>
 									</a>
@@ -407,7 +407,7 @@
 								<li>
 									<!--Germany-->
 									<a href="#">
-										<img class="lang-flag" src="img/flags/germany.png" alt="Germany">
+										<img class="lang-flag" src="${pageContext.request.contextPath }/admin/img/flags/germany.png" alt="Germany">
 										<span class="lang-id">DE</span>
 										<span class="lang-name">Deutsch</span>
 									</a>
@@ -415,7 +415,7 @@
 								<li>
 									<!--Italy-->
 									<a href="#">
-										<img class="lang-flag" src="img/flags/italy.png" alt="Italy">
+										<img class="lang-flag" src="${pageContext.request.contextPath }/admin/img/flags/italy.png" alt="Italy">
 										<span class="lang-id">IT</span>
 										<span class="lang-name">Italiano</span>
 									</a>
@@ -423,7 +423,7 @@
 								<li>
 									<!--Spain-->
 									<a href="#">
-										<img class="lang-flag" src="img/flags/spain.png" alt="Spain">
+										<img class="lang-flag" src="${pageContext.request.contextPath }/admin/img/flags/spain.png" alt="Spain">
 										<span class="lang-id">ES</span>
 										<span class="lang-name">Espa&ntilde;ol</span>
 									</a>
@@ -440,7 +440,7 @@
 						<li id="dropdown-user" class="dropdown">
 							<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
 								<span class="pull-right">
-									<img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture">
+									<img class="img-circle img-user media-object" src="${pageContext.request.contextPath }/admin/img/av1.png" alt="Profile Picture">
 								</span>
 								<div class="username hidden-xs">John Doe</div>
 							</a>

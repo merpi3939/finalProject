@@ -47,7 +47,7 @@
 									<div class="list-group bg-trans">
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av2.png" alt="Profile Picture">
+												<img class="img-circle img-xs" src="${pageContext.request.contextPath }/admin/img/av2.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
 												<div class="text-lg">Stephen Tran</div>
@@ -56,7 +56,7 @@
 										</a>
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av4.png" alt="Profile Picture">
+												<img class="img-circle img-xs" src="${pageContext.request.contextPath }/admin/img/av4.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
 												<div class="text-lg">Brittany Meyer</div>
@@ -65,7 +65,7 @@
 										</a>
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av3.png" alt="Profile Picture">
+												<img class="img-circle img-xs" src="${pageContext.request.contextPath }/admin/img/av3.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
 												<div class="text-lg">Donald Brown</div>
@@ -84,7 +84,7 @@
 									<div class="list-group bg-trans">
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av5.png" alt="Profile Picture">
+												<img class="img-circle img-xs" src="${pageContext.request.contextPath }/admin/img/av5.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
 												<div class="text-lg">Betty Murphy</div>
@@ -93,7 +93,7 @@
 										</a>
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av6.png" alt="Profile Picture">
+												<img class="img-circle img-xs" src="${pageContext.request.contextPath }/admin/img/av6.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
 												<div class="text-lg">Olivia Spencer</div>
@@ -102,7 +102,7 @@
 										</a>
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av4.png" alt="Profile Picture">
+												<img class="img-circle img-xs" src="${pageContext.request.contextPath }/admin/img/av4.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
 												<div class="text-lg">Sarah Ruiz</div>
@@ -111,7 +111,7 @@
 										</a>
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av3.png" alt="Profile Picture">
+												<img class="img-circle img-xs" src="${pageContext.request.contextPath }/admin/img/av3.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
 												<div class="text-lg">Paul Aguilar</div>

@@ -4,28 +4,28 @@
 	<!--=================================================-->
 
 	<!--jQuery [ REQUIRED ]-->
-	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="${pageContext.request.contextPath }/admin/js/jquery-2.1.1.min.js"></script>
 
 
 	<!--BootstrapJS [ RECOMMENDED ]-->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/admin/js/bootstrap.min.js"></script>
 
 
 	<!--Fast Click [ OPTIONAL ]-->
-	<script src="plugins/fast-click/fastclick.min.js"></script>
+	<script src="${pageContext.request.contextPath }/admin/plugins/fast-click/fastclick.min.js"></script>
 
 	
 	<!--Nifty Admin [ RECOMMENDED ]-->
-	<script src="js/nifty.min.js"></script>
+	<script src="${pageContext.request.contextPath }/admin/js/nifty.min.js"></script>
 
 
 	<!--Switchery [ OPTIONAL ]-->
-	<script src="plugins/switchery/switchery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/admin/plugins/switchery/switchery.min.js"></script>
 
 
 	<!--Bootstrap Select [ OPTIONAL ]-->
-	<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="${pageContext.request.contextPath }/admin/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 
 
 	<!--Demo script [ DEMONSTRATION ]-->
-	<script src="js/demo/nifty-demo.min.js"></script>
+	<script src="${pageContext.request.contextPath }/admin/js/demo/nifty-demo.min.js"></script>
