@@ -10,7 +10,7 @@
 				<div class="navbar-header">
 					<a href="index.html" class="navbar-brand">
 						<div >
-						<img src="${pageContext.request.contextPath }/admin/img/blueMoonLogo.jpg" alt="BlueMoon Logo" class="brand-icon" style="border-radius: 50%; padding: 7px;">
+						<img src="${pageContext.request.contextPath }/admin/refSrc/img/blueMoonLogo.jpg" alt="BlueMoon Logo" class="brand-icon" style="border-radius: 50%; padding: 7px;">
 						</div>
 						<div class="brand-title">
 							<span class="brand-text">Blue Moon</span>
@@ -58,7 +58,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="${pageContext.request.contextPath }/admin/img/av2.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/refSrc/img/av2.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Andy sent you a message</div>
@@ -71,7 +71,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="${pageContext.request.contextPath }/admin/img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/refSrc/img/av4.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Lucy sent you a message</div>
@@ -84,7 +84,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="${pageContext.request.contextPath }/admin/img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/refSrc/img/av3.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Jackson sent you a message</div>
@@ -97,7 +97,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="${pageContext.request.contextPath }/admin/img/av6.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/refSrc/img/av6.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Donna sent you a message</div>
@@ -110,7 +110,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="${pageContext.request.contextPath }/admin/img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/refSrc/img/av4.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Lucy sent you a message</div>
@@ -123,7 +123,7 @@
 											<li>
 												<a href="#" class="media">
 													<div class="media-left">
-														<img src="${pageContext.request.contextPath }/admin/img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+														<img src="${pageContext.request.contextPath }/admin/refSrc/img/av3.png" alt="Profile Picture" class="img-circle img-sm">
 													</div>
 													<div class="media-body">
 														<div class="text-nowrap">Jackson sent you a message</div>
@@ -386,7 +386,7 @@
 						<li id="dropdown-user" class="dropdown">
 							<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
 								<span class="pull-right">
-									<img class="img-circle img-user media-object" src="${pageContext.request.contextPath }/admin/img/av1.png" alt="Profile Picture">
+									<img class="img-circle img-user media-object" src="${pageContext.request.contextPath }/admin/refSrc/img/av1.png" alt="Profile Picture">
 								</span>
 								<div class="username hidden-xs">John Doe</div>
 							</a>

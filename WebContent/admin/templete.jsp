@@ -24,13 +24,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Moon | admin </title>
 
-	<%@include file="/admin/layout/stylesheet&script.jspf"  %>
+	<%@include file="/admin/refSrc/layout/stylesheet&script.jspf"  %>
 		
 </head>
 
 <body>
 	<div id="container" class="effect mainnav-lg">
-		<%@include file="/admin/layout/navBar.jspf" %>
+		<%@include file="/admin/refSrc/layout/navBar.jspf" %>
 		
 
 		<div class="boxed">
@@ -79,24 +79,24 @@
 			<!--END CONTENT CONTAINER-->
 			
 			<!-- 왼쪽 메인 바 -->
-			<%@include file="/admin/layout/mainNav.jspf" %>
+			<%@include file="/admin/refSrc/layout/mainNav.jspf" %>
 			
 			<!-- 오른쪽 aside -->
-			<%@include file="/admin/layout/aside.jspf" %>
+			<%@include file="/admin/refSrc/layout/aside.jspf" %>
 			
 		</div>
 
-		<%@include file="/admin/layout/footer.jspf" %>		
+		<%@include file="/admin/refSrc/layout/footer.jspf" %>		
 
 	</div>
 	<!--===================================================-->
 	<!-- END OF CONTAINER -->
 
 	<!-- setting -->
-	<%@include file="/admin/layout/setting.jspf" %>
+	<%@include file="/admin/refSrc/layout/setting.jspf" %>
 	
 	<!-- javascript -->
-	<%@include file="/admin/layout/javascript.jspf" %>
+	<%@include file="/admin/refSrc/layout/javascript.jspf" %>
 
 	 
 </body>
