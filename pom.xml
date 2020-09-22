@@ -10,7 +10,7 @@
 	<!-- properties : pom.xml 파일에서 자중 사용하는 값을 별칭으로 등록하기 위한 엘리먼트 -->
 	<!-- => 라이브러리 버전을 효율적으로 관리 -->
 	<!-- => 엘리먼트명이 별칭으로 사용되며 엘리먼트 내용이 값으로 사용  -->
-	<!-- => ${별칭} 형시긍로 값 표현 -->
+	<!-- => ${별칭} 형식으로 값 표현 -->
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework-version>5.2.9.RELEASE</org.springframework-version>
@@ -129,7 +129,16 @@
 		    <artifactId>junit</artifactId>
 		    <version>4.13</version>
 		    <scope>test</scope>
-		</dependency>      
+		</dependency>   
+		
+		<!-- https://mvnrepository.com/artifact/xerces/xercesImpl -->
+		<!-- => 로그 구현체에 문제가 발생된 경우 문제를 해결하기 위한 기능을 제공하는 라이브러리 -->
+		<dependency>
+		    <groupId>xerces</groupId>
+		    <artifactId>xercesImpl</artifactId>
+		    <version>2.12.0</version>
+		</dependency>
+		   
 	</dependencies>
     <build>
         <plugins>
