@@ -47,6 +47,7 @@
 	<script src=<c:url value="bluemoon/js/bootstrap-datepicker.js"/>></script>
 	<script src=<c:url value="bluemoon/js/scrollax.min.js"/>></script>
 	<script src=<c:url value="bluemoon/js/main.js"/>></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
 </body>
 

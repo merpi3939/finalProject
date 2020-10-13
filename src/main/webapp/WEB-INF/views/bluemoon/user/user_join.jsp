@@ -23,7 +23,7 @@
   </head>
 
 
-<div class="container">
+<div class="container user-con">
 	<div class="row justify-content-center user-style">
                     <div class="col-md-8">
                         <div class="card">
@@ -152,7 +152,6 @@
                     </div>
                 </div>	
 </div>
-  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script type="text/javascript">
   	  //우편번호
 	  function sample4_execDaumPostcode() {

@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('../images/bg_1.jpg');
+background-image: url('');
 background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
@@ -12,7 +13,7 @@ font-family: 'Numans', sans-serif;
 }
 
 .container{
-height: 100%;
+height: 88%;
 align-content: center;
 }
 
@@ -121,7 +122,7 @@ color: white;
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					<a href="#">아이디 찾기</a><a href="#">비밀번호 찾기</a>
+					<a href=<c:url value="/idFind"/>>아이디 찾기</a><a href=<c:url value="/passwdFind"/>>비밀번호 찾기</a>
 				</div>
 			</div>
 		</div>

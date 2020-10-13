@@ -11,6 +11,16 @@ public class userController {
 		return "bluemoon/user/user_login";
 	}
 	
+	@RequestMapping(value = "/idFind", method = RequestMethod.GET)
+	public String idFind() {
+		return "bluemoon/user/user_idfind";
+	}
+
+	@RequestMapping(value = "/passwdFind", method = RequestMethod.GET)
+	public String passwdFind() {
+		return "bluemoon/user/user_passwdfind";
+	}
+	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String userJoin() {
 		return "bluemoon/user/user_join";

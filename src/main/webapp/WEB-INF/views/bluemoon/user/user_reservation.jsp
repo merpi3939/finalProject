@@ -4,8 +4,8 @@
    
 	<style type="text/css">
 		.user-style { 
-			 margin-top: 50px;
-   			 margin-bottom: 50px;
+			 margin-top: 60px;
+   			 margin-bottom: 60px;
 		}
 		.title-style {
 			margin-top: 50px;
@@ -36,7 +36,7 @@
 		}
 	</style>
 	
-<div class="container">
+<div class="container user-con">
 	<div class="row" style="margin-top: 50px">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs nav-justified navbar-nav">
