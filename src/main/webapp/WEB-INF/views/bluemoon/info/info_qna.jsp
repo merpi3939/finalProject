@@ -68,6 +68,22 @@
 			line-height: 1.1;
 			border-radius: 0px;
 		}
+		ul{
+   			list-style:none;
+   			text-align: center;
+   			padding-inline-start: 0px;
+   		}
+   		
+		.block-27 ul li a {
+			color: #241515;
+    		border: 1px solid #d1d1d1;
+		}
+		
+		.block-27 ul li.active span {
+		    background: #e3e3e3;
+		    color: #000000;
+		    border: 1px solid transparent;
+		}	
 	</style>
 	
   </head>
@@ -99,12 +115,12 @@
 <div class="container">
 	<div class="row" style="margin-top: 50px">
 		<div class="col-md-12">
-			<ul class="nav nav-tabs nav-justified navbar-nav">
+			<ul>
 				<li class="nav-item">
-					<a class="nav-link active info-title">Infomation</a>
+					<a class="nav-link active info-title" style="border-bottom: 1px solid black;">Infomation</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link info-page" href="#">공지사항</a>
+					<a class="nav-link info-page" href="#" >공지사항</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link info-page" href="#">Q&A</a>
@@ -113,7 +129,7 @@
 					<a class="nav-link info-page" href="#">분실물 관리</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link info-page" href="#">분실물 문의</a>
+					<a class="nav-link info-page" href="#" style="border-bottom: 1px solid #d1d1d1;">분실물 문의</a>
 				</li>
 			</ul>
 		</div>
@@ -123,7 +139,7 @@
 	<div class="col-md-7 heading-section ftco-animate title-style">
             <h2><strong>Q&A</strong></h2>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" style="overflow-x: hidden;">
     	<table class="table table-striped" style="margin-bottom: 50px;">
  			<thead>
    				<tr>
@@ -142,9 +158,26 @@
    			</tr>
 		 </tbody> 
 		</table>   
-		<div style="margin-bottom: 150px;">
-			<button type="button" class="btn noticeBtn" id="noticeBtn" onclick="location.href=#">Write</button>
+		<div style="margin-bottom: 96px;">
+			<button type="button" class="btn noticeBtn" id="noticeBtn" onclick="location.href='#'">Write</button>
 		</div>
+		
+		<div class="row mt-5" style="margin-bottom: 20px;">
+			<div class="col text-center">
+				<div class="block-27">
+					<ul>
+						<li><a href="#">&lt;</a></li>
+						<li class="active"><span>1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#">&gt;</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
 		<form class="searchForm">
 			<select name="search">
 				<option value="subject">&nbsp;제목&nbsp;</option>

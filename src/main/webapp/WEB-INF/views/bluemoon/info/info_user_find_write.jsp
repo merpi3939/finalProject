@@ -107,6 +107,11 @@
 		.cancleIcon {
 			cursor: pointer;
 		}
+		ul{
+   			list-style:none;
+   			text-align: center;
+   			padding-inline-start: 0px;
+   		}
 	</style>
 	
   </head>
@@ -138,21 +143,21 @@
 <div class="container">
 	<div class="row" style="margin-top: 50px">
 		<div class="col-md-12">
-			<ul class="nav nav-tabs nav-justified navbar-nav">
+			<ul>
 				<li class="nav-item">
-					<a class="nav-link active info-title">Infomation</a>
+					<a class="nav-link active info-title" style="border-bottom: 1px solid black;">Infomation</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link info-page" href="#">공지사항</a>
+					<a class="nav-link info-page" href="#" >공지사항</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link info-page" href="#">Q&A</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link info-page" href="#">습득물 관리</a>
+					<a class="nav-link info-page" href="#">분실물 관리</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link info-page" href="#">분실물 문의</a>
+					<a class="nav-link info-page" href="#" style="border-bottom: 1px solid #d1d1d1;">분실물 문의</a>
 				</li>
 			</ul>
 		</div>
