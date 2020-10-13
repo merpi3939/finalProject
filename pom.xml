@@ -229,6 +229,18 @@
 		    <version>2.0.5</version>
 		</dependency>
 	</dependencies>
+	
+	<!-- repositories : repository 엘리먼트를 등록하기 위한 상위 엘리먼트 -->
+	<repositories>
+		<!-- repository : 라이브러리를 제공하는 저장소를 메이븐에 추가하기 위한 엘리먼트 -->
+		<repository>
+			<!-- id : 저장소를 구분하기 위한 고유값을 설정하는 엘리먼트 -->
+			<id>Datanucleus</id>
+			<!-- url : 라이브러리을 제공하는 저장소의 URL 주소를 설정하는 엘리먼트 -->
+			<url>http://www.datanucleus.org/downloads/maven2/</url>
+		</repository>
+	</repositories>
+	
     <build>
         <plugins>
             <plugin>
