@@ -9,13 +9,13 @@
 	</definition>
 	
 	<definition name="admin" template="/WEB-INF/views/admin/layout/template.jsp">
-		<put-attribute name="stylesheetScript" value="/WEB-INF/views/admin/layout/stylesheetScript.jspf"/>
-		<put-attribute name="navBar" value="/WEB-INF/views/admin/layout/navBar.jspf"/>
-		<put-attribute name="content" value="/WEB-INF/views/admin/layout/home/main.jsp"/>
-		<put-attribute name="mainNav" value="/WEB-INF/views/admin/layout/mainNav.jspf"/>
-		<put-attribute name="aside" value="/WEB-INF/views/admin/layout/aside.jspf"/>
-		<put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jspf"/>
-		<put-attribute name="javascript" value="/WEB-INF/views/admin/layout/javascript.jspf"/>
+		<put-attribute name="stylesheetScript" value="/WEB-INF/views/admin/layout/stylesheetScript.jsp"/>
+		<put-attribute name="navBar" value="/WEB-INF/views/admin/layout/navBar.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/admin/home/main.jsp"/>
+		<put-attribute name="mainNav" value="/WEB-INF/views/admin/layout/mainNav.jsp"/>
+		<put-attribute name="aside" value="/WEB-INF/views/admin/layout/aside.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jsp"/>
+		<put-attribute name="javascript" value="/WEB-INF/views/admin/layout/javascript.jsp"/>
 	</definition>
 	
 	<definition name="admin/*" extends="admin">
