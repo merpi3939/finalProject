@@ -46,5 +46,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="site.bluemoon.controller" />
+	<context:component-scan base-package="site.bluemoon.dao" />
+	<context:component-scan base-package="site.bluemoon.service" />
 	
 </beans:beans>
