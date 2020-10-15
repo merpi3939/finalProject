@@ -8,6 +8,28 @@
 		<put-attribute name="footer" value="/WEB-INF/views/bluemoon/layout/footer.jsp"/>
 	</definition>
 	
+	<definition name="admin" template="/WEB-INF/views/admin/layout/template.jsp">
+		<put-attribute name="stylesheetScript" value="/WEB-INF/views/admin/layout/stylesheetScript.jspf"/>
+		<put-attribute name="navBar" value="/WEB-INF/views/admin/layout/navBar.jspf"/>
+		<put-attribute name="content" value="/WEB-INF/views/admin/layout/home/main.jsp"/>
+		<put-attribute name="mainNav" value="/WEB-INF/views/admin/layout/mainNav.jspf"/>
+		<put-attribute name="aside" value="/WEB-INF/views/admin/layout/aside.jspf"/>
+		<put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jspf"/>
+		<put-attribute name="javascript" value="/WEB-INF/views/admin/layout/javascript.jspf"/>
+	</definition>
+	
+	<definition name="admin/*" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/views/admin/{1}.jsp"/>
+	</definition>
+	
+	<definition name="admin/*/*" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
+	</definition>
+	
+	<definition name="admin/*/*/*" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/views/admin/{1}/{2}/{3}.jsp"/>
+	</definition>
+	
 	<definition name="*" extends="main">
 		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
 	</definition>

@@ -17,6 +17,13 @@
 	<resources location="/resources/bluemoon/images/" mapping="/bluemoon/images/**"/>
 	<resources location="/resources/bluemoon/css/" mapping="/bluemoon/css/**"/>
 	<resources location="/resources/bluemoon/js/" mapping="/bluemoon/js/**"/>
+	<!-- 관리자 리소스 -->
+	<resources location="/resources/admin/css/" mapping="/admin/css/**"/>
+	<resources location="/resources/admin/data/" mapping="/admin/data/**"/>
+	<resources location="/resources/admin/img/" mapping="/admin/img/**"/>
+	<resources location="/resources/admin/js/" mapping="/admin/js/**"/>
+	<resources location="/resources/admin/less/" mapping="/admin/less/**"/>
+	<resources location="/resources/admin/plugins/" mapping="/admin/plugins/**"/>
 	
 	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
