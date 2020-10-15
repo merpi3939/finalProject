@@ -26,6 +26,11 @@ public class adminHotelController {
 		return "admin/hotel/hotel_reservation_update";
 	}
 	
+	@RequestMapping(value = "/hotel_reservation_detail")
+	public String hotelReservationDetail(Model model) {
+		return "admin/hotel/hotel_reservation_detail";
+	}
+	
 	@RequestMapping(value = "/hotel_review_list")
 	public String hotelReviewList(Model model) {
 		return "admin/hotel/hotel_review_list";
@@ -34,5 +39,20 @@ public class adminHotelController {
 	@RequestMapping(value = "/hotel_review_detail")
 	public String hotelReviewDetail(Model model) {
 		return "admin/hotel/hotel_review_detail";
+	}
+	
+	@RequestMapping(value = "/hotel_room_type")
+	public String hotelRoomType(Model model) {
+		return "admin/hotel/hotel_room_type";
+	}
+	
+	@RequestMapping(value = "/hotel_room_add")
+	public String hotelRoomAdd(Model model) {
+		return "admin/hotel/hotel_room_add";
+	}
+	
+	@RequestMapping(value = "/hotel_room_detail")
+	public String hotelRoomDetail(Model model) {
+		return "admin/hotel/hotel_room_detail";
 	}
 }

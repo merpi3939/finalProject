@@ -7,7 +7,7 @@
 	<!--Page Title-->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<div id="page-title">
-		<h1 class="page-header text-overflow">호텔 예약 변경 페이지</h1>
+		<h1 class="page-header text-overflow">호텔 예약 상세 페이지</h1>
 	</div>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--End page title-->
@@ -17,7 +17,7 @@
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<ol class="breadcrumb">
 		<li><a href="#">호텔관리</a></li>
-		<li class="active">호텔 예약 변경 페이지</li>
+		<li class="active">호텔 예약 상세 페이지</li>
 	</ol>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--End breadcrumb-->
@@ -44,25 +44,25 @@
 						<div class="form-group">
 							<label class="col-lg-3 control-label">예약번호</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveNo" value="reserveNo" readonly="readonly">
+								<span name="reserveNo" class="form-control" >reserveNo</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">예약날짜</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveDate" value="reserveDate">
+								<span class="form-control" name="reserveDate" >reserveDate</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">예약상태</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveState" value="reserveState">
+								<span class="form-control" name="reserveState" >reserveState</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">예약금액</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reservePrice" value="reservePrice">
+								<span class="form-control" name="reservePrice" >reservePrice</span>
 							</div>
 						</div>
 
@@ -79,19 +79,19 @@
 						<div class="form-group">
 							<label class="col-lg-3 control-label">회원 번호</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveMemno" value="reserveMemno">
+								<span  class="form-control" name="reserveMemno" >reserveMemno</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">휴대폰번호</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveMemphone" value="reserveMemphone">
+								<span class="form-control" name="reserveMemphone" >reserveMemphone</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">이메일</label>
 							<div class="col-lg-7">
-								<input type="email" class="form-control" name="reserveMememail" value="reserveMememail">
+								<span class="form-control" name="reserveMememail" >reserveMememail</span>
 							</div>
 						</div>
 					</fieldset>
@@ -106,19 +106,19 @@
 						<div class="form-group">
 							<label class="col-lg-3 control-label">객실 종류</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveRoom" value="reserveRoom">
+								<span class="form-control" name="reserveRoom" >reserveRoom</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">체크인 날짜</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveCheckin" value="reserveCheckin">
+								<span class="form-control" name="reserveCheckin" >reserveCheckin</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">체크아웃 날짜</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveCheckout" value="reserveCheckout">
+								<span class="form-control" name="reserveCheckout" >reserveCheckout</span>
 							</div>
 						</div>
 					</fieldset>
@@ -133,31 +133,31 @@
 						<div class="form-group">
 							<label class="col-lg-3 control-label">결제 번호</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveRoom" value="hotelPayNo">
+								<span class="form-control" name="reserveRoom" >hotelPayNo</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">결제 방법</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveCheckin" value="hotelPayment">
+								<span class="form-control" name="reserveCheckin" >hotelPayment</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">결제 상태</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveCheckout" value="hotelPayState">
+								<span class="form-control" name="reserveCheckout" >hotelPayState</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">결제 금액</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveCheckout" value="hotelPayPrice">
+								<span class="form-control" name="reserveCheckout" >hotelPayPrice</span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">회원사용가능 포인트</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" name="reserveCheckout" value="hotelPayMempoint">
+								<span class="form-control" name="reserveCheckout" >hotelPayMempoint</span>
 							</div>
 						</div>
 					</fieldset>

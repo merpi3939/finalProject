@@ -7,7 +7,7 @@
 	<!--Page Title-->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<div id="page-title">
-		<h1 class="page-header text-overflow">호텔 리뷰 상세페이지</h1>
+		<h1 class="page-header text-overflow">객실 추가</h1>
 	</div>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--End page title-->
@@ -17,7 +17,7 @@
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<ol class="breadcrumb">
 		<li><a href="#">호텔 관리</a></li>
-		<li class="active">호텔 리뷰 상세 정보</li>
+		<li class="active">객실 추가</li>
 	</ol>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--End breadcrumb-->
@@ -28,8 +28,8 @@
 	<!--Page content-->
 	<!--===================================================-->
 	<div id="page-content">
-
 		
+
 		<div class="panel">
 		<!--Input Size-->
 		<!--===================================================-->
@@ -37,47 +37,45 @@
 			<div class="panel-body">
 
 				<div class="form-group">
-					<label for="demo-is-inputnormal" class="col-sm-3 control-label">글번호</label>
+					<label for="demo-is-inputnormal" class="col-sm-3 control-label">카테고리번호</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="commentNo">commentNo</span>
+						<input type="text" placeholder="Normal" class="form-control" id="hotelCategoryNo">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="demo-is-inputnormal" class="col-sm-3 control-label">객실</label>
+					<label for="demo-is-inputnormal" class="col-sm-3 control-label">카테고리이름</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="commentRoom">commentRoom</span>
+						<input type="text" placeholder="Normal" class="form-control" id="hotelCategoryName">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="demo-is-inputnormal" class="col-sm-3 control-label">작성자</label>
+					<label for="demo-is-inputnormal" class="col-sm-3 control-label">객실 수</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="commentMemno">commentMemno</span>
+						<input type="text" placeholder="Normal" class="form-control" id="numOfRoom">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="demo-is-inputnormal" class="col-sm-3 control-label">작성날짜</label>
+					<label for="demo-is-inputnormal" class="col-sm-3 control-label">썸네일</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="commentDate">commentDate</span>
+						<input type="text" placeholder="Normal" class="form-control" id="hotelCategoryThumbnail">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="demo-is-inputnormal" class="col-sm-3 control-label">글상태</label>
+					<label for="demo-is-inputnormal" class="col-sm-3 control-label">상세이미지</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="commentState">commentState</span>
+						<input type="text" placeholder="Normal" class="form-control" id="hotelCategoryDetailimg">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="demo-is-inputnormal" class="col-sm-3 control-label">글제목</label>
+					<label for="demo-is-inputnormal" class="col-sm-3 control-label">객실요금</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="commentTitle">commentTitle</span>
+						<input type="text" placeholder="Normal" class="form-control" id="hotelCategoryPrice">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="demo-is-inputnormal" class="col-sm-3 control-label">글내용</label>
+					<label for="demo-is-inputnormal" class="col-sm-3 control-label">상세설명</label>
 					<div class="col-sm-6">
-						<p>
-							commentContent
-						</p>
+						<textarea placeholder="Message" rows="13" class="form-control" id="hotelCategoryDescription"></textarea>
 					</div>
 				</div>
 				
@@ -96,6 +94,7 @@
 		<!--===================================================-->
 		<!--End Input Size-->
 		</div>
+		
 		
 	</div>
 	<!--===================================================-->
