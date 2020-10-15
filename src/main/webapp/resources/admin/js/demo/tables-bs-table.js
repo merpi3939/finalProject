@@ -57,6 +57,76 @@ $(document).ready(function() {
 			}
 		}]
 	});
+	$('#demo-editable2').bootstrapTable({
+		idField: 'id',
+		url: 'data/bs-table.json',
+		columns: [{
+			field: 'id',
+			formatter:'invoiceFormatter',
+			title: 'Invoice'
+		}, {
+			field: 'name',
+			title: 'Name',
+			editable: {
+				type: 'text'
+			}
+		}, {
+			field: 'date',
+			title: 'Order date'
+		}, {
+			field: 'amount',
+			title: 'Amount',
+			editable: {
+				type: 'text'
+			}
+		}, {
+			field: 'status',
+			align: 'center',
+			title: 'Status',
+			formatter:'statusFormatter'
+		}, {
+			field: 'track',
+			title: 'Tracking Number',
+			editable: {
+				type: 'text'
+			}
+		}]
+	});
+	$('#demo-editable3').bootstrapTable({
+		idField: 'id',
+		url: 'data/bs-table.json',
+		columns: [{
+			field: 'id',
+			formatter:'invoiceFormatter',
+			title: 'Invoice'
+		}, {
+			field: 'name',
+			title: 'Name',
+			editable: {
+				type: 'text'
+			}
+		}, {
+			field: 'date',
+			title: 'Order date'
+		}, {
+			field: 'amount',
+			title: 'Amount',
+			editable: {
+				type: 'text'
+			}
+		}, {
+			field: 'status',
+			align: 'center',
+			title: 'Status',
+			formatter:'statusFormatter'
+		}, {
+			field: 'track',
+			title: 'Tracking Number',
+			editable: {
+				type: 'text'
+			}
+		}]
+	});
 
 
 
