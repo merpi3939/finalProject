@@ -45,6 +45,6 @@
 		<beans:property name="order" value="3"/>
 	</beans:bean>
 	
-	<context:component-scan base-package="site.blueMoon.controller" />
+	<context:component-scan base-package="site.bluemoon.controller" />
 	
 </beans:beans>
