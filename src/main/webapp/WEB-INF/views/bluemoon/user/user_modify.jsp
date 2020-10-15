@@ -44,9 +44,6 @@
 					<a class="nav-link my-page" href="#">비밀번호 변경</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link my-page" href="#">내가 쓴 글</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link my-page" href="#">회원 탈퇴</a>
 				</li>
 			</ul>
