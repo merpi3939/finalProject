@@ -1,5 +1,7 @@
 package site.bluemoon.dao;
 
-public class UserDAO {
+import site.bluemoon.dto.User;
 
+public interface UserDAO {
+	int insertUser(User user);
 }

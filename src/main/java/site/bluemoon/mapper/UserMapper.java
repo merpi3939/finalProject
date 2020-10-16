@@ -1,5 +1,7 @@
 package site.bluemoon.mapper;
 
-public class UserMapper {
+import site.bluemoon.dto.User;
 
+public interface UserMapper {
+	int insertUser(User user);
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<style type="text/css">
 		.user-style { 
 			 margin-top: 50px;
@@ -323,7 +324,7 @@
  		var check=$("#check").is(":checked");
  		
  		if(check==true) {
-			$(location).attr("href","#");
+			$(location).attr("href","<c:url value="/join"/>");
  		} else {
  			$(".msg").show();
  		}
