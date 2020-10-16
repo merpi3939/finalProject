@@ -25,13 +25,13 @@
 
 	<!--Bootstrap Select [ OPTIONAL ]-->
 	<script src=<c:url value="/admin/plugins/bootstrap-select/bootstrap-select.min.js"/>></script>
-
-
+	
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src=<c:url value="/admin/js/demo/nifty-demo.min.js"/>></script>
 	
-	<!-- ■Member's Script -->
+	<!-- ■JEM's Partition-->
 	<script src=<c:url value="/admin/plugins/datatables/media/js/jquery.dataTables.js"/>></script>
 	<script src=<c:url value="/admin/plugins/datatables/media/js/dataTables.bootstrap.js"/>></script>
 	<script src=<c:url value="/admin/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"/>></script>
 	<script src=<c:url value="/admin/js/demo/tables-datatables.js"/>></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

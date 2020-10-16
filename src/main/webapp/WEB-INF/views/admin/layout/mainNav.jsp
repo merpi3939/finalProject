@@ -63,7 +63,7 @@
 						
 										<!--Submenu-->
 										<ul class="collapse">
-											<li><a href="layouts-collapsed-navigation.html">회원관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/memberList">회원관리</a></li>
 										</ul>
 									</li>
 						
@@ -78,9 +78,9 @@
 										</a>
 										
 										<ul class="collapse">
-											<li><a href="layouts-collapsed-navigation.html">요금 관리</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">예약/결제 관리</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">현장소식</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/chargeList">요금 관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/prList">예약/결제 관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/newsList">현장소식</a></li>
 										</ul>
 									</li>
 									
