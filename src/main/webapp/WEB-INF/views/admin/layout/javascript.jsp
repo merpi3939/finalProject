@@ -29,3 +29,9 @@
 
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src=<c:url value="/admin/js/demo/nifty-demo.min.js"/>></script>
+	
+	<!-- ■Member's Script -->
+	<script src=<c:url value="/admin/plugins/datatables/media/js/jquery.dataTables.js"/>></script>
+	<script src=<c:url value="/admin/plugins/datatables/media/js/dataTables.bootstrap.js"/>></script>
+	<script src=<c:url value="/admin/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"/>></script>
+	<script src=<c:url value="/admin/js/demo/tables-datatables.js"/>></script>
