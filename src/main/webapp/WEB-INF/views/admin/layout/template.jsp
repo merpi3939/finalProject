@@ -95,6 +95,83 @@
 	<%--<%@include file="javascript.jspf" %> --%>
 	<tiles:insertAttribute name="javascript"/>
 	
+	<!--X-editable [ OPTIONAL ]-->
+	<script src=<c:url value="/admin/plugins/x-editable/js/bootstrap-editable.min.js"/>></script>
+	
+	
+	<!--Bootstrap Table [ OPTIONAL ]-->
+	<script src=<c:url value="/admin/plugins/bootstrap-table/bootstrap-table.min.js"/>></script>
+	
+	
+	<!--Bootstrap Table Extension [ OPTIONAL ]-->
+	<script src=<c:url value="/admin/plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"/>></script>
+	
+	
+	<!--Demo script [ DEMONSTRATION ]-->
+	<script src=<c:url value="/admin/js/demo/nifty-demo.min.js"/>></script>
+	
+	
+	<!--Bootstrap Table Sample [ SAMPLE ]-->
+	<script src=<c:url value="/admin/js/demo/tables-bs-table.js"/>></script>
+	
+	<script type="text/javascript">
+	$('#confirmedTable').bootstrapTable({
+		idField: 'id',
+		url: '${pageContext.request.contextPath }/admin/data/bs-table.json',
+		columns: [{
+			field: 'id',
+			formatter:'invoiceFormatter',
+			title: '예약번호'
+		}, {
+			field: 'name',
+			title: '예약자',
+			editable: {
+				type: 'text'
+			}
+		}, {
+			field: 'date',
+			title: '예약날짜'
+		}, {
+			field: 'amount',
+			title: '예약금액',
+			editable: {
+				type: 'text'
+			}
+		}, {
+			field: 'status',
+			align: 'center',
+			title: '예약상태',
+			formatter:'statusFormatter'
+		}]
+	});
+	</script>
+
+	<script type="text/javascript">
+
+	// BOOTSTRAP TABLE - CUSTOM TOOLBAR
+	// =================================================================
+	// Require Bootstrap Table
+	// http://bootstrap-table.wenzhixin.net.cn/
+	// =================================================================
+	var $table = $('#hotelRoomTypeTable'),	$remove = $('#demo-delete-row');
+
+	$table.on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function () {
+		$remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
+	});
+
+	$remove.click(function () {
+		var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+			return row.id
+		});
+		$table.bootstrapTable('remove', {
+			field: 'id',
+			values: ids
+		});
+		$remove.prop('disabled', true);
+	});
+	</script>
+	
+	
 </body>
 </html>
 
