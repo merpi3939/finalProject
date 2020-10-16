@@ -69,9 +69,9 @@ color: white;!important;
     <div class="top-bar"style="border-bottom: 1px solid #E2E2E2; ">
  <ul>
   <li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
-  <li><a href="hotel.html">ROOMS</a></li>
-  <li><a href="#news">EVENT</a></li>
-  <li><a href="service.html">CONVENIENCE</a></li>
+  <li><a href=<c:url value="hotel"/>>ROOMS</a></li>
+  <li><a href=<c:url value="hotel_event"/>>EVENT</a></li>
+  <li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>
 </ul>
 </div>
 
@@ -85,39 +85,57 @@ color: white;!important;
                                     <h3>예약/주문 완료</h3>
                                 </div>
                                 <div class="d-flex">
-                                    <div class="font-weight-bold">Product</div>
-                                    <div class="ml-auto font-weight-bold">Total</div>
+                                    <div class="font-weight-bold">예약/결제정보</div>
+                                    <div class="ml-auto font-weight-bold">합계</div>
                                 </div>
                                 <hr class="my-1">
                                 <div class="d-flex">
-                                    <h4>Sub Total</h4>
-                                    <div class="ml-auto font-weight-bold"> $ 440 </div>
+                                    <h4>예약번호</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
                                 </div>
                                 <div class="d-flex">
-                                    <h4>Discount</h4>
-                                    <div class="ml-auto font-weight-bold"> $ 40 </div>
+                                    <h4>예약자 성함</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
                                 </div>
+                                <div class="d-flex">
+                                    <h4>예약자 전화번호</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>예약자 이메일</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
+                                </div>
+                                
+                                <div class="d-flex">
+                                    <h4>인원</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>예약룸</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
+                                </div>
+                                
                                 <hr class="my-1">
                                 <div class="d-flex">
-                                    <h4>Coupon Discount</h4>
-                                    <div class="ml-auto font-weight-bold"> $ 10 </div>
+                                    <h4>결제 방법</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
                                 </div>
                                 <div class="d-flex">
-                                    <h4>Tax</h4>
-                                    <div class="ml-auto font-weight-bold"> $ 2 </div>
+                                    <h4>결제자 성함</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
                                 </div>
                                 <div class="d-flex">
-                                    <h4>Shipping Cost</h4>
-                                    <div class="ml-auto font-weight-bold"> Free </div>
+                                    <h4>결제자 전화번호</h4>
+                                    <div class="ml-auto font-weight-bold"> </div>
                                 </div>
+                                
                                 <hr>
                                 <div class="d-flex gr-total">
-                                    <h5>Grand Total</h5>
-                                    <div class="ml-auto h5"> $ 388 </div>
+                                    <h5>결제금액</h5>
+                                    <div class="ml-auto h5">  </div>
                                 </div>
                                 <hr> </div>
                         </div>
-                        <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover" style="background-color: red !important; color: white !important;">Place Order</a> </div>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <head>
   <style type="text/css">
     .top-bar ul {
@@ -36,12 +37,12 @@ margin-top: 30px;
   </style>
   </head>
 
-   <div class="top-bar"style="border-bottom: 1px solid #E2E2E2; ">
+    <div class="top-bar"style="border-bottom: 1px solid #E2E2E2; ">
  <ul>
   <li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
-  <li><a href="hotel.html">ROOMS</a></li>
-  <li><a href="hotelEvent.html">EVENT</a></li>
-  <li><a href="service.html">CONVENIENCE</a></li>
+  <li><a href=<c:url value="hotel"/>>ROOMS</a></li>
+  <li><a href=<c:url value="hotel_event"/>>EVENT</a></li>
+  <li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>
 </ul>
 </div>
 
@@ -52,7 +53,7 @@ margin-top: 30px;
           	<div class="row">
           		<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<img  src="event.jpg" style="width: 100%;"><div class="text p-3">
+		    					<img  src=<c:url value="bluemoon/images/hotel_img/event.jpg"/> style="width: 100%;"><div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
 				    						<h3><a href="#">호텔 조식 패키지</a></h3>
@@ -74,7 +75,7 @@ margin-top: 30px;
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<img  src="event.jpg" style="width: 100%;"><div class="text p-3">
+		    					<img  src=<c:url value="bluemoon/images/hotel_img/event.jpg"/> style="width: 100%;"><div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
 				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
@@ -102,7 +103,7 @@ margin-top: 30px;
 		    			</div>
 		    			<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-		    					<img  src="event.jpg" style="width: 100%;"><div class="text p-3">
+		    					<img  src=<c:url value="bluemoon/images/hotel_img/event.jpg"/> style="width: 100%;"><div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
 				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>

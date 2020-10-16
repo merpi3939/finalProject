@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <head>
   <style type="text/css">
   img{
@@ -61,12 +62,12 @@ ul{
   </style>
   </head>
 
-     <div class="top-bar"style="border-bottom: 1px solid #E2E2E2; ">
+    <div class="top-bar"style="border-bottom: 1px solid #E2E2E2; ">
  <ul>
   <li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
-  <li><a href="hotel.html">ROOMS</a></li>
-  <li><a href="hotelEvent.html">EVENT</a></li>
-  <li><a href="service.html">CONVENIENCE</a></li>
+  <li><a href=<c:url value="hotel"/>>ROOMS</a></li>
+  <li><a href=<c:url value="hotel_event"/>>EVENT</a></li>
+  <li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>
 </ul>
 </div>
   <div class="wrap1200">  
@@ -79,13 +80,13 @@ ul{
 	
 	          <div class="sub_slide">
 	                <div class="bx-wrapper" style="max-width: 80%; margin: 0px auto;" >
-	                <img src="./svg1.jpg" style="width: 80%;">
+	                <img src=<c:url value="bluemoon/images/hotel_img/svg1.jpg"/> style="width: 80%;">
 	                <div class="bx-controls bx-has-controls-direction">
 	               </div></div>
 	               
 	            </div>
 	            <div class="ins">
-		                <img src="./sv1.png" style="padding-top: 30px; width: 80%">
+		                <img src=<c:url value="bluemoon/images/hotel_img/sv1.png"/> style="padding-top: 30px; width: 80%">
 	                </div>
 	        </div>
             
@@ -96,13 +97,13 @@ ul{
 	
 	          <div class="sub_slide">
 	                <div class="bx-wrapper" style="max-width: 80%; margin: 0px auto;" >
-	                <img src="./svg2.jpg" style="width: 80%;">
+	                <img src=<c:url value="bluemoon/images/hotel_img/svg2.jpg"/> style="width: 80%;">
 	                <div class="bx-controls bx-has-controls-direction">
 	                </div></div>
 	                
 	            </div>
 	            <div class="ins">
-		                <img src="./sv2.png" style="padding-top: 30px; width: 80%; margin: ">
+		                <img src=<c:url value="bluemoon/images/hotel_img/sv2.png"/> style="padding-top: 30px; width: 80%; margin: ">
 	                </div>
 	        </div>
 	        
