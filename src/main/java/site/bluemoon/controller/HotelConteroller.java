@@ -18,6 +18,10 @@ public class HotelConteroller {
 	public String HotelPay() {
 		return "bluemoon/hotel/hotel_pay";
 	}
+	@RequestMapping(value = "/hotel_order", method = RequestMethod.GET)
+	public String HotelOrder() {
+		return "bluemoon/hotel/hotel_order";
+	}
 	@RequestMapping(value = "/hotel_event", method = RequestMethod.GET)
 	public String HotelEvent() {
 		return "bluemoon/hotel/hotel_event";

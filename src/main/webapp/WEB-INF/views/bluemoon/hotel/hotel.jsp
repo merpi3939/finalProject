@@ -106,7 +106,7 @@ body {
 		                </ul>
 	                </div>
 	                <div class="rsvn_wrap">
-	                	<a href="hotel-single.html" target="blank"><span>상세정보</span></a>
+	                	<a href=<c:url value="hotel_single"/> target="blank"><span>상세정보</span></a>
 	                </div>
 	            </div>
 	
@@ -132,7 +132,7 @@ body {
 		                </ul>
 	                </div>
 	                <div class="rsvn_wrap">
-	                	<a href="hotel-single.html" target="blank"><span>예약하기</span></a>
+	                	<a href="#" target="blank"><span>예약하기</span></a>
 	                </div>
 	            </div>
 	
@@ -159,7 +159,7 @@ body {
 		                </ul>
 	                </div>
 	                <div class="rsvn_wrap">
-	                	<a href="hotel-single.html" target="blank"><span>예약하기</span></a>
+	                	<a href="#" target="blank"><span>예약하기</span></a>
 	                </div>
 	            </div>
 	
