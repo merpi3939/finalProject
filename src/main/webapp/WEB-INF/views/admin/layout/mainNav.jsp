@@ -63,18 +63,7 @@
 						
 										<!--Submenu-->
 										<ul class="collapse">
-											<li><a href="layouts-collapsed-navigation.html">회원목록</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">회원변경</a></li>
-											<li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
-											<li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
-											<li class="list-divider"></li>
-											<li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
-											<li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
-											<li><a href="layouts-aside-bright-theme.html">Bright aside theme</a></li>
-											<li class="list-divider"></li>
-											<li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
-											<li><a href="layouts-fixed-footer.html">Fixed Footer</a></li>
-											
+											<li><a href="layouts-collapsed-navigation.html">회원관리</a></li>
 										</ul>
 									</li>
 						
@@ -89,9 +78,9 @@
 										</a>
 										
 										<ul class="collapse">
-											<li><a href="layouts-collapsed-navigation.html">워터파크 관리</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">워터파크 티켓 수정</a></li>
-											
+											<li><a href="layouts-collapsed-navigation.html">요금 관리</a></li>
+											<li><a href="layouts-offcanvas-navigation.html">예약/결제 관리</a></li>
+											<li><a href="layouts-offcanvas-navigation.html">현장소식</a></li>
 										</ul>
 									</li>
 									
