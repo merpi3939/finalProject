@@ -78,13 +78,13 @@ ul {
 }
 </style>
 </head>
-<div class="top-bar" style="border-bottom: 1px solid #E2E2E2;">
-	<ul>
-		<li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
-		<li><a href="hotel.html">ROOMS</a></li>
-		<li><a href="#news">EVENT</a></li>
-		<li><a href="service.html">CONVENIENCE</a></li>
-	</ul>
+    <div class="top-bar"style="border-bottom: 1px solid #E2E2E2; ">
+ <ul>
+  <li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
+  <li><a href=<c:url value="hotel"/>>ROOMS</a></li>
+  <li><a href=<c:url value="hotel_event"/>>EVENT</a></li>
+  <li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>
+</ul>
 </div>
 
 
