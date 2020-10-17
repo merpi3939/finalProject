@@ -14,7 +14,7 @@
 	color: red;
 }
 
-.msg {
+.msg, .jungbokmsg {
 	display: none;
 	color: red;
 }
@@ -36,6 +36,8 @@ select {
                                         <form:errors path="userId" class="error errorId"/> 
                                         <span id="idNullMsg" class="msg idMsg">아이디는 필수 입력입니다.</span>
                                         <span id="idValidMsg" class="msg idMsg">아이디를 형식에 맞게 입력해 주세요.</span>
+                                        <span id="noIdMsg" class="jungbokmsg">이미 존재하는 아이디 입니다.</span>
+                                        <span id="okIdMsg" class="jungbokmsg">사용 가능 한 아이디 입니다.</span>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <form:input path="userId" class="form-control" placeholder="영문자로 시작하는 6~20자"/>
@@ -65,12 +67,9 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="cols-sm-2 control-label">*이름</label>
-                                        <form:errors path="userName" class="error errorName"/>
-                                        <span id="nameNullMsg" class="msg nameMsg">이름은 필수 입력입니다.</span>
-                                        <span id="nameValidMsg" class="msg nameMsg">이름을 형식에 맞게 입력해 주세요.</span>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <form:input path="userName" class="form-control" placeholder="한글로 입력해주세요."/>
+                                                <form:input path="userName" class="form-control" value="${user.userName }" readonly="true"/>
                                             </div>
                                         </div>
                                     </div>
@@ -94,13 +93,11 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" class="cols-sm-2 control-label">*전화번호</label>
-                                        <span id="phoneNullMsg" class="msg phoneMsg">전화번호는 필수 입력입니다.</span>
-                                        <span id="phoneValidMsg" class="msg phoneMsg">숫자로만 입력해주세요.</span>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                          		<form:select path="phone1" items="${phone1List }" style="width: 33%;"/>
-                                                <form:input path="phone2" class="form-control" maxlength="4"/>
-                                                <form:input path="phone3" class="form-control" maxlength="4"/>
+                                                <form:input path="phone1" value="${user.phone1 }" class="form-control" readonly="true"/>
+                                                <form:input path="phone2" value="${user.phone2 }" class="form-control" readonly="true"/>
+                                                <form:input path="phone3" value="${user.phone3 }" class="form-control" readonly="true"/>
                                             </div>
                                         </div>
                                     </div>
@@ -193,11 +190,36 @@ select {
 	 	
 	 	if(id=="") {
 	 		$("#idNullMsg").show();
+	 		$(".jungbokmsg").hide();
+	 		$("#userId").focus();
 	 	} else if(!idReg.test(id)) {
 	 		$("#idValidMsg").show();
+	 		$(".jungbokmsg").hide();
+	 		$("#userId").focus();
+	 	} else {
+	 	 $.ajax({
+				type: "get",
+				url: "useridcheck",
+				data: "userId="+$("#userId").val(),
+				success: function(result) {
+					if(result=="no") {
+		 				$("#noIdMsg").show();
+		 				$("#okIdMsg").hide();
+		 				$("#userId").focus();
+					} else {
+		 				$("#okIdMsg").show();
+		 				$("#noIdMsg").hide();
+		 				
+					}
+				},
+				eroor: function(xhr) {
+					alert("에러코드 = "+xhr.status);
+				}
+			 });	 		
 	 	}
+	 	
 	 });
-	 
+ 
 	 //비밀번호
 	 $("#userPassword").blur(function() {
 	 	$(".passMsg").hide();
@@ -226,20 +248,6 @@ select {
 		}
 	});
 	 
-	 //이름
-	 $("#userName").blur(function() {
-		 $(".nameMsg").hide(); 
-	 	 $(".errorName").hide();
-		var name=$("#userName").val();
-		var nameReg=/^[가-힣]{2,10}$/g;
-	 	
-		if(name=="") {
-			$("#nameNullMsg").show();
-		} else if (!nameReg.test(name)) {
-			$("#nameValidMsg").show();
-		}
-	});
-	
 	 //생일
 	 $("#userBirthday").blur(function() {
 		 $(".birthDayMsg").hide(); 
@@ -268,22 +276,7 @@ select {
 			$("#sexNullMsg").show();
 		}		
 	});
-	 
-	 //전화번호
-	$("#phone1,#phone2, #phone3").blur(function() {
-		$(".phoneMsg").hide();
-		var phone1=$("#phone1").val();
-		var phone2=$("#phone2").val();
-		var phone3=$("#phone3").val();
-		var phoneReg=/^[0-9]*$/;
-		
-		if(phone1=="선택" || phone2=="" || phone3=="") {
-			$("#phoneNullMsg").show();
-		} else if(!phoneReg.test(phone2) || !phoneReg.test(phone3)) {
-			$("#phoneValidMsg").show();			
-		}
-	});
-	 
+	  
 	//이메일
 	 $("#userEmail").blur(function() {
 		 $(".emailMsg").hide(); 
@@ -311,9 +304,11 @@ select {
 	 	if(id=="") {
 	 		$("#idNullMsg").show();
 	 		result=false;
+	 		 $("#userId").focus();
 	 	} else if(!idReg.test(id)) {
 	 		$("#idValidMsg").show();
 	 		result=false;
+	 		 $("#userId").focus();
 	 	}
 	 	//비밀번호
 	 	var password=$("#userPassword").val();
@@ -322,9 +317,11 @@ select {
 	 	if(password=="") {
 	 		$("#passNullMsg").show();
 	 		result=false;
+	 		 $("#userPassword").focus();
 	 	} else if (!passReg.test(password)) {
 	 		$("#passValidMsg").show();
 	 		result=false;
+	 		 $("#userPassword").focus();
 	 	}
 	 	//비밀번호확인
 	 	var password=$("#userPassword").val();
@@ -333,21 +330,13 @@ select {
 		if(passwordChk=="") {
 			$("#passChkNullMsg").show();
 			result=false;
+			$("#password-chk").focus();
 		} else if (password!=passwordChk) {
 			$("#passChkValidMsg").show();
 			result=false;
+			$("#password-chk").focus();
 		}
-		//이름
-		var name=$("#userName").val();
-		var nameReg=/^[가-힣]{2,10}$/g;
-	 	
-		if(name=="") {
-			$("#nameNullMsg").show();
-			result=false;
-		} else if (!nameReg.test(name)) {
-			$("#nameValidMsg").show();
-			result=false;
-		}
+		
 		//생년월일
 		var now=new Date();
 		var birthDay=$("#userBirthday").val();
@@ -359,12 +348,15 @@ select {
 		if(birthDay=="") {
 			$("#birthDayNullMsg").show();
 			result=false;
+			$("#userBirthday").focus();
 		} else if(now.getTime() < birthRegDate.getTime()) {			
 			$("#birthDayRegMsg").show();
 			result=false;
+			$("#userBirthday").focus();
 		} else if(birthRegOld.getTime() > birthRegDate.getTime()){
 			$("#birthDayRegOldMsg").show();
 			result=false;
+			$("#userBirthday").focus();
 		}
 		
 		//성별
@@ -372,21 +364,10 @@ select {
 		
 		if(sex=="선택") {
 			$("#sexNullMsg").show();
+			result=false;
+			$("#userSex").focus();
 		}
 			
-		//전화번호
-		var phone1=$("#phone1").val();
-		var phone2=$("#phone2").val();
-		var phone3=$("#phone3").val();
-		var phoneReg=/^[0-9]*$/;
-		
-		if(phone1=="선택" || phone2=="" || phone3=="") {
-			$("#phoneNullMsg").show();
-			result=false;
-		} else if(!phoneReg.test(phone2) || !phoneReg.test(phone3)) {
-			$("#phoneValidMsg").show();
-			result=false;
-		}
 		//이메일
 		var email=$("#userEmail").val();
 		var emailReg=/^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[-a-zA-Z0-9]+)+)*$/g;
@@ -394,9 +375,11 @@ select {
 		if(email=="") {
 			$("#emailNullMsg").show();
 			result=false;
+			$("#userEmail").focus();
 		} else if (!emailReg.test(email)) {
 			$("#emailValidMsg").show();
 			result=false;
+			$("#userEmail").focus();
 		}
 		return result;
 	}); 
