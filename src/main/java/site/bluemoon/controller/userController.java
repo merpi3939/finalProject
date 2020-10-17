@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import site.bluemoon.dto.User;
 import site.bluemoon.service.UserService;
@@ -85,7 +86,7 @@ public class userController {
 		return "bluemoon/user/user_join";
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String userJoin(@Valid @ModelAttribute User user, Errors errors, Model model) {
+	public String userJoin(@Valid @ModelAttribute User user, Errors errors, RedirectAttributes attributes) {
 		if(errors.hasErrors()) {
 			return "bluemoon/user/user_join";
 		}
@@ -97,12 +98,11 @@ public class userController {
 		user.setUserPassword(userPassword);
 		user.setUserPhone(userPhone);
 		
-		User userCheck=userService.selectUserId(user.getUserId());
-		
 		try {
 			userService.addUser(user);			
 		} catch (Exception e) {
-			model.addAttribute("message", "이미 존재하는 아이디 입니다.");
+			attributes.addAttribute("message", "이미 존재하는 아이디 입니다.");
+			return "redirect:bluemoon/user/user_join";
 		}
 		
 		return "bluemoon/waterpark/main";

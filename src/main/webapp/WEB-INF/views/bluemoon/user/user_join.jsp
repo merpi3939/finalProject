@@ -134,6 +134,7 @@ select {
                                             </div>
                                         </div>
                                     </div>
+                                    <div style="color: red;">${message }</div>
                                     <div class="form-group ">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block user-btn">회원가입</button>
                                     </div>
@@ -381,7 +382,11 @@ select {
 			result=false;
 			$("#userEmail").focus();
 		}
+		if(result==true){
+			alert("회원 가입을 축하드립니다. 회원 가입 기념 포인트 3000p 지급 해드렸습니다.");
+		}
 		return result;
+		
 	}); 
 	  
   </script>
