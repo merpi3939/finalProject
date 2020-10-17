@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import site.bluemoon.dao.UserDAO;
 import site.bluemoon.dto.User;
+import site.bluemoon.exception.ExistsUserinfoException;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -17,7 +18,6 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	@Override
 	public void addUser(User user) {
-		
 		userDao.insertUser(user);
 	}
 
