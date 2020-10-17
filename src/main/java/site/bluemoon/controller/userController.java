@@ -85,7 +85,7 @@ public class userController {
 		return "bluemoon/user/user_join";
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String userJoin(@Valid @ModelAttribute User user, Errors errors) {
+	public String userJoin(@Valid @ModelAttribute User user, Errors errors, Model model) {
 		if(errors.hasErrors()) {
 			return "bluemoon/user/user_join";
 		}
@@ -99,8 +99,11 @@ public class userController {
 		
 		User userCheck=userService.selectUserId(user.getUserId());
 		
-		
-		userService.addUser(user);
+		try {
+			userService.addUser(user);			
+		} catch (Exception e) {
+			model.addAttribute("message", "이미 존재하는 아이디 입니다.");
+		}
 		
 		return "bluemoon/waterpark/main";
 	}
