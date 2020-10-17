@@ -12,12 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import site.bluemoon.dto.User;
@@ -25,34 +25,22 @@ import site.bluemoon.service.UserService;
 import site.bluemoon.util.Utility;
 
 @Controller
-@SessionAttributes("user")
-public class userController {
+public class UserJoinController {
 	@Autowired
 	private UserService userService;
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String userLogin() {
-		return "bluemoon/user/user_login";
+	//약관이동
+	@RequestMapping(value = "/jointerms", method = RequestMethod.GET)
+	public String userJointerms() {
+		return "bluemoon/user/user_join_terms";
 	}
-	
-	@RequestMapping(value = "/idFind", method = RequestMethod.GET)
-	public String idFind() {
-		return "bluemoon/user/user_idfind";
-	}
-
-	@RequestMapping(value = "/passwdFind", method = RequestMethod.GET)
-	public String passwdFind() {
-		return "bluemoon/user/user_passwdfind";
-	}
-	
-	//가입여부(휴대폰)
-	@RequestMapping(value = "/usercheck", method = RequestMethod.GET)
-	public String userJoinCheck(Model model) {
-		User user=new User();
-		model.addAttribute(user);		
+	//유저이름번호체크 이동
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String userJoinCheck() {
 		return "bluemoon/user/user_joincheck";
 	}
-	@RequestMapping(value = "/usercheck", method = RequestMethod.POST)
+	
+	//유저이름번호체크
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String userJoinCheck(@ModelAttribute User user, Model model) {
 		Map<String, Object> userCheck=new HashMap<String, Object>();
 		
@@ -63,12 +51,13 @@ public class userController {
 		
 		String userId=userService.checkPhone(userCheck);
 		if(userId!=null) {
-			model.addAttribute("message", "이미 가입된 정보 입니다.");
+			model.addAttribute("message", "이미 가입된 회원 정보 입니다.");
 			return "bluemoon/user/user_joincheck";
 		}
-		return "bluemoon/user/user_join_terms";
+		return "bluemoon/user/user_join";
 	}
 	
+	//아이디 중복확인
 	@RequestMapping(value = "/useridcheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String userIdcheck(@RequestParam(value = "userId") String userId) {
@@ -77,16 +66,17 @@ public class userController {
 		if(user!=null) {
 			return "no";			
 		}
-			return "ok";
+		return "ok";
+	}
+	//겟방식 요청 뒤로
+	@RequestMapping(value = "/userjoin", method = RequestMethod.GET)
+	public String userIdcheck() {
+		return "bluemoon/user/user_join_terms";
 	}
 	
-	//회원가입
-	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String userJoin() {
-		return "bluemoon/user/user_join";
-	}
-	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String userJoin(@Valid @ModelAttribute User user, Errors errors, RedirectAttributes attributes) {
+	//회원 가입
+	@RequestMapping(value = "/userjoin", method = RequestMethod.POST)
+	public String userJoin(@Valid @ModelAttribute User user, Errors errors, Model model) {
 		if(errors.hasErrors()) {
 			return "bluemoon/user/user_join";
 		}
@@ -99,13 +89,13 @@ public class userController {
 		user.setUserPhone(userPhone);
 		
 		try {
-			userService.addUser(user);			
+			userService.addUser(user);
+			return "redirect:login";
+			
 		} catch (Exception e) {
-			attributes.addAttribute("message", "이미 존재하는 아이디 입니다.");
-			return "redirect:bluemoon/user/user_join";
+			model.addAttribute("message", "이미 존재하는 아이디 입니다.");
+			return "bluemoon/user/user_join";
 		}
-		
-		return "bluemoon/waterpark/main";
 	}
 	
 	@ModelAttribute("sexList")
@@ -113,8 +103,4 @@ public class userController {
 		return Arrays.asList("선택","남자","여자");
 	}
 
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String userMyPage() {
-		return "bluemoon/user/user_reservation";
-	}
 }

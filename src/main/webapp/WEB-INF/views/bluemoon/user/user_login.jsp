@@ -100,7 +100,7 @@ color: white;
 				<h3>LOGIN</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form id="loginForm" action=<c:url value="/login"/> method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -114,9 +114,9 @@ color: white;
 						</div>
 						<input type="password" class="form-control" placeholder="password">
 					</div>
-					<div style="text-align: center; color: #ff0000; display: none; " >아무개아무개</div>
+					<div style="text-align: center; color: #ff0000;"></div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<button class="btn btn-primary btn-lg btn-block user-btn" type="submit">Login</button>
 					</div>
 				</form>
 			</div>

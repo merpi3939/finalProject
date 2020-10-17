@@ -35,6 +35,7 @@ public class User {
 	private String userName;
 	private String userBirthday;
 	private String userPhone;
+	@NotEmpty(message = "이메일을 입력해 주세요.")
 	@Email(message = "이메일을 형식에 맞게 입력해 주세요.")
 	private String userEmail;
 	private String userSex;

@@ -26,7 +26,7 @@
                         <div class="card">
                             <div class="card-header">가입여부</div>
                             <div class="card-body">
-                                <form class="form-horizontal" id="joinForm" method="post" action=<c:url value="/usercheck"/>>
+                                <form class="form-horizontal" id="joinForm" method="post" action=<c:url value="/join"/>>
                                     <div class="form-group">
                                         <label for="nameFind" class="cols-sm-2 control-label">이름</label> 
                                         <span id="nameNullMsg" class="msg nameMsg">이름은 필수 입력입니다.</span>

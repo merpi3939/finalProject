@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page errorPage="/"%>
 <style type="text/css">
 .user-style { 
  	margin-top: 50px;
@@ -30,7 +31,7 @@ select {
                         <div class="card">
                             <div class="card-header">회원가입( * 필수입력)</div>
                             <div class="card-body">
-                                <form:form action="join" method="post" id="joinForm" modelAttribute="user">
+                                <form:form action="userjoin" method="post" id="joinForm" modelAttribute="user">
                                     <div class="form-group">
                                         <label for="id" class="cols-sm-2 control-label">*아이디</label>
                                         <form:errors path="userId" class="error errorId"/> 
@@ -38,6 +39,7 @@ select {
                                         <span id="idValidMsg" class="msg idMsg">아이디를 형식에 맞게 입력해 주세요.</span>
                                         <span id="noIdMsg" class="jungbokmsg">이미 존재하는 아이디 입니다.</span>
                                         <span id="okIdMsg" class="jungbokmsg">사용 가능 한 아이디 입니다.</span>
+                                        <span style="color: red;">${message }</span>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <form:input path="userId" class="form-control" placeholder="영문자로 시작하는 6~20자"/>
@@ -67,9 +69,10 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="cols-sm-2 control-label">*이름</label>
+                                        <form:errors path="userName" class="error errorName"/>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <form:input path="userName" class="form-control" value="${user.userName }" readonly="true"/>
+                                                <form:input path="userName" class="form-control" value="${userName }" readonly="true"/>
                                             </div>
                                         </div>
                                     </div>
@@ -93,11 +96,12 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" class="cols-sm-2 control-label">*전화번호</label>
+                                        <form:errors path="userPhone" class="error errorPhone"/>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <form:input path="phone1" value="${user.phone1 }" class="form-control" readonly="true"/>
-                                                <form:input path="phone2" value="${user.phone2 }" class="form-control" readonly="true"/>
-                                                <form:input path="phone3" value="${user.phone3 }" class="form-control" readonly="true"/>
+                                                <form:input path="phone1" value="${phone1 }" class="form-control" readonly="true"/>
+                                                <form:input path="phone2" value="${phone2 }" class="form-control" readonly="true"/>
+                                                <form:input path="phone3" value="${phone3 }" class="form-control" readonly="true"/>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +148,8 @@ select {
                     </div>
                 </div>	
 </div>
-  <script type="text/javascript">
+
+<script type="text/javascript">
   	  //우편번호
 	  function sample4_execDaumPostcode() {
 		    new daum.Postcode({
@@ -382,11 +387,11 @@ select {
 			result=false;
 			$("#userEmail").focus();
 		}
-		if(result==true){
-			alert("회원 가입을 축하드립니다. 회원 가입 기념 포인트 3000p 지급 해드렸습니다.");
+		if(result==true) {
+			alert("회원가입을 축하드립니다. 회원 가입 축하 포인트 3000p 적립");			
 		}
 		return result;
 		
-	}); 
-	  
+	}); 	  
   </script>
+ 
