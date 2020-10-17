@@ -8,4 +8,12 @@
 		insert into bluemoon_user values(#{userNo},#{userId},#{userPassword},#{userName},#{userBirthday},#{userPhone},#{userEmail},
 		#{userSex},#{userZipcode},#{userAddress1},#{userAddress2},3000,sysdate,#{userLogindate},#{userWithdrowdate},1)
 	</insert>
+	
+	<select id="selectUserPhone" parameterType="map" resultType="string">
+		select user_id from bluemoon_user where user_name=#{userName} and user_phone=#{userPhone}
+	</select>
+	
+	<select id="selectUserId" parameterType="string" resultType="User">
+		select * from bluemoon_user where user_id=#{userId}
+	</select>
 </mapper>

@@ -16,7 +16,7 @@
           <li class="nav-item cta"><a href=<c:url value="/login"/> class="nav-link"><span>Login</span></a></li>
           <li class="nav-item cta"><a href="#" class="nav-link"><span>Logout</span></a></li>
           <li class="nav-item cta"><a href="#" class="nav-link"><span>Admin</span></a></li>
-          <li class="nav-item"><a href=<c:url value="/jointerms"/> class="nav-link">Join</a></li>
+          <li class="nav-item"><a href=<c:url value="/usercheck"/> class="nav-link">Join</a></li>
           <li class="nav-item"><a href=<c:url value="/mypage"/> class="nav-link">MyPage</a></li>
         </ul>
       </div>
