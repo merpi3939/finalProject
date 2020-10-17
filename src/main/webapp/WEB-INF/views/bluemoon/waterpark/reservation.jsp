@@ -4,35 +4,6 @@
 <html lang="ko">
 <head>
 
-<!-- 달력 -->
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script>
-	$(function() {
-		$("#datepicker").datepicker();
-	});
-
-	$.datepicker.setDefaults({
-		dateFormat : 'yyyy-mm-dd',
-		prevText : '이전 달',
-		nextText : '다음 달',
-		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월',
-				'10월', '11월', '12월' ],
-		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-				'9월', '10월', '11월', '12월' ],
-		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-		showMonthAfterYear : true,
-		yearSuffix : '년'
-	});
-</script>
-<!-- 달력 -->
-
 <style type="text/css">
 * {
 	margin: 0px;
@@ -261,6 +232,11 @@ div.btns {
 	background: #a3b3c7;
 }
 
+.formBtn:hover {
+	color: #fff;
+	background-color: #f85989;
+}
+
 .formBtn a {
 	height: 22px;
 	padding: 0px 22px 22px 22px;
@@ -282,7 +258,7 @@ div.btns {
 						<tbody>
 							<tr>
 								<th>예약 날짜</th>
-								<td><input type="text" id="datepicker"></td>
+								<td><input type="text" id="datepicker1" name="${OceanReservationDTO.date }"></td>
 							</tr>
 							<tr>
 								<th>이용권</th>
@@ -367,6 +343,31 @@ div.btns {
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
+
+	<!-- 달력 -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<script>
+		$.datepicker.setDefaults({
+			dateFormat : 'yyyy-mm-dd',
+			prevText : '이전 달',
+			nextText : '다음 달',
+			monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+					'9월', '10월', '11월', '12월' ],
+			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+					'9월', '10월', '11월', '12월' ],
+			dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+			dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+			showMonthAfterYear : true,
+			yearSuffix : '년'
+		});
+
+		$(function() {
+			$("#datepicker1").datepicker();
+		});
+	</script>
 
 </body>
 </html>
