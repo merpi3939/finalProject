@@ -26,4 +26,5 @@ public class oceanController {
 	public String oceanPayment() {
 		return "bluemoon/waterpark/payment";
 	}
+	
 }//

@@ -270,7 +270,7 @@
 							</h3>
 							<div class="meta mb-3">
 								<div>
-									<a href="#">October 12, 2018</a>
+									<a href="#">October 12, 2020</a>
 								</div>
 							</div>
 						</div>
