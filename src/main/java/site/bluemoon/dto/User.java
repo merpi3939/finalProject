@@ -24,7 +24,7 @@ USER_LOGINDATE             DATE          	회원로그인날짜 sysdate
 USER_WITHDROWDATE          DATE          	회원탈퇴날짜 null(기본값)
 USER_STATE                 NUMBER(1)		회원상태 1.일반회원(기본값) 4.탈퇴회원 9.관리자
 */
-
+ 
 public class User {
 	private int userNo;
 	@Pattern(regexp = "^[a-zA-Z]\\w{5,19}$", message = "아이디를 형식에 맞게 입력해 주세요.")
