@@ -2,38 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <head>
-<title>Water Park</title>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Alex+Brush"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap"
-	rel="stylesheet">
-
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-
-<link rel="stylesheet" href="css/aos.css">
-
-<link rel="stylesheet" href="css/ionicons.min.css">
-
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="css/jquery.timepicker.css">
-
-
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
 <style type="text/css">
 .align-items-end {
 	-webkit-box-align: center !important;
@@ -45,7 +14,7 @@
 </head>
 <body>
 	<div class="hero-wrap js-fullheight"
-		style="background-image: url('images/mainimage.jpg');">
+		style="background-image: url('resources/bluemoon/images/ocean_img/mainimage.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -79,7 +48,7 @@
 							<div class="destination">
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
-									style="background-image: url(images/moon08.jpg);">
+									style="background-image: url(resources/bluemoon/images/ocean_img/moon08.jpg);">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
@@ -97,7 +66,7 @@
 							<div class="destination">
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
-									style="background-image: url(images/moon09.jpg);">
+									style="background-image: url(resources/bluemoon/images/ocean_img/moon09.jpg);">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
@@ -115,7 +84,7 @@
 							<div class="destination">
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
-									style="background-image: url(images/moon10.jpg);">
+									style="background-image: url(resources/bluemoon/images/ocean_img/moon10.jpg);">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
@@ -133,7 +102,7 @@
 							<div class="destination">
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
-									style="background-image: url(images/moon07.jpg);">
+									style="background-image: url(resources/bluemoon/images/ocean_img/moon07.jpg);">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
@@ -151,7 +120,7 @@
 							<div class="destination">
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
-									style="background-image: url(images/moon04.jpg);">
+									style="background-image: url(resources/bluemoon/images/ocean_img/moon04.jpg);">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
@@ -169,7 +138,7 @@
 							<div class="destination">
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
-									style="background-image: url(images/moon14.jpg);">
+									style="background-image: url(resources/bluemoon/images/ocean_img/moon14.jpg);">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
@@ -256,7 +225,8 @@
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="" class="block-20"
-							style="background-image: url('images/event01.jpg');"> </a>
+							style="background-image: url('resources/bluemoon/images/ocean_img/event01.jpg');">
+						</a>
 						<div class="text p-4 d-block">
 							<span class="tag">Event</span>
 							<h3 class="heading mt-3">
@@ -273,7 +243,8 @@
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="" class="block-20"
-							style="background-image: url('images/event2.jpg');"> </a>
+							style="background-image: url('resources/bluemoon/images/ocean_img/event2.jpg');">
+						</a>
 						<div class="text p-4">
 							<span class="tag">Discount</span>
 							<h3 class="heading mt-3">
@@ -290,7 +261,8 @@
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="" class="block-20"
-							style="background-image: url('images/event3.jpg');"> </a>
+							style="background-image: url('resources/bluemoon/images/ocean_img/event3.jpg');">
+						</a>
 						<div class="text p-4">
 							<span class="tag">Event</span>
 							<h3 class="heading mt-3">
@@ -307,7 +279,8 @@
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="" class="block-20"
-							style="background-image: url('images/event04.jpg');"> </a>
+							style="background-image: url('resources/bluemoon/images/ocean_img/event04.jpg');">
+						</a>
 						<div class="text p-4">
 							<span class="tag">Discount</span>
 							<h3 class="heading mt-3">
