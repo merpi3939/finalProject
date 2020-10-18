@@ -33,7 +33,10 @@
 	
 </head>
 <body>
-	<tiles:insertAttribute name="header"/>
+	<tiles:insertAttribute name="header"/>	
+	<c:if test="${fn:contains(path, 'my')}">
+		<tiles:insertAttribute name="mypagemenu"/>
+	</c:if>
 	<tiles:insertAttribute name="content"/>
 	<tiles:insertAttribute name="footer"/>
 	
