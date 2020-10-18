@@ -113,9 +113,6 @@ public class OceanReservationDTO {
 	public void setRsOption(String rsOption) {
 		this.rsOption = rsOption;
 	}
-
 	
-	
-	
-}//
+}////
 
