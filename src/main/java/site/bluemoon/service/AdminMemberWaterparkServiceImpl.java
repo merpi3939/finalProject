@@ -20,8 +20,8 @@ public class AdminMemberWaterparkServiceImpl implements AdminMemberWaterparkServ
 	}
 
 	@Override
-	public void modifyNews(int newsNo) {
-		adminMemberWaterparkDAO.updateNews(newsNo);
+	public void modifyNews(OceanNews oceanNews) {
+		adminMemberWaterparkDAO.updateNews(oceanNews);
 	}
 
 	@Override
@@ -31,7 +31,6 @@ public class AdminMemberWaterparkServiceImpl implements AdminMemberWaterparkServ
 
 	@Override
 	public OceanNews getSelectNews(int newsNo) {
-		System.out.println("111111");
 		return adminMemberWaterparkDAO.selectNews(newsNo);
 	}
 	

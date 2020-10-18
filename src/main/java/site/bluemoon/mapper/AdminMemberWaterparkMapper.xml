@@ -64,8 +64,8 @@
 		where
 			userNo=#{userNo}
 	</update>
-	
-	<!-- 체크된 회원삭제처리-->
+<!-- 	
+	체크된 회원삭제처리
 	<update id="deleteChectMembers" parameterType="list">
 		update
 			user
@@ -81,7 +81,7 @@
 		</foreach>
 		
 	</update>
-	
+	 -->
 	<!-- ■Waterpark's News Mapper -->
 	<insert id="insertNews" parameterType="OceanNews">
 		<selectKey resultType="int" keyProperty="newsNo" order="BEFORE">
@@ -99,7 +99,7 @@
 			)
 	</insert>
 	
-	<update id="updateNews">
+	<update id="updateNews" >
 		update
 			ocean_news
 		set
