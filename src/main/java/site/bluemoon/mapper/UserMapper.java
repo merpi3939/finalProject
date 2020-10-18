@@ -8,4 +8,5 @@ public interface UserMapper {
 	int insertUser(User user);
 	String selectUserPhone(Map<String, Object> user);
 	User selectUserId(String userId);
+	int updateUserLoginDate(String userId);
 }

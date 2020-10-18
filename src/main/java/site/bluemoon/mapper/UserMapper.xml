@@ -10,10 +10,14 @@
 	</insert>
 	
 	<select id="selectUserPhone" parameterType="map" resultType="string">
-		select user_id from bluemoon_user where user_name=#{userName} and user_phone=#{userPhone}
+		select user_id from bluemoon_user where user_name=#{userName} and user_phone=#{userPhone} and user_state=1
 	</select>
 	
 	<select id="selectUserId" parameterType="string" resultType="User">
 		select * from bluemoon_user where user_id=#{userId}
 	</select>
+	
+	<update id="updateUserLoginDate" parameterType="string">
+		update bluemoon_user set user_logindate=sysdate where user_id=#{userid}
+	</update>
 </mapper>

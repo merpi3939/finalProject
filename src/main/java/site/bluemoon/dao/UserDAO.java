@@ -8,4 +8,5 @@ public interface UserDAO {
 	int insertUser(User user);
 	String selectUserPhone(Map<String, Object> userCheck);
 	User selectUserId(String userId);
+	int updateUserLoginDate(String userId);
 }

@@ -29,5 +29,10 @@ public class UserDAOImpl implements UserDAO {
 	public User selectUserId(String userId) {
 		return sqlSession.getMapper(UserMapper.class).selectUserId(userId);
 	}
+
+	@Override
+	public int updateUserLoginDate(String userId) {
+		return sqlSession.getMapper(UserMapper.class).updateUserLoginDate(userId);
+	}
 	
 }
