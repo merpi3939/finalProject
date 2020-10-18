@@ -4,10 +4,9 @@ public class OceanReservationDTO {
 	private int rsNo;
 	private int rsUno;
 	private String rsName;
-	private String rsEmail;
 	private String rsPhone;
 	private String rsDate;
-	private String rsUserdate;
+	private String rsUsedate;
 	private String rsTicket;
 	private int rsAdult;
 	private int rsChild;
@@ -43,14 +42,6 @@ public class OceanReservationDTO {
 		this.rsName = rsName;
 	}
 
-	public String getRsEmail() {
-		return rsEmail;
-	}
-
-	public void setRsEmail(String rsEmail) {
-		this.rsEmail = rsEmail;
-	}
-
 	public String getRsPhone() {
 		return rsPhone;
 	}
@@ -67,12 +58,12 @@ public class OceanReservationDTO {
 		this.rsDate = rsDate;
 	}
 
-	public String getRsUserdate() {
-		return rsUserdate;
+	public String getRsUsedate() {
+		return rsUsedate;
 	}
 
-	public void setRsUserdate(String rsUserdate) {
-		this.rsUserdate = rsUserdate;
+	public void setRsUsedate(String rsUsedate) {
+		this.rsUsedate = rsUsedate;
 	}
 
 	public String getRsTicket() {
@@ -122,6 +113,7 @@ public class OceanReservationDTO {
 	public void setRsOption(String rsOption) {
 		this.rsOption = rsOption;
 	}
+
 	
 	
 	
