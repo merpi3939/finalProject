@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
 
@@ -26,7 +27,7 @@
 					<p class="browse d-md-flex" style="float: right">
 						<span
 							class="d-flex justify-content-md-center align-items-md-center"><a
-							href="#">예약하기</a></span>
+							href=<c:url value="/ocean_charge"/>>예약하기</a></span>
 				</div>
 			</div>
 		</div>
@@ -46,13 +47,9 @@
 					<div class="destination-slider owl-carousel ftco-animate">
 						<div class="item">
 							<div class="destination">
-								<a href="#"
+								<a href=<c:url value="/attraction1"/>
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon08.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
 								</a>
 								<div class="text p-3">
 									<h3>
@@ -67,10 +64,6 @@
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon09.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
 								</a>
 								<div class="text p-3">
 									<h3>
@@ -85,10 +78,6 @@
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon10.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
 								</a>
 								<div class="text p-3">
 									<h3>
@@ -103,10 +92,6 @@
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon07.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
 								</a>
 								<div class="text p-3">
 									<h3>
@@ -121,10 +106,6 @@
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon04.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
 								</a>
 								<div class="text p-3">
 									<h3>
@@ -139,10 +120,6 @@
 								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon14.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
 								</a>
 								<div class="text p-3">
 									<h3>
@@ -242,7 +219,7 @@
 				</div>
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
-						<a href="" class="block-20"
+						<a href=<c:url value="/event2"/> class="block-20"
 							style="background-image: url('resources/bluemoon/images/ocean_img/event2.jpg');">
 						</a>
 						<div class="text p-4">

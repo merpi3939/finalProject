@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -234,7 +235,7 @@ div.btns {
 
 .formBtn:hover {
 	color: #fff;
-	background-color: #f85989;
+	background-color: #ffc321;
 }
 
 .formBtn a {
@@ -250,72 +251,71 @@ div.btns {
 		<div class="con01">
 			<form class="form01">
 				<div class="wrap100" style="">
-					<h5>예약하기</h5>
-					<table class="res01">
-						<colgroup>
-							<col width="30%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th>예약 날짜</th>
-								<td><input type="text" id="datepicker1" name="${OceanReservationDTO.date }"></td>
-							</tr>
-							<tr>
-								<th>이용권</th>
+					<form name="reserFrom">
+						<h5>예약하기</h5>
+						<table class="res01">
+							<colgroup>
+								<col width="30%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>예약 날짜</th>
+									<td><input type="text" id="datepicker1" name="rsUserdate"></td>
+								</tr>
+								<tr>
+									<th>이용권</th>
 
-								<td><select name="sel">
-										<option value="">리스트</option>
-								</select></td>
-							</tr>
-							<tr>
-								<th>이용권 수량</th>
-								<td><strong> <span class="age01" maxlength="3">대인</span>
-								</strong> <input class="agein"> <strong> <span
-										class="age01" maxlength="3">소인</span>
-								</strong> <input class="agein"></td>
-							</tr>
-							<tr>
-								<th>이용권 금액</th>
-								<td><strong> <input>
-								</strong> 원</td>
-							</tr>
-						</tbody>
-					</table>
-					<h5>회원 정보</h5>
-					<table class="res01">
-						<colgroup>
-							<col width="30%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th>회원 이름</th>
-								<td><input value="" readonly="readonly"></td>
-							</tr>
-							<tr>
-								<th>회원 이메일</th>
-								<td><input value="" readonly="readonly"></td>
-							</tr>
-							<tr>
-								<th>회원 전화번호</th>
-								<td><input value="" readonly="readonly"></td>
-							</tr>
-							<tr>
-								<th>결제 방법</th>
-								<td>
-									<ul>
-										<li><input class="pay" type="radio" value="0">신용카드
-										</li>
-										<li><input class="pay" type="radio" value="1">무통장입금
-										</li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+									<td><select name="sel">
+											<option value="">리스트</option>
+									</select></td>
+								</tr>
+								<tr>
+									<th>이용권 수량</th>
+									<td><strong> <span class="age01">대인</span>
+									</strong> <input type="number" class="agein" maxlength="2"
+										name="rsAdult"> <strong> <span class="age01">소인</span>
+									</strong> <input type="number" class="agein" maxlength="2"
+										name="rsChild"></td>
+								</tr>
+								<tr>
+									<th>이용권 금액</th>
+									<td><input name="rsPrice"></td>
+								</tr>
+							</tbody>
+						</table>
 
+						<h5>회원 정보</h5>
+						<table class="res01">
+							<colgroup>
+								<col width="30%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>회원 이름</th>
+									<td><input value="" readonly="readonly"></td>
+								</tr>
+								<tr>
+									<th>회원 전화번호</th>
+									<td><input value="" readonly="readonly"></td>
+								</tr>
+								<tr>
+									<th>결제 방법</th>
+									<td>
+										<ul>
+											<li><input type="radio" class="pay" name="rsOption"
+												type="radio" value="0">신용카드</li>
+											<li><input type="radio" class="pay" name="rsOption"
+												type="radio" value="1">무통장입금</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
 					<div class="btns">
-						<span class="formBtn"> <a href="#DM" style="color: #fff;"
-							onclick="javascript:send();">결제하기</a>
+						<div align="center" style="color: red;">${message }</div>
+						<span class="formBtn" style="margin-left: 10px;"> <a
+							href=<c:url value="/ocean_payment"/> style="color: #fff;">결제하기</a>
 						</span>
 					</div>
 				</div>
@@ -323,30 +323,9 @@ div.btns {
 		</div>
 	</div>
 
-
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
-
 	<!-- 달력 -->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<script>
 		$.datepicker.setDefaults({
@@ -367,6 +346,28 @@ div.btns {
 		$(function() {
 			$("#datepicker1").datepicker();
 		});
+	</script>
+
+	<script type="text/javascript">
+	function submitCheck() {
+		if(reserForm.reUserdate.value=="") {
+			alert("원하는 날짜를 선택하세요.");
+			return;
+		}
+		
+		if(reserForm.rsAdult.value=="") {
+			alert("대인의 수량을 입력하세요.");
+			return;
+		}
+		
+		if(reserForm.rsChild.value=="") {
+			alert("소인의 수량을 입력하세요.");
+			return;
+		}
+		
+		reserForm.method="POST";
+		resertForm.submit();
+	} 
 	</script>
 
 </body>
