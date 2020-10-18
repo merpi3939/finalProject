@@ -91,8 +91,14 @@ margin-left: 10px;
 margin-right: 10px;
 color: white;
 }
+.msg {
+	color: red;
+	display: none;
+	text-align: center;
+}
 </style>
 
+<body>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -100,31 +106,57 @@ color: white;
 				<h3>LOGIN</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form id="loginForm" action=<c:url value="/login"/> method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username">
+						<input type="text" name="userId" id="userId" class="form-control" value="${user.userId }" placeholder="username">
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password">
+						<input type="password" name="userPassword" id="userPassword" class="form-control" placeholder="password">
 					</div>
-					<div style="text-align: center; color: #ff0000; display: none; " >아무개아무개</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<button class="btn btn-primary btn-lg btn-block user-btn" type="submit">Login</button>
 					</div>
+					<div id="message" style="text-align: center; color: #ff0000;">${message }</div>
+					<span id="passNullMsg" class="msg passMsg">비밀번호를 입력해주세요.</span>
+					<span id="idNullMsg" class="msg idMsg">아이디를 입력해주세요.</span>
 				</form>
-			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
 					<a href=<c:url value="/idFind"/>>아이디 찾기</a><a href=<c:url value="/passwdFind"/>>비밀번호 찾기</a>
 				</div>
 			</div>
+			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$("#loginForm").submit(function() {
+		$(".msg").hide();
+		$("#message").text("");
+		
+		var result=true;
+		var id=$("#userId").val();
+		var Passwd=$("#userPassword").val();
+		
+	 	if(id=="") {
+	 		$("#idNullMsg").css("display","block");
+	 		$("#userId").focus();
+	 		result=false;
+		} else if(Passwd=="") {
+			$("#passNullMsg").css("display","block");
+	 		$("#userPassword").focus();
+	 		result=false;
+		}
+	 	
+	 	return result;
+	});
+	
+</script>
+</body>

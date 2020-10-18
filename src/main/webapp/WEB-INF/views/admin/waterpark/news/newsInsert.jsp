@@ -3,6 +3,7 @@
     
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	
 			<!--CONTENT CONTAINER-->
 			<!--===================================================-->
@@ -34,35 +35,28 @@
 						<h3 class="panel-title">블루문 워터파크 현장소식 등록 페이지입니다.</h3>
 					</div>
 					
-					<form id="memberModify" class="panel-body form-horizontal form-padding" action="">
+					<form id="newsForm" method="post">
 						<!--■Static-->
 						<div class="form-group" >
 							<label class="col-md-3 control-label">작성자</label>
-							<div class="col-md-9"><p class="form-control-static">홍길동(abc123)</p></div>
-						</div>
-						
-						<!--■subject-->
-						<div class="form-group">
-							<label class="col-md-3 control-label" for="demo-text-input">제목</label>
-							<div class="col-md-9">
-								<input type="text" id="name" class="form-control" style="width: 600px;">
-							</div>
+							<div class="col-md-9"><input type="text"  name="newsUno"> </div>
 						</div>
 						
 						<!--■content-->
 						<div class="form-group">
 							<label class="col-md-3 control-label" for="demo-text-input">글 내용</label>
 							<div class="col-md-9">
-								<textarea id="form-control" class="form-control" style="width: 600px; height: 100px; resize: none;" > </textarea>
+								<textarea id="form-control" name="newsCont" class="form-control" style="width: 600px; height: 100px; resize: none;" > </textarea>
 							</div>
 						</div>
 					</form>
 
 					<!--■버튼-->
-					<div style="margin-left: 560px; margin-top: 10px;">
-						<button class="btn btn-primary" type="reset">소식등록</button>
-						<button class="btn btn-pink">리스트로 돌아가기</button>
+					<div style="margin-left: 560px; margin-top: 50px;">
+						<button onclick="enterNews()" class="btn btn-primary" type="reset">소식등록</button>
+						<button class="btn btn-pink" id="backNewsList">리스트로 돌아가기</button>
 					</div>
+					
 					<br>
 					<br>
 					<br>
@@ -73,3 +67,21 @@
 			</div>
 			<!--===================================================-->
 			<!--END CONTENT CONTAINER-->
+			
+	<script type="text/javascript">
+		 $("#form-control").focus();
+			 
+		$("#backNewsList").click(function() {
+			location.href='${pageContext.request.contextPath}/admin/newsList';
+		});
+		
+		function enterNews() {
+			/* 
+			if($("#newsForm").val()=="") {
+				alert("글 내용을 입력해 주세요.");
+				return;
+			}
+			 */
+			$("#newsForm").submit();
+		}
+	</script>

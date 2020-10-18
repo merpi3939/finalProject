@@ -42,29 +42,21 @@
 						<!--■Static-->
 						<div class="form-group" >
 							<label class="col-md-3 control-label">작성자</label>
-							<div class="col-md-9"><p class="form-control-static">홍길동(abc123)</p></div>
-						</div>
-						
-						<!--■subject-->
-						<div class="form-group">
-							<label class="col-md-3 control-label" for="demo-text-input">제목</label>
-							<div class="col-md-9">
-								<input type="text" id="name" class="form-control" style="width: 600px;">
-							</div>
+							<div class="col-md-9"><p class="form-control-static">${news.newsNo }</p></div>
 						</div>
 						
 						<!--■content-->
 						<div class="form-group">
 							<label class="col-md-3 control-label" for="demo-text-input">글내용</label>
 							<div class="col-md-9">
-								<textarea type="text" id="birthday" class="form-control" style="width: 600px; height: 100px; resize: none;"> asasdd</textarea>
+								<textarea type="text" id="birthday" class="form-control" style="width: 600px; height: 100px; resize: none;">${news.newsCont }</textarea>
 							</div>
 						</div>
 					</form>
 										
 					<!--■버튼-->
 					<div style="margin-left: 660px; margin-top: 10px;">
-						<button class="btn btn-primary" type="reset">수정완료</button>
+						<button id  class="btn btn-primary" type="reset">수정완료</button>
 					</div>
 					
 					<br>
@@ -81,24 +73,5 @@
 			<!--END CONTENT CONTAINER-->
 	
 	<script type="text/javascript">
-	//해당 row 의 [수정] 버튼 클릭시
-	$("#modifyMemberBtn").click(function() {
-		alert("asdf");;
-	});
-	
-	//해당 row 의 [삭제] 버튼 클릭시
-	$("#deleteMemberBtn").click(function() {
-		alert("asdf");;
-	});
-	
-	//제일 하단 [선택삭제] 버튼 클릭시
-	$("#allMemberDelete").click(function() {
-		alert("asdf");
-	});
-	
-	//제일 하단 [회원등록] 버튼 클릭시
-	$("#joinMember").click(function() {
-		$(location).attr('href','memberInsert.jsp');
-	});
 	
 	</script>
