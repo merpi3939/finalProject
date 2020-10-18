@@ -9,4 +9,5 @@ public interface UserService {
 	void addUser(User user) throws ExistsUserinfoException;
 	String checkPhone(Map<String, Object> userCheck);
 	User selectUserId(String userId);
+	void updateUserLoginDate(String userId) throws ExistsUserinfoException;
 }

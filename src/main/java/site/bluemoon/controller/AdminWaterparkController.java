@@ -40,16 +40,20 @@ public class AdminWaterparkController {
 	@RequestMapping(value = "/newsModify/{newsNo}", method = RequestMethod.GET)
 	public String newsModify(@PathVariable int newsNo, Model model) {
 		model.addAttribute("news", adminMemberWaterparkService.getSelectNews(newsNo));
-		model.addAttribute("test11", "abc");
 		return "admin/waterpark/news/newsModify";
 	}
 
-	/*
-	@RequestMapping(value = "/newsModify/{newsNo}", method = RequestMethod.POST)
-	public String newsModify(, Model model) {
-		return "redirect:/admin/waterpark/newsList";
+	@RequestMapping(value = "/newsModify", method = RequestMethod.POST)
+	public String newsModify(@ModelAttribute OceanNews oceanNews) {
+		adminMemberWaterparkService.modifyNews(oceanNews);
+		return "redirect:/admin/newsList";
 	}
-	*/
+	
+	@RequestMapping(value = "/newsRemove/{newsNo}")
+	public String newsRemove(@PathVariable int newsNo) {
+		adminMemberWaterparkService.removeNews(newsNo);
+		return "redirect:/admin/newsList";
+	}
 	
 	//■waterPark 예약/결제
 	@RequestMapping(value = "/prList")

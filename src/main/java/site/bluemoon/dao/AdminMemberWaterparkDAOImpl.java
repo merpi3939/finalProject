@@ -21,8 +21,8 @@ public class AdminMemberWaterparkDAOImpl implements AdminMemberWaterparkDAO {
 	}
 
 	@Override
-	public int updateNews(int newsNo) {
-		return sqlSession.getMapper(AdminMemberWaterparkMapper.class).updateNews(newsNo);
+	public int updateNews(OceanNews oceanNews) {
+		return sqlSession.getMapper(AdminMemberWaterparkMapper.class).updateNews(oceanNews);
 	}
 
 	@Override
@@ -32,7 +32,6 @@ public class AdminMemberWaterparkDAOImpl implements AdminMemberWaterparkDAO {
 
 	@Override
 	public OceanNews selectNews(int newsNo) {
-		System.out.println("22222");
 		return sqlSession.getMapper(AdminMemberWaterparkMapper.class).selectNews(newsNo);
 	}
 	

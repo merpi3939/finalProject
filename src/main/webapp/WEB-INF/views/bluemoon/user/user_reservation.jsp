@@ -36,33 +36,7 @@
 		}
 	</style>
 	
-<div class="container user-con">
-	<div class="row" style="margin-top: 50px">
-		<div class="col-md-12">
-			<ul class="nav nav-tabs nav-justified navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link active my-page-title">MyPage</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="#">예약 현황</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="#">회원정보 변경</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="#">비밀번호 변경</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="#">내가 쓴 글</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="#">회원 탈퇴</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	
-	
+<div class="container user-con">	
 	<div class="col-md-7 heading-section ftco-animate title-style">
             <h2><strong>워터파크 예약</strong></h2>
     </div>

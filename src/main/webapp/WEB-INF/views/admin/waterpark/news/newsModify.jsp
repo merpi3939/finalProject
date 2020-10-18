@@ -38,7 +38,7 @@
 						<h3 class="panel-title">블루문 워터파크 현장소식 등록 페이지입니다.</h3>
 					</div>
 					
-					<form id="memberModify" class="panel-body form-horizontal form-padding" action="">
+					<form name="newsModify" method="post" class="panel-body form-horizontal form-padding" action="${pageContext.request.contextPath }/admin/newsModify">
 						<!--■Static-->
 						<div class="form-group" >
 							<label class="col-md-3 control-label">작성자</label>
@@ -49,15 +49,19 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label" for="demo-text-input">글내용</label>
 							<div class="col-md-9">
-								<textarea type="text" id="birthday" class="form-control" style="width: 600px; height: 100px; resize: none;">${news.newsCont }</textarea>
+								<textarea name="newsCont" class="form-control" style="width: 600px; height: 100px; resize: none;">${news.newsCont }</textarea>
 							</div>
 						</div>
-					</form>
-										
+						
+						<input type="hidden" name="newsNo" value="${news.newsNo }">
+					
 					<!--■버튼-->
 					<div style="margin-left: 660px; margin-top: 10px;">
-						<button id  class="btn btn-primary" type="reset">수정완료</button>
+						<button type="submit" class="btn btn-primary">수정완료</button>
 					</div>
+					
+					</form>
+										
 					
 					<br>
 					<br>
@@ -73,5 +77,4 @@
 			<!--END CONTENT CONTAINER-->
 	
 	<script type="text/javascript">
-	
 	</script>

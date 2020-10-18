@@ -22,7 +22,7 @@
 			</c:when>
           	<c:when test="${choice==1 }">
           		<li class="nav-item cta"><a href="<c:url value="/logout"/>" class="nav-link"><span>Logout</span></a></li>
-          		<li class="nav-item"><a href=<c:url value="/mypage"/> class="nav-link">MyPage</a></li>
+          		<li class="nav-item"><a href=<c:url value="/myreservation"/> class="nav-link">MyPage</a></li>
 			</c:when>
           	<c:when test="${choice==9 }">
           		<li class="nav-item cta"><a href="#" class="nav-link"><span>Admin</span></a></li>

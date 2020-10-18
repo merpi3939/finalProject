@@ -70,8 +70,8 @@
 													<td style="text-align: center;">${list.newsUno }</td>
 													<td style="text-align: center;">${list.newsDate }</td>
 													<td style="width: 600px;">${list.newsCont }</td>
-													<td style="text-align: center;"><button class="btn btn-mint"  onclick="newsmodify(${list.newsNo })">수정</button></td>
-													<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
+													<td style="text-align: center;"><button class="btn btn-mint"  onclick="newsModify(${list.newsNo })">수정</button></td>
+													<td style="text-align: center;"><button class="btn btn-danger"   onclick="newsRemove(${list.newsNo })">삭제</button></td>
 												</tr>
 											</c:forEach>
 										</c:otherwise>
@@ -103,7 +103,11 @@
 			<!--END CONTENT CONTAINER-->
 	
 	<script type="text/javascript">
-		function newsmodify(newsNo) {
+		function newsModify(newsNo) {
 			location.href="newsModify/"+newsNo;
+		}
+		
+		function newsRemove(newsNo) {
+			location.href="newsRemove/"+newsNo;
 		}
 	</script>
