@@ -116,7 +116,7 @@ ul {
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="firstName">예약 인원</label> <input type="text"
-									class="form-control" id="lastName">
+									class="form-control" id="lastName" value="${hotel.reserveperson }">
 								<div class="invalid-feedback">Valid first name is
 									required.</div>
 							</div>

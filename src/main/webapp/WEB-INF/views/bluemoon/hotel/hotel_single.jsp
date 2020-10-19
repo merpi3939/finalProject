@@ -274,14 +274,10 @@ p {
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<select  class="form-control"
-									name="reserveMemperson"  >
-									<option value="0">예약 인원</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									</select>
+							<div class="form-group">
+								<input type="text" class="form-control"
+									name="reserveperson" value="${hotel.reserveperson }" placeholder="예약 인원">
+							</div>
 							</div>
 						</div>
 						<div class="col-md-6">
