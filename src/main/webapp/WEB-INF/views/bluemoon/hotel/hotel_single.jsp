@@ -35,7 +35,7 @@ ul {
 
 .row {
 	text-align: center;
-	width: 105%;
+	    width: 80%;
 }
 
 <!--
@@ -55,6 +55,8 @@ ul {
 	-ms-flex: 1 1 auto;
 	flex: 1 1 auto;
 	padding: 1.25rem;
+	width: 80%;
+    margin: auto;
 }
 
 .card {
@@ -264,34 +266,47 @@ p {
 				<div class="fields">
 
 					<div class="row">
-
-						<div class="col-md-6">
+					<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" class="form-control"
-									name="reserveMemphone" placeholder="전화번호">
+									name="reserveMemname" value="${hotel.reserveMemname }" placeholder="예약자 이름">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+							<div class="form-group">
+								<input type="text" class="form-control"
+									name="reserveperson" value="${hotel.reserveperson }" placeholder="예약 인원">
+							</div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" class="form-control"
-									name="reserveMememail" placeholder="이메일">
+									name="reserveMemphone" value="${hotel.reserveMemphone }"placeholder="전화번호">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control"
+									name="reserveMememail" value="${hotel.reserveMememail }" placeholder="이메일">
 							</div>
 						</div>
 						 <div class="col-md-6">
 							<div class="form-group">
-								<input type="text" id="checkin_date" class="form-control"
-									name="reserveCheckIn" placeholder="체크인 날짜">
+								<input type="text" id="datepicker1" class="form-control"
+									name="reserveCheckIn" value="${hotel.reserveCheckIn }" placeholder="체크인 날짜">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" id="checkin_date" class="form-control"
-									name="reserveCheckOut" placeholder="체크아웃 날짜">
+								<input type="text" id="datepicker2" class="form-control"
+									name="reserveCheckOut" value="${hotel.reserveCheckOut }" placeholder="체크아웃 날짜">
 							</div>
 						</div> 
 						<div class="col-md-12">
 							<div class="form-group">
-								<button type="submit">예약하기</button>
+								<button type="submit" class="btn" style="background-color: #ffc321; margin-top: 15px; font-weight: 500;">예약하기</button>
 							</div>
 						</div>
 					</div>
@@ -302,7 +317,8 @@ p {
 </div>
 
 <div class="row my-5">
-	<div class="card card-outline-secondary my-4">
+	<div class="card card-outline-secondary my-4" style="    margin-left: 10%;
+    margin-right: 10%;">
 		<div class="card-header">
 			<h2>Room Reviews</h2>
 		</div>
@@ -357,9 +373,30 @@ p {
 	</div>
 </div>
 <script type="text/javascript">
-	
+	$(document).ready(function() {
+		$('#datepicker1').datepicker({
+			format : 'yyyy-mm-dd', // 달력에서 클릭시 표시할 값 형식
+			todayHighlight : true,
+			autoclose : true // 날짜 클릭시 자동 닫힘
+			
+		})
+		.datepicker('setDate', new Date(new Date())) // 금일 날짜로 세팅
+		.on('changeDate', function(selectedDate){ // 날짜가 변경 되었을 때 실행
+			if($('#datepicker2').val() > $('#datepicker1').val()){ // 종료일보다 시작일자가 큰 경우 종료일자로 만듬
+				 $('#datepicker1').datepicker('setDate', new Date($('#datepicker2').val()));
+			}
+		});
+		$('#datepicker2').datepicker({
+			format : "yyyy-mm-dd", // 달력에서 클릭시 표시할 값 형식
+			todayHighlight : true,
+			autoclose : true
+		}).datepicker('setDate', new Date(new Date())) // 금일 날짜로 세팅
+		.on('changeDate', function(){ // 날짜가 변경 되었을 때 실행
+			if($('#datepicker1').val() > $('#datepicker2').val()){ // 시작일보다 종료일자가 앞선 경우 시작일자로 만듬
+				 $('#datepicker2').datepicker('setDate', new Date($('#datepicker1').val()));
+			}
+		});
+	});
 </script>
-
-
 
 
