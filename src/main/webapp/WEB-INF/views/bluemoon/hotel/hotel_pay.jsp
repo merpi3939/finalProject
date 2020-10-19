@@ -100,14 +100,14 @@ ul {
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="firstName">체크인</label> <input type="text"
-									class="form-control" id="firstName" placeholder="" value=""
+									class="form-control" id="firstName"  value="${hotel.reserveCheckIn }"
 									required>
 								<div class="invalid-feedback">Valid first name is
 									required.</div>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="lastName">체크아웃</label> <input type="text"
-									class="form-control" id="lastName" placeholder="" value=""
+									class="form-control" id="lastName" placeholder="" value="${hotel.reserveCheckOut }"
 									required>
 								<div class="invalid-feedback">Valid last name is required.
 								</div>
@@ -116,8 +116,7 @@ ul {
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="firstName">예약 인원</label> <input type="text"
-									class="form-control" id="firstName" placeholder="" value=""
-									required>
+									class="form-control" id="lastName">
 								<div class="invalid-feedback">Valid first name is
 									required.</div>
 							</div>
@@ -133,26 +132,22 @@ ul {
 							<label for="username">예약자 성함</label>
 							<div class="input-group">
 								<input type="text" class="form-control" id="username"
-									placeholder="" required>
+									value="${hotel.reserveMemname }"  >
 								<div class="invalid-feedback" style="width: 100%;">Your
 									username is required.</div>
 							</div>
 						</div>
 						<div class="mb-3">
 							<label for="email">휴대폰 번호</label> <input type="email"
-								class="form-control" id="email" placeholder="">
+								class="form-control" id="email" value="${hotel.reserveMemphone }">
 							<div class="invalid-feedback">Please enter a valid email
 								address for shipping updates.</div>
 						</div>
 						<div class="mb-3">
 							<label for="address">이메일 주소</label> <input type="text"
-								class="form-control" id="address" placeholder="" required>
+								class="form-control" id="address" value="${hotel.reserveMememail }">
 							<div class="invalid-feedback">Please enter your shipping
 								address.</div>
-						</div>
-						<div class="mb-3">
-							<label for="address2">Address 2 *</label> <input type="text"
-								class="form-control" id="address2" placeholder="">
 						</div>
 						<hr class="mb-4">
 					</form>

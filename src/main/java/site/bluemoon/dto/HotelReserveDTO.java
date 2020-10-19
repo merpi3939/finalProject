@@ -17,7 +17,25 @@ public class HotelReserveDTO {
 	private String reserveCheckIn;
 	private String reserveCheckOut;
 	private String reserveMemno;
-	private String reserveRoom;
+	private String reserveRoom;	
+	private String reserveperson;		
+	private String reserveMemname;
+	public String getReserveperson() {
+		return reserveperson;
+	}
+
+	public void setReserveperson(String reserveperson) {
+		this.reserveperson = reserveperson;
+	}
+
+	public String getReserveMemname() {
+		return reserveMemname;
+	}
+
+	public void setReserveMemname(String reserveMemname) {
+		this.reserveMemname = reserveMemname;
+	}
+
 	private String reserveMemphone;
 	private String reserveMememail;
 	private int reservePrice;

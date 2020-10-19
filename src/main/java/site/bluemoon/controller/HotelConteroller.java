@@ -1,12 +1,7 @@
 package site.bluemoon.controller;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,11 +22,8 @@ public class HotelConteroller {
 		return "bluemoon/hotel/hotel_single";
 	}
 	@RequestMapping(value = "/Hoteladd", method = RequestMethod.POST)
-	public String Hoteladd(@ModelAttribute HotelReserveDTO reserve ,Model model) throws ParseException{
-		
-
-		hotelReserveService.addHotelReserve(reserve);
-		return "bluemoon/hotel/hotel_single";
+	public String Hoteladd(@ModelAttribute("hotel") HotelReserveDTO reserve) {
+		return "bluemoon/hotel/hotel_pay";
 	}
 	@RequestMapping(value = "/hotel_pay", method = RequestMethod.GET)
 	public String HotelPay() {
