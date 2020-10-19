@@ -62,7 +62,7 @@ body {
 .amenities p {font-size: 19px; color: #525252; font-weight: 700; margin-bottom: 15px;}
 .amenities .left {float: left; width: 40%; margin-left: 8%; margin-right: 80px;}
 .amenities .left ul {overflow: hidden;}
-.amenities .left ul li {float: left; text-align: center; margin-bottom: 20px; margin-right: 0.5%;width: 19.5%; letter-spacing:-1px;}
+.amenities .left ul li {float: left; text-align: center; margin-bottom: 20px; margin-right: 2%; letter-spacing:-1px;}
 .amenities .left ul li:nth-child(5n) {margin-right: 0;}
 .amenities .left ul li img {border: 1px solid #dfd6d2; background: #fff;}
 .amenities .left ul li span {display: block; font-size: 14px; color: #101010; letter-spacing: -1px; margin-top: 5px;}
@@ -112,7 +112,7 @@ body {
 	
 	          <div class="sub_slide">
 	                <div class="bx-wrapper"  >
-	                <img src=<c:url value="bluemoon/images/h1.jpg"/> style="width: 80%;">
+	                <img src=<c:url value="bluemoon/images/hotel_img/h1.jpg"/> style="width: 80%;">
 	                </div>
 	               
 	                 
@@ -138,7 +138,7 @@ body {
 	
 	           <div class="sub_slide">
 	                <div class="bx-wrapper"  >
-	                <img src=<c:url value="bluemoon/images/h1.jpg"/> style="width: 80%;">
+	                <img src=<c:url value="bluemoon/images/hotel_img/h1.jpg"/> style="width: 80%;">
 	                </div>
 	               
 	                 
@@ -165,7 +165,7 @@ body {
 	
 	          <div class="sub_slide">
 	                <div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;" >
-	                <img src=<c:url value="bluemoon/images/h1.jpg"/> style="width: 80%;">
+	                <img src=<c:url value="bluemoon/images/hotel_img/h1.jpg"/> style="width: 80%;">
 	                <div class="bx-controls bx-has-controls-direction">
 	                </div></div>
 	                <div class="outside">
@@ -193,14 +193,14 @@ body {
                 <div class="left">
                     <p>객실 어메니티</p>
                     <ul>
-                    	<li><img src=<c:url value="bluemoon/images/amenity-wifi.png"/>><span>무료 WiFi</span></li>
-                    	<li><img src=<c:url value="bluemoon/images/tv-channel.png"/>><span>위성 TV 32개 채널</span></li>
-                    	<li><img src=<c:url value="bluemoon/images/amenity-TV.png"/>><span>43인치 Full HD TV</span></li>
-                    	<li><img src=<c:url value="bluemoon/images/amenity-water.png"/>><span>생수 2병</span></li>
-                    	<li><img src=<c:url value="bluemoon/images/amenity-dryer.png"/>><span>헤어드라이기</span></li>
-                    	<li><img src=<c:url value="bluemoon/images/amenity-refri.png"/>><span>냉장고</span></li>
-                    	<li><img src=<c:url value="bluemoon/images/amenity-safe.png"/>><span>금고</span></li>
-                    	<li><img src=<c:url value="bluemoon/images/amenity-bath.png"/>><span>욕실 어메니티</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/amenity-wifi.png"/>><span>무료 WiFi</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/tv-channel.png"/>><span>위성 TV 32개 채널</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/amenity-TV.png"/>><span>43인치 Full HD TV</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/amenity-water.png"/>><span>생수 2병</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/amenity-dryer.png"/>><span>헤어드라이기</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/amenity-refri.png"/>><span>냉장고</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/amenity-safe.png"/>><span>금고</span></li>
+                    	<li><img src=<c:url value="bluemoon/images/hotel_img/amenity-bath.png"/>><span>욕실 어메니티</span></li>
                     	
                         <!-- <li><img src="/RamadaSokcho_common/images/homepage/acco/amenity-multiplug.png"><span>멀티플러그어댑터</span></li>                        
                         <li><img src="/RamadaSokcho_common/images/homepage/acco/amenity-robe.png"><span>목욕가운 &amp; 슬리퍼</span></li>
@@ -210,7 +210,7 @@ body {
 
                 <div class="right">
                     <p>이용안내</p>
-                    <div>
+                    <div style="width: 37%">
                         <ul class="info">
                             <li>체크인 15:00 / 체크아웃 11:00</li>
                             <li>기준인원 : 2명, 최대인원 : 3명</li>
