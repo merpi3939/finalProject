@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -228,7 +228,6 @@ div.btns {
 	display: inline-block;
 	vertical-align: top;
 	background-position: left 0;
-	border: 1px solid #a3b3c7;
 	border-radius: 0.8em;
 	background: #a3b3c7;
 }
@@ -249,9 +248,8 @@ div.btns {
 <body>
 	<div class="limiter">
 		<div class="con01">
-			<form class="form01">
-				<div class="wrap100" style="">
-					<form name="reserFrom">
+			<form class="form01" action="addOcean" method="post">
+				<div class="wrap100">
 						<h5>예약하기</h5>
 						<table class="res01">
 							<colgroup>
@@ -260,22 +258,21 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>예약 날짜</th>
-									<td><input type="text" id="datepicker1" name="rsUserdate"></td>
+									<td><input type="text" id="datepicker" name="rsUserdate"></td>
 								</tr>
 								<tr>
 									<th>이용권</th>
 
 									<td><select name="sel">
-											<option value="">리스트</option>
+											<option name="rsName" value="rsTicket">리스트</option>
 									</select></td>
 								</tr>
 								<tr>
 									<th>이용권 수량</th>
 									<td><strong> <span class="age01">대인</span>
-									</strong> <input type="number" class="agein" maxlength="2"
-										name="rsAdult"> <strong> <span class="age01">소인</span>
-									</strong> <input type="number" class="agein" maxlength="2"
-										name="rsChild"></td>
+									</strong> <input type="number" class="agein" name="rsAdult"> <strong>
+											<span class="age01">소인</span>
+									</strong> <input type="number" class="agein" name="rsChild"></td>
 								</tr>
 								<tr>
 									<th>이용권 금액</th>
@@ -292,11 +289,11 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>회원 이름</th>
-									<td><input value="" readonly="readonly"></td>
+									<td><input name="rsName"></td>
 								</tr>
 								<tr>
 									<th>회원 전화번호</th>
-									<td><input value="" readonly="readonly"></td>
+									<td><input name="rsPhone"></td>
 								</tr>
 								<tr>
 									<th>결제 방법</th>
@@ -311,13 +308,9 @@ div.btns {
 								</tr>
 							</tbody>
 						</table>
-					</form>
-					<div class="btns">
-						<div align="center" style="color: red;">${message }</div>
-						<span class="formBtn" style="margin-left: 10px;"> <a
-							href=<c:url value="/ocean_payment"/> style="color: #fff;">결제하기</a>
-						</span>
-					</div>
+						<div class="btns">
+							<button class="formBtn" type="submit">결제하기</button>
+						</div>
 				</div>
 			</form>
 		</div>
@@ -344,31 +337,8 @@ div.btns {
 		});
 
 		$(function() {
-			$("#datepicker1").datepicker();
+			$("#datepicker").datepicker();
 		});
 	</script>
-
-	<script type="text/javascript">
-	function submitCheck() {
-		if(reserForm.reUserdate.value=="") {
-			alert("원하는 날짜를 선택하세요.");
-			return;
-		}
-		
-		if(reserForm.rsAdult.value=="") {
-			alert("대인의 수량을 입력하세요.");
-			return;
-		}
-		
-		if(reserForm.rsChild.value=="") {
-			alert("소인의 수량을 입력하세요.");
-			return;
-		}
-		
-		reserForm.method="POST";
-		resertForm.submit();
-	} 
-	</script>
-
 </body>
 </html>
