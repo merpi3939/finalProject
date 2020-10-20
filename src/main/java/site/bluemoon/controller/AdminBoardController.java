@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/admin")
-public class adminBoardController {
+public class AdminBoardController {
 	
 	@RequestMapping(value = "/info_list")
 	public String infoList() {

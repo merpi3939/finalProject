@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/admin")
-public class adminHotelController {
+public class AdminHotelController {
 	@RequestMapping(value = "/hotel_status", method = RequestMethod.GET)
 	public String hotelStatus() {
 		return "admin/hotel/hotel_status";

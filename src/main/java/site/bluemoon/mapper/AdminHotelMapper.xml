@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.bluemoon.mapper.AdminHotelMapper">
+	<!-- 호텔 예약 단일행 검색하기 -->
+	<select id="selectHotelReserve">
+		select * from HOTEL_RESERVE where RESERVE_NO = #{reserveNo}
+	</select>
+	
+	<!-- 호텔 예약 리스트 검색하기 -->
+	<select id="selectHotelReserveList">
+		select * from HOTEL_RESERVE order by RESERVE_NO desc
+	</select>
+	
+	<!-- 호텔 예약 변경하기 -->
+	<update id="updateHotelReserve">
+		UPDATE HOTEL_RESERVE SET RESERVE_DATE=#{reserveDate}, RESERVE_CHECK=#{reserveCheck}, RESERVE_CHECK_OUT=#{reserveCheckout}, RESERVE_MEMNUM=#{reserveMemnum}, RESERVE_ROOM=#{reserveRoom}, RESERVE_MEMPHONE=#{reserveMemphone}, RESERVE_MEMEMAIL=#{reserveMememail}, RESERVE_PRICE=#{reservePrice} WHERE RESERVE_NO=#{reserveNo}
+	</update>
+	
+	<!-- 호텔 리뷰 리스트 검색하기 -->
+	<select id="selectHotelReviewList">
+		select * from HOTEL_COMMENT order by COMMENT_NO desc
+	</select>
+	
+	<!-- 호텔 리뷰 단일행 검색하기 -->
+	<select id="selectHotelReview">
+		select * from HOTEL_COMMENT where COMMENT_NO =#{commentNo}
+	</select>
+	
+	<!-- 호텔 카테고리 추가 -->
+	<insert id="insertHotelCategory">
+		<selectKey resultType="int" keyProperty="hotelCategoryNo" order="BEFORE">
+			select hotel_category_sequence.nextval from dual
+		</selectKey>
+		INSERT INTO HOTEL_CATEGORY VALUES(#{hotelCategoryNo},#{HotelCategoryName},#{HotelCategoryThumbnail},#{HotelCategoryPrice})
+	</insert>
+	
+	<!-- 호텔 카테고리 변경 -->
+	<insert id="updateHotelCategory">
+		INSERT INTO HOTEL_CATEGORY VALUES(#{hotelCategoryNo},#{HotelCategoryName},#{HotelCategoryThumbnail},#{HotelCategoryPrice})
+	</insert>
+
+</mapper>
