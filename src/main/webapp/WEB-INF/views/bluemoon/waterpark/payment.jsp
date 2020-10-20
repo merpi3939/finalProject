@@ -50,17 +50,17 @@ label {
 	background-size: cover;
 	background-repeat: no-repeat;
 	position: relative;
-    width: 100%;
-    max-width: 960px;
-    min-height: 300px;
-    margin: 0 auto;
-    padding: 60px 16px 70px;
-    justify-content: center;
-    align-items: center;
+	width: 100%;
+	max-width: 960px;
+	min-height: 300px;
+	margin: 0 auto;
+	padding: 60px 16px 70px;
+	justify-content: center;
+	align-items: center;
 }
 
 .wrap100 {
-	width : 100%;
+	width: 100%;
 	float: left;
 	background: #fff;
 	border-radius: 10px;
@@ -109,14 +109,16 @@ label {
 	position: absolute;
 	top: 10px;
 }
+
 table .res01 {
 	width: 100%;
-    border-top: 3px solid #a3b3c7;
+	border-top: 3px solid #a3b3c7;
 }
 
-dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, tbody, tfoot, thead, th, td {
-    margin: 0;
-    padding: 0;
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset,
+	input, textarea, p, blockquote, tbody, tfoot, thead, th, td {
+	margin: 0;
+	padding: 0;
 }
 
 input.pay {
@@ -124,68 +126,68 @@ input.pay {
 }
 
 input {
-    width: 120px;
-    height: 20px;
-    padding: 0 0 0 5px;
-    line-height: 1.5;
-    border: 1px solid #d8d8d8;
-    color: #777;
+	width: 120px;
+	height: 20px;
+	padding: 0 0 0 5px;
+	line-height: 1.5;
+	border: 1px solid #d8d8d8;
+	color: #777;
 }
 
 tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
 }
 
 tr {
-    display: table-row;
-    vertical-align: inherit;
-    border-color: inherit;
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
 }
 
 table {
-    display: table;
-    border-collapse: separate;
-    box-sizing: border-box;
-    border-spacing: 2px;
-    border-color: grey;
+	display: table;
+	border-collapse: separate;
+	box-sizing: border-box;
+	border-spacing: 2px;
+	border-color: grey;
 }
 
 table.res01 {
-    width: 100%;
-    border-top: 3px solid #a3b3c7;
+	width: 100%;
+	border-top: 3px solid #a3b3c7;
 }
 
 table.res01 th {
-    padding: 10px 0 10px 15px;
-    text-align: left;
-    font-weight: normal;
-    color: #777;
-    vertical-align: top;
-    border-bottom: 1px solid #e1e1e1;
-    background: #f8f8f8;
+	padding: 10px 0 10px 15px;
+	text-align: left;
+	font-weight: normal;
+	color: #777;
+	vertical-align: top;
+	border-bottom: 1px solid #e1e1e1;
+	background: #f8f8f8;
 }
 
 table.res01 td {
-    padding: 10px 10px;
-    text-align: left;
-    border-bottom: 1px solid #e1e1e1;
-    line-height: 1.4;
+	padding: 10px 10px;
+	text-align: left;
+	border-bottom: 1px solid #e1e1e1;
+	line-height: 1.4;
 }
 
 th, td {
-    line-height: 1.4 !important;
+	line-height: 1.4 !important;
 }
 
 ol, ul, li {
-    list-style: none;
+	list-style: none;
 }
 
 input, textarea, td, th {
-    font-size: 12px;
-    font-family: Dotum, '돋움';
-    letter-spacing: 0;
+	font-size: 12px;
+	font-family: Dotum, '돋움';
+	letter-spacing: 0;
 }
 
 input {
@@ -198,48 +200,49 @@ input.agein {
 }
 
 table.res01 td input[type="radio"] {
-    margin: 0 5px 5px 0;
-    /* vertical-align: middle; */
+	margin: 0 5px 5px 0;
+	/* vertical-align: middle; */
 }
 
 table.res01 td label {
-    color: #777;
-    vertical-align: middle;
+	color: #777;
+	vertical-align: middle;
 }
 
 h5 {
-    display: block;
-    margin-block-start: 1.33em;
-    margin-block-end: 1.33em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
+	display: block;
+	margin-block-start: 1.33em;
+	margin-block-end: 1.33em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
 }
 
 div.btns {
-    margin: 10px 0 0 0;
-    text-align: right;
+	margin: 10px 0 0 0;
+	text-align: right;
 }
 
 .formBtn {
-    display: inline-block;
-    vertical-align: top;
-    background-position: left 0;
-    border: 1px solid #a3b3c7;
-    border-radius: 0.8em;
-    background: #a3b3c7;
+	display: inline-block;
+	vertical-align: top;
+	background-position: left 0;
+	border: 1px solid #a3b3c7;
+	border-radius: 0.8em;
+	background: #a3b3c7;
 }
 
-.formBtn:hover{
-color: #fff;
-background-color: #ffc321;
+.formBtn:hover {
+	color: #fff;
+	background-color: #ffc321;
 }
 
 .formBtn a {
-    height: 22px;
-    padding: 0px 22px 22px 22px;
-    display: inline-block;
+	height: 22px;
+	padding: 0px 22px 22px 22px;
+	display: inline-block;
 }
+
 .align-items-end {
 	-webkit-box-align: center !important;
 	-ms-flex-align: center !important;
@@ -262,28 +265,56 @@ background-color: #ffc321;
 							<tbody>
 								<tr>
 									<th>결제 번호</th>
-									<td><input value="" readonly="readonly"></td>
+									<td><input value="${selectOcean.rsNo}" name="rsNo" id="pmNo"
+										readonly="readonly"></td>
+								</tr>
+								<tr>
+									<th>이용권</th>
+									<td><input value="${selectOcean.rsTicket}" name="rsTicket"
+										id="pmTicket" readonly="readonly"></td>
 								</tr>
 								<tr>
 									<th>이용권 총 수량</th>
-									<td><input value="" readonly="readonly"></td>
+									<td>대인<input value="${selectOcean.rsAdult }" name="rsAdult" id="pmAdult" readonly="readonly">
+										소인<input value="${selectOcean.rsChild }" name="rsChild" id="pmChild" readonly="readonly">
+									</td>
 								</tr>
 								<tr>
 									<th>이용권 총 금액</th>
-									<td><input value="" readonly="readonly"></td>
+									<td><input value="${selectOcean.rsPrice }" name="rsPrice"
+										id="pmPrice" readonly="readonly"></td>
 								</tr>
 								<tr>
 									<th>결제 날짜</th>
-									<td><input value="" readonly="readonly"></td>
+									<td><input value="${selectOcean.rsDate }" name="rsDate"
+										id="pmDate" readonly="readonly"></td>
+								</tr>
+							</tbody>
+						</table>
+						<h5>회원 정보</h5>
+						<table class="res01">
+							<colgroup>
+								<col width="30%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>회원 이름</th>
+									<td><input id="rsName" value="${selectOcean.rsName}"
+										name="pmName" readonly="readonly">
+								</tr>
+								<tr>
+									<th>회원 전화번호</th>
+									<td><input id="rsPhone1" style="width: 20%;"
+										value="${selectOcean.rsPhone}" name="pmPhone" readonly="readonly">
 								</tr>
 								<tr>
 									<th>결제 방법</th>
 									<td>
 										<ul>
-											<li><input class="pay" type="radio" value="0">신용카드
-											</li>
-											<li><input class="pay" type="radio" value="1">무통장입금
-											</li>
+											<li><input name="rsOption" id="pmOption" class="pay"
+												type="radio" value="0">신용카드</li>
+											<li><input name="rsOption" id="pmOption" class="pay"
+												type="radio" value="1">무통장입금</li>
 										</ul>
 									</td>
 								</tr>
@@ -291,15 +322,18 @@ background-color: #ffc321;
 						</table>
 
 						<div class="btns">
-							<span class="formBtn"> <a href="#DM" style="color: #fff;"
-								onclick="javascript:send();">확인</a>
-							</span>
+							<div style="color: red;">${message }</div>
+							<button class="formBtn">확인</button>
 						</div>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+		var radio = $('input:radio[name=rsOption]:checked').val();
+	</script>
 
 </body>
 </html>
