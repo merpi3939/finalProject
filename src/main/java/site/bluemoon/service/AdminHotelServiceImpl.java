@@ -3,12 +3,14 @@ package site.bluemoon.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.AdminHotelDAO;
 import site.bluemoon.dto.HotelCategory;
 import site.bluemoon.dto.HotelComment;
 import site.bluemoon.dto.HotelReserveDTO;
 
+@Service
 public class AdminHotelServiceImpl implements AdminHotelService {
 	@Autowired
 	private AdminHotelDAO adminHotelDAO;

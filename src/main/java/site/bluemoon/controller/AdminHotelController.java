@@ -14,8 +14,8 @@ import site.bluemoon.service.AdminHotelService;
 @Controller
 @RequestMapping("/admin")
 public class AdminHotelController {
-	//@Autowired
-	//private AdminHotelService adminHotelService;
+	@Autowired
+	private AdminHotelService adminHotelService;
 	
 	@RequestMapping(value = "/hotel_status", method = RequestMethod.GET)
 	public String hotelStatus() {
@@ -25,7 +25,7 @@ public class AdminHotelController {
 	
 	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
 	public String hotelReservationList(Model model) {
-		//model.addAttribute("reservationList", adminHotelService.selectHotelReserveList());
+		model.addAttribute("reservationList", adminHotelService.selectHotelReserveList());
 		return "admin/hotel/hotel_reservation_list";
 	}
 	

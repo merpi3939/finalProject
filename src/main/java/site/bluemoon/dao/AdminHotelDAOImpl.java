@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import site.bluemoon.dto.HotelCategory;
 import site.bluemoon.dto.HotelComment;
 import site.bluemoon.dto.HotelReserveDTO;
 import site.bluemoon.mapper.AdminHotelMapper;
 
+@Repository
 public class AdminHotelDAOImpl implements AdminHotelDAO{
 	@Autowired
 	private SqlSession sqlSession;
