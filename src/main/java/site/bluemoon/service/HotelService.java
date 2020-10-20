@@ -1,12 +1,13 @@
-package site.bluemoon.dao;
+package site.bluemoon.service;
 
 import java.util.List;
 
 import site.bluemoon.dto.HotelCategory;
 import site.bluemoon.dto.HotelReserveDTO;
 
-public interface HotelDAO {
-	 int insertReserveHotel(HotelReserveDTO reserve);
-	 int selectHotelCategory(int num);
+public interface HotelService {
+	void addHotelReserve(HotelReserveDTO reserve);
+	void selectHotelCategory(int num);
 	 List<HotelCategory> selectHotelCategoryList();
+	
 }
