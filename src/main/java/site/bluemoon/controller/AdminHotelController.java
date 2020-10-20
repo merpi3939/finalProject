@@ -1,23 +1,31 @@
 package site.bluemoon.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.service.AdminHotelService;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminHotelController {
+	//@Autowired
+	//private AdminHotelService adminHotelService;
+	
 	@RequestMapping(value = "/hotel_status", method = RequestMethod.GET)
 	public String hotelStatus() {
 		return "admin/hotel/hotel_status";
 	}
 	
 	
-	@RequestMapping(value = "/hotel_reservation_list")
-	public String hotelReservationList(Model model ) {
-		//model.addAttribute("reservationList", reservationList);
+	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
+	public String hotelReservationList(Model model) {
+		//model.addAttribute("reservationList", adminHotelService.selectHotelReserveList());
 		return "admin/hotel/hotel_reservation_list";
 	}
 	
