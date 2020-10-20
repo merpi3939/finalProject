@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Moon | admin </title>
 
-	<%--<%@include file="stylesheet&script.jspf"  %> --%>
 	<tiles:insertAttribute name="stylesheetScript"/>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 </head>
 
 <body>
@@ -22,67 +22,21 @@
 	<div id="container" class="effect mainnav-lg">
 	
 		<!-- 위쪽 nav -->
-		<%--<%@include file="navBar.jspf" %> --%>
 		<tiles:insertAttribute name="navBar"/>
 
 		<div class="boxed">
 
 			<tiles:insertAttribute name="content"/>
-			<%--
-			<!--CONTENT CONTAINER-->
-			<!--===================================================-->
-			<div id="content-container">
-				
-				<!--Page Title-->
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<div id="page-title">
-					<h1 class="page-header text-overflow">Blank page</h1>
-				</div>
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<!--End page title-->
-
-
-				<!--Breadcrumb-->
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<ol class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Library</a></li>
-					<li class="active">Data</li>
-				</ol>
-				<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-				<!--End breadcrumb-->
-
-
-		
-
-				<!--Page content-->
-				<!--===================================================-->
-				<div id="page-content">
-					
-
-					
-				</div>
-				<!--===================================================-->
-				<!--End page content-->
-
-
-			</div>
-			<!--===================================================-->
-			<!--END CONTENT CONTAINER-->
-			 --%>
 			 
 			<!-- 왼쪽 메인 바 -->
-			<%--<%@include file="mainNav.jspf" %> --%>
 			<tiles:insertAttribute name="mainNav"/>
 			
 			<!-- 오른쪽 aside -->
-			<%--<%@include file="aside.jspf" %> --%>
 			<tiles:insertAttribute name="aside"/>
 			
 		</div>
 
 		<!-- footer -->
-		<%-- <%@include file="footer.jspf" %> --%>		
 		<tiles:insertAttribute name="footer"/>
 
 	</div>
@@ -92,7 +46,6 @@
 
 	
 	<!-- javascript -->
-	<%--<%@include file="javascript.jspf" %> --%>
 	<tiles:insertAttribute name="javascript"/>
 	
 	<!--X-editable [ OPTIONAL ]-->
@@ -114,6 +67,7 @@
 	<!--Bootstrap Table Sample [ SAMPLE ]-->
 	<script src=<c:url value="/admin/js/demo/tables-bs-table.js"/>></script>
 	
+	<!-- 
 	<script type="text/javascript">
 	$('#confirmedTable').bootstrapTable({
 		idField: 'id',
@@ -145,7 +99,7 @@
 		}]
 	});
 	</script>
-
+	 -->
 	<script type="text/javascript">
 
 	// BOOTSTRAP TABLE - CUSTOM TOOLBAR

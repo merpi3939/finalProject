@@ -3,18 +3,18 @@
 
 <mapper namespace="site.bluemoon.mapper.AdminHotelMapper">
 	<!-- 호텔 예약 단일행 검색하기 -->
-	<select id="selectHotelReserve">
+	<select id="selectHotelReserve" parameterType="int" resultType="hotelReserveDTO">
 		select * from HOTEL_RESERVE where RESERVE_NO = #{reserveNo}
 	</select>
 	
 	<!-- 호텔 예약 리스트 검색하기 -->
-	<select id="selectHotelReserveList">
+	<select id="selectHotelReserveList" resultType="hotelReserveDTO">
 		select * from HOTEL_RESERVE order by RESERVE_NO desc
 	</select>
 	
 	<!-- 호텔 예약 변경하기 -->
 	<update id="updateHotelReserve">
-		UPDATE HOTEL_RESERVE SET RESERVE_DATE=#{reserveDate}, RESERVE_CHECK=#{reserveCheck}, RESERVE_CHECK_OUT=#{reserveCheckout}, RESERVE_MEMNUM=#{reserveMemnum}, RESERVE_ROOM=#{reserveRoom}, RESERVE_MEMPHONE=#{reserveMemphone}, RESERVE_MEMEMAIL=#{reserveMememail}, RESERVE_PRICE=#{reservePrice} WHERE RESERVE_NO=#{reserveNo}
+		UPDATE HOTEL_RESERVE SET RESERVE_DATE=#{reserveDate}, RESERVE_CHECK_IN=#{reserveCheckIn}, RESERVE_CHECK_OUT=#{reserveCheckOut}, RESERVE_MEMNO=#{reserveMemno}, RESERVE_ROOM=#{reserveRoom}, RESERVE_MEMPHONE=#{reserveMemphone}, RESERVE_MEMEMAIL=#{reserveMememail}, RESERVE_PRICE=#{reservePrice} WHERE RESERVE_NO=#{reserveNo}
 	</update>
 	
 	<!-- 호텔 리뷰 리스트 검색하기 -->

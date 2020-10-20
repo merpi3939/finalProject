@@ -94,7 +94,7 @@ $(document).ready(function() {
 	});
 	$('#demo-editable3').bootstrapTable({
 		idField: 'id',
-		url: 'data/bs-table.json',
+		
 		columns: [{
 			field: 'id',
 			formatter:'invoiceFormatter',
@@ -271,4 +271,5 @@ function priceSorter(a, b) {
 	if (a < b) return -1;
 	return 0;
 }
+
 
