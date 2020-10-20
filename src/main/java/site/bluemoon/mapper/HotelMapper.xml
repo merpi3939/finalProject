@@ -13,7 +13,7 @@
 	</select>
 	
 	<!-- 단일행 카테고리 값 출력 -->
-	<select id="selectHotelCategory">
+	<select id="selectHotelCategory" resultType="HotelCategory" parameterType="int">
 		select * from hotel_category where HOTEL_CATEGORY_NO =#{hotelCategoryNo}
 	</select>
 </mapper>

@@ -103,11 +103,8 @@ body {
 		                    <li><span>이용요금</span> ${HotelCategory.hotelCategoryPrice }</li> 
 		                </ul>
 	                </div>
-	                <div class="ins" style="display: none" >
-		                <input name="hotelCategoryNo" value="${HotelCategory.hotelCategoryNo }">
-	                </div>
 	                <div class="rsvn_wrap">
-	                	<a href=<c:url value="hotel_single"/> target="${HotelCategory.hotelCategoryNo }"><span>상세정보</span></a>
+	                	<a href='hotel_single?hotelCategoryNo=${HotelCategory.hotelCategoryNo }' ><span>상세정보</span></a>
 	                </div>
 	            </div>
 	

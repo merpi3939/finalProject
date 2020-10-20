@@ -203,12 +203,13 @@ p {
 	</ul>
 </div>
 
-
+  
 <div class="shop-detail-box-main">
 	<div class="container" style="padding-top: 50px;">
+	<form action="Hoteladd" method="post">
 		<div style="border-bottom: 2px solid #E2E2E2; padding-bottom: 50px;">
 			<div style="text-align: center;">
-				<h2 style="padding-top: 30px;">standard room</h2>
+				<h2 style="padding-top: 30px;">${hotelCategoryNo.hotelCategoryName }</h2>
 				<hr>
 			</div>
 			<div class="row">
@@ -219,17 +220,22 @@ p {
 						<div class="carousel-inner" role="listbox">
 							<div class="carousel-item active">
 								<img class="d-block w-100"
-									src=<c:url value="bluemoon/images/hotel_img/room-1.jpg"/>
+									src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg1 }"/>
 									alt="First slide">
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100"
-									src=<c:url value="bluemoon/images/hotel_img/room-1.jpg"/>
+									src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg2 }"/>
 									alt="Second slide">
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100"
-									src=<c:url value="bluemoon/images/hotel_img/room-1.jpg"/>
+									src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg3 }"/>
+									alt="Third slide">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100"
+									src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg4 }"/>
 									alt="Third slide">
 							</div>
 						</div>
@@ -244,22 +250,26 @@ p {
 							style="padding-top: 10px; background-color: white;">
 							<li data-target="#carousel-example-1" data-slide-to="0"
 								class="active"><img class="d-block w-100 img-fluid"
-								src=<c:url value="bluemoon/images/hotel_img/room-1.jpg"/> alt="" />
+								src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg1 }"/> alt="" />
 							</li>
 							<li data-target="#carousel-example-1" data-slide-to="1"
 								class="active"><img class="d-block w-100 img-fluid"
-								src=<c:url value="bluemoon/images/hotel_img/room-1.jpg"/> alt="" />
+								src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg2 }"/> alt="" />
 							</li>
 							<li data-target="#carousel-example-1" data-slide-to="2"><img
 								class="d-block w-100 img-fluid"
-								src=<c:url value="bluemoon/images/hotel_img/room-1.jpg"/> alt="" />
+								src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg3 }"/> alt="" />
+							</li>
+							<li data-target="#carousel-example-1" data-slide-to="2"><img
+								class="d-block w-100 img-fluid"
+								src=<c:url value="bluemoon/images/hotel_img/${hotelCategoryNo.hotelCategoryImg4 }"/> alt="" />
 							</li>
 						</ol>
 					</div>
 				</div>
 			</div>
 		</div>
-		<form action="Hoteladd" method="post">
+		
 			<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 
 				<h4 class="mb-5" style="text-align: center;">예약 정보 입력</h4>

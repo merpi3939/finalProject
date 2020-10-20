@@ -7,7 +7,7 @@ import site.bluemoon.dto.HotelReserveDTO;
 
 public interface HotelService {
 	void addHotelReserve(HotelReserveDTO reserve);
-	void selectHotelCategory(int num);
+	public HotelCategory selectHotelCategory(int num);
 	 List<HotelCategory> selectHotelCategoryList();
 	
 }

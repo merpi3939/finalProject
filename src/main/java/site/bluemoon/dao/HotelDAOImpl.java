@@ -18,7 +18,7 @@ public class HotelDAOImpl implements HotelDAO{
 		return sqlSession.getMapper(HotelMapper.class).insertReserveHotel(reserve);
 	}
 	@Override
-	public int selectHotelCategory(int num) {
+	public HotelCategory selectHotelCategory(int num) {
 		return sqlSession.getMapper(HotelMapper.class).selectHotelCategory(num);
 	}
 	@Override

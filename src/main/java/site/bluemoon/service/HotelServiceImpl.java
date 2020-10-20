@@ -20,8 +20,8 @@ public class HotelServiceImpl implements HotelService{
 	}
 
 	@Override
-	public void selectHotelCategory(int num) {
-		hotelReserveDAO.selectHotelCategory(num);
+	public HotelCategory selectHotelCategory(int num) {
+		return hotelReserveDAO.selectHotelCategory(num);
 	}
 
 	@Override

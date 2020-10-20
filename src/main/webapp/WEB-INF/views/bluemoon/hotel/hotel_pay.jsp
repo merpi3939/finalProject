@@ -122,7 +122,7 @@ ul {
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="lastName">선택룸정보</label> <input type="text"
-									class="form-control" id="lastName" placeholder="" value=""
+									class="form-control" id="lastName" placeholder="" value="${hotelCategoryNo.hotelCategoryPrice }"
 									required>
 								<div class="invalid-feedback">Valid last name is required.
 								</div>
@@ -162,7 +162,15 @@ ul {
 							</div>
 							<div class="mb-4">
 								<div class="title">
-								</div>
+								<div class="mb-3">
+							<label for="username">결제금액</label>
+							<div class="input-group">
+								<input type="text" class="form-control" id="username"
+									value="${hotelCategoryNo.hotelCategoryPrice }"  >
+								<div class="invalid-feedback" style="width: 100%;">Your
+									username is required.</div>
+							</div>
+						</div>
 								<div class="d-block my-3">
 									<div class="custom-control custom-radio">
 										<input id="credit" name="paymentMethod" type="radio"
