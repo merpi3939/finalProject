@@ -66,6 +66,7 @@ public class UserServiceImpl implements UserService{
 		if(user.getUserPassword()!=null && !user.getUserPassword().equals("")) {
 			user.setUserPassword(BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt()));
 		}
+		
 		String userPhone=user.getPhone1()+"-"+user.getPhone2()+"-"+user.getPhone3();
 		user.setUserPhone(userPhone);
 		
@@ -91,8 +92,8 @@ public class UserServiceImpl implements UserService{
 			throw new LoginAuthFailException(user.getUserId(),"아이디의 회원 정보가 없습니다");
 		};
 		
-		if(!BCrypt.checkpw(user.getUserPassword(), userAuth.getUserPassword()) || userAuth.getUserState()==4) {
-			throw new LoginAuthFailException(user.getUserId(),"아이디 또는 비밀번호를 잘못 입력 하셨습니다.");			
+		if(!BCrypt.checkpw(user.getUserPassword().trim(), userAuth.getUserPassword()) || userAuth.getUserState()==4) {			
+			throw new LoginAuthFailException(user.getUserId(),"아이디 또는 비밀번호를 잘못 입력 하셨습니다.");
 		}
 		
 	}
@@ -114,5 +115,18 @@ public class UserServiceImpl implements UserService{
 			throw new UserinfoNotFoundException("아이디의 회원 정보가 없습니다");
 		};
 		userDao.deleteUser(userId);
+	}
+	@Transactional
+	@Override
+	public void updatePassUser(User user) throws UserinfoNotFoundException {
+		System.out.println(user.getUserPassword());
+		if(userDao.selectUserId(user.getUserId())==null) {
+			throw new UserinfoNotFoundException("아이디의 회원 정보가 없습니다");
+		};
+		if(user.getUserPassword()!=null && !user.getUserPassword().equals("")) {
+			user.setUserPassword(BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt()));
+		}
+		System.out.println(user.getUserPassword());
+		userDao.updateUserInfo(user);
 	}
 }

@@ -50,6 +50,7 @@ select {
                                         <form:errors path="userPassword" class="error errorPasswd"/>
                                         <span id="passNullMsg" class="msg passMsg">비밀번호는 필수 입력입니다.</span>
                                         <span id="passValidMsg" class="msg passMsg">비밀번호를 형식에 맞게 입력해 주세요.</span>
+                                        <span id="passTrimMsg" class="msg passMsg">공백은 사용 할 수 없습니다.</span>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <form:password path="userPassword" class="form-control" placeholder="영문자,숫자,특수문자 조합 7~21자"/>
@@ -232,11 +233,14 @@ select {
 	 	
 	 	var password=$("#userPassword").val();
 	 	var passReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;
+		var passblank = /[\s]/g;
 	 	
 	 	if(password=="") {
 	 		$("#passNullMsg").show();
 	 	} else if (!passReg.test(password)) {
 	 		$("#passValidMsg").show();
+	 	} else if(passblank.test(password)) {
+	 		$("#passTrimMsg").show();	 		
 	 	}
 	 });
 	 
@@ -318,6 +322,7 @@ select {
 	 	//비밀번호
 	 	var password=$("#userPassword").val();
 	 	var passReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;
+	 	var passblank = /[\s]/g;
 	 	
 	 	if(password=="") {
 	 		$("#passNullMsg").show();
@@ -327,7 +332,12 @@ select {
 	 		$("#passValidMsg").show();
 	 		result=false;
 	 		 $("#userPassword").focus();
+	 	} else if(passblank.test(password)) {
+	 		 $("#userPassword").focus();
+	 		$("#passTrimMsg").show();	 		
+	 		result=false;
 	 	}
+	 	
 	 	//비밀번호확인
 	 	var password=$("#userPassword").val();
 		var passwordChk=$("#password-chk").val();

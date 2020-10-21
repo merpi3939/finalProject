@@ -18,7 +18,6 @@ align-content: center;
 }
 
 .card{
-height: 370px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
@@ -165,7 +164,7 @@ cursor: pointer;
 					</div>
 					<span id="nameNullMsg" class="msg nameMsg">이름을 입력해주세요.</span>
 					<span id="phoneNullMsg" class="msg phoneMsg">휴대폰 번호를 입력해주세요.</span>
-					<span id="fineMsg" class="fineMsg" style="text-align: center; color: red;"></span>
+					<span id="fineIdMsg" class="fineMsg msg" style="text-align: center; color: red;"></span>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
 					<a class="aaa" id="login1">로그인</a><a class="aaa" id="passwdFind1">비밀번호 찾기</a>
@@ -187,18 +186,18 @@ cursor: pointer;
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 						</div>
-						<input type="text" name="userId" id="passFindEmailId" class="form-control" value="" placeholder="아이디">
+						<input type="text" name="userId" id="passFindId" class="form-control" value="" placeholder="아이디">
 						
 					</div>
 					<div class="input-group form-group">
 						<input type="text" name="userEmail" id="passFindEmail" class="form-control" placeholder="이메일">
 					</div>
 					<div class="form-group">
-						<button class="btn btn-primary btn-lg btn-block user-btn" type="submit">비밀번호 찾기</button>
+						<button id="findPasswdFind" class="btn btn-primary btn-lg btn-block user-btn" type="button">비밀번호 찾기</button>
 					</div>
-					<div id="message" style="text-align: center; color: #ff0000;">${message }</div>
-					<span id="passNullMsg" class="msg passMsg">비밀번호를 입력해주세요.</span>
-					<span id="idNullMsg" class="msg idMsg">아이디를 입력해주세요.</span>
+					<span id="findIdNullMsg" class="msg findIdMsg">비밀번호를 입력해주세요.</span>
+					<span id="findEmailNullMsg" class="msg findEmailMsg">아이디를 입력해주세요.</span>
+					<span id="finePassMsg" class="fineMsg msg" style="text-align: center; color: red;"></span>
 				</form>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
@@ -261,8 +260,43 @@ cursor: pointer;
 				data:  JSON.stringify({"userName":userName, "userPhone":userPhone}),
 				dataType: "text",
 				success: function(text) {
-						$("#fineMsg").text("asdasdsas");		
-						alert(text);
+						$("#fineIdMsg").css("display","block");
+						$("#userName").val("");
+						$("#userPhone").val("");
+						$("#fineIdMsg").text(text);		
+				},
+				error: function(xhr) {
+					alert("에러코드 = "+xhr.status);
+				}
+			});
+	});
+
+	$("#findPasswdFind").click(function() {
+		$(".msg").hide();
+		var userId=$("#passFindId").val();
+		var userEmail=$("#passFindEmail").val();
+		
+	 	if(userId=="") {
+	 		$("#findIdNullMsg").css("display","block");
+	 		$("#passFindId").focus();
+	 		return
+		} else if(userEmail=="") {
+			$("#findEmailNullMsg").css("display","block");
+	 		$("#passFindEmail").focus();
+			return
+		}
+		
+		 $.ajax({
+				type: "post",
+				url: "passwdFind",
+				headers: {"content-type":"application/json"},
+				data:  JSON.stringify({"userId":userId, "userEmail":userEmail}),
+				dataType: "text",
+				success: function(text) {
+						$("#finePassMsg").css("display","block");
+						$("#passFindId").val("");
+						$("#passFindEmail").val("");
+						$("#finePassMsg").text(text);
 				},
 				error: function(xhr) {
 					alert("에러코드 = "+xhr.status);

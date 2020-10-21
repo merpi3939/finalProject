@@ -10,7 +10,7 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href=<c:url value="/"/> class="nav-link">BlueMoonWaterPark</a></li>
+          <li class="nav-item"><a href=<c:url value="/"/> class="nav-link">BlueMoonWaterPark</a></li>
           <li class="nav-item"><a href=# class="nav-link">BlueMoonHotels</a></li>
           <li class="nav-item"><a href=<c:url value="/info"/> class="nav-link">Information</a></li>
          
@@ -22,7 +22,7 @@
 			</c:when>
           	<c:when test="${choice==1 }">
           		<li class="nav-item cta"><a href="<c:url value="/logout"/>" class="nav-link"><span>Logout</span></a></li>
-          		<li class="nav-item"><a href=<c:url value="/myreservation"/> class="nav-link">MyPage</a></li>
+          		<li class="nav-item"><a href=<c:url value="/myuserreservation"/> class="nav-link">MyPage</a></li>
 			</c:when>
           	<c:when test="${choice==9 }">
           		<li class="nav-item cta"><a href="#" class="nav-link"><span>Admin</span></a></li>

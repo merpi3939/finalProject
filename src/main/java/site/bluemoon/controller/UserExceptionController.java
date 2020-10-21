@@ -19,6 +19,11 @@ public class UserExceptionController {
 	@ExceptionHandler(UserinfoNotFoundException.class)
 	public String exceptionHandler(UserinfoNotFoundException exception, Model model) {
 		model.addAttribute("message", exception.getMessage());
-		return "bluemoon/user/user_error";
+		return "error/error";
+	}
+	@ExceptionHandler(Exception.class)
+	public String exceptionHandler(Exception exception, Model model) {
+		model.addAttribute("message", exception.getMessage());
+		return "error/error";
 	}
 }

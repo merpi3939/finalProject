@@ -27,6 +27,7 @@ import site.bluemoon.dto.User;
 import site.bluemoon.exception.LoginAuthFailException;
 import site.bluemoon.exception.UserinfoNotFoundException;
 import site.bluemoon.service.UserService;
+import site.bluemoon.util.NewPassword;
 
 @Controller
 public class UserController {
@@ -128,8 +129,8 @@ public class UserController {
 			return "bluemoon/waterpark/main";
 	}
 	//아이디찾기
-	@RequestMapping(value = "/idFind", method = RequestMethod.POST)
-	@ResponseBody
+	@RequestMapping(value = "/idFind", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody()
 	public String idFind(@RequestBody User user) {
 		Map<String, Object> userIdFind=new HashMap<String, Object>();
 		userIdFind.put("userName", user.getUserName());
@@ -140,24 +141,42 @@ public class UserController {
 			
 			return "회원님의 아이디는 "+userid.getUserId()+" 입니다";
 		} catch (UserinfoNotFoundException e) {
-			return e.getMessage();			
+			return e.getMessage();
 		}
 		
 	}
 	//비번찾기
-	@RequestMapping(value = "/passwdFind", method = RequestMethod.GET)
-	public String passwdFind() {
-		return "bluemoon/user/user_passwdfind";
+	@RequestMapping(value = "/passwdFind", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody()
+	public String passwdFind(@RequestBody User user) {
+		Map<String, Object> userPasswdFind=new HashMap<String, Object>();
+		userPasswdFind.put("userId", user.getUserId());
+		userPasswdFind.put("userEmail", user.getUserEmail());
+		
+		try {
+			User userModi=userService.checkUser(userPasswdFind);
+			
+			String newPasswd=NewPassword.newPassword();
+			userModi.setUserPassword(newPasswd);
+			
+			userService.updatePassUser(userModi);
+			
+			return "회원님의 임시 비밀번호는 "+newPasswd+" 입니다. 로그인 후 변경해주세요";
+			
+		} catch (UserinfoNotFoundException e) {
+			return e.getMessage();
+		}
+		
 	}
 	//로그아웃
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String userLogout(HttpSession session) {
 		session.removeAttribute("userInfo");
-		return "redirect:login";
+		return "bluemoon/user/user_login";
 	}
 	
 	//마이페이지-예약현황
-	@RequestMapping(value = "/myreservation", method = RequestMethod.GET)
+	@RequestMapping(value = "/myuserreservation", method = RequestMethod.GET)
 	public String userMyPage() {
 		
 		return "bluemoon/user/user_reservation";

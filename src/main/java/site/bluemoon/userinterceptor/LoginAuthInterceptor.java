@@ -25,7 +25,7 @@ public class LoginAuthInterceptor extends HandlerInterceptorAdapter{
 			if(request.getMethod().equals("GET")) {
 				session.setAttribute("destURI", url+query);
 			}
-			response.sendRedirect(request.getContextPath()+"/user/login");
+			response.sendRedirect(request.getContextPath()+"/login");
 			return false;
 		}
 		return true;
