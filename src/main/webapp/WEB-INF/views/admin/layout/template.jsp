@@ -125,6 +125,16 @@
 	});
 	</script>
 	
+	<script type="text/javascript">
+	  $(document).ready(function() {
+		  $('#summernote').summernote({
+				 height: 500,                 
+	             minHeight: null,             
+	             maxHeight: null,             
+	             focus: true  
+		  });
+		});
+	</script>
 	
 </body>
 </html>

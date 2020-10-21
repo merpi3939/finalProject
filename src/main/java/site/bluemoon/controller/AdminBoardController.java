@@ -11,5 +11,10 @@ public class AdminBoardController {
 	public String infoList() {
 		return "admin/board/info_list";
 	}
+	
+	@RequestMapping(value = "/info_write")
+	public String infoWrite() {
+		return "admin/board/info_write";
+	}
 
 }
