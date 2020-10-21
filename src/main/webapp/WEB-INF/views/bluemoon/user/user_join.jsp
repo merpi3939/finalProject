@@ -91,7 +91,13 @@ select {
                                         <label for="sex" class="cols-sm-2 control-label">*성별</label>
                                         <span id="sexNullMsg" class="msg sexMsg">성별을 선택 해주세요.</span>
                                         <div class="cols-sm-10">
-                                           <form:select path="userSex" items="${sexList }" style="width: 100%; height: 50px;"/>
+                                           <div class="input-group">
+                                                <select name="userSex" id="userSex" style="width: 100%; height: 50px;">
+                                                	<option value="선택">선택</option>
+                                                	<option value="남자">남자</option>
+                                                	<option value="여자">여자</option>                                      
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">

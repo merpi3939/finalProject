@@ -92,7 +92,11 @@ select {
                                         <label for="sex" class="cols-sm-2 control-label">*성별</label>
                                         <span id="sexNullMsg" class="msg sexMsg">성별을 선택 해주세요.</span>
                                         <div class="cols-sm-10">
-                                           <form:select path="userSex" items="${sexList }" style="width: 100%; height: 50px;"/>
+                                           <select name="userSex" id="userSex" style="width: 100%; height: 50px;">
+                                                	<option value="선택">선택</option>
+                                                	<option value="남자">남자</option>
+                                                	<option value="여자">여자</option>                                      
+                                           </select>
                                            <input type="text" id="userSexSel" value="${user.userSex }" hidden="hidden">
                                         </div>
                                     </div>
@@ -100,7 +104,15 @@ select {
                                         <label for="phone" class="cols-sm-2 control-label">*전화번호</label>                         
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                            	<form:select path="phone1" items="${phoneList }" class="form-control"/>
+                                                <select name="phone1" id="phone1" class="form-control">
+                                                	<option value="010">010</option>
+                                                	<option value="011">011</option>
+                                                	<option value="012">012</option>
+                                                	<option value="016">016</option>
+                                                	<option value="017">017</option>
+                                                	<option value="018">018</option>
+                                                	<option value="019">019</option>
+                                                </select>
                                                 <input type="text" id="phone1s" value="${user.phone1 }" hidden="hidden" class="form-control"/>
                                                 <form:input path="phone2" value="" class="form-control" maxlength="4"/>
                                                 <form:input path="phone3" value="" class="form-control" maxlength="4"/>

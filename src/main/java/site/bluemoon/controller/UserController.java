@@ -51,7 +51,6 @@ public class UserController {
 		
 		String phone=user.getPhone1()+"-"+user.getPhone2()+"-"+user.getPhone3();
 		
-		userCheck.put("userName", user.getUserName());
 		userCheck.put("userPhone", phone);
 		try {
 			userService.checkUser(userCheck);
@@ -79,17 +78,7 @@ public class UserController {
 	
 		return "bluemoon/user/user_join_terms";
 	}
-	
-	@ModelAttribute("sexList")
-	public List<String> sexList() {
-		return Arrays.asList("선택","남자","여자");
-	}
-	
-	@ModelAttribute("phoneList")
-	public List<String> phone1List() {
-		return Arrays.asList("010","011","012","016","017","018","019");
-	}
-	
+		
 	//회원 가입
 	@RequestMapping(value = "/userjoin", method = RequestMethod.POST)
 	public String userJoin(@Valid @ModelAttribute User user, Errors errors, Model model) {
@@ -98,9 +87,7 @@ public class UserController {
 		}
 		try {
 			userService.addUser(user);
-			model.addAttribute("msg","로그인 성공");
-            model.addAttribute("url","/");
-			return "bluemoon/user/user_login";
+			return "redirect:login?result=congratulations";
 			
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
