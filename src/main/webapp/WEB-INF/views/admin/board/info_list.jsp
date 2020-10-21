@@ -108,7 +108,7 @@
 								<td>${info.infoUserName }</td>
 								<!-- <td>${info.infoCount }</td> -->
 								<td>${info.infoDate.substring(0,10) }</td>
-								<td><button class="btn btn-info" type="button">수정</button></td>
+								<td><button class="btn btn-info" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/info_modify?infoNo=${info.infoNo }';">수정</button></td>
 								<td><button class="btn btn-danger" type="button">삭제</button></td>
 							</tr>
 						

@@ -7,5 +7,6 @@ import site.bluemoon.dto.InfoBoard;
 public interface AdminBoardMapper {
 	//INFO
 	List<InfoBoard> selectInfoList();
-
+	InfoBoard selectInfo(int infoNo);
+	int updateInfo(InfoBoard infoBoard);
 }

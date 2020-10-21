@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import site.bluemoon.dao.AdminBoardDAO;
 import site.bluemoon.dto.InfoBoard;
@@ -17,6 +18,16 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 	@Override
 	public List<InfoBoard> selectInfoList() {
 		return adminBoardDAO.selectInfoList();
+	}
+
+	@Override
+	public InfoBoard selectInfo(int infoNo) {
+		return adminBoardDAO.selectInfo(infoNo);
+	}
+
+	@Override
+	public int updateInfo(@ModelAttribute("info") InfoBoard infoBoard) {
+		return adminBoardDAO.updateInfo(infoBoard);
 	}
 
 }
