@@ -1,5 +1,7 @@
 package site.bluemoon.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,11 +24,16 @@ public class AdminHotelController {
 		return "admin/hotel/hotel_status";
 	}
 	
-	
-	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
-	public String hotelReservationList(Model model) {
+	@RequestMapping(value = "/hotel_reservation_list_display", method = RequestMethod.GET)
+	public String hotelReservationListPrint(Model model) {
 		model.addAttribute("reservationList", adminHotelService.selectHotelReserveList());
 		return "admin/hotel/hotel_reservation_list";
+	}
+	
+	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
+	public List<HotelReserveDTO> hotelReservationList(Model model) {
+		//model.addAttribute("reservationList", );
+		return adminHotelService.selectHotelReserveList();
 	}
 	
 	@RequestMapping(value = "/hotel_reservation_update")

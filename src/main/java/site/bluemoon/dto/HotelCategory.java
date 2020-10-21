@@ -7,6 +7,8 @@ HOTEL_CATEGORY_NAME               VARCHAR2(50)
 HOTEL_CATEGORY_DETAILIMG          VARCHAR2(100) 
 HOTEL_CATEGORY_THUMBNAIL          VARCHAR2(100) 
 HOTEL_CATEGORY_PRICE              NUMBER        
+HOTEL_CATEGORY_QTY                NUMBER        
+
 
 */
 public class HotelCategory {
@@ -15,6 +17,7 @@ public class HotelCategory {
 	private String hotelCategoryDetailimg;
 	private String hotelCategoryThumbnail;
 	private String hotelCategoryPrice;
+	private int hotelCategoryQty;
 	
 	public HotelCategory() {
 		// TODO Auto-generated constructor stub
@@ -58,6 +61,14 @@ public class HotelCategory {
 
 	public void setHotelCategoryPrice(String hotelCategoryPrice) {
 		this.hotelCategoryPrice = hotelCategoryPrice;
+	}
+
+	public int getHotelCategoryQty() {
+		return hotelCategoryQty;
+	}
+
+	public void setHotelCategoryQty(int hotelCategoryQty) {
+		this.hotelCategoryQty = hotelCategoryQty;
 	}
 	
 	

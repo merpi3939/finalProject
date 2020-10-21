@@ -14,7 +14,33 @@
 	
 	<!-- 호텔 예약 변경하기 -->
 	<update id="updateHotelReserve">
-		UPDATE HOTEL_RESERVE SET RESERVE_DATE=#{reserveDate}, RESERVE_CHECK_IN=#{reserveCheckIn}, RESERVE_CHECK_OUT=#{reserveCheckOut}, RESERVE_MEMNO=#{reserveMemno}, RESERVE_ROOM=#{reserveRoom}, RESERVE_MEMPHONE=#{reserveMemphone}, RESERVE_MEMEMAIL=#{reserveMememail}, RESERVE_PRICE=#{reservePrice} WHERE RESERVE_NO=#{reserveNo}
+		UPDATE HOTEL_RESERVE
+		
+		<set>
+			<if test="reserveCheckIn!=null reserveCheckIn!=''">
+				RESERVE_CHECK_IN=#{reserveCheckIn}
+			</if>
+			<if test="reserveCheckOut!=null reserveCheckOut!=''">
+				RESERVE_CHECK_OUT=#{reserveCheckOut}
+			</if>
+			<if test="reserveMemno!=null ">
+				RESERVE_MEMNO=#{reserveMemno}
+			</if>
+			<if test="reserveRoom!=null reserveRoom!=''">
+				RESERVE_ROOM=#{reserveRoom}
+			</if>
+			<if test="reserveMemphone!=null reserveMemphone!=''">
+				RESERVE_MEMPHONE=#{reserveMemphone}
+			</if>
+			<if test="reserveMememail!=null reserveMememail!=''">
+				RESERVE_MEMEMAIL=#{reserveMememail}
+			</if>
+			<if test="reservePrice!=null reservePrice!=''">
+				RESERVE_PRICE=#{reservePrice}
+			</if>
+		</set>
+		
+		 WHERE RESERVE_NO=#{reserveNo}
 	</update>
 	
 	<!-- 호텔 리뷰 리스트 검색하기 -->
@@ -32,7 +58,7 @@
 		<selectKey resultType="int" keyProperty="hotelCategoryNo" order="BEFORE">
 			select hotel_category_sequence.nextval from dual
 		</selectKey>
-		INSERT INTO HOTEL_CATEGORY VALUES(#{hotelCategoryNo},#{HotelCategoryName},#{HotelCategoryThumbnail},#{HotelCategoryPrice})
+		INSERT INTO HOTEL_CATEGORY VALUES(#{hotelCategoryNo},#{HotelCategoryName},#{HotelCategoryThumbnail},#{HotelCategoryPrice},#{HotelCategoryQty})
 	</insert>
 	
 	<!-- 호텔 카테고리 변경 -->
