@@ -1,12 +1,15 @@
 package site.bluemoon.dto;
 /*
-이름                       널?       유형            
------------------------- -------- ------------- 
-HOTEL_CATEGORY_NO        NOT NULL NUMBER        
-HOTEL_CATEGORY_NAME               VARCHAR2(50)  
-HOTEL_CATEGORY_DETAILIMG          VARCHAR2(100) 
-HOTEL_CATEGORY_THUMBNAIL          VARCHAR2(100) 
-HOTEL_CATEGORY_PRICE              NUMBER        
+이름                   널?       유형            
+-------------------- -------- ------------- 
+HOTEL_CATEGORY_NO    NOT NULL NUMBER        
+HOTEL_CATEGORY_NAME           VARCHAR2(100) 
+HOTEL_CATEGORY_IMG1           VARCHAR2(100) 
+HOTEL_CATEGORY_IMG2           VARCHAR2(100) 
+HOTEL_CATEGORY_IMG3           VARCHAR2(100) 
+HOTEL_CATEGORY_IMG4           VARCHAR2(100) 
+HOTEL_CATEGORY_PRICE NOT NULL NUMBER        
+HOTEL_CATEGORY_QTY   NOT NULL NUMBER        
 
 */
 public class HotelCategory {
@@ -16,7 +19,8 @@ public class HotelCategory {
 	private String hotelCategoryImg1;   
 	private String hotelCategoryImg2;   
 	private String hotelCategoryImg3;   
-	private String hotelCategoryImg4;   
+	private String hotelCategoryImg4;  
+	private int hotelCategoryQty;
 	
 	public HotelCategory() {
 		// TODO Auto-generated constructor stub
@@ -76,6 +80,14 @@ public class HotelCategory {
 
 	public void setHotelCategoryImg4(String hotelCategoryImg4) {
 		this.hotelCategoryImg4 = hotelCategoryImg4;
+	}
+
+	public int getHotelCategoryQty() {
+		return hotelCategoryQty;
+	}
+
+	public void setHotelCategoryQty(int hotelCategoryQty) {
+		this.hotelCategoryQty = hotelCategoryQty;
 	}
 	
 	
