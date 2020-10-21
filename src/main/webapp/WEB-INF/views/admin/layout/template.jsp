@@ -12,6 +12,8 @@
 
 	<tiles:insertAttribute name="stylesheetScript"/>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+
+	
 </head>
 
 <body>
@@ -66,6 +68,12 @@
 	
 	<!--Bootstrap Table Sample [ SAMPLE ]-->
 	<script src=<c:url value="/admin/js/demo/tables-bs-table.js"/>></script>
+	
+	<!--Summernote [ OPTIONAL ]-->
+	<script src=<c:url value="/admin/plugins/summernote/summernote.min.js"/>> </script>
+	
+	<!--Form Component [ SAMPLE ]-->
+	<script src=<c:url value="/admin/js/demo/form-component.js"/>></script>
 	
 	<!-- 
 	<script type="text/javascript">
@@ -125,6 +133,7 @@
 	});
 	</script>
 	
+
 	
 </body>
 </html>
