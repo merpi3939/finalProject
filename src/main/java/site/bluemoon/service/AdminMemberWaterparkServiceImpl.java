@@ -38,4 +38,5 @@ public class AdminMemberWaterparkServiceImpl implements AdminMemberWaterparkServ
 	public List<OceanNews> getSelectNewsList() {
 		return adminMemberWaterparkDAO.selectNewsList();
 	}
+
 }

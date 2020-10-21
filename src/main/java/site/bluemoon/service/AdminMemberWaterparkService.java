@@ -9,7 +9,7 @@ import site.bluemoon.dto.OceanNews;
 public interface AdminMemberWaterparkService {
 
 	
-	//°·Waterpark's News DAO
+	//°·Waterpark's News Service
 	@Autowired
 	void addNews(OceanNews oceanNews);
 	void modifyNews(OceanNews oceanNews);

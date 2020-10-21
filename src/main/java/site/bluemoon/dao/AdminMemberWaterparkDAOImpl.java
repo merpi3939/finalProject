@@ -40,5 +40,4 @@ public class AdminMemberWaterparkDAOImpl implements AdminMemberWaterparkDAO {
 		return sqlSession.getMapper(AdminMemberWaterparkMapper.class).selectNewsList();
 	}
 
-
 }
