@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -265,30 +266,40 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>결제 번호</th>
-									<td><input value="${selectOcean.rsNo}" name="rsNo" id="pmNo"
-										readonly="readonly"></td>
-								</tr>
-								<tr>
-									<th>이용권</th>
-									<td><input value="${selectOcean.rsTicket}" name="rsTicket"
-										id="pmTicket" readonly="readonly"></td>
-								</tr>
-								<tr>
-									<th>이용권 총 수량</th>
-									<td>대인<input value="${selectOcean.rsAdult }" name="rsAdult" id="pmAdult" readonly="readonly">
-										소인<input value="${selectOcean.rsChild }" name="rsChild" id="pmChild" readonly="readonly">
-									</td>
-								</tr>
-								<tr>
-									<th>이용권 총 금액</th>
-									<td><input value="${selectOcean.rsPrice }" name="rsPrice"
-										id="pmPrice" readonly="readonly"></td>
-								</tr>
-								<tr>
-									<th>결제 날짜</th>
-									<td><input value="${selectOcean.rsDate }" name="rsDate"
-										id="pmDate" readonly="readonly"></td>
-								</tr>
+										<td name="rsNo" id="pmNo">${paymentList.rsNo }</td>
+									</tr>
+									<tr>
+										<th>이용 날짜</th>
+										<td name="rsUseDate" id="pmUsedate">${paymentList.rsUsedate}</td>
+									</tr>
+									<tr>
+										<th>이용권</th>
+										<td name="rsTicket" id="pmTicket">${paymentList.rsTicket}</td>
+									</tr>
+									<tr>
+										<th>이용권 총 수량</th>
+										<td name="rsAdult" id="pmAdult">대인 :
+											${paymentList.rsAdult} / 소인 : ${paymentList.rsChild }</td>
+									</tr>
+									<tr>
+										<th>이용권 총 금액</th>
+										<td name="rsPrice" id="pmPrice">${paymentList.rsPrice }</td>
+									</tr>
+									<tr>
+										<th>결제 날짜</th>
+										<td name="rsDate" id="pmDate">${paymentList.rsDate }</td>
+									</tr>
+									<tr>
+										<th>결제 방법</th>
+										<td>
+											<ul>
+												<li><input name="rsOption" id="pmOption1" class="pay"
+													type="radio" value="0">신용카드</li>
+												<li><input name="rsOption" id="pmOption2" class="pay"
+													type="radio" value="1">무통장입금</li>
+											</ul>
+										</td>
+									</tr>
 							</tbody>
 						</table>
 						<h5>회원 정보</h5>
@@ -299,30 +310,17 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>회원 이름</th>
-									<td><input id="rsName" value="${selectOcean.rsName}"
-										name="pmName" readonly="readonly">
+									<td id="rsName" value="" name="pmName" readonly="readonly">${paymentList.rsName}</td>
 								</tr>
 								<tr>
 									<th>회원 전화번호</th>
-									<td><input id="rsPhone1" style="width: 20%;"
-										value="${selectOcean.rsPhone}" name="pmPhone" readonly="readonly">
-								</tr>
-								<tr>
-									<th>결제 방법</th>
-									<td>
-										<ul>
-											<li><input name="rsOption" id="pmOption" class="pay"
-												type="radio" value="0">신용카드</li>
-											<li><input name="rsOption" id="pmOption" class="pay"
-												type="radio" value="1">무통장입금</li>
-										</ul>
-									</td>
+									<td id="rsPhone1" value="" name="pmPhone">${paymentList.rsPhone}</td>
 								</tr>
 							</tbody>
 						</table>
 
 						<div class="btns">
-							<div style="color: red;">${message }</div>
+							<button class="formBtn">환불</button>
 							<button class="formBtn">확인</button>
 						</div>
 					</div>
@@ -331,9 +329,5 @@ div.btns {
 		</div>
 	</div>
 	
-	<script type="text/javascript">
-		var radio = $('input:radio[name=rsOption]:checked').val();
-	</script>
-
 </body>
 </html>

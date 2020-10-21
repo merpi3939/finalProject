@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -222,9 +222,9 @@ div.btns {
 	background: #a3b3c7;
 }
 
-.formBtn:hover{
-color: #fff;
-background-color: #ffc321;
+.formBtn:hover {
+	color: #fff;
+	background-color: #ffc321;
 }
 
 .formBtn a {
@@ -321,18 +321,25 @@ background-color: #ffc321;
 						</table>
 					</div>
 				</div>
+				<div class="chargeform">
+					<table class="res01">
+						<colgroup>
+							<col width="30%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>이용권</th>
+								<c:forEach var="charge" items="${oceanChaereList}">
+									<td style="color: #999;"><a href='reservation?chargeList=${charge.cgNo }' >${charge.cgName }</a></td>
+								</c:forEach>
+							</tr>
+						</tbody>
+					</table>
 
-				<div>
-					<div class="btns">
-						<span class="formBtn"> <a href=<c:url value="/ocean_reservation"/> style="color: #fff;">예약하기</a>
-						</span>
-					</div>
+					<div></div>
 				</div>
+			</form>
 		</div>
-
-		</form>
-
-	</div>
 	</div>
 
 </body>
