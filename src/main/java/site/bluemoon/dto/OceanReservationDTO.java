@@ -1,8 +1,29 @@
 package site.bluemoon.dto;
 
+import javax.validation.constraints.Pattern;
+
+/*
+  ÀÌ¸§         ³Î        À¯Çü            
+---------- -------- ------------- 
+RS_NO      NOT NULL NUMBER        
+RS_UNO              NUMBER        
+RS_NAME             VARCHAR2(100) 
+RS_PHONE            VARCHAR2(100) 
+RS_DATE             DATE          
+RS_USEDATE          DATE          
+RS_TICKET           VARCHAR2(100) 
+RS_ADULT            NUMBER        
+RS_CHILD            NUMBER        
+RS_STATE            VARCHAR2(10)  
+RS_PRICE            NUMBER        
+PS_OPTION           VARCHAR2(10)
+
+ RS_NO_SEQ
+ */
 public class OceanReservationDTO {
 	private int rsNo;
 	private int rsUno;
+	@Pattern(regexp = "^[°¡-ÆR]{2,10}$", message = "ÀÌ¸§À» Çü½Ä¿¡ ¸Â°Ô ÀÔ·ÂÇØ ÁÖ¼¼¿ä.")
 	private String rsName;
 	private String rsPhone;
 	private String rsDate;
