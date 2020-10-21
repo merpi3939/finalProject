@@ -24,7 +24,11 @@
 	<resources location="/resources/admin/js/" mapping="/admin/js/**"/>
 	<resources location="/resources/admin/less/" mapping="/admin/less/**"/>
 	<resources location="/resources/admin/plugins/" mapping="/admin/plugins/**"/>
-	
+
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+		
 	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 		<beans:property name="order" value="2"/>
@@ -48,4 +52,13 @@
 	<context:component-scan base-package="site.bluemoon.controller" />
 	<context:component-scan base-package="site.bluemoon.dao" />
 	<context:component-scan base-package="site.bluemoon.service" />
+	
+	<beans:bean class="site.bluemoon.userinterceptor.LoginAuthInterceptor" id="loginAuthInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/aaaa"/>
+			<beans:ref bean="loginAuthInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

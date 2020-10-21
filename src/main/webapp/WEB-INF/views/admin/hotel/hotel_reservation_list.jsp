@@ -78,7 +78,7 @@
 				<div id="demo-lft-tab-2" class="tab-pane fade">
 					<!--Editable - combination with X-editable-->
 					<!--===================================================-->
-
+							<!-- 
 							<table id="confirmedTable"
 								   data-search="true"
 								   data-show-refresh="true"
@@ -89,7 +89,11 @@
 								   data-page-size="10"
 								   data-pagination="true" data-show-pagination-switch="true">
 							</table>
-
+							 -->
+							
+							<div id="display">
+							
+							</div>
 				</div>
 				<div id="demo-lft-tab-3" class="tab-pane fade">
 					<!--Editable - combination with X-editable-->
@@ -150,10 +154,10 @@
 <!--===================================================-->
 <!--END CONTENT CONTAINER-->
 
-<%--
+
 <!-- handler 활용  DB데이터 가져오기 -->
 <script id="template" type="text/x-handlebars-template">
-<table id="demo-editable3"
+<table id="handlertable"
 	data-search="true"
 	data-show-refresh="true"
 	data-show-toggle="true"
@@ -177,7 +181,7 @@
 <script type="text/javascript">
 $.ajax({
 	type: "GET",
-	url: "member_list",
+	url: "hotel_reservation_list",
 	dataType: "json",
 	success: function(json) {
 		//템플릿 코드를 반환받아 저장
@@ -192,8 +196,9 @@ $.ajax({
 	}
 });
 </script>
- --%>
+
  
+ <%--
  	<script type="text/javascript">
 	$('#confirmedTable').bootstrapTable({
 		idField: 'id',
@@ -225,3 +230,5 @@ $.ajax({
 		}]
 	});
 	</script>
+	
+	 --%>

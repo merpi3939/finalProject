@@ -21,11 +21,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public String selectUserPhone(Map<String, Object> userCheck) {
-		return sqlSession.getMapper(UserMapper.class).selectUserPhone(userCheck);
-	}
-
-	@Override
 	public User selectUserId(String userId) {
 		return sqlSession.getMapper(UserMapper.class).selectUserId(userId);
 	}
@@ -33,6 +28,21 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int updateUserLoginDate(String userId) {
 		return sqlSession.getMapper(UserMapper.class).updateUserLoginDate(userId);
+	}
+
+	@Override
+	public int updateUserInfo(User user) {
+		return sqlSession.getMapper(UserMapper.class).updateUserInfo(user);
+	}
+
+	@Override
+	public User selectUserFind(Map<String, Object> user) {
+		return sqlSession.getMapper(UserMapper.class).selectUserFind(user);
+	}
+
+	@Override
+	public int deleteUser(String userId) {
+		return sqlSession.getMapper(UserMapper.class).deleteUser(userId);
 	}
 	
 }
