@@ -133,5 +133,17 @@
 			news_no desc
 	</select>
 	
+	<!--  체크박스 선택되 사람만 삭제-->
+	<delete id="deleteCheckNews" parameterType="list">
+		delete from
+			ocean_news
 	
+		<if test="list != null">
+			where newsNo in
+		
+			<foreach item="newsNo" collection="list" open="(" close=")" separator=",">
+				#{newsNo}
+			</foreach>
+		</if>
+	</delete>
 </mapper>

@@ -39,7 +39,8 @@
 						<!--■Static-->
 						<div class="form-group" >
 							<label class="col-md-3 control-label">작성자</label>
-							<div class="col-md-9"><input type="text"  name="newsUno"> </div>
+							<div class="col-md-9"><input type="text"  name="newsUno">${userInfo.userName}<br>${userInfo.userNo } </div>
+							<br>
 						</div>
 						
 						<!--■content-->
@@ -76,12 +77,10 @@
 		});
 		
 		function enterNews() {
-			/* 
-			if($("#newsForm").val()=="") {
+			if($("#form-control").val()=="") {
 				alert("글 내용을 입력해 주세요.");
 				return;
 			}
-			 */
 			$("#newsForm").submit();
 		}
 	</script>

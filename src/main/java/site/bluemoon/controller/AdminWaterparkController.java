@@ -1,5 +1,9 @@
 package site.bluemoon.controller;
 
+import java.util.List;
+
+import javax.xml.ws.RequestWrapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +29,7 @@ public class AdminWaterparkController {
 		model.addAttribute("newsList", adminMemberWaterparkService.getSelectNewsList());
 		return "admin/waterpark/news/newsList";
 	}
-
+	
 	@RequestMapping(value = "/newsInsert", method = RequestMethod.GET)
 	public String newsInsert() {
 		return "admin/waterpark/news/newsInsert";
@@ -34,7 +38,7 @@ public class AdminWaterparkController {
 	@RequestMapping(value = "/newsInsert", method = RequestMethod.POST)
 	public String newsInsert(@ModelAttribute OceanNews oceanNews) {
 		adminMemberWaterparkService.addNews(oceanNews);
-		return "redirect:/admin/waterpark/newsList";
+		return "redirect:/admin/newsList";
 	}
 	
 	@RequestMapping(value = "/newsModify/{newsNo}", method = RequestMethod.GET)
@@ -54,7 +58,15 @@ public class AdminWaterparkController {
 		adminMemberWaterparkService.removeNews(newsNo);
 		return "redirect:/admin/newsList";
 	}
-	
+/*	
+	@RequestMapping(value = "/newsCheckRemove", method = RequestMethod.POST)
+	public String newsCheckRemove(@RequestParam("checkData") List<Integer> newsNos) {
+		for(List<Integer> newsNo: newsNos) {
+			adminMemberWaterparkService.removeCheckNews(newsNo);
+		}
+		return "redirect:/admin/newsList";
+	}
+	*/
 	//■waterPark 예약/결제
 	@RequestMapping(value = "/prList")
 	public String prList() {
