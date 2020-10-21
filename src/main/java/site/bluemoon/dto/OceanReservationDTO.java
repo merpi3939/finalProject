@@ -1,5 +1,23 @@
 package site.bluemoon.dto;
 
+/*
+  이름         널        유형            
+---------- -------- ------------- 
+RS_NO      NOT NULL NUMBER        
+RS_UNO              NUMBER        
+RS_NAME             VARCHAR2(100) 
+RS_PHONE            VARCHAR2(100) 
+RS_DATE             DATE          
+RS_USEDATE          DATE          
+RS_TICKET           VARCHAR2(100) 
+RS_ADULT            NUMBER        
+RS_CHILD            NUMBER        
+RS_STATE            VARCHAR2(10)  
+RS_PRICE            NUMBER        
+PS_OPTION           VARCHAR2(10)
+
+ RS_NO_SEQ
+ */
 public class OceanReservationDTO {
 	private int rsNo;
 	private int rsUno;

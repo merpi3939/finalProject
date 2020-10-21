@@ -42,7 +42,6 @@
 				</div>
 						<div class="panel-body">
 							<table id="demo-dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
-								
 								<thead>
 									<tr>
 										<th style="text-align: center; width: 30px;"><input id="checkAll" type="checkbox"></th>
@@ -54,8 +53,8 @@
 										<th style="text-align: center;" class="min-desktop">삭제</th>
 									</tr>
 								</thead>
+								
 								<tbody>
-									
 									<c:choose>
 										<c:when test="${fn:length(newsList) ==0 }">
 											<tr>
@@ -77,18 +76,14 @@
 											</c:forEach>
 										</c:otherwise>
 									</c:choose>
-									
 								</tbody>
+								
 							</table>
-							
 							<div>
-								<button class="btn btn-danger" type="button" >선택삭제</button>
+								<button id="checkDelete" class="btn btn-danger" type="submit" >선택삭제</button>
 								<a href="${pageContext.request.contextPath}/admin/newsInsert"><button class="btn btn-primary">소식등록</button></a>
 							</div>
 							
-							<form name="modifyForm">
-								<input type="hidden" value="">							
-							</form>
 						</div>
 					</div>
 					<!--===================================================-->
@@ -111,7 +106,7 @@
 		function newsRemove(newsNo) {
 			location.href="newsRemove/"+newsNo;
 		}
-
+		
 		$("#checkAll").click(function () {
 			if($("#checkAll").prop("checked")) {
 				$("input[type=checkbox]").prop("checked",true);
@@ -119,4 +114,10 @@
 				$("input[type=checkbox]").prop("checked",false);
 			}
 		});
+		
+	////////////////////////////////////////////////////////////////////////////////////////////////////	
+		
+		
+		
+		
 	</script>
