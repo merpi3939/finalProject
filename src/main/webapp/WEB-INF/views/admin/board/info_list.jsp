@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">
@@ -85,31 +86,33 @@
 					<h3 class="panel-title">게시글 리스트</h3>
 				</div>
 				<div class="panel-body">
-					<table id="confirmedTable"
-								   data-search="true"
-								   data-show-refresh="true"
-								   data-show-toggle="true"
-								   data-show-columns="true"
-								   data-sort-name="id"
-								   data-page-list="[5, 10, 20]"
-								   data-page-size="10"
-								   data-pagination="true" data-show-pagination-switch="true">
+					<table id="infoTable" class="table">
 						<tr>
+							<th><input type="checkbox" id="checkAll"></th>
 							<th>글번호</th>
 							<th>글제목</th>
 							<th>글내용</th>
 							<th>작성자</th>
-							<th>조회수</th>
-							<th>답변여부</th>
+							<!-- <th>조회수</th> -->
+							<th>작성일자</th>
+							<th>수정</th>
+							<th>삭제</th>
+							
 						</tr>
-						<tr>
-							<td>글번호</td>
-							<td>글제목</td>
-							<td>글내용</td>
-							<td>작성자</td>
-							<td>조회수</td>
-							<td>답변여부</td>
-						</tr>
+						<c:forEach var="info" items="${infoList}">
+							<tr>
+								<td><input type="checkbox" id="check" name="infoNo" value="${info.infoNo }"></td>
+								<td>${info.infoNo }</td>
+								<td><a href="${pageContext.request.contextPath }/admin/info_detail?infoNo=${info.infoNo }" >${info.infoTitle }</a></td>
+								<td>${info.infoContent }</td>
+								<td>${info.infoUserName }</td>
+								<!-- <td>${info.infoCount }</td> -->
+								<td>${info.infoDate.substring(0,10) }</td>
+								<td><button class="btn btn-info" type="button">수정</button></td>
+								<td><button class="btn btn-danger" type="button">삭제</button></td>
+							</tr>
+						
+						</c:forEach>
 					</table>
 				</div>
 			</div>
@@ -125,3 +128,16 @@
 </div>
 <!--===================================================-->
 <!--END CONTENT CONTAINER-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#checkAll").click(function() {
+		if($("#checkAll").prop("checked")){
+			$("#check").prop("checked",true);
+		}else{
+			$("#check").prop("checked",false);
+		}
+	});
+	
+});
+</script>
