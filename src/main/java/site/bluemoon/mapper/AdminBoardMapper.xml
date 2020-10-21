@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.bluemoon.mapper.AdminBoardMapper">
+	<select id="selectInfoList" resultType="infoBoard">
+		select * from info_board order by info_no desc
+	</select>
+	<select id="selectInfo" resultType="infoBoard" parameterType="int">
+		select * from info_board where info_no=#{infoNo}
+	</select>
+	<update id="updateInfo" parameterType="infoBoard">
+		update info_board
+		set INFO_TITLE=#{infoTitle}, INFO_CONTENT=#{infoContent}, INFO_IMG=#{infoImg}
+		where info_no=#{infoNo}
+	</update>
+	<update id="updateInfoState" parameterType="infoBoard">
+		update info_board
+		set INFO_STATE=#{infoState}
+		where info_no=#{infoNo}
+	</update>
+</mapper>

@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import site.bluemoon.dto.OceanNews;
-import site.bluemoon.service.AdminMemberWaterparkService;
+import site.bluemoon.service.AdminWaterparkService;
 
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminWaterparkController {
 
 	@Autowired
-	private AdminMemberWaterparkService adminMemberWaterparkService;
+	private AdminWaterparkService adminMemberWaterparkService;
 	
 	//■news 현장소식
 	@RequestMapping(value = "/newsList")
@@ -58,15 +58,14 @@ public class AdminWaterparkController {
 		adminMemberWaterparkService.removeNews(newsNo);
 		return "redirect:/admin/newsList";
 	}
-/*	
 	@RequestMapping(value = "/newsCheckRemove", method = RequestMethod.POST)
 	public String newsCheckRemove(@RequestParam("checkData") List<Integer> newsNos) {
-		for(List<Integer> newsNo: newsNos) {
+		for(Integer newsNo: newsNos) {
 			adminMemberWaterparkService.removeCheckNews(newsNo);
 		}
 		return "redirect:/admin/newsList";
 	}
-	*/
+
 	//■waterPark 예약/결제
 	@RequestMapping(value = "/prList")
 	public String prList() {

@@ -5,14 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import site.bluemoon.dao.AdminMemberWaterparkDAO;
+import site.bluemoon.dao.AdminWaterparkDAO;
 import site.bluemoon.dto.OceanNews;
+import site.bluemoon.dto.User;
 
 @Service
-public class AdminMemberWaterparkServiceImpl implements AdminMemberWaterparkService {
+public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 
 	@Autowired
-	private AdminMemberWaterparkDAO adminMemberWaterparkDAO; 
+	private AdminWaterparkDAO adminMemberWaterparkDAO; 
 	
 	@Override
 	public void addNews(OceanNews oceanNews) {
@@ -39,8 +40,7 @@ public class AdminMemberWaterparkServiceImpl implements AdminMemberWaterparkServ
 		return adminMemberWaterparkDAO.selectNewsList();
 	}
 	
-	public void removeCheckNews(List<Integer> newsNo) {
+	public void removeCheckNews(Integer newsNo) {
 		adminMemberWaterparkDAO.deleteCheckNews(newsNo);
 	}
-
 }
