@@ -23,35 +23,36 @@
 }
 </style>
 </head>
-
-<div class="container user-con">
-<div class="row" style="margin-top: 35px">
-		<div class="col-md-12">
-			<ul class="nav nav-tabs nav-justified navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link active my-page-title">MyPage</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="<c:url value="/myreservation"/>">예약 현황</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="<c:url value="/myusermodify"/>">회원정보 변경</a>
-				</li>
-				<li class="nav-item">
-					<a id="userRemove" class="nav-link my-page but">회원 탈퇴</a>
-				</li>
-			</ul>
-				<div id="removeUser">
-					<input type="password" name="userPassword" id="userPassword" placeholder="현재 비밀번호">
-					<span id="errorPass" style="display: grid; color: red; text-align: center;"></span>
-					<div style="text-align: center; margin: 2px;">
-						<button id="delete" class="but" type="button">삭제</button>
-						<button id="cancle" class="but" type="button">취소</button>
+<c:if test="${userInfo!=null }">
+	<div class="container user-con">
+	<div class="row" style="margin-top: 35px">
+			<div class="col-md-12">
+				<ul class="nav nav-tabs nav-justified navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link active my-page-title">MyPage</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link my-page" href="<c:url value="/myuserreservation"/>">예약 현황</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link my-page" href="<c:url value="/myusermodify"/>">회원정보 변경</a>
+					</li>
+					<li class="nav-item">
+						<a id="userRemove" class="nav-link my-page but">회원 탈퇴</a>
+					</li>
+				</ul>
+					<div id="removeUser">
+						<input type="password" name="userRemovePassword" id="userRemovePassword" placeholder="현재 비밀번호">
+						<span id="errorPass" style="display: grid; color: red; text-align: center;"></span>
+						<div style="text-align: center; margin: 2px;">
+							<button id="delete" class="but" type="button">삭제</button>
+							<button id="cancle" class="but" type="button">취소</button>
+						</div>
 					</div>
-				</div>
-		</div>
-</div>
-</div>
+			</div>
+	</div>
+	</div>
+</c:if>
 <body>
 <script type="text/javascript">
 	$("#userRemove").click(function() {
@@ -67,7 +68,7 @@
 				type: "post",
 				url: "myuserremove",
 				headers: {"content-type":"application/json"},
-				data: $("#userPassword").val(),
+				data: $("#userRemovePassword").val(),
 				dataType: "text",
 				success: function(text) {
 					if(text=="ok") {

@@ -55,8 +55,8 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="cols-sm-2 control-label">비밀번호</label>
-                                        <form:errors path="userPassword" class="error errorPasswd"/>
                                         <span id="passValidMsg" class="msg passMsg">비밀번호를 형식에 맞게 입력해 주세요.</span>
+                                        <span id="passTrimMsg" class="msg passMsg">공백은 사용 할 수 없습니다.</span>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <form:password path="userPassword" class="form-control"/>
@@ -74,7 +74,6 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="cols-sm-2 control-label">이름</label>
-                                        <form:errors path="userName" class="error errorName"/>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <form:input path="userName" class="form-control" readonly="true" value="${user.userName }"/>
@@ -99,7 +98,6 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="phone" class="cols-sm-2 control-label">*전화번호</label>                         
-                                        <form:errors path="userPhone" class="error errorPhone"/>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                             	<form:select path="phone1" items="${phoneList }" class="form-control"/>
@@ -111,7 +109,6 @@ select {
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="cols-sm-2 control-label">*이메일</label>
-                                        <form:errors path="userEmail" class="error errorEmail"/>
                                         <span id="emailNullMsg" class="msg emailMsg">이메일은 필수 입력입니다.</span>
                                         <span id="emailValidMsg" class="msg emailMsg">이메일을 형식에 맞게 입력해 주세요.</span>
                                         <div class="cols-sm-10">
@@ -198,15 +195,28 @@ select {
 		var result=true;
 		$(".msg").hide();
 		
-		var name=$("#userName").val();
-		var nameReg=/^[가-힣]{2,10}$/g;
+		//비밀번호
+	 	var password=$("#userPassword").val();
+	 	var passReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;
+	 	var passblank = /[\s]/g;
 	 	
-		if(name=="") {
-			$("#nameNullMsg").show();
+	 	if(password=="") {
+		 	result=true;
+	 	} else if (!passReg.test(password)) {
+	 		$("#passValidMsg").show();
+	 		result=false;
+	 		 $("#userPassword").focus();
+	 	} else if(passblank.test(password)) {
+	 		$("#passTrimMsg").show();	 	
+	 		result=false;
+	 		 $("#userPassword").focus();
+	 	}
+	 	//비밀번호확인
+		var passwordChk=$("#password-chk").val();
+		if (password!=passwordChk) {
+			$("#passChkValidMsg").show();
 			result=false;
-		} else if (!nameReg.test(name)) {
-			$("#nameValidMsg").show();
-			result=false;
+			$("#password-chk").focus();
 		}
 
 		//전화번호
@@ -222,28 +232,6 @@ select {
 			$("#phoneValidMsg").show();
 			result=false;
 		}
-		
-	 	//비밀번호
-	 	var password=$("#userPassword").val();
-	 	var passReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;
-	 	
-	 	if(password!==null && password!=="") {
-	 	
-	 	if (!passReg.test(password)) {
-	 		$("#passValidMsg").show();
-	 		result=false;
-	 		 $("#userPassword").focus();
-	 	}
-	 	//비밀번호확인
-	 	var password=$("#userPassword").val();
-		var passwordChk=$("#password-chk").val();
-		
-		if (password!=passwordChk) {
-			$("#passChkValidMsg").show();
-			result=false;
-			$("#password-chk").focus();
-		}
-	 	}
 		//성별
 		var sex=$("#userSex").val();
 		

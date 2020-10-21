@@ -57,7 +57,7 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/aaaa"/>
+			<mapping path="/myuser*"/>
 			<beans:ref bean="loginAuthInterceptor"/>
 		</interceptor>
 	</interceptors>

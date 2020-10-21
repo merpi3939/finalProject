@@ -15,4 +15,5 @@ public interface UserService {
 	void loginAuth(User user) throws LoginAuthFailException;
 	User checkUser(Map<String, Object> user) throws UserinfoNotFoundException;
 	void removeUser(String userId) throws UserinfoNotFoundException;
+	void updatePassUser(User user) throws UserinfoNotFoundException;
 }
