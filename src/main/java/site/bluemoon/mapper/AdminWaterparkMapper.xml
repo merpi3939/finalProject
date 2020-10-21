@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.bluemoon.mapper.AdminWaterparkMapper">
+
+	<!-- ■Waterpark's News Mapper -->
+	<insert id="insertNews" parameterType="OceanNews">
+		<selectKey resultType="int" keyProperty="newsNo" order="BEFORE">
+			select news_no_seq.nextval from dual
+		</selectKey>
+		
+		insert into
+			ocean_news
+		values
+			(
+				#{newsNo},
+				sysdate,
+				#{newsCont},
+				#{newsUno}
+			)
+	</insert>
+	
+	<update id="updateNews" >
+		update
+			ocean_news
+		set
+			news_cont=#{newsCont}
+		where
+			news_no=#{newsNo}
+	</update>
+	
+	<delete id="deleteNews">
+		delete from
+			ocean_news
+		where
+			news_no=#{newsNo}
+	</delete>
+	
+	<select id="selectNews" resultType="OceanNews">
+		select 
+			* 
+		from 
+			ocean_news 
+		where 
+			news_no=#{newsNo}
+	</select>
+	
+	<select id="selectNewsList" resultType="OceanNews">
+		select 
+			* 
+		from 
+			ocean_news  
+		order by 
+			news_no desc
+	</select>
+	
+	<!--  체크박스 선택되 사람만 삭제-->
+	<delete id="deleteCheckNews" parameterType="list">
+		delete from
+			ocean_news
+	
+		<if test="list != null">
+			where newsNo in
+		
+			<foreach item="newsNo" collection="list" open="(" close=")" separator=",">
+				#{newsNo}
+			</foreach>
+		</if>
+	</delete>
+	
+	<!-- ■Waterpark's Reservation Mapper -->
+	
+</mapper>

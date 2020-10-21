@@ -5,16 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import site.bluemoon.dto.OceanNews;
+import site.bluemoon.dto.User;
 
-public interface AdminMemberWaterparkService {
+public interface AdminWaterparkService {
 
-	
-	//°·Waterpark's News Service
-	@Autowired
 	void addNews(OceanNews oceanNews);
 	void modifyNews(OceanNews oceanNews);
 	void removeNews(int newsNo);
 	OceanNews getSelectNews(int newsNo);
 	List<OceanNews> getSelectNewsList();
-	void removeCheckNews(List<Integer> newsNo);
+	void removeCheckNews(Integer newsNo);
 }

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="site.bluemoon.mapper.AdminUserMapper">
+<!-- 
+	<insert id="insertUser" parameterType="User">
+		<selectKey resultType="int" keyProperty="userNo"  order="BEFORE">
+			select user_sequence.nextval from dual
+		</selectKey>
+		
+		insert into 
+			bluemoon_user 
+		values
+			(
+				#{userNo},
+				#{userId},
+				#{userPassword},
+				#{userName},
+				#{userBirthday},
+				#{userPhone},
+				#{userEmail},
+				#{userSex},
+				#{userZipcode},
+				#{userAddress1},
+				#{userAddress2},
+				3000,
+				sysdate,
+				#{userLogindate},
+				#{userWithdrowdate},
+				1
+			)
+	</insert>
+	
+	<update id="updateUserInfo" parameterType="User">
+		update 
+			bluemoon_user
+		<set>
+			<if test="userPassword!=null and userPassword!=''">
+				user_password=#{userPassword},
+			</if>
+			<if test="userName!=null and userName!=''">
+				user_name=#{userName},
+			</if>
+			<if test="userPhone!=null and userPhone!=''">
+				user_phone=#{userPhone},
+			</if>
+			<if test="userSex!=null and userSex!=''">
+				user_sex=#{userSex},
+			</if>
+			<if test="userEmail!=null and userEmail!=''">
+				user_Email=#{userEmail},
+			</if>
+			<if test="userZipcode!=null and userZipcode!=''">
+				user_zipcode=#{userZipcode},
+			</if>
+			<if test="userAddress1!=null and userAddress1!=''">
+				user_address1=#{userAddress1},
+			</if>
+			<if test="userAddress2!=null and userAddress2!=''">
+				user_address2=#{userAddress2},
+			</if>
+			<if test="userState!=null and userState!=''">
+				user_state=#{userState}
+			</if>
+		</set>
+		
+		where u
+			ser_no=#{userNo}
+	</update>
+	
+	<update id="deleteUser" parameterType="int">
+		update 
+			bluemoon_user 
+		set 
+			user_withdrowdate=sysdate,
+			user_state=4 
+		where 
+			user_no=#{userNo}
+	</update>
+	
+	<select id="selectUserId" parameterType="int" resultType="User">
+		select 
+			* 
+		from 
+			bluemoon_user 
+		where 
+			user_no=#{userNo}
+	</select>
+	
+ -->
+	<select id="selectUserList" resultType="User">
+		select
+			*
+		from
+			bluemoon_user
+		order by
+			user_no desc
+	</select>
+</mapper>
