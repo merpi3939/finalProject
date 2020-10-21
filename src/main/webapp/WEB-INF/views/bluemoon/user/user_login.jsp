@@ -304,5 +304,13 @@ cursor: pointer;
 			});
 	});
 	
+	$(document).ready(function() {
+		const URLSearch = new URLSearchParams(location.search);
+		var result=URLSearch.get('result');
+		if(result=="congratulations"){
+			alert("회원 가입을 축하드립니다. 회원 가입 기념 3000point 적립 해드렸습니다.");
+		}
+	});
+	
 </script>
 </body>
