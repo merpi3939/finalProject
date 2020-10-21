@@ -92,10 +92,7 @@ public class UserServiceImpl implements UserService{
 			throw new LoginAuthFailException(user.getUserId(),"아이디의 회원 정보가 없습니다");
 		};
 		
-		if(!BCrypt.checkpw(user.getUserPassword().trim(), userAuth.getUserPassword()) || userAuth.getUserState()==4) {
-			System.out.println(user.getUserPassword());
-			System.out.println(userAuth.getUserPassword());
-			
+		if(!BCrypt.checkpw(user.getUserPassword().trim(), userAuth.getUserPassword()) || userAuth.getUserState()==4) {			
 			throw new LoginAuthFailException(user.getUserId(),"아이디 또는 비밀번호를 잘못 입력 하셨습니다.");
 		}
 		
