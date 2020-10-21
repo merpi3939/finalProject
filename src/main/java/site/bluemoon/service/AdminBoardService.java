@@ -9,4 +9,5 @@ public interface AdminBoardService {
 	List<InfoBoard> selectInfoList();
 	InfoBoard selectInfo(int infoNo);
 	int updateInfo(InfoBoard infoBoard);
+	int updateInfoState(InfoBoard infoBoard);
 }

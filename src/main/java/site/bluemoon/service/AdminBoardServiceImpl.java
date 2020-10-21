@@ -30,4 +30,9 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		return adminBoardDAO.updateInfo(infoBoard);
 	}
 
+	@Override
+	public int updateInfoState(InfoBoard infoBoard) {
+		return adminBoardDAO.updateInfoState(infoBoard);
+	}
+
 }

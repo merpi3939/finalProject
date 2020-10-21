@@ -30,4 +30,9 @@ public class AdminBoardDAOImpl implements AdminBoardDAO{
 		return sqlSession.getMapper(AdminBoardMapper.class).updateInfo(infoBoard);
 	}
 
+	@Override
+	public int updateInfoState(InfoBoard infoBoard) {
+		return sqlSession.getMapper(AdminBoardMapper.class).updateInfoState(infoBoard);
+	}
+
 }

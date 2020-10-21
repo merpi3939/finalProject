@@ -12,4 +12,9 @@
 		set INFO_TITLE=#{infoTitle}, INFO_CONTENT=#{infoContent}, INFO_IMG=#{infoImg}
 		where info_no=#{infoNo}
 	</update>
+	<update id="updateInfoState" parameterType="infoBoard">
+		update info_board
+		set INFO_STATE=#{infoState}
+		where info_no=#{infoNo}
+	</update>
 </mapper>

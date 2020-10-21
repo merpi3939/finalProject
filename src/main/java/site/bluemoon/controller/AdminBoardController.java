@@ -49,4 +49,13 @@ public class AdminBoardController {
 		return "redirect:/admin/info_detail?infoNo="+infoBoard.getInfoNo();
 	}
 	
+	@RequestMapping(value = "/info_delete" , method = RequestMethod.GET)
+	public String infoDelete( int infoNo) {
+		InfoBoard infoBoard= new InfoBoard();
+		infoBoard.setInfoNo(infoNo);
+		infoBoard.setInfoState("4");
+		adminBoardService.updateInfoState(infoBoard);
+		return "redirect:/admin/info_list";
+	}
+	
 }
