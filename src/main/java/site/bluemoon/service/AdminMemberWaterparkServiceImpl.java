@@ -38,5 +38,9 @@ public class AdminMemberWaterparkServiceImpl implements AdminMemberWaterparkServ
 	public List<OceanNews> getSelectNewsList() {
 		return adminMemberWaterparkDAO.selectNewsList();
 	}
+	
+	public void removeCheckNews(List<Integer> newsNo) {
+		adminMemberWaterparkDAO.deleteCheckNews(newsNo);
+	}
 
 }

@@ -66,7 +66,7 @@
 										<c:otherwise>
 											<c:forEach items="${newsList}" var="list" >
 												<tr>
-													<td style="text-align: center;"><input type="checkbox"> </td>
+													<td style="text-align: center;"><input name="checkData" type="checkbox" value="${list.newsNo }"> </td>
 													<td style="text-align: center;">${list.newsNo }</td>
 													<td style="text-align: center;">${list.newsUno }</td>
 													<td style="text-align: center;">${list.newsDate }</td>

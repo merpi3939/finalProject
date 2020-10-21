@@ -16,5 +16,5 @@ public interface AdminMemberWaterparkService {
 	void removeNews(int newsNo);
 	OceanNews getSelectNews(int newsNo);
 	List<OceanNews> getSelectNewsList();
-	
+	void removeCheckNews(List<Integer> newsNo);
 }

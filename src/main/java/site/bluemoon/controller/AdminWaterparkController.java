@@ -58,7 +58,15 @@ public class AdminWaterparkController {
 		adminMemberWaterparkService.removeNews(newsNo);
 		return "redirect:/admin/newsList";
 	}
-	
+/*	
+	@RequestMapping(value = "/newsCheckRemove", method = RequestMethod.POST)
+	public String newsCheckRemove(@RequestParam("checkData") List<Integer> newsNos) {
+		for(List<Integer> newsNo: newsNos) {
+			adminMemberWaterparkService.removeCheckNews(newsNo);
+		}
+		return "redirect:/admin/newsList";
+	}
+	*/
 	//■waterPark 예약/결제
 	@RequestMapping(value = "/prList")
 	public String prList() {

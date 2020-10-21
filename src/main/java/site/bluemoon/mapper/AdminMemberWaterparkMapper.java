@@ -12,4 +12,5 @@ public interface AdminMemberWaterparkMapper {
 	int deleteNews(int newsNo);
 	OceanNews selectNews(int newsNo);
 	List<OceanNews> selectNewsList();
+	int deleteCheckNews(List<Integer> newsNo);
 }

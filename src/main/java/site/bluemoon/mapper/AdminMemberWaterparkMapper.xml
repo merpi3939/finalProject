@@ -146,6 +146,4 @@
 			</foreach>
 		</if>
 	</delete>
-	 
-	
 </mapper>

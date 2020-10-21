@@ -40,4 +40,8 @@ public class AdminMemberWaterparkDAOImpl implements AdminMemberWaterparkDAO {
 		return sqlSession.getMapper(AdminMemberWaterparkMapper.class).selectNewsList();
 	}
 
+	@Override
+	public int deleteCheckNews(List<Integer> newsNo) {
+		return sqlSession.getMapper(AdminMemberWaterparkMapper.class).deleteCheckNews(newsNo);
+	}
 }
