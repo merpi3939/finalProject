@@ -6,7 +6,9 @@ import site.bluemoon.dto.User;
 
 public interface UserMapper {
 	int insertUser(User user);
-	String selectUserPhone(Map<String, Object> user);
 	User selectUserId(String userId);
+	int updateUserInfo(User user);
 	int updateUserLoginDate(String userId);
+	User selectUserFind(Map<String, Object> user);
+	int deleteUser(String userId);
 }

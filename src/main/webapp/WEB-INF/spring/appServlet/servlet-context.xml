@@ -48,4 +48,13 @@
 	<context:component-scan base-package="site.bluemoon.controller" />
 	<context:component-scan base-package="site.bluemoon.dao" />
 	<context:component-scan base-package="site.bluemoon.service" />
+	
+	<beans:bean class="site.bluemoon.userinterceptor.LoginAuthInterceptor" id="loginAuthInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/aaaa"/>
+			<beans:ref bean="loginAuthInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

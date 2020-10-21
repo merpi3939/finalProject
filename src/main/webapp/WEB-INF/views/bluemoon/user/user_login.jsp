@@ -92,14 +92,21 @@ margin-right: 10px;
 color: white;
 }
 .msg {
-	color: red;
-	display: none;
-	text-align: center;
+color: red;
+display: none;
+text-align: center;
+}
+
+.idFind, .passwdFind {
+display: none;	
+}
+a:hover {
+cursor: pointer;
 }
 </style>
 
 <body>
-<div class="container">
+<div class="container loginhide login2 login1">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
@@ -111,14 +118,14 @@ color: white;
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" name="userId" id="userId" class="form-control" value="${user.userId }" placeholder="username">
+						<input type="text" name="userId" id="userId" class="form-control" value="${userId }" placeholder="아이디">
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" name="userPassword" id="userPassword" class="form-control" placeholder="password">
+						<input type="password" name="userPassword" id="userPassword" class="form-control" placeholder="비밀번호">
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary btn-lg btn-block user-btn" type="submit">Login</button>
@@ -129,7 +136,73 @@ color: white;
 				</form>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					<a href=<c:url value="/idFind"/>>아이디 찾기</a><a href=<c:url value="/passwdFind"/>>비밀번호 찾기</a>
+					<a class="aaa" id="idFind">아이디 찾기</a><a class="aaa" id="passwdFind">비밀번호 찾기</a>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container loginhide idFind idFind2 ">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>아이디 찾기</h3>
+			</div>			
+			<div class="card-body">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+						</div>
+						<input type="text" name="userName" id="userName" class="form-control" value="" placeholder="이름">
+						
+					</div>
+					<div class="input-group form-group">
+						<input type="text" name="userPhone" id="userPhone" class="form-control" placeholder="휴대폰 번호 (-)포함">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary btn-lg btn-block user-btn" type="button" id="findIdBtn">아이디 찾기</button>
+					</div>
+					<span id="nameNullMsg" class="msg nameMsg">이름을 입력해주세요.</span>
+					<span id="phoneNullMsg" class="msg phoneMsg">휴대폰 번호를 입력해주세요.</span>
+					<span id="fineMsg" class="fineMsg" style="text-align: center; color: red;"></span>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					<a class="aaa" id="login1">로그인</a><a class="aaa" id="passwdFind1">비밀번호 찾기</a>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>			
+
+<div class="container loginhide passwdFind passwdFind1">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>비밀번호 찾기</h3>
+			</div>		
+			<div class="card-body">
+				<form id="passfindForm" action=<c:url value="/passfind"/> method="post">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+						</div>
+						<input type="text" name="userId" id="passFindEmailId" class="form-control" value="" placeholder="아이디">
+						
+					</div>
+					<div class="input-group form-group">
+						<input type="text" name="userEmail" id="passFindEmail" class="form-control" placeholder="이메일">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary btn-lg btn-block user-btn" type="submit">비밀번호 찾기</button>
+					</div>
+					<div id="message" style="text-align: center; color: #ff0000;">${message }</div>
+					<span id="passNullMsg" class="msg passMsg">비밀번호를 입력해주세요.</span>
+					<span id="idNullMsg" class="msg idMsg">아이디를 입력해주세요.</span>
+				</form>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					<a class="aaa" id="login2">로그인</a><a class="aaa" id="idFind2">아이디 찾기</a>
 				</div>
 			</div>
 			</div>
@@ -137,6 +210,14 @@ color: white;
 	</div>
 </div>
 <script type="text/javascript">
+	$(".aaa").click(function() {
+		$(".msg").hide();
+		$(".fineMsg").hide();
+		var aId="."+$(this).attr("id");
+		$(".loginhide").hide();
+		$(aId).css("display","block");
+	});
+
 	$("#loginForm").submit(function() {
 		$(".msg").hide();
 		$("#message").text("");
@@ -156,6 +237,37 @@ color: white;
 		}
 	 	
 	 	return result;
+	});
+	
+	$("#findIdBtn").click(function() {
+		$(".msg").hide();
+		var userName=$("#userName").val();
+		var userPhone=$("#userPhone").val();
+		
+	 	if(userName=="") {
+	 		$("#nameNullMsg").css("display","block");
+	 		$("#userName").focus();
+	 		return
+		} else if(userPhone=="") {
+			$("#phoneNullMsg").css("display","block");
+	 		$("#userPhone").focus();
+			return
+		}
+		
+		 $.ajax({
+				type: "post",
+				url: "idFind",
+				headers: {"content-type":"application/json"},
+				data:  JSON.stringify({"userName":userName, "userPhone":userPhone}),
+				dataType: "text",
+				success: function(text) {
+						$("#fineMsg").text("asdasdsas");		
+						alert(text);
+				},
+				error: function(xhr) {
+					alert("에러코드 = "+xhr.status);
+				}
+			});
 	});
 	
 </script>

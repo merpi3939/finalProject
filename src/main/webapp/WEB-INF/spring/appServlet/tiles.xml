@@ -5,6 +5,7 @@
 	<definition name="main" template="/WEB-INF/views/bluemoon/layout/template.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/bluemoon/layout/header.jsp"/>
 		<put-attribute name="mypagemenu" value="/WEB-INF/views/bluemoon/layout/mypage_menu.jsp"/>
+		<put-attribute name="infomenu" value="/WEB-INF/views/bluemoon/layout/info_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/bluemoon/waterpark/main.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/bluemoon/layout/footer.jsp"/>
 	</definition>

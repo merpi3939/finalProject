@@ -1,96 +1,122 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<style type="text/css">
-		.user-style { 
-			 margin-top: 50px;
-   			 margin-bottom: 50px;
-		}
-		.user-btn {
-			 border-radius: 0px;
-		}
-		
-		.msg {
-			display: none;
-			color: red;
-		}
-		
-		select {
-			border-color: #ced4da;
-		}
-		
-		.my-page {
-			color: black !important;
-		}
-		
-		.my-page-title {
-			font-size: xx-large;
-		}
-	</style>
-	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<style type="text/css">
+.user-style { 
+	 margin-top: 50px;
+	 margin-bottom: 50px;
+}
+.user-btn {
+	 border-radius: 0px;
+}
+
+.msg {
+	display: none;
+	color: red;
+}
+
+select {
+	border-color: #ced4da;
+}
+
+.my-page {
+	color: black !important;
+}
+
+.my-page-title {
+	font-size: xx-large;
+}
+</style>
+
 <div class="container user-con">
 	<div class="row justify-content-center user-style">
                     <div class="col-md-8">
                         <div class="card">
-                            <div class="card-header">정보변경</div>
+                            <div class="card-header">회원수정( * 필수입력) <span style="color: red">${message }</span></div>
                             <div class="card-body">
-                            	<!-- 폼태그시작 -->
-                                <form class="form-horizontal" id="joinForm" method="post" action="#">
+                                <form:form action="myusermodify" method="post" id="modifyUserForm" modelAttribute="user">
                                     <div class="form-group">
-                                        <label for="id" class="cols-sm-2 control-label">아이디</label> 
+                                        <label for="id" class="cols-sm-2 control-label">아이디</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="id" id="id" value="honggildong" readonly="readonly"/>
+                                               <form:input path="userId" class="form-control" value="${user.userId }"/>
                                             </div>
                                         </div>
-                                    </div>                     
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="point" class="cols-sm-2 control-label">포인트</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <input type="text" name="userPoint" id="userPoint" class="form-control" readonly="readonly" value="${user.userPoint }"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="cols-sm-2 control-label">비밀번호</label>
+                                        <form:errors path="userPassword" class="error errorPasswd"/>
+                                        <span id="passValidMsg" class="msg passMsg">비밀번호를 형식에 맞게 입력해 주세요.</span>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <form:password path="userPassword" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password-chk" class="cols-sm-2 control-label">비밀번호 확인</label>
+                                        <span id="passChkValidMsg" class="msg passChkMsg">입력하신 비밀번호와 맞지 않습니다.</span>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <input type="password" class="form-control" name="password-chk" id="password-chk"/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="name" class="cols-sm-2 control-label">이름</label>
+                                        <form:errors path="userName" class="error errorName"/>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="name" id="name" value="홍길동" />
+                                                <form:input path="userName" class="form-control" readonly="true" value="${user.userName }"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="birthDay" class="cols-sm-2 control-label">생년월일</label>                                      
+                                        <label for="birthDay" class="cols-sm-2 control-label">생년월일</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="birthDay" id="birthDay" value="2020-01-01" readonly="readonly" />
+                                                <input type="date" class="form-control" name="userBirthday" id="userBirthday" value="${user.userBirthday }" readonly="readonly"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="sex" class="cols-sm-2 control-label">성별</label>
+                                        <label for="sex" class="cols-sm-2 control-label">*성별</label>
                                         <span id="sexNullMsg" class="msg sexMsg">성별을 선택 해주세요.</span>
                                         <div class="cols-sm-10">
-                                           <input type="text" class="form-control" name="sex" id="sex" value="남성" readonly="readonly" />
+                                           <form:select path="userSex" items="${sexList }" style="width: 100%; height: 50px;"/>
+                                           <input type="text" id="userSexSel" value="${user.userSex }" hidden="hidden">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone" class="cols-sm-2 control-label">*전화번호</label>
-                                        <span id="phoneNullMsg" class="msg phoneMsg">전화번호는 필수 입력입니다.</span>
-                                        <span id="phoneValidMsg" class="msg phoneMsg">숫자로만 입력해주세요.</span>
+                                        <label for="phone" class="cols-sm-2 control-label">*전화번호</label>                         
+                                        <form:errors path="userPhone" class="error errorPhone"/>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <select name="phone1" id="phone1" style="width: 33%;">
-                                                	<option value="선택" selected="selected">선택</option>
-                                                	<option value="010">010</option>
-                                                	<option value="011">011</option>
-                                                	<option value="017">017</option>
-                                                	<option value="019">019</option>
-                                                </select>
-                                                <input type="text" class="form-control" name="phone2" id="phone2" maxlength="4" value=""/>
-                                                <input type="text" class="form-control" name="phone3" id="phone3" maxlength="4" value=""/>
+                                            	<form:select path="phone1" items="${phoneList }" class="form-control"/>
+                                                <input type="text" id="phone1s" value="${user.phone1 }" hidden="hidden" class="form-control"/>
+                                                <form:input path="phone2" value="" class="form-control" maxlength="4"/>
+                                                <form:input path="phone3" value="" class="form-control" maxlength="4"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="cols-sm-2 control-label">*이메일</label>
+                                        <form:errors path="userEmail" class="error errorEmail"/>
                                         <span id="emailNullMsg" class="msg emailMsg">이메일은 필수 입력입니다.</span>
                                         <span id="emailValidMsg" class="msg emailMsg">이메일을 형식에 맞게 입력해 주세요.</span>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="email" id="email" placeholder="ex)bluemoon@bluemoon.com" value="" />
+                                                <form:input path="userEmail" class="form-control" value="${user.userEmail }"/>
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +124,7 @@
                                         <label for="zipcode" class="cols-sm-2 control-label">우편번호</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="zipcode" id="zipcode" readonly="readonly" value=""/>
+                                                <form:input path="userZipcode" class="form-control" value="${user.userZipcode }" readonly="true"/>
                                                 <button type="button" class="btn btn-primary user-btn" onclick="sample4_execDaumPostcode();">검색하기</button>
                                             </div>
                                         </div>
@@ -107,26 +133,33 @@
                                         <label for="address" class="cols-sm-2 control-label">주소</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="address1" id="address1" readonly="readonly" value=""/>
+                                                <form:input path="userAddress1" class="form-control" value="${user.userAddress1 }" readonly="true"/>
                                             </div>
                                         </div>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="address2" id="address2" value=""/>
+                                                <form:input path="userAddress2" class="form-control" value="${user.userAddress2 }"/>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block user-btn">정보변경</button>
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block user-btn">정보수정</button>
                                     </div>
-                               
-                                </form>
+                         		 </form:form>
                             </div>
                         </div>
                     </div>
-                </div>
-	</div>	
-  <script type="text/javascript">
+                </div>	
+</div>
+
+<script type="text/javascript">
+	var phone1=$("#phone1s").val();	
+	$("#phone1").val(phone1).prop("selected",true);
+
+	var selct=$("#userSexSel").val();
+	$("#userSex").val(selct).prop("selected",true);
+
+  	  //우편번호
 	  function sample4_execDaumPostcode() {
 		    new daum.Postcode({
 		        oncomplete: function(data) {
@@ -152,73 +185,89 @@
 		            }
 	
 		            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-		            document.getElementById('zipcode').value = data.zonecode;
-		            document.getElementById("address1").value = roadAddr;
+		            document.getElementById('userZipcode').value = data.zonecode;
+		            document.getElementById("userAddress1").value = roadAddr;
 	
 		        }
 		    }).open();
 		}
-	 //유효성 검사
-	 
-	//전화번호
-	$("#phone1,#phone2, #phone3").blur(function() {
-		$(".phoneMsg").hide();
-		var phone1=$("#phone1").val();
-		var phone2=$("#phone2").val();
-		var phone3=$("#phone3").val();
-		var phoneReg=/^[0-9]*$/;
-		
-		if(phone1=="선택" || phone2=="" || phone3=="") {
-			$("#phoneNullMsg").show();
-		} else if(!phoneReg.test(phone2) || !phoneReg.test(phone3)) {
-			$("#phoneValidMsg").show();			
-		}
-	});
-	
-	 //이메일
-	 $("#email").blur(function() {
-		 $(".emailMsg").hide(); 
-		var email=$("#email").val();
-		var emailReg=/^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[-a-zA-Z0-9]+)+)*$/g;
-	 	
-		if(email=="") {
-			$("#emailNullMsg").show();
-		} else if (!emailReg.test(email)) {
-			$("#emailValidMsg").show();
-		}
-	});
+
 	//서브밋 유효성검사
 	
-	$("#joinForm").submit(function() {
+	 $("#modifyUserForm").submit(function() {
 		var result=true;
 		$(".msg").hide();
 		
+		var name=$("#userName").val();
+		var nameReg=/^[가-힣]{2,10}$/g;
+	 	
+		if(name=="") {
+			$("#nameNullMsg").show();
+			result=false;
+		} else if (!nameReg.test(name)) {
+			$("#nameValidMsg").show();
+			result=false;
+		}
+
 		//전화번호
-		var phone1=$("#phone1").val();
 		var phone2=$("#phone2").val();
 		var phone3=$("#phone3").val();
-		var phoneReg=/^[0-9]*$/;
+		var phoneReg2=/^([0-9]{3,4})$/;
+		var phoneReg3=/^([0-9]{4})$/;
 		
-		if(phone1=="선택" || phone2=="" || phone3=="") {
+		if(phone2=="" || phone3=="") {
 			$("#phoneNullMsg").show();
 			result=false;
-		} else if(!phoneReg.test(phone2) || !phoneReg.test(phone3)) {
+		} else if(!phoneReg2.test(phone2) || !phoneReg3.test(phone3)) {
 			$("#phoneValidMsg").show();
 			result=false;
 		}
+		
+	 	//비밀번호
+	 	var password=$("#userPassword").val();
+	 	var passReg=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;
+	 	
+	 	if(password!==null && password!=="") {
+	 	
+	 	if (!passReg.test(password)) {
+	 		$("#passValidMsg").show();
+	 		result=false;
+	 		 $("#userPassword").focus();
+	 	}
+	 	//비밀번호확인
+	 	var password=$("#userPassword").val();
+		var passwordChk=$("#password-chk").val();
+		
+		if (password!=passwordChk) {
+			$("#passChkValidMsg").show();
+			result=false;
+			$("#password-chk").focus();
+		}
+	 	}
+		//성별
+		var sex=$("#userSex").val();
+		
+		if(sex=="선택") {
+			$("#sexNullMsg").show();
+			result=false;
+			$("#userSex").focus();
+		}
+			
 		//이메일
-		var email=$("#email").val();
+		var email=$("#userEmail").val();
 		var emailReg=/^([a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[-a-zA-Z0-9]+)+)*$/g;
 	 	
 		if(email=="") {
 			$("#emailNullMsg").show();
 			result=false;
+			$("#userEmail").focus();
 		} else if (!emailReg.test(email)) {
 			$("#emailValidMsg").show();
 			result=false;
+			$("#userEmail").focus();
 		}
 		return result;
-	});
-	  
+		
+	}); 	  
   </script>
  

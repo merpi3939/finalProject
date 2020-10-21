@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page errorPage="/"%>
 <style type="text/css">
 .user-style { 
  	margin-top: 50px;
@@ -37,7 +36,7 @@ select {
                                         <form:errors path="userId" class="error errorId"/> 
                                         <span id="idNullMsg" class="msg idMsg">아이디는 필수 입력입니다.</span>
                                         <span id="idValidMsg" class="msg idMsg">아이디를 형식에 맞게 입력해 주세요.</span>
-                                        <span id="noIdMsg" class="jungbokmsg">이미 존재하는 아이디 입니다.</span>
+                                        <span id="noIdMsg" class="jungbokmsg">사용 불가능 한 아이디 입니다.</span>
                                         <span id="okIdMsg" class="jungbokmsg">사용 가능 한 아이디 입니다.</span>
                                         <span style="color: red;">${message }</span>
                                         <div class="cols-sm-10">
@@ -387,11 +386,7 @@ select {
 			result=false;
 			$("#userEmail").focus();
 		}
-		if(result==true) {
-			alert("회원가입을 축하드립니다. 회원 가입 축하 포인트 3000p 적립");			
-		}
 		return result;
-		
-	}); 	  
+	});
   </script>
  

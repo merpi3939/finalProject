@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.bluemoon.mapper.BoardMapper">
+	<insert id="insertInfoBoard">
+		<selectKey resultType="int" keyProperty="infoNo" order="BEFORE">
+			select info_board_sequence.nextval from dual
+		</selectKey>
+		insert into info_board values(#{infoNo},#{infoUserId},#{infoUserName},#{infoTitle},#{infoContent},sysdate,#{infoDivi},#{infoName}
+		,#{infoImg},#{infoState},#{infoCount}) 
+	</insert>
+</mapper>
