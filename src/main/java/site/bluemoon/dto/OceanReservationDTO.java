@@ -1,10 +1,7 @@
 package site.bluemoon.dto;
 
-<<<<<<< HEAD
 import javax.validation.constraints.Pattern;
 
-=======
->>>>>>> refs/remotes/origin/master
 /*
   이름         널        유형            
 ---------- -------- ------------- 
