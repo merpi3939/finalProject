@@ -90,29 +90,27 @@ body {
 
 
 
-  
+  <c:forEach var="HotelCategory" items="${categoryList}" >
         <div class="wrap1200">  
         
         	
             <!-- Standard Twin -->
         	<div class="room_section">
 	            <div class="sub_info">
-	                <h3>Standard Twin</h3>
+	                <h3>${HotelCategory.hotelCategoryName }</h3>
 	                <div class="ins">
 		                <ul>
-		                    <li><span>객실크기</span> 객실 :23.34㎡ 발코니 :5.10㎡ </li>
-		                    <li><span>베드타입</span> 싱글 베드 2 </li>
-		                    <!-- <li><span>이용요금</span> ￦300,000 </li> -->
+		                    <li><span>이용요금</span> ${HotelCategory.hotelCategoryPrice }</li> 
 		                </ul>
 	                </div>
 	                <div class="rsvn_wrap">
-	                	<a href=<c:url value="hotel_single"/> target="blank"><span>상세정보</span></a>
+	                	<a href='hotel_single?hotelCategoryNo=${HotelCategory.hotelCategoryNo }' ><span>상세정보</span></a>
 	                </div>
 	            </div>
 	
 	          <div class="sub_slide">
 	                <div class="bx-wrapper"  >
-	                <img src=<c:url value="bluemoon/images/hotel_img/h1.jpg"/> style="width: 80%;">
+	                <img src=<c:url value="bluemoon/images/hotel_img/${HotelCategory.hotelCategoryImg1 }"/> style="width: 80%;">
 	                </div>
 	               
 	                 
@@ -120,67 +118,13 @@ body {
 	            </div>
 	        </div>
 	        
-	        <!-- Standard Twin -->
-        	<div class="room_section">
-	            <div class="sub_info">
-	                <h3>Standard Twin</h3>
-	                <div class="ins">
-		                <ul>
-		                    <li><span>객실크기</span> 객실 :23.34㎡ 발코니 :5.10㎡ </li>
-		                    <li><span>베드타입</span> 싱글 베드 2 </li>
-		                    <!-- <li><span>이용요금</span> ￦300,000 </li> -->
-		                </ul>
-	                </div>
-	                <div class="rsvn_wrap">
-	                	<a href="#" target="blank"><span>예약하기</span></a>
-	                </div>
-	            </div>
-	
-	           <div class="sub_slide">
-	                <div class="bx-wrapper"  >
-	                <img src=<c:url value="bluemoon/images/hotel_img/h1.jpg"/> style="width: 80%;">
-	                </div>
-	               
-	                 
-	                <div class="bx-wrapper" style="width: 80%; margin : 0px auto; border-bottom: 1px solid #E2E2E2; margin-top: 80px;" >
-	            </div>
-	        </div>
-	        
-	        
-	        <!-- Standard Twin -->
-        	<div class="room_section">
-	            <div class="sub_info">
-	                <h3>Standard Twin</h3>
-	                <div class="ins">
-		                <ul>
-		                    <li><span>객실크기</span> 객실 :23.34㎡ 발코니 :5.10㎡ </li>
-		                    <li><span>베드타입</span> 싱글 베드 2 </li>
-		                    <!-- <li><span>이용요금</span> ￦300,000 </li> -->
-		                </ul>
-	                </div>
-	                <div class="rsvn_wrap">
-	                	<a href="#" target="blank"><span>예약하기</span></a>
-	                </div>
-	            </div>
-	
-	          <div class="sub_slide">
-	                <div class="bx-wrapper" style="max-width: 100%; margin: 0px auto;" >
-	                <img src=<c:url value="bluemoon/images/hotel_img/h1.jpg"/> style="width: 80%;">
-	                <div class="bx-controls bx-has-controls-direction">
-	                </div></div>
-	                <div class="outside">
-	                    <span class="prev3"></span><span class="next3"></span>
-	                </div>
-	            </div>
-	        </div>
+	       
 	        
 	       </div> 
 	       
-        </div>
-       </div>    <!-- wrap1200 -->
+        </div>   <!-- wrap1200 -->
         
-            
-        
+ </c:forEach>          
 
 
 

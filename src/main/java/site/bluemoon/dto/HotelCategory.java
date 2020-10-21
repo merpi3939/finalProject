@@ -7,17 +7,16 @@ HOTEL_CATEGORY_NAME               VARCHAR2(50)
 HOTEL_CATEGORY_DETAILIMG          VARCHAR2(100) 
 HOTEL_CATEGORY_THUMBNAIL          VARCHAR2(100) 
 HOTEL_CATEGORY_PRICE              NUMBER        
-HOTEL_CATEGORY_QTY                NUMBER        
-
 
 */
 public class HotelCategory {
 	private int hotelCategoryNo;
 	private String hotelCategoryName;
-	private String hotelCategoryDetailimg;
-	private String hotelCategoryThumbnail;
 	private String hotelCategoryPrice;
-	private int hotelCategoryQty;
+	private String hotelCategoryImg1;   
+	private String hotelCategoryImg2;   
+	private String hotelCategoryImg3;   
+	private String hotelCategoryImg4;   
 	
 	public HotelCategory() {
 		// TODO Auto-generated constructor stub
@@ -39,22 +38,6 @@ public class HotelCategory {
 		this.hotelCategoryName = hotelCategoryName;
 	}
 
-	public String getHotelCategoryDetailimg() {
-		return hotelCategoryDetailimg;
-	}
-
-	public void setHotelCategoryDetailimg(String hotelCategoryDetailimg) {
-		this.hotelCategoryDetailimg = hotelCategoryDetailimg;
-	}
-
-	public String getHotelCategoryThumbnail() {
-		return hotelCategoryThumbnail;
-	}
-
-	public void setHotelCategoryThumbnail(String hotelCategoryThumbnail) {
-		this.hotelCategoryThumbnail = hotelCategoryThumbnail;
-	}
-
 	public String getHotelCategoryPrice() {
 		return hotelCategoryPrice;
 	}
@@ -63,12 +46,36 @@ public class HotelCategory {
 		this.hotelCategoryPrice = hotelCategoryPrice;
 	}
 
-	public int getHotelCategoryQty() {
-		return hotelCategoryQty;
+	public String getHotelCategoryImg1() {
+		return hotelCategoryImg1;
 	}
 
-	public void setHotelCategoryQty(int hotelCategoryQty) {
-		this.hotelCategoryQty = hotelCategoryQty;
+	public void setHotelCategoryImg1(String hotelCategoryImg1) {
+		this.hotelCategoryImg1 = hotelCategoryImg1;
+	}
+
+	public String getHotelCategoryImg2() {
+		return hotelCategoryImg2;
+	}
+
+	public void setHotelCategoryImg2(String hotelCategoryImg2) {
+		this.hotelCategoryImg2 = hotelCategoryImg2;
+	}
+
+	public String getHotelCategoryImg3() {
+		return hotelCategoryImg3;
+	}
+
+	public void setHotelCategoryImg3(String hotelCategoryImg3) {
+		this.hotelCategoryImg3 = hotelCategoryImg3;
+	}
+
+	public String getHotelCategoryImg4() {
+		return hotelCategoryImg4;
+	}
+
+	public void setHotelCategoryImg4(String hotelCategoryImg4) {
+		this.hotelCategoryImg4 = hotelCategoryImg4;
 	}
 	
 	

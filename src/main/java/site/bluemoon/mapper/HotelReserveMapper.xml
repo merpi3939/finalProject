@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="site.bluemoon.mapper.HotelReserveMapper">
-	<insert id="insertReserveHotel">
-		insert into hotel_reserve values('20200003','20201018',(TO_DATE(#{reserveCheckIn},'YYYY-MM-DD'))
-		,(TO_DATE(#{reserveCheckOut},'YYYY-MM-DD')),#{reserveMemphone},#{reserveMememail},'200000',1)
-	</insert>
-	
-</mapper>
