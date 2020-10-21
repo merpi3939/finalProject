@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.HotelDAO;
 import site.bluemoon.dto.HotelCategory;
+import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
 @Service
 public class HotelServiceImpl implements HotelService{
@@ -27,6 +28,12 @@ public class HotelServiceImpl implements HotelService{
 	@Override
 	public List<HotelCategory> selectHotelCategoryList() {
 		return hotelReserveDAO.selectHotelCategoryList();
+	}
+
+	@Override
+	public void addHotelPay(HotelPay pay) {
+		hotelReserveDAO.insertHotelPay(pay);
+		
 	}
 
 	
