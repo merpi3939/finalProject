@@ -25,6 +25,7 @@
     <link rel="stylesheet" href=<c:url value="bluemoon/css/flaticon.css"/>>
     <link rel="stylesheet" href=<c:url value="bluemoon/css/style.css"/>>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
     
     <script src=<c:url value="bluemoon/js/jquery.min.js"/>></script>
 	<script src=<c:url value="bluemoon/js/jquery-migrate-3.0.1.min.js"/>></script>
@@ -39,11 +40,14 @@
 	<c:if test="${fn:contains(path, 'my')}">
 		<tiles:insertAttribute name="mypagemenu"/>
 	</c:if>
+	<c:if test="${fn:contains(path, 'info')}">
+		<tiles:insertAttribute name="infomenu"/>
+	</c:if>
 	<tiles:insertAttribute name="content"/>
 	<tiles:insertAttribute name="footer"/>
-
+<%-- 
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+ --%>
 	<script src=<c:url value="bluemoon/js/popper.min.js"/>></script>
 	<script src=<c:url value="bluemoon/js/bootstrap.min.js"/>></script>
 	<script src=<c:url value="bluemoon/js/owl.carousel.min.js"/>></script>
@@ -53,6 +57,7 @@
 	<script src=<c:url value="bluemoon/js/scrollax.min.js"/>></script>
 	<script src=<c:url value="bluemoon/js/main.js"/>></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 	
 </body>
 
