@@ -3,11 +3,11 @@ package site.bluemoon.util;
 //페이징 처리 관련 값을 저장하기 위한 클래스
 public class Pager {
 	//생성자 매개변수에 전달된 값을 필드값 저장
+	private int no;
 	private int pageNum;//요청 페이지 번호
 	private int totalBoard;//검색 게시글의 갯수
 	private int pageSize;//하나의 페이지에 출력될 게시글의 갯수
-	private int blockSize;//하나의 페이지 블럭에 출력될 페이지의 갯수 
-	private int number;
+	private int blockSize;//하나의 페이지 블럭에 출력될 페이지의 갯수
 
 	//생성자 매개변수에 전달된 값을 연산하여 필드값 저장
 	private int totalPage;//전체 페이지 갯수
@@ -49,7 +49,17 @@ public class Pager {
 		prevPage=startPage-blockSize;
 		nextPage=startPage+blockSize;
 		
-		number=totalBoard-(pageNum-1)*pageSize;
+		no=totalBoard-(pageNum-1)*pageSize;
+	}
+
+	
+	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 	public int getPageNum() {
@@ -139,15 +149,6 @@ public class Pager {
 	public void setNextPage(int nextPage) {
 		this.nextPage = nextPage;
 	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-	
 }
 
 
