@@ -134,7 +134,7 @@
 	<!-- ■Waterpark's Charge Mapper -->
 	<select id="selectChargeList" resultType="OceanChargeDTO">
 		select
-			*
+			* 
 		from
 			ocean_charge
 		order by
