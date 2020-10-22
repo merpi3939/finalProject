@@ -54,7 +54,10 @@ public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 
 	//°·Waterpark's Reservation Service
 	@Override
-	public List<OceanChargeDTO> selectChargeList() {
+	public List<OceanChargeDTO> getSelectChargeList() {
 		return adminWaterparkDAO.selectChargeList();
 	}
+
+	
 }
+

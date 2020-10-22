@@ -1,5 +1,8 @@
 package site.bluemoon.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,17 @@ public class BoardServiceImpl implements BoardService {
 	public void addInfoBoard(InfoBoard infoBoard) {
 		boardDAO.insertInfoBoard(infoBoard);
 	}
+
+	@Override
+	public List<InfoBoard> findInfoBoardList(Map<String, Object> map) {
+		return boardDAO.selectInfoBoardList(map);
+	}
+
+	@Override
+	public int findInfoBoardCount(Map<String, Object>map) {
+		return boardDAO.selectInfoBoardCount(map);
+	}
+
+	
 	
 }

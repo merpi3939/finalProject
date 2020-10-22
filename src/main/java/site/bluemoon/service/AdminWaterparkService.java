@@ -20,5 +20,6 @@ public interface AdminWaterparkService {
 	List<OceanReservationDTO> getSelectReservationList();
 	
 	//°·Waterpark's Charge Service
-	List<OceanChargeDTO> selectChargeList();
+	List<OceanChargeDTO> getSelectChargeList();
+	
 }

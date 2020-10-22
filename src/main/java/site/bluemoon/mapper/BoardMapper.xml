@@ -8,4 +8,25 @@
 		insert into info_board values(#{infoNo},#{infoUserId},#{infoUserName},#{infoTitle},#{infoContent},sysdate,#{infoDivi},#{infoName}
 		,#{infoImg},#{infoState},#{infoCount}) 
 	</insert>
+	
+	<select id="selectInfoBoardCount" parameterType="map" resultType="int">
+		select count(*) from info_board
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%'||#{keyword}||'%' and info_name=#{infoName} and info_state=#{infoState}
+			</if>
+		info_name=#{infoName} and info_state=#{infoState}
+		</where>
+	</select>
+		
+	<select id="selectInfoBoardList" resultType="infoBoard">
+		select * from (select rownum rn, board.* from (select * from info_board
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%'||#{keyword}||'%' and info_name=#{infoName} and info_state=#{infoState}
+			</if>
+		</where>
+		 order by info_no desc)board) where rn between #{startRow} and #{endRow}
+	</select>
+	
 </mapper>

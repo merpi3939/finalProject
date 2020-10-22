@@ -3,31 +3,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <link rel="stylesheet" href=<c:url value="bluemoon/css/board.css"/>>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 </head>
-
+<body>
 <div class="container noticeCon">	
 	<div class="col-md-7 heading-section ftco-animate title-style">
             <h2><strong>공지사항</strong></h2>
     </div>
     <div class="table-responsive" style="overflow-x: hidden;">
-    	<table class="table table-striped" style="margin-bottom: 50px;">
- 			<thead>
-   				<tr>
-  					<th width="100">글번호</th>
-  					<th width="500">제목</th>
-  					<th width="100">조회수</th>
-  					<th width="100">작성일</th>
-				</tr>
- 			</thead>
- 		<tbody>   	
-   			<tr>
-      			<td>1</td>
-      			<td><a class="table-a" href="#">공지사항ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</a></td>
-      			<td>10</td>
-			    <td>2020-01-01</td>
-   			</tr>
-		 </tbody> 
-		</table>   
+    	<div id="noticeListDiv">   	
+		</div>  
 		<div style="margin-bottom: 96px;">
 			<button type="button" class="btn noticeBtn" id="noticeWriter">Write</button>
 		</div>
@@ -82,8 +67,58 @@
 	    </div>
 	</div>
 </div>
-
+<script id="template" type="text/x-handlebars-template">
+	<table class="table table-striped" style="margin-bottom: 50px;">
+ 			<thead>
+   				<tr>
+  					<th width="100">글번호</th>
+  					<th width="500">제목</th>
+  					<th width="100">조회수</th>
+  					<th width="100">작성일</th>
+				</tr>
+ 			</thead>
+		{{#each .}}
+ 		<tbody>   	
+   			<tr>
+      			<td>{{number}}</td>
+      			<td><a class="table-a" href="#">{{infoTitle}}</a></td>
+      			<td>{{infoCount}}</td>
+			    <td>{{infoDate}}</td>
+   			</tr>
+		 </tbody>
+		{{/each}}
+	</table>   
+</script>
 <script type="text/javascript">
+var page=1;
+boardDisplay(page);
+/* +"&search="+search+"&keyword="+keyword */
+function boardDisplay(pageNum) {
+	page=pageNum;
+	$.ajax({
+		type: "GET",
+		url: "listNotice?pageNum="+pageNum,
+		dataType: "json",
+		success: function(json) {
+			if(json.noticeBoardList.length==0) {
+				$("#noticeListDiv").html("검색된 게시글이 존재하지 않습니다.");
+				return;
+			}
+			
+			var source=$("#template").html();
+			var template=Handlebars.compile(source);
+			$("#noticeListDiv").html(template(json.noticeBoardList));
+			alert(json.pager.number);
+			/* pageDisplay(json.pager); */
+		},
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+}
+
+
+
 $(document).ready(function() {
 	$('#summernote').summernote({
 		height: 500,                 
@@ -145,3 +180,4 @@ $("#write-btn").click(function() {
 	});
 });
 </script>
+</body>
