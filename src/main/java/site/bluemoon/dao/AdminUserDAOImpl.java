@@ -16,29 +16,14 @@ public class AdminUserDAOImpl implements AdminUserDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-/*
-	@Override
-	public int insertUser(User user) {
-		return sqlSession.getMapper(AdminUserMapper.class).insertUser(user);
-	}
 
-	@Override
-	public int updateUserInfo(User user) {
-		return sqlSession.getMapper(AdminUserMapper.class).updateUserInfo(user);
-	}
-
-	@Override
-	public int deleteUser(int userNo) {
-		return sqlSession.getMapper(AdminUserMapper.class).deleteUser(userNo);
-	}
-
-	@Override
-	public User selectUserId(int userNo) {
-		return sqlSession.getMapper(AdminUserMapper.class).selectUserId(userNo);
-	}
-*/
 	@Override
 	public List<User> selectUserList() {
 		return sqlSession.getMapper(AdminUserMapper.class).selectUserList();
+	}
+
+	@Override
+	public User updateUserInfo(int userNo) {
+		return sqlSession.getMapper(AdminUserMapper.class).updateUserInfo(userNo);
 	}
 }

@@ -13,29 +13,13 @@ public class AdminUserServiceImpl implements AdminUserService {
 
 	@Autowired
 	private AdminUserDAO adminUserDAO;
-	/*
-	@Override
-	public void addUser(User user) {
-		adminUserDAO.insertUser(user);
-	}
 
-	@Override
-	public void modifyUser(User user) {
-		adminUserDAO.updateUserInfo(user);
-	}
-
-	@Override
-	public void RemoveUser(int userNo) {
-		adminUserDAO.deleteUser(userNo);
-	}
-
-	@Override
-	public User getSelectUser(int userNo) {
-		return adminUserDAO.selectUserId(userNo);
-	}
-*/
 	@Override
 	public List<User> getSelectUserList() {
 		return adminUserDAO.selectUserList();
+	}
+	@Override
+	public User getUpdateUserInfo(int userNo) {
+		return adminUserDAO.updateUserInfo(userNo);
 	}
 }

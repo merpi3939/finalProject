@@ -37,9 +37,9 @@
 					
 					<form id="newsForm" method="post">
 						<!--■Static-->
-						<div class="form-group" >
+						<div class="form-group" style="margin-top: 30px;">
 							<label class="col-md-3 control-label">작성자</label>
-							<div class="col-md-9"><input type="text"  name="newsUno">${userInfo.userName}<br>${userInfo.userNo } </div>
+							<div class="col-md-9"><input type="hidden"  name="newsUno" value="${userInfo.userNo}">${userInfo.userName}(${userInfo.userId }) </div>
 							<br>
 						</div>
 						

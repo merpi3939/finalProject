@@ -2,35 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="site.bluemoon.mapper.AdminUserMapper">
-<!-- 
-	<insert id="insertUser" parameterType="User">
-		<selectKey resultType="int" keyProperty="userNo"  order="BEFORE">
-			select user_sequence.nextval from dual
-		</selectKey>
-		
-		insert into 
-			bluemoon_user 
-		values
-			(
-				#{userNo},
-				#{userId},
-				#{userPassword},
-				#{userName},
-				#{userBirthday},
-				#{userPhone},
-				#{userEmail},
-				#{userSex},
-				#{userZipcode},
-				#{userAddress1},
-				#{userAddress2},
-				3000,
-				sysdate,
-				#{userLogindate},
-				#{userWithdrowdate},
-				1
-			)
-	</insert>
-	
+
 	<update id="updateUserInfo" parameterType="User">
 		update 
 			bluemoon_user
@@ -65,9 +37,10 @@
 		</set>
 		
 		where u
-			ser_no=#{userNo}
+			user_no=#{userNo}
 	</update>
 	
+	<!-- 
 	<update id="deleteUser" parameterType="int">
 		update 
 			bluemoon_user 
@@ -77,6 +50,7 @@
 		where 
 			user_no=#{userNo}
 	</update>
+ -->
 	
 	<select id="selectUserId" parameterType="int" resultType="User">
 		select 
@@ -87,7 +61,6 @@
 			user_no=#{userNo}
 	</select>
 	
- -->
 	<select id="selectUserList" resultType="User">
 		select
 			*

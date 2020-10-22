@@ -44,7 +44,7 @@
 					<table id="demo-dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th style="text-align: center; width: 30px;"><input type="checkbox"></th>
+								<th style="text-align: center; width: 30px;"><input type="checkbox" id="checkAll"></th>
 								<th style="text-align: center; width: 70px;">회원번호</th>
 								<th style="text-align: center; width: 80px;">ID</th>
 								<th style="text-align: center; width: 80px;">이름</th>
@@ -85,8 +85,8 @@
 											<td style="text-align: center; width: 60px; color:blue">관리자</td>
 										</c:when>
 									</c:choose>									
-									<td style="text-align: center;"><button id="modifyMemberBtn" class="btn btn-mint">수정</button></td>
-									<td style="text-align: center;"><button id="deleteMemberBtn" class="btn btn-danger">탈퇴</button></td>
+									<td style="text-align: center;"><button onclick="userModify(${user.userNo })" class="btn btn-mint">수정</button></td>
+									<td style="text-align: center;"><button onclick="userRemove(${user.userNo })" class="btn btn-danger">탈퇴</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -94,7 +94,7 @@
 			
 					<div>
 						<button class="btn btn-danger" type="button">선택탈퇴</button>
-						<button id="joinMember" class="btn btn-primary">회원등록</button>
+						<!-- <a href="user/userInsert"><button id="userJoin" class="btn btn-primary">회원등록</button></a> -->
 						<button class="btn btn-success" 	style="background: rgb(8,106,48);">회원 액셀다운로드</button>
 						<button class="btn btn-success" style="background: rgb(24,74,120);">회원 액셀업로드</button>
 					</div>
@@ -109,3 +109,24 @@
 	</div>
 	<!--===================================================-->
 	<!--END CONTENT CONTAINER-->
+
+	<script type="text/javascript">
+		function userModify(userNo) {
+			alert(userNo);
+			location.href="userModify/"+newsNo;
+		}
+			
+		function userRemove(userNo) {
+			alert(userNo);
+		/* 	location.href="userRemove/"+newsNo; */
+		}
+		
+		$("#checkAll").click(function () {
+			if($("#checkAll").prop("checked")) {
+				$("input[type=checkbox]").prop("checked",true);
+			} else {
+				$("input[type=checkbox]").prop("checked",false);
+			}
+		});
+		
+	</script>

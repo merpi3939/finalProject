@@ -55,11 +55,14 @@
 	</select>
 	
 	<!--  체크박스 선택되 사람만 삭제-->
-	<delete id="deleteCheckNews" parameterType="list">
+<!--	<delete id="deleteCheckNews" parameterType="string">
 		delete from
 			ocean_news
+		where
+			news_no=#{newsNo}
+			
 	
-		<if test="list != null">
+ 		<if test="list != null">
 			where newsNo in
 		
 			<foreach item="newsNo" collection="list" open="(" close=")" separator=",">
@@ -67,7 +70,8 @@
 			</foreach>
 		</if>
 	</delete>
-	
+	 -->
+	 
 	<!-- ■Waterpark's Reservation Mapper -->
 	<!-- 
 	<resultMap id="userOceanResultMap" type="AdminUserReservation">

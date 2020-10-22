@@ -2,6 +2,7 @@ package site.bluemoon.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.ws.RequestWrapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,10 +59,12 @@ public class AdminWaterparkController {
 		adminWaterparkService.removeNews(newsNo);
 		return "redirect:/admin/newsList";
 	}
-	@RequestMapping(value = "/newsCheckRemove", method = RequestMethod.POST)
-	public String newsCheckRemove(@RequestParam("checkData") List<Integer> newsNos) {
-		for(Integer newsNo: newsNos) {
-			adminWaterparkService.removeCheckNews(newsNo);
+	
+	@RequestMapping(value = "/deleteCheckNews", method = RequestMethod.POST)
+	public String deleteCheckNews(HttpServletRequest request) {
+		String newsNo[]=request.getParameterValues("checkData");
+		for(String newsNos: newsNo) {
+			adminWaterparkService.removeNews(Integer.parseInt(newsNos));
 		}
 		return "redirect:/admin/newsList";
 	}

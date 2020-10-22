@@ -41,49 +41,55 @@
 							<h3 class="panel-title">블루문 워터파크 현장소식 게시판입니다.</h3>
 				</div>
 						<div class="panel-body">
-							<table id="demo-dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
-								<thead>
-									<tr>
-										<th style="text-align: center; width: 30px;"><input id="checkAll" type="checkbox"></th>
-										<th style="text-align: center; width: 40px;">글번호</th>
-										<th style="text-align: center; width: 80px;">작성자<br>(회원번호)</th>
-										<th style="text-align: center; width: 80px;">작성일자</th>
-										<th style="text-align: center; width: 700px;" class="min-tablet">내용</th>
-										<th style="text-align: center;" class="min-desktop">수정</th>
-										<th style="text-align: center;" class="min-desktop">삭제</th>
-									</tr>
-								</thead>
-								
-								<tbody>
-									<c:choose>
-										<c:when test="${fn:length(newsList) ==0 }">
-											<tr>
-												<td colspan="7">작성된 뉴스가 없습니다.</td>
-											</tr>
-										</c:when>
-										
-										<c:otherwise>
-											<c:forEach items="${newsList}" var="list" >
+							<form name="form1">
+								<table id="demo-dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
+									<thead>
+										<tr>
+											<th style="text-align: center; width: 30px;"><input id="checkAll" type="checkbox"></th>
+											<th style="text-align: center; width: 60px;">글번호</th>
+											<th style="text-align: center; width: 80px;">작성자<br>(회원번호)</th>
+											<th style="text-align: center; width: 80px;">작성일자</th>
+											<th style="text-align: center; width: 600px;" class="min-tablet">내용</th>
+											<th style="text-align: center;" class="min-desktop">수정</th>
+											<th style="text-align: center;" class="min-desktop">삭제</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<c:choose>
+											<c:when test="${fn:length(newsList) ==0 }">
 												<tr>
-													<td style="text-align: center;"><input name="checkData" type="checkbox" value="${list.newsNo }"> </td>
-													<td style="text-align: center;">${list.newsNo }</td>
-													<td style="text-align: center;">${list.newsUno }</td>
-													<td style="text-align: center;">${list.newsDate }</td>
-													<td style="width: 600px;">${list.newsCont }</td>
-													<td style="text-align: center;"><button class="btn btn-mint"  onclick="newsModify(${list.newsNo })">수정</button></td>
-													<td style="text-align: center;"><button class="btn btn-danger"   onclick="newsRemove(${list.newsNo })">삭제</button></td>
+													<td colspan="7">작성된 뉴스가 없습니다.</td>
 												</tr>
-											</c:forEach>
-										</c:otherwise>
-									</c:choose>
-								</tbody>
-								
-							</table>
-							<div>
-								<button id="checkDelete" class="btn btn-danger" type="submit" >선택삭제</button>
-								<a href="${pageContext.request.contextPath}/admin/newsInsert"><button class="btn btn-primary">소식등록</button></a>
-							</div>
+											</c:when>
+											
+											<c:otherwise>
+												<c:forEach items="${newsList}" var="list" >
+													<tr>
+														<td style="text-align: center;"><input name="checkData" type="checkbox" value="${list.newsNo }"> </td>
+														<td style="text-align: center;">${list.newsNo }</td>
+														<td style="text-align: center;">${list.newsUno }</td>
+														
+														<c:set var="newsDate1" value="${list.newsDate }"/>
+														<c:set var="newsDate" value="${fn:substring(newsDate1, 0, 10) }"/>
+														<td style="text-align: center;">${newsDate }</td>
+														
+														<td style="width: 600px;">${list.newsCont }</td>
+														<td ><p class="btn btn-mint" onclick="newsModify(${list.newsNo })">수정</p></td>
+														<td><p class="btn btn-danger" onclick="newsRemove(${list.newsNo })">삭제</p></td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+									</tbody>
+								</table>
 							
+								<div>
+									<button id="deleteBtn" class="btn btn-danger" type="button" >선택삭제</button>
+									<a href="${pageContext.request.contextPath}/admin/newsInsert"><p class="btn btn-primary">소식등록</p></a>
+								</div>
+							
+							</form>
 						</div>
 					</div>
 					<!--===================================================-->
@@ -115,9 +121,17 @@
 			}
 		});
 		
-	////////////////////////////////////////////////////////////////////////////////////////////////////	
-		
-		
-		
+		$("#deleteBtn").click(function () {
+			form1.method="post";
+			form1.action="deleteCheckNews";
+			var checkDataArray=[];
+			
+			$("input[name='checkData']:checked").each(function(i) {
+				console.log(i + " : " + $(this).val());
+				checkDataArray.push($(this).val());
+			});
+			form1.checkData=checkDataArray;
+			form1.submit();
+		});
 		
 	</script>
