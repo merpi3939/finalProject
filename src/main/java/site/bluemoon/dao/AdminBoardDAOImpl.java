@@ -1,6 +1,7 @@
 package site.bluemoon.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class AdminBoardDAOImpl implements AdminBoardDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<InfoBoard> selectInfoList() {
-		return sqlSession.getMapper(AdminBoardMapper.class).selectInfoList();
+	public List<InfoBoard> selectInfoList(Map<String, Object> map) {
+		return sqlSession.getMapper(AdminBoardMapper.class).selectInfoList(map);
 	}
 
 	@Override

@@ -1,6 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!--Bootstrap Tags Input [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css"/> rel="stylesheet">
+
+
+<!--Chosen [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/chosen/chosen.min.css"/> rel="stylesheet">
+
+
+<!--noUiSlider [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/noUiSlider/jquery.nouislider.min.css"/> rel="stylesheet">
+<link href=<c:url value="/admin/plugins/noUiSlider/jquery.nouislider.pips.min.css"/> rel="stylesheet">
+
+
+<!--Bootstrap Timepicker [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css"/> rel="stylesheet">
+
+
+<!--Bootstrap Datepicker [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/bootstrap-datepicker/bootstrap-datepicker.css"/> rel="stylesheet">
+
+<style type="text/css">
+#searchTable td{
+	padding-left: 10px;
+}
+
+</style>
+
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">
@@ -36,47 +64,75 @@
 					<h3 class="panel-title">검색 방법</h3>
 				</div>
 				<div class="panel-body">
-				<form action="" method="post">
-					<table>
+				<form action="" method="post" id="infoForm" name="infoForm" onsubmit= "return infoSubmit()">
+					<table style="width: 90%;" id="searchTable">
 						<tr>
 							<td>게시글 번호</td>
-							<td><input type="text"></td>
-							<td>작성자 아이디</td>
-							<td><input type="text"></td>
+							<td><input type="" class="form-control" name="infoNo" value="0"></td>
+							<td>작성자 이름</td>
+							<td><input type="text" class="form-control" name="infoUserName"></td>
 						</tr>
 						<tr>
 							<td>
-								<select>
-									<option>게시글 제목</option>
-									<option>게시글 내용</option>
+								<select class="selectpicker pad-top" name="search">
+									<option value="infoTitle">게시글 제목</option>
+									<option value="infoContent">게시글 내용</option>
 								</select>
 							</td>
-							<td colspan="3"><input type="text"></td>
+							<td colspan="3"><input type="text" class="form-control" name="keyword"></td>
 							
 						</tr>
 						<tr>
 							<td>게시글 등록일</td>
-							<td><input type="text"></td>
+							<!-- 
+							<td><input type="text" class="form-control"></td>
 							<td>~<td>
-							<td><input type="text"></td>
+							<td><input type="text" class="form-control"></td>
+							-->
+							<td colspan="3">
+								<!--Bootstrap Datepicker : Range-->
+								<!--===================================================-->
+								<div id="demo-dp-range">
+									<div class="input-daterange input-group" id="datepicker">
+										<input type="date" class="form-control" name="start" id="start" placeholder="YYYY-MM-DD"/>
+										<span class="input-group-addon">to</span>
+										<input type="date" class="form-control" name="end" id="end" placeholder="YYYY-MM-DD"/>
+									</div>
+								</div>
+								<!--===================================================-->
+							</td>
 						</tr>
 						<tr>
 							<td>게시글 분류</td>
 							<td>
-								<input type="radio" name="divi" value="공지사항">공지사항&nbsp;&nbsp;
-								<input type="radio" name="divi" value="QNA">QnA
+								<!-- 
+								<input type="radio" name="divi" value="공지사항" class="form-control">공지사항&nbsp;&nbsp;
+								<input type="radio" name="divi" value="QNA" class="form-control">QnA
+								 -->
+								<!--Radio buttons with label-->
+								<!--===================================================-->
+								<label class="form-radio form-normal active"><input type="radio" name="infoName" value="공지사항" checked>공지사항</label>
+								<label class="form-radio form-normal"><input type="radio" name="infoName" value="QNA">QNA</label>
+								<!--===================================================-->
+					
 							</td>
 							<td>게시글 상태</td>
 							<td>
-								<select>
-									<option>게시</option>
-									<option>비밀글</option>
-									<option>삭제</option>
+								<select class="selectpicker pad-top" name="infoState" >
+									<option value="1">게시</option>
+									<option value="2">비밀글</option>
+									<option value="4">삭제</option>
 								</select>
 							</td>
 						</tr>
+						<tr>
+							<td colspan="4">
+								<div style="float: right;">
+									<button type="submit" class="btn btn-default" >검색</button>
+								</div>
+							</td>
+						</tr>
 					</table>
-					<button type="submit">검색</button>
 				</form>
 				</div>
 			</div>
@@ -140,4 +196,30 @@ $(document).ready(function() {
 	});
 	
 });
+
+function infoSubmit() {
+	var start = infoForm.start.value;
+	var end = infoForm.end.value;
+	alert(start);
+	//infoForm.submit();
+	var check=true;
+	if(start!=null && start!=''&& end!=null && end!=''){
+		var checkStart=Date.parse(start);
+		var checkEnd=Date.parse(end);
+		
+	    if (isNaN(checkStart)==false && isNaN(checkEnd)==false) {
+	        //var d=new Date(chkdate);
+	        check= true;
+	        //alert("성공");
+	    } else {
+	    	alert("게시글 등록일을 'YYYY-MM-DD' 양식에 맞게 입력해주세요.");
+	    	infoForm.start.focus();
+	    	check= false;
+	        //alert("실패");
+	    };
+		
+	}
+	return check;
+}
+
 </script>

@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.bluemoon.mapper.AdminBoardMapper">
-	<select id="selectInfoList" resultType="infoBoard">
-		select * from info_board order by info_no desc
+	<select id="selectInfoList" resultType="infoBoard" parameterType="hashMap">
+		select * from info_board 
+		 
+		<where>
+		<if test="infoBoard.infoState==null">info_state!=4</if>
+		<if test="infoBoard.infoNo!=null and infoBoard.infoNo!=0 ">and INFO_NO=#{infoBoard.infoNo}</if>
+		<if test="infoBoard.infoUserName!=null and infoBoard.infoUserName!=''">and 
+		INFO_USER_NAME LIKE '%'||#{infoBoard.infoUserName}||'%'</if>
+		<if test="infoBoard.infoTitle!=null and infoBoard.infoTitle!=''">and
+		INFO_TITLE LIKE '%'||#{infoBoard.infoTitle}||'%'</if>
+		<if test="infoBoard.infoContent!=null and infoBoard.infoContent!=''">and 
+		INFO_CONTENT LIKE '%'||#{infoBoard.infoContent}||'%'</if>
+		<if test="infoBoard.infoName!=null and infoBoard.infoName!=''">and INFO_NAME=#{infoBoard.infoName}</if>
+		<if test="infoBoard.infoState!=null and infoBoard.infoState!=''">and INFO_STATE=#{infoBoard.infoState}</if>
+		<if test="start!=null and start!='' and end!=null and end!=''" >and info_date between #{start} and #{end}</if>
+		</where>
+		order by info_no desc
 	</select>
 	<select id="selectInfo" resultType="infoBoard" parameterType="int">
 		select * from info_board where info_no=#{infoNo}

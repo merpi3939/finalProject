@@ -1,5 +1,8 @@
 package site.bluemoon.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +22,27 @@ public class AdminBoardController {
 	
 	@RequestMapping(value = "/info_list",method = RequestMethod.GET)
 	public String infoList(Model model) {
-		model.addAttribute("infoList", adminBoardService.selectInfoList());
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("infoBoard", new InfoBoard());
+		model.addAttribute("infoList", adminBoardService.selectInfoList(map));
+		return "admin/board/info_list";
+	}
+	
+	@RequestMapping(value = "/info_list",method = RequestMethod.POST)
+	public String infoList(@ModelAttribute InfoBoard infoBoard,String keyword, String search, String start, String end, Model model) {
+		if(search!=null && !search.equals("") && keyword!=null && !keyword.equals("")) {
+			if(search.equals("infoTitle")) {
+				infoBoard.setInfoTitle(keyword);
+			} else if(search.equals("infoContent")){
+				infoBoard.setInfoContent(keyword);
+			}
+		}
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("infoBoard", infoBoard);
+		
+		model.addAttribute("infoList", adminBoardService.selectInfoList(map));
 		return "admin/board/info_list";
 	}
 	
