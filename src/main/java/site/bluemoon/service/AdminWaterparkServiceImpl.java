@@ -6,41 +6,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.AdminWaterparkDAO;
+import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
-import site.bluemoon.dto.User;
+import site.bluemoon.dto.OceanReservationDTO;
 
 @Service
 public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 
 	@Autowired
-	private AdminWaterparkDAO adminMemberWaterparkDAO; 
+	private AdminWaterparkDAO adminWaterparkDAO; 
 	
+	//°·Waterpark's News Service
 	@Override
 	public void addNews(OceanNews oceanNews) {
-		adminMemberWaterparkDAO.insertNews(oceanNews);
+		adminWaterparkDAO.insertNews(oceanNews);
 	}
 
 	@Override
 	public void modifyNews(OceanNews oceanNews) {
-		adminMemberWaterparkDAO.updateNews(oceanNews);
+		adminWaterparkDAO.updateNews(oceanNews);
 	}
 
 	@Override
 	public void removeNews(int newsNo) {
-		adminMemberWaterparkDAO.deleteNews(newsNo);
+		adminWaterparkDAO.deleteNews(newsNo);
 	}
 
 	@Override
 	public OceanNews getSelectNews(int newsNo) {
-		return adminMemberWaterparkDAO.selectNews(newsNo);
+		return adminWaterparkDAO.selectNews(newsNo);
 	}
 	
 	@Override
 	public List<OceanNews> getSelectNewsList() {
-		return adminMemberWaterparkDAO.selectNewsList();
+		return adminWaterparkDAO.selectNewsList();
 	}
 	
 	public void removeCheckNews(Integer newsNo) {
-		adminMemberWaterparkDAO.deleteCheckNews(newsNo);
+		adminWaterparkDAO.deleteCheckNews(newsNo);
 	}
+
+	//°·Waterpark's Reservation Service
+	@Override
+	public List<OceanReservationDTO> getSelectReservationList() {
+		return adminWaterparkDAO.selectReservationList();
+	}
+
+	//°·Waterpark's Reservation Service
+	@Override
+	public List<OceanChargeDTO> getSelectChargeList() {
+		return adminWaterparkDAO.selectChargeList();
+	}
+
+	
 }
+

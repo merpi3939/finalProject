@@ -134,6 +134,16 @@
 	</script>
 	
 
+	<!--Bootstrap Datepicker [ OPTIONAL ]-->
+ 	<script src=<c:url value="/admin/plugins/bootstrap-datepicker/bootstrap-datepicker.js"/>></script>
+	<!--Bootstrap Timepicker [ OPTIONAL ]-->
+ 	<script src=<c:url value="/admin/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"/>></script> 
+	<!--Bootstrap Tags Input [ OPTIONAL ]-->
+	<script src=<c:url value="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"/>></script>
+	<!--Chosen [ OPTIONAL ]-->
+	<script src=<c:url value="/admin/plugins/chosen/chosen.jquery.min.js"/>></script>
+	<!--jQuery [ REQUIRED ]-->
+ 	<!-- <script src=<c:url value="/admin/js/jquery-2.1.1.min.js"/>></script> -->
 	
 </body>
 </html>

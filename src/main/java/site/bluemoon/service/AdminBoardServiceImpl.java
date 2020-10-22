@@ -1,6 +1,7 @@
 package site.bluemoon.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,8 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 
 	//////////////////////INFO/////////////////////////////
 	@Override
-	public List<InfoBoard> selectInfoList() {
-		return adminBoardDAO.selectInfoList();
+	public List<InfoBoard> selectInfoList(Map<String, Object> map) {
+		return adminBoardDAO.selectInfoList(map);
 	}
 
 	@Override

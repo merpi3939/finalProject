@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
     
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
@@ -44,7 +47,7 @@
 								
 								<thead>
 									<tr>
-										<th style="text-align: center; width: 50px;">글번호</th>
+										<th style="text-align: center; width: 70px;">글번호</th>
 										<th style="text-align: center;">시즌</th>
 										<th style="text-align: center;">이용권 이름</th>
 										<th style="text-align: center;" class="min-tablet">이용가격</th>
@@ -53,31 +56,16 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td style="text-align: center;">1</td>
-										<td style="text-align: center;">성수기</td>
-										<td style="text-align: center;">종일권실내</td>
-										<td style="text-align: center;">대인: 50,000원<br>소인: 40,000원</td>
-										<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
-										<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
-									</tr>
-									<tr>
-										<td style="text-align: center;">2</td>
-										<td style="text-align: center;">비수기</td>
-										<td style="text-align: center;">종일권실내</td>
-										<td style="text-align: center;">대인: 50,000원<br>소인: 40,000원</td>
-										<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
-										<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
-									</tr>
-									<tr>
-										<td style="text-align: center;">3</td>
-										<td style="text-align: center;">성수기</td>
-										<td style="text-align: center;">종일권실내</td>
-										<td style="text-align: center;">대인: 50,000원<br>소인: 40,000원</td>
-										<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
-										<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
-									</tr>
-								</tbody>
+									<c:forEach items="${chargeList }" var="cl">
+										<tr>
+											<td style="text-align: center;">${cl.cgNo }</td>
+											<td style="text-align: center;">${cl.cgSeason }</td>
+											<td style="text-align: center;">${cl.cgName }</td>
+											<td style="text-align: center;">대인: <fmt:formatNumber value="${cl.cgPrice }"  type="number" />원<br>소인: <fmt:formatNumber value="${cl.cgPrice-10000 }"  type="number" />원</td>
+											<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
+											<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
+										</tr>
+									</c:forEach>
 							</table>
 							
 							<div>

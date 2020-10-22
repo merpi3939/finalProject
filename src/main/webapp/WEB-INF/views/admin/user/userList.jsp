@@ -71,7 +71,20 @@
 									<td style="text-align: center;">${user.userEmail }</td>
 									<td style="text-align: center;">${user.userPoint }	</td>
 									<td style="text-align: center;">${user.userJoindate }</td>
-									<td style="text-align: center; width: 60px;">${user.userState }</td>
+									
+									<c:choose>
+										<c:when test="${user.userState eq 1}">
+											<td style="text-align: center; width: 60px;">일반회원</td>
+										</c:when>
+										
+										<c:when test="${user.userState eq 4}">
+											<td style="text-align: center; width: 60px; color: red;">탈퇴회원</td>
+										</c:when>
+										
+										<c:when test="${user.userState eq 9}">
+											<td style="text-align: center; width: 60px; color:blue">관리자</td>
+										</c:when>
+									</c:choose>									
 									<td style="text-align: center;"><button id="modifyMemberBtn" class="btn btn-mint">수정</button></td>
 									<td style="text-align: center;"><button id="deleteMemberBtn" class="btn btn-danger">탈퇴</button></td>
 								</tr>
@@ -96,6 +109,3 @@
 	</div>
 	<!--===================================================-->
 	<!--END CONTENT CONTAINER-->
-	
-	<script type="text/javascript">
-	</script>

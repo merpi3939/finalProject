@@ -21,12 +21,12 @@ import site.bluemoon.service.AdminWaterparkService;
 public class AdminWaterparkController {
 
 	@Autowired
-	private AdminWaterparkService adminMemberWaterparkService;
+	private AdminWaterparkService adminWaterparkService;
 	
 	//■news 현장소식
 	@RequestMapping(value = "/newsList")
 	public String newsList(Model model) {
-		model.addAttribute("newsList", adminMemberWaterparkService.getSelectNewsList());
+		model.addAttribute("newsList", adminWaterparkService.getSelectNewsList());
 		return "admin/waterpark/news/newsList";
 	}
 	
@@ -37,44 +37,46 @@ public class AdminWaterparkController {
 	
 	@RequestMapping(value = "/newsInsert", method = RequestMethod.POST)
 	public String newsInsert(@ModelAttribute OceanNews oceanNews) {
-		adminMemberWaterparkService.addNews(oceanNews);
+		adminWaterparkService.addNews(oceanNews);
 		return "redirect:/admin/newsList";
 	}
 	
 	@RequestMapping(value = "/newsModify/{newsNo}", method = RequestMethod.GET)
 	public String newsModify(@PathVariable int newsNo, Model model) {
-		model.addAttribute("news", adminMemberWaterparkService.getSelectNews(newsNo));
+		model.addAttribute("news", adminWaterparkService.getSelectNews(newsNo));
 		return "admin/waterpark/news/newsModify";
 	}
 
 	@RequestMapping(value = "/newsModify", method = RequestMethod.POST)
 	public String newsModify(@ModelAttribute OceanNews oceanNews) {
-		adminMemberWaterparkService.modifyNews(oceanNews);
+		adminWaterparkService.modifyNews(oceanNews);
 		return "redirect:/admin/newsList";
 	}
 	
 	@RequestMapping(value = "/newsRemove/{newsNo}")
 	public String newsRemove(@PathVariable int newsNo) {
-		adminMemberWaterparkService.removeNews(newsNo);
+		adminWaterparkService.removeNews(newsNo);
 		return "redirect:/admin/newsList";
 	}
 	@RequestMapping(value = "/newsCheckRemove", method = RequestMethod.POST)
 	public String newsCheckRemove(@RequestParam("checkData") List<Integer> newsNos) {
 		for(Integer newsNo: newsNos) {
-			adminMemberWaterparkService.removeCheckNews(newsNo);
+			adminWaterparkService.removeCheckNews(newsNo);
 		}
 		return "redirect:/admin/newsList";
 	}
 
 	//■waterPark 예약/결제
 	@RequestMapping(value = "/prList")
-	public String prList() {
+	public String prList(Model model) {
+		model.addAttribute("prList", adminWaterparkService.getSelectReservationList());
 		return "admin/waterpark/pr/prList";
 	}
 	
 	//■waterPark 요금표
 	@RequestMapping(value = "/chargeList")
-	public String chargeList() {
+	public String chargeList(Model model) {
+		model.addAttribute("chargeList", adminWaterparkService.getSelectChargeList());
 		return "admin/waterpark/charge/chargeList";
 	}
 	

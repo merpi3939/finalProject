@@ -63,7 +63,7 @@
 						
 										<!--Submenu-->
 										<ul class="collapse">
-											<li><a href="${pageContext.request.contextPath}/admin/memberList">회원관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/userList">회원관리</a></li>
 										</ul>
 									</li>
 						

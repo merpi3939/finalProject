@@ -9,6 +9,7 @@ import site.bluemoon.exception.UserinfoNotFoundException;
 
 @ControllerAdvice
 public class UserExceptionController {
+	/*
 	
 	@ExceptionHandler(LoginAuthFailException.class)
 	public String exceptionHandler(LoginAuthFailException exception, Model model) {
