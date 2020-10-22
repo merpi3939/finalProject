@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.AdminWaterparkDAO;
+import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 
@@ -49,5 +50,11 @@ public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 	@Override
 	public List<OceanReservationDTO> getSelectReservationList() {
 		return adminWaterparkDAO.selectReservationList();
+	}
+
+	//°·Waterpark's Reservation Service
+	@Override
+	public List<OceanChargeDTO> selectChargeList() {
+		return adminWaterparkDAO.selectChargeList();
 	}
 }

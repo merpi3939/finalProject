@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import site.bluemoon.dto.AdminUserReservation;
+import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
@@ -52,7 +53,12 @@ public class AdminWaterparkDAOImpl implements AdminWaterparkDAO {
 	//°·Waterpark's Reservation DAO
 	@Override
 	public List<OceanReservationDTO> selectReservationList() {
-		System.out.println("22222222222");
 		return sqlSession.getMapper(AdminWaterparkMapper.class).selectReservationList();
+	}
+
+	//°·Waterpark's charge DAO
+	@Override
+	public List<OceanChargeDTO> selectChargeList() {
+		return sqlSession.getMapper(AdminWaterparkMapper.class).selectChargeList();
 	}
 }

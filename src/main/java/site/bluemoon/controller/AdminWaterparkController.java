@@ -75,7 +75,8 @@ public class AdminWaterparkController {
 	
 	//¡áwaterPark ¿ä±ÝÇ¥
 	@RequestMapping(value = "/chargeList")
-	public String chargeList() {
+	public String chargeList(Model model) {
+		/* model.addAttribute("chargeList", adminWaterparkService.getselect) */
 		return "admin/waterpark/charge/chargeList";
 	}
 	
