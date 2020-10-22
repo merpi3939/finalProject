@@ -311,19 +311,19 @@ p {
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" class="form-control"
-									id="hotelCategoryPrice" name="hotelCategoryPrice"  placeholder="룸가격">
+									id="hotelCategoryPrice" name="hotelCategoryPrice" value="${hotelCategoryNo.hotelCategoryPrice }" placeholder="룸가격">
 							</div>
 						</div>
 						 <div class="col-md-6">
 							<div class="form-group">
 								<input type="text" id="datepicker1" class="form-control"
-									name="reserveCheckIn" value="${hotel.reserveCheckIn }" placeholder="체크인 날짜"  onchange="call()">
+									name="reserveCheckIn" value="${hotel.reserveCheckIn }" placeholder="체크인 날짜" onchange="call()">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" id="datepicker2" class="form-control"
-									name="reserveCheckOut" value="${hotel.reserveCheckOut }" placeholder="체크아웃 날짜"  onchange="call()">
+									name="reserveCheckOut" value="${hotel.reserveCheckOut }" placeholder="체크아웃 날짜" onchange="call()">
 							</div>
 						</div> 
 						<div class="col-md-12">
@@ -419,10 +419,10 @@ p {
 			}
 		});
 	});
-
 	
-</script>
-<script type="text/javascript">
+
+
+
 function call()
 {
 	var price = document.getElementById("hotelCategoryPrice").value;
@@ -435,9 +435,11 @@ function call()
     var dif = da2 - da1;
     var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
  if(sdd && edd){
-    document.getElementById("hotelCategoryPrice").value = parseInt((dif/cDay)*price);
+    document.getElementById('hotelCategoryPrice').value = parseInt(dif/cDay)
  }
 }
-
+	
+	
 </script>
+
 

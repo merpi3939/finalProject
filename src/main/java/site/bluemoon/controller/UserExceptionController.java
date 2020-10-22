@@ -21,9 +21,11 @@ public class UserExceptionController {
 		model.addAttribute("message", exception.getMessage());
 		return "error/error";
 	}
+	/*
 	@ExceptionHandler(Exception.class)
 	public String exceptionHandler(Exception exception, Model model) {
 		model.addAttribute("message", exception.getMessage());
 		return "error/error";
 	}
+	*/
 }

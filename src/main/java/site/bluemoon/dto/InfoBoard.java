@@ -25,8 +25,8 @@ public class InfoBoard {
 	private String infoDivi;
 	private String infoName;
 	private String infoImg;
-	private String infoState;
-	private String infoCount;
+	private int infoState;
+	private int infoCount;
 	
 	public InfoBoard() {
 		// TODO Auto-generated constructor stub
@@ -73,7 +73,7 @@ public class InfoBoard {
 	}
 
 	public String getInfoDate() {
-		return infoDate;
+		return infoDate.substring(0,10);
 	}
 
 	public void setInfoDate(String infoDate) {
@@ -104,19 +104,19 @@ public class InfoBoard {
 		this.infoImg = infoImg;
 	}
 
-	public String getInfoState() {
+	public int getInfoState() {
 		return infoState;
 	}
 
-	public void setInfoState(String infoState) {
+	public void setInfoState(int infoState) {
 		this.infoState = infoState;
 	}
 
-	public String getInfoCount() {
+	public int getInfoCount() {
 		return infoCount;
 	}
 
-	public void setInfoCount(String infoCount) {
+	public void setInfoCount(int infoCount) {
 		this.infoCount = infoCount;
 	}
 	
