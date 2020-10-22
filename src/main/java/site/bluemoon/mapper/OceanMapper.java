@@ -15,7 +15,7 @@ public interface OceanMapper {
 	OceanReservationDTO selectOceanPayment(int rsNo);
 	List<OceanReservationDTO> selectOceanPaymentList();
 	//환불
-	int updateOceanPayment(OceanReservationDTO oceanUpdate);
+	int updateOcean(OceanReservationDTO updateOcean);
 	//생생뉴스
 	List<OceanNews> selectNewsList();
 }

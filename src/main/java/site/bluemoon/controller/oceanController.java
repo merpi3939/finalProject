@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import site.bluemoon.dto.OceanReservationDTO;
+import site.bluemoon.mapper.OceanMapper;
 import site.bluemoon.service.OceanService;
 
 @Controller
@@ -22,14 +24,6 @@ public class oceanController {
 		return "main";
 	}
 	
-	//생생뉴스
-	/*
-	@RequestMapping(value = "/news")
-	public String newsList(Model model) {
-		model.addAttribute("newsList", oceanService.getSelectNewsList());
-		return "main";
-	}
-	*/
 	/*
 	@RequestMapping(value = "/ocean_charge", method = RequestMethod.GET)
 	public String oceanCharge() {
@@ -82,16 +76,26 @@ public class oceanController {
 	}
 	
 	//환불
-	@RequestMapping(value = "/updateOcean", method = RequestMethod.GET)
+	@RequestMapping(value = "/payment_delete", method = RequestMethod.GET)
 	public String updateOcean() {
-		return "bluemoon/waterpark/updatePayment";
+		return "bluemoon/waterpark/payment_delete";
 	}
 	
-	@RequestMapping(value = "/updateOcean", method = RequestMethod.POST)
-	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO oceanUpdate, Model model) {
-		oceanService.getOceanUpdate(oceanUpdate);
+	@RequestMapping(value = "/payment_delete", method = RequestMethod.POST)
+	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean, @RequestParam("paymentList") int rsNo, Model model) {
+		model.addAttribute("updateOcean");
+		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
 		return"redirect:/payment_list";
 	}
+	
+	
+	/*
+	@RequestMapping(value = "/payment_delete", method = RequestMethod.GET)
+	public String updateOcean(@PathVariable int rsNo, Model model) {
+		model.addAttribute("updateOcean", oceanService.getupdateOcean(rsNo));
+	    return "bluemoon/waterpark/payment_delete";
+	}
+	*/
 	
 	//어트랙션
 	@RequestMapping(value = "/attraction1", method = RequestMethod.GET)

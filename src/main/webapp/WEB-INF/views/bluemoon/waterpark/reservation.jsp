@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -280,23 +281,26 @@ div.btns {
 							</tr>
 							<tr>
 								<th>이용권 수량</th>
-								<td><span class="age01">대인</span> <input id="rsAdult"
-									type="number" min="0" max="99" class="agein"
-									value="${addOcean.rsAdult}" name="rsAdult"> <span
-									class="age01">소인</span> <input id="rsChild" type="number"
-									min="0" max="99" class="agein" value="${addOcean.rsChild}"
-									name="rsChild">
+								<td>
+									
+									<span class="age01">대인</span>
+									<input id="rsAdult" type="number" min="0" max="99" class="agein" value="${addOcean.rsAdult}" name="rsAdult">
+
+									<span class="age01">소인</span>
+									<input id="rsChild" type="number" min="0" max="99" class="agein" value="${addOcean.rsChild}" name="rsChild">
+
 								<span id="rsAdultNullMsg" class="msg nameMsg">숫자는 필수 입력입니다.</span>
 								<span id="rsChildNullMsg" class="msg nameMsg">원하는 구매 수량을 선택하세요.</span>
+								
 								</td>
 							</tr>
 							<tr>
 								<th>이용권 금액</th>
-								<%-- <td id="rsPrice" name="rsPrice" value="${addOcean.rsPrice}">${chargeList.cgPrice }</td> --%>
-								<td>
-								<input id="rsPrice" name="rsPrice" value="${chargeList.cgPrice }" readonly="readonly">
-								</td>
+								<%-- <td id="rsPrice" name="rsPrice" value="">${chargeList.cgPrice }</td> --%>
+								<td>${chargeList.cgPrice }</td>
+								<input type="hidden" id="rsPrice" name="rsPrice" value="" />
 							</tr>
+							
 						</tbody>
 					</table>
 
@@ -339,10 +343,11 @@ div.btns {
 					</table>
 
 					<div class="btns">
-						<button onclick="ok()" type="reset" class="formBtn">결제하기</button>
+						<button type="submit" class="formBtn">결제하기</button>
 					</div>
 				</div>
 			</form>
+			
 		</div>
 	</div>
 
@@ -361,10 +366,10 @@ div.btns {
 				autoclose : true
 
 			});
-
+			 
 		});
 
-		function ok() { 
+		$("#form01").submit(function() {
 			var result = true;
 			$(".msg").hide();
 
@@ -400,21 +405,41 @@ div.btns {
 			}
 			
 			var rsAdult = $("#rsAdult").val()
-			var rschild = $("#rschild").val()
+			var rschild = $("#rsChild").val()
 			
 			if (rsAdult == "" || rschild == "") {
 				$("#rsAdultNullMsg").show();
 				result = false;
-			} else if (rschild == 0 && rschild == 0) {
+			} else if (rsAdult == "" && rschild == "") {
+				$("#rsAdultNullMsg").show();
+				result = false;
+			}else if (rschild == 0 && rschild == 0) {
 				$("#rschildNullMsg").show();
 				result = false;
 			}
 			
-			$("#form01").submit();
+			var adult = $("#rsAdult").val();
+			var child = $("#rsChild").val();
+			var price = ${chargeList.cgPrice };
+			
+			var price2 = price - 10000;
+			var sum1 = price * adult;
+			var sum2 = price2 * child;
+			
+			var sum = sum1 + sum2;
+			
+			$("#rsPrice").val(sum);
+			/* 
+			alert(price);
+			alert(sum);
+			 */
+			
 			
 			return result;
 
-		};
+		});
+		
+
 	</script>
 </body>
 </html>

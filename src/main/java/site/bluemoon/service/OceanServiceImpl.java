@@ -19,6 +19,7 @@ public class OceanServiceImpl implements OceanService {
 	public void addOceanReservation(OceanReservationDTO oceanReservation) {
 		OceanDAO.insertOceanReservation(oceanReservation);
 	}
+
 	//요금
 	@Override
 	public OceanChargeDTO getOceanCharge(int cgNo) {
@@ -42,10 +43,12 @@ public class OceanServiceImpl implements OceanService {
 	}
 	
 	//환불
+
 	@Override
-	public void getOceanUpdate(OceanReservationDTO oceanUpdate) {
-		OceanDAO.updateOcean(oceanUpdate);
+	public void updateOcean(OceanReservationDTO updateOcean) {
+		OceanDAO.updateOcean(updateOcean);
 	}
+	
 	//생생뉴스
 	@Override
 	public List<OceanNews> getSelectNewsList() {

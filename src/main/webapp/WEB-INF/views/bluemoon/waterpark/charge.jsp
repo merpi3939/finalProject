@@ -330,7 +330,8 @@ div.btns {
 							<tr>
 								<th>이용권</th>
 								<c:forEach var="charge" items="${oceanChaereList}">
-									<td style="color: #999;"><a href='reservation?chargeList=${charge.cgNo }' >${charge.cgName }</a></td>
+									<td style="color: #999;"><a
+										href='reservation?chargeList=${charge.cgNo }'>${charge.cgName }</a></td>
 								</c:forEach>
 							</tr>
 						</tbody>
@@ -341,6 +342,17 @@ div.btns {
 			</form>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		var date = new Date();
+		var month = date.getMonth() + 1;
+
+		var list = '${charge.cgNo }';
+
+		if (month == 7 || month == 8 || month == 9) {
+
+		}
+	</script>
 
 </body>
 </html>

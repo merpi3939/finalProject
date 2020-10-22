@@ -35,14 +35,15 @@
 		select * from ocean_reservation where rs_no=#{rsNo}
 	</select>
 	
+	
 	<select id="selectOceanPaymentList" resultType="OceanReservationDTO">
 		select * from ocean_reservation order by rs_no
 	</select>
 	
-	<update id="updatePayment">
-		update ocean_reservation set rs_state=0 where rs_no=#{rsNo}
+	<update id="updateOcean" >
+		update ocean_reservation set rs_state=#{rsState} where rs_no=#{rsNo}
 	</update>
-	
+    
 	<select id="selectNewsList" resultType="OceanNews">
 		select 
 			* 
