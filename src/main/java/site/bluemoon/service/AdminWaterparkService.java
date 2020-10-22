@@ -2,6 +2,7 @@ package site.bluemoon.service;
 
 import java.util.List;
 
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -12,9 +13,8 @@ public interface AdminWaterparkService {
 	void addNews(OceanNews oceanNews);
 	void modifyNews(OceanNews oceanNews);
 	void removeNews(int newsNo);
-	OceanNews getSelectNews(int newsNo);
-	List<OceanNews> getSelectNewsList();
-	void removeCheckNews(Integer newsNo);
+	AdminOceanNews getSelectNews(int newsNo);
+	List<AdminOceanNews> getSelectNewsList();
 	
 	//°·Waterpark's Reservation Service
 	List<OceanReservationDTO> getSelectReservationList();

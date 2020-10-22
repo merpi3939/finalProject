@@ -2,6 +2,7 @@ package site.bluemoon.dao;
 
 import java.util.List;
 
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -12,8 +13,8 @@ public interface AdminWaterparkDAO {
 	int insertNews(OceanNews oceanNews);
 	int updateNews(OceanNews oceanNews);
 	int deleteNews(int newsNo);
-	OceanNews selectNews(int newsNo);
-	List<OceanNews> selectNewsList();
+	AdminOceanNews selectNews(int newsNo);
+	List<AdminOceanNews> selectNewsList();
 	int deleteCheckNews(Integer newsNo);
 	
 	//°·Waterpark's Reservation DAO

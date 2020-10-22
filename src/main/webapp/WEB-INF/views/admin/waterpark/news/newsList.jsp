@@ -47,7 +47,7 @@
 										<tr>
 											<th style="text-align: center; width: 30px;"><input id="checkAll" type="checkbox"></th>
 											<th style="text-align: center; width: 60px;">글번호</th>
-											<th style="text-align: center; width: 80px;">작성자<br>(회원번호)</th>
+											<th style="text-align: center; width: 80px;">작성자<br>(아이디)</th>
 											<th style="text-align: center; width: 80px;">작성일자</th>
 											<th style="text-align: center; width: 600px;" class="min-tablet">내용</th>
 											<th style="text-align: center;" class="min-desktop">수정</th>
@@ -57,18 +57,18 @@
 									
 									<tbody>
 										<c:choose>
-											<c:when test="${fn:length(newsList) ==0 }">
+											<c:when test="${fn:length(newsUserList) ==0 }">
 												<tr>
 													<td colspan="7">작성된 뉴스가 없습니다.</td>
 												</tr>
 											</c:when>
 											
 											<c:otherwise>
-												<c:forEach items="${newsList}" var="list" >
+												<c:forEach items="${newsUserList}" var="list" >
 													<tr>
 														<td style="text-align: center;"><input name="checkData" type="checkbox" value="${list.newsNo }"> </td>
 														<td style="text-align: center;">${list.newsNo }</td>
-														<td style="text-align: center;">${list.newsUno }</td>
+														<td style="text-align: center;">${list.userName }<br>(${list.userId })</td>
 														
 														<c:set var="newsDate1" value="${list.newsDate }"/>
 														<c:set var="newsDate" value="${fn:substring(newsDate1, 0, 10) }"/>
