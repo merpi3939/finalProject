@@ -1,18 +1,17 @@
 package site.bluemoon.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.ws.RequestWrapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
 
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.service.AdminWaterparkService;
@@ -38,6 +37,7 @@ public class AdminWaterparkController {
 	
 	@RequestMapping(value = "/newsInsert", method = RequestMethod.POST)
 	public String newsInsert(@ModelAttribute OceanNews oceanNews) {
+		oceanNews.setNewsCont(HtmlUtils.htmlEscape(oceanNews.getNewsCont()));
 		adminWaterparkService.addNews(oceanNews);
 		return "redirect:/admin/newsList";
 	}
