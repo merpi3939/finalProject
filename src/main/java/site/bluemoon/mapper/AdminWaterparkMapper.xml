@@ -140,4 +140,5 @@
 		order by
 			cg_no
 	</select>
+	
 </mapper>

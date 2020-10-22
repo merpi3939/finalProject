@@ -21,4 +21,5 @@ public interface AdminWaterparkMapper {
 	
 	//¡áWaterpark's Charge Mapper
 	List<OceanChargeDTO> selectChargeList();
+	
 }
