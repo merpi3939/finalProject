@@ -142,7 +142,8 @@
 	<script src=<c:url value="/admin/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"/>></script>
 	<!--Chosen [ OPTIONAL ]-->
 	<script <c:url value="/admin/plugins/chosen/chosen.jquery.min.js"/>></script>
-	
+	<!--jQuery [ REQUIRED ]-->
+	<script src=<c:url value="/admin/js/jquery-2.1.1.min.js"/>></script>
 </body>
 </html>
 
