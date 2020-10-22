@@ -20,6 +20,8 @@ public class HotelReserveDTO {
 	private String reserveRoom;	
 	private String reserveperson;		
 	private String reserveMemname;
+	
+	
 	public String getReserveperson() {
 		return reserveperson;
 	}

@@ -206,7 +206,7 @@ p {
   
 <div class="shop-detail-box-main">
 	<div class="container" style="padding-top: 50px;">
-	<form action="Hoteladd" method="post">
+	<form action="Hoteladd" id="hotelCategoryPrice" name="hotelCategoryPrice" method="post">
 		<div style="border-bottom: 2px solid #E2E2E2; padding-bottom: 50px;">
 			<div style="text-align: center;">
 				<h2 style="padding-top: 30px;">${hotelCategoryNo.hotelCategoryName }</h2>
@@ -302,16 +302,28 @@ p {
 									name="reserveMememail" value="${hotel.reserveMememail }" placeholder="이메일">
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control"
+									name="hotelCategoryName" value="${hotelCategoryNo.hotelCategoryName }" placeholder="선택룸">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control"
+									id="hotelCategoryPrice" name="hotelCategoryPrice"  placeholder="룸가격">
+							</div>
+						</div>
 						 <div class="col-md-6">
 							<div class="form-group">
 								<input type="text" id="datepicker1" class="form-control"
-									name="reserveCheckIn" value="${hotel.reserveCheckIn }" placeholder="체크인 날짜">
+									name="reserveCheckIn" value="${hotel.reserveCheckIn }" placeholder="체크인 날짜"  onchange="call()">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" id="datepicker2" class="form-control"
-									name="reserveCheckOut" value="${hotel.reserveCheckOut }" placeholder="체크아웃 날짜">
+									name="reserveCheckOut" value="${hotel.reserveCheckOut }" placeholder="체크아웃 날짜"  onchange="call()">
 							</div>
 						</div> 
 						<div class="col-md-12">
@@ -407,6 +419,25 @@ p {
 			}
 		});
 	});
-</script>
 
+	
+</script>
+<script type="text/javascript">
+function call()
+{
+	var price = document.getElementById("hotelCategoryPrice").value;
+    var sdd = document.getElementById("datepicker1").value;
+    var edd = document.getElementById("datepicker2").value;
+    var ar1 = sdd.split('-');
+    var ar2 = edd.split('-');
+    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+    var dif = da2 - da1;
+    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+ if(sdd && edd){
+    document.getElementById("hotelCategoryPrice").value = parseInt((dif/cDay)*price);
+ }
+}
+
+</script>
 

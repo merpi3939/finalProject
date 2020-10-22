@@ -91,23 +91,23 @@ ul {
 <div class="cart-box-main">
 	<div class="container">
 		<div class="row">
+		<form class="needs-validation" action="hotelinsert" method="post">
 			<div class="col-sm-6 col-lg-6 mb-3">
 				<div class="checkout-address">
 					<div class="title-left">
 						<h3>예약 정보 확인</h3>
 					</div>
-					<form class="needs-validation" novalidate>
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="firstName">체크인</label> <input type="text"
-									class="form-control" id="firstName"  value="${hotel.reserveCheckIn }"
+									class="form-control" name="reserveCheckIn"  value="${hotel.reserveCheckIn }"
 									required>
 								<div class="invalid-feedback">Valid first name is
 									required.</div>
 							</div>
 							<div class="col-md-6 mb-3">
 								<label for="lastName">체크아웃</label> <input type="text"
-									class="form-control" id="lastName" placeholder="" value="${hotel.reserveCheckOut }"
+									class="form-control" name="reserveCheckOut" placeholder="" value="${hotel.reserveCheckOut }"
 									required>
 								<div class="invalid-feedback">Valid last name is required.
 								</div>
@@ -116,41 +116,52 @@ ul {
 						<div class="row">
 							<div class="col-md-6 mb-3">
 								<label for="firstName">예약 인원</label> <input type="text"
-									class="form-control" id="lastName" value="${hotel.reserveperson }">
+									class="form-control" name="reserveCheckperson" value="${hotel.reserveperson }">
 								<div class="invalid-feedback">Valid first name is
 									required.</div>
 							</div>
 							<div class="col-md-6 mb-3">
-								<label for="lastName">선택룸정보</label> <input type="text"
-									class="form-control" id="lastName" placeholder="" value="${hotelCategoryNo.hotelCategoryPrice }"
+								<label for="lastName">선택룸정보</label> <select type="text"
+									class="form-control" name="reserveRoom"
 									required>
+									<option value="${category.hotelCategoryNo}">${category.hotelCategoryName}</option>
+									<option value="1">Standard</option>
+									<option value="2">Deluxe</option>
+									<option value="3">Suite</option>									
+									</select>
 								<div class="invalid-feedback">Valid last name is required.
 								</div>
 							</div>
 						</div>
+						
 						<div class="mb-3">
 							<label for="username">예약자 성함</label>
 							<div class="input-group">
-								<input type="text" class="form-control" id="username"
+								<input type="text" class="form-control" name="reserveMemname"
 									value="${hotel.reserveMemname }"  >
 								<div class="invalid-feedback" style="width: 100%;">Your
 									username is required.</div>
 							</div>
 						</div>
 						<div class="mb-3">
-							<label for="email">휴대폰 번호</label> <input type="email"
-								class="form-control" id="email" value="${hotel.reserveMemphone }">
+							<label for="email">휴대폰 번호</label> <input type="text"
+								class="form-control" name="reserveMemphone" value="${hotel.reserveMemphone }">
 							<div class="invalid-feedback">Please enter a valid email
 								address for shipping updates.</div>
 						</div>
 						<div class="mb-3">
+							<label for="address">이메일 주소</label> <input type="email"
+								class="form-control" name="reserveMememail" value="${hotel.reserveMememail }">
+							<div class="invalid-feedback">Please enter your shipping
+								address.</div>
+						</div>
+						<div class="mb-3" style="display: none">
 							<label for="address">이메일 주소</label> <input type="text"
-								class="form-control" id="address" value="${hotel.reserveMememail }">
+								class="form-control" name="reservePrice" value="${category.hotelCategoryPrice }">
 							<div class="invalid-feedback">Please enter your shipping
 								address.</div>
 						</div>
 						<hr class="mb-4">
-					</form>
 				</div>
 			</div>
 			<div class="col-sm-6 col-lg-6 mb-3">
@@ -165,8 +176,8 @@ ul {
 								<div class="mb-3">
 							<label for="username">결제금액</label>
 							<div class="input-group">
-								<input type="text" class="form-control" id="username"
-									value="${hotelCategoryNo.hotelCategoryPrice }"  >
+								<input type="text" class="form-control" name="hotelPayPrice"
+									value="${category.hotelCategoryPrice }"  >
 								<div class="invalid-feedback" style="width: 100%;">Your
 									username is required.</div>
 							</div>
@@ -217,20 +228,15 @@ ul {
 											class="form-control" id="cc-cvv" placeholder="" required>
 										<div class="invalid-feedback">Security code required</div>
 									</div>
-								</div>
-							</div>
+									<div class="col-12 d-flex shopping-box">
+					<button type="submit" class="ml-auto btn hvr-hover"
+						style="background-color: red !important; color: white !important;">Place Order</button>
+				</div>
+								</div></div></div></div></div>
+							</form>
 						</div>
 					</div>
 				</div>
 				<div>
-					<hr class="mb-4">
 				</div>
-				<div class="col-12 d-flex shopping-box">
-					<a href="checkout.html" class="ml-auto btn hvr-hover"
-						style="background-color: red !important; color: white !important;">Place Order</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
+					

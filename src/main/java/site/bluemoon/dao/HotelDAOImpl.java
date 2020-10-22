@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import site.bluemoon.dto.HotelCategory;
+import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
 import site.bluemoon.mapper.HotelMapper;
 @Repository
@@ -24,6 +25,10 @@ public class HotelDAOImpl implements HotelDAO{
 	@Override
 	public List<HotelCategory> selectHotelCategoryList() {
 		return sqlSession.getMapper(HotelMapper.class).selectHotelCategoryList();
+	}
+	@Override
+	public int insertHotelPay(HotelPay pay) {
+		return sqlSession.getMapper(HotelMapper.class).insertHotelPay(pay);
 	}
 
 }
