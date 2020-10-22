@@ -66,7 +66,7 @@ public class InfoController {
 		
 		Map<String, Object> returnMap=new HashMap<String, Object>();
 		returnMap.put("noticeBoardList", boardService.findInfoBoardList(pagerMap));
-		returnMap.put("endRow", pager.getEndRow());
+		returnMap.put("pager", pager);
 		
 		return returnMap;
 	}

@@ -80,7 +80,7 @@
 		{{#each .}}
  		<tbody>   	
    			<tr>
-      			<td>{{number}}</td>
+      			<td>{{noticeNo infoNo}}</td>
       			<td><a class="table-a" href="#">{{infoTitle}}</a></td>
       			<td>{{infoCount}}</td>
 			    <td>{{infoDate}}</td>
@@ -104,11 +104,18 @@ function boardDisplay(pageNum) {
 				$("#noticeListDiv").html("검색된 게시글이 존재하지 않습니다.");
 				return;
 			}
-			
+			var no=json.pager.no;
 			var source=$("#template").html();
 			var template=Handlebars.compile(source);
+			
 			$("#noticeListDiv").html(template(json.noticeBoardList));
-			alert(json.pager.number);
+			
+			
+			Handlebars.registerHelper('noticeNo', function (infoNo) {
+				  return infoNo+"야";
+			});
+				  
+			
 			/* pageDisplay(json.pager); */
 		},
 		error: function(xhr) {
@@ -117,7 +124,14 @@ function boardDisplay(pageNum) {
 	});
 }
 
-
+function pageDisplay(pager) {
+	var html="<ul>";
+	
+	for(var i=pager.startPage; i<=pager.endPage; i++) {
+		
+	}
+	
+}
 
 $(document).ready(function() {
 	$('#summernote').summernote({

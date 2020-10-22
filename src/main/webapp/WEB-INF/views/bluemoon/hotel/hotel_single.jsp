@@ -206,7 +206,7 @@ p {
   
 <div class="shop-detail-box-main">
 	<div class="container" style="padding-top: 50px;">
-	<form action="Hoteladd" id="hotelCategoryPrice" name="hotelCategoryPrice" method="post">
+	<form action="Hoteladd" id="hotelCategoryForm" name="hotelCategoryForm" method="post">
 		<div style="border-bottom: 2px solid #E2E2E2; padding-bottom: 50px;">
 			<div style="text-align: center;">
 				<h2 style="padding-top: 30px;">${hotelCategoryNo.hotelCategoryName }</h2>
@@ -311,19 +311,20 @@ p {
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" class="form-control"
-									id="hotelCategoryPrice" name="hotelCategoryPrice" value="${hotelCategoryNo.hotelCategoryPrice }" placeholder="룸가격">
+									id="hotelCategoryPrice" name="hotelCategoryPrice" value="" placeholder="룸가격">
+								<input id="onePrice" hidden="hidden" value="2000">
 							</div>
 						</div>
 						 <div class="col-md-6">
 							<div class="form-group">
 								<input type="text" id="datepicker1" class="form-control"
-									name="reserveCheckIn" value="${hotel.reserveCheckIn }" placeholder="체크인 날짜" onchange="call()">
+									name="reserveCheckIn" readonly="readonly" placeholder="체크인 날짜">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" id="datepicker2" class="form-control"
-									name="reserveCheckOut" value="${hotel.reserveCheckOut }" placeholder="체크아웃 날짜" onchange="call()">
+								<input type="text" id="datepicker2" class="form-control" 
+								name="reserveCheckOut" readonly="readonly" placeholder="체크아웃 날짜">
 							</div>
 						</div> 
 						<div class="col-md-12">
@@ -395,50 +396,110 @@ p {
 	</div>
 </div>
 <script type="text/javascript">
-	$(document).ready(function() {
+	
+	function formatDate(date) {
+	    var d = new Date(date),
+	        month = '' + (d.getMonth() + 1),
+	        day = '' + d.getDate(),
+	        year = d.getFullYear();
+	
+	    if (month.length < 2) 
+	        month = '0' + month;
+	    if (day.length < 2) 
+	        day = '0' + day;
+	
+	    return [year, month, day].join('-');
+	}
+	
+	$(function() {
 		$('#datepicker1').datepicker({
 			format : 'yyyy-mm-dd', // 달력에서 클릭시 표시할 값 형식
 			todayHighlight : true,
-			autoclose : true // 날짜 클릭시 자동 닫힘
+			autoclose : true, // 날짜 클릭시 자동 닫힘
 			
 		})
-		.datepicker('setDate', new Date(new Date())) // 금일 날짜로 세팅
-		.on('changeDate', function(selectedDate){ // 날짜가 변경 되었을 때 실행
-			if($('#datepicker2').val() > $('#datepicker1').val()){ // 종료일보다 시작일자가 큰 경우 종료일자로 만듬
-				 $('#datepicker1').datepicker('setDate', new Date($('#datepicker2').val()));
-			}
+		 .on('changeDate', function(){ // 날짜가 변경 되었을 때 실행
+			 var start=$('#datepicker1').val();
+			 var end=$('#datepicker2').val();
+			 var date=formatDate(new Date());
+			 
+			 if(start!="" && end!="") {
+			 	priceChange();  
+			 }
+			 if(start < date) {
+				$('#datepicker1').datepicker('setDate', date);
+			 }  
+			 else if(end!="" && start >= end){ // 종료일보다 시작일자가 큰 경우 종료일자로 만듬
+				if(end==date) {
+					var newDate=new Date(end);
+				 	newDate.setDate(newDate.getDate()+1);
+				 	$('#datepicker2').datepicker('setDate', newDate);
+				} else {
+					var newDate=new Date(end);
+			 		newDate.setDate(newDate.getDate()-1);
+			 		$('#datepicker1').datepicker('setDate', newDate);
+				 }
+			 }
 		});
+	});
+	
+	$(function() {
 		$('#datepicker2').datepicker({
 			format : "yyyy-mm-dd", // 달력에서 클릭시 표시할 값 형식
 			todayHighlight : true,
-			autoclose : true
-		}).datepicker('setDate', new Date(new Date())) // 금일 날짜로 세팅
+			autoclose : true,
+		})
 		.on('changeDate', function(){ // 날짜가 변경 되었을 때 실행
-			if($('#datepicker1').val() > $('#datepicker2').val()){ // 시작일보다 종료일자가 앞선 경우 시작일자로 만듬
-				 $('#datepicker2').datepicker('setDate', new Date($('#datepicker1').val()));
+		 	var start=$('#datepicker1').val();
+		 	var end=$('#datepicker2').val();
+		 	var date=formatDate(new Date());
+			
+		 	if(start!="" && end!="") {
+			 	priceChange();  
+			 }
+		 	
+		 	if(end < date) {
+		 		$('#datepicker2').datepicker('setDate', date);
+		 	} else if(start!="" && start >= end) { // 시작일보다 종료일자가 앞선 경우 시작일자로 만듬
+		 		var newDate=new Date(start);
+			 	newDate.setDate(newDate.getDate()+1);
+				$('#datepicker2').datepicker('setDate', newDate);
 			}
 		});
 	});
 	
-
-
-
-function call()
-{
-	var price = document.getElementById("hotelCategoryPrice").value;
-    var sdd = document.getElementById("datepicker1").value;
-    var edd = document.getElementById("datepicker2").value;
-    var ar1 = sdd.split('-');
-    var ar2 = edd.split('-');
-    var da1 = new Date(ar1[0], ar1[1], ar1[2]);
-    var da2 = new Date(ar2[0], ar2[1], ar2[2]);
-    var dif = da2 - da1;
-    var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
- if(sdd && edd){
-    document.getElementById('hotelCategoryPrice').value = parseInt(dif/cDay)
- }
-}
+	function priceChange() {
+		var start=$('#datepicker1').val();
+		var end=$('#datepicker2').val();
+		var price=Number($("#onePrice").val());
+		var listDate=[];
+		
+		getDateRange(start, end, listDate);		
+		
+		var day=Number(listDate.length-1);
+		var totalPrice=price*day;
+		
+		$("#hotelCategoryPrice").val(totalPrice);
+	};
 	
+	function getDateRange(startDate, endDate, listDate) {
+        var dateMove = new Date(startDate);
+        var strDate = startDate;
+        if (startDate == endDate) {
+            var strDate = dateMove.toISOString().slice(0,10);
+            listDate.push(strDate);
+        } else {
+            while (strDate < endDate){
+                var strDate = dateMove.toISOString().slice(0, 10);
+                listDate.push(strDate);
+                dateMove.setDate(dateMove.getDate() + 1);
+            }
+        }
+        return listDate;
+    };
+
+
+
 	
 </script>
 
