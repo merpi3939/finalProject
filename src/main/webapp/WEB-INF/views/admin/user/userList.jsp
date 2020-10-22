@@ -109,6 +109,3 @@
 	</div>
 	<!--===================================================-->
 	<!--END CONTENT CONTAINER-->
-	
-	<script type="text/javascript">
-	</script>
