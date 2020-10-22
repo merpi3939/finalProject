@@ -2,6 +2,7 @@ package site.bluemoon.mapper;
 
 import java.util.List;
 
+import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 
@@ -17,4 +18,8 @@ public interface AdminWaterparkMapper {
 	
 	//°·Waterpark's Reservation Mapper
 	List<OceanReservationDTO> selectReservationList();
+	
+	//°·Waterpark's Charge Mapper
+	List<OceanChargeDTO> selectChargeList();
+	
 }

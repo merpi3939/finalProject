@@ -2,12 +2,9 @@ package site.bluemoon.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import site.bluemoon.dto.AdminUserReservation;
+import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
-import site.bluemoon.dto.User;
 
 public interface AdminWaterparkService {
 
@@ -21,4 +18,7 @@ public interface AdminWaterparkService {
 	
 	//°·Waterpark's Reservation Service
 	List<OceanReservationDTO> getSelectReservationList();
+	
+	//°·Waterpark's Charge Service
+	List<OceanChargeDTO> selectChargeList();
 }
