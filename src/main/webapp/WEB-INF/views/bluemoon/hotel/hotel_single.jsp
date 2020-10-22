@@ -472,17 +472,34 @@ p {
 		var start=$('#datepicker1').val();
 		var end=$('#datepicker2').val();
 		var price=Number($("#onePrice").val());
+		var listDate=[];
 		
-		var startArry=start.split("-");
-		var endArry=end.split("-");
+		getDateRange(start, end, listDate);		
 		
-		var noStart=Number(startArry[2]);
-		var noEnd=Number(endArry[2]);
-		
-		var totalPrice=(noEnd-noStart)*price;
+		var day=Number(listDate.length-1);
+		var totalPrice=price*day;
 		
 		$("#hotelCategoryPrice").val(totalPrice);
 	};
+	
+	function getDateRange(startDate, endDate, listDate) {
+        var dateMove = new Date(startDate);
+        var strDate = startDate;
+        if (startDate == endDate) {
+            var strDate = dateMove.toISOString().slice(0,10);
+            listDate.push(strDate);
+        } else {
+            while (strDate < endDate){
+                var strDate = dateMove.toISOString().slice(0, 10);
+                listDate.push(strDate);
+                dateMove.setDate(dateMove.getDate() + 1);
+            }
+        }
+        return listDate;
+    };
+
+
+
 	
 </script>
 
