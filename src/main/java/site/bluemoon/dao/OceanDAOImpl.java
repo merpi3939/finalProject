@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import site.bluemoon.dto.OceanChargeDTO;
+import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.mapper.OceanMapper;
 
@@ -41,4 +42,16 @@ public class OceanDAOImpl implements OceanDAO {
 	public List<OceanReservationDTO> selectOceanPaymentList() {
 		return sqlSession.getMapper(OceanMapper.class).selectOceanPaymentList();
 	}
+	
+	//환불
+	public int updateOcean(OceanReservationDTO oceanUpdate) {
+		return  sqlSession.getMapper(OceanMapper.class).updateOceanPayment(oceanUpdate);
+	}
+	
+	//생생뉴스	
+	@Override
+	public List<OceanNews> selectNewsList() {
+		return sqlSession.getMapper(OceanMapper.class).selectNewsList();
+	}
+	
 }

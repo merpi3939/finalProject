@@ -38,5 +38,18 @@
 	<select id="selectOceanPaymentList" resultType="OceanReservationDTO">
 		select * from ocean_reservation order by rs_no
 	</select>
+	
+	<update id="updatePayment">
+		update ocean_reservation set rs_state=0 where rs_no=#{rsNo}
+	</update>
+	
+	<select id="selectNewsList" resultType="OceanNews">
+		select 
+			* 
+		from 
+			ocean_news  
+		order by 
+			news_no
+	</select>
 </mapper>
 

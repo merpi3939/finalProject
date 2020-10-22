@@ -4,6 +4,7 @@ package site.bluemoon.dao;
 import java.util.List;
 
 import site.bluemoon.dto.OceanChargeDTO;
+import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 
 public interface OceanDAO {
@@ -14,5 +15,9 @@ public interface OceanDAO {
 	//결제
 	OceanReservationDTO selectOceanPayment(int rsNo);
 	List<OceanReservationDTO> selectOceanPaymentList();
+	//환불
+	int updateOcean(OceanReservationDTO oceanUpdate);
+	//생생뉴스
+	List<OceanNews> selectNewsList();
 }
 

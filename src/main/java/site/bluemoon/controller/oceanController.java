@@ -17,10 +17,19 @@ public class oceanController {
 	private OceanService oceanService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String waterPark() {
+	public String waterPark(Model model) {
+		model.addAttribute("newsList", oceanService.getSelectNewsList());
 		return "main";
 	}
 	
+	//생생뉴스
+	/*
+	@RequestMapping(value = "/news")
+	public String newsList(Model model) {
+		model.addAttribute("newsList", oceanService.getSelectNewsList());
+		return "main";
+	}
+	*/
 	/*
 	@RequestMapping(value = "/ocean_charge", method = RequestMethod.GET)
 	public String oceanCharge() {
@@ -47,7 +56,6 @@ public class oceanController {
 	}
 	
 	//예약 추가	
-	
 	@RequestMapping(value = "/addOcean", method = RequestMethod.GET)
 	public String addOcean() {
 		return "bluemoon/waterpark/reservation";
@@ -71,6 +79,18 @@ public class oceanController {
 	public String oceanPaymentList(@RequestParam("paymentList") int rsNo, Model model) {
 		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
 		return "bluemoon/waterpark/payment";
+	}
+	
+	//환불
+	@RequestMapping(value = "/updateOcean", method = RequestMethod.GET)
+	public String updateOcean() {
+		return "bluemoon/waterpark/updatePayment";
+	}
+	
+	@RequestMapping(value = "/updateOcean", method = RequestMethod.POST)
+	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO oceanUpdate, Model model) {
+		oceanService.getOceanUpdate(oceanUpdate);
+		return"redirect:/payment_list";
 	}
 	
 	//어트랙션

@@ -3,6 +3,7 @@ package site.bluemoon.mapper;
 import java.util.List;
 
 import site.bluemoon.dto.OceanChargeDTO;
+import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 
 public interface OceanMapper {
@@ -13,4 +14,8 @@ public interface OceanMapper {
 	//결제
 	OceanReservationDTO selectOceanPayment(int rsNo);
 	List<OceanReservationDTO> selectOceanPaymentList();
+	//환불
+	int updateOceanPayment(OceanReservationDTO oceanUpdate);
+	//생생뉴스
+	List<OceanNews> selectNewsList();
 }

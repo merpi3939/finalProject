@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.OceanDAO;
 import site.bluemoon.dto.OceanChargeDTO;
+import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 
 @Service
@@ -38,5 +39,16 @@ public class OceanServiceImpl implements OceanService {
 	@Override
 	public List<OceanReservationDTO> getOceanPaymentList() {
 		return OceanDAO.selectOceanPaymentList();
+	}
+	
+	//환불
+	@Override
+	public void getOceanUpdate(OceanReservationDTO oceanUpdate) {
+		OceanDAO.updateOcean(oceanUpdate);
+	}
+	//생생뉴스
+	@Override
+	public List<OceanNews> getSelectNewsList() {
+		return OceanDAO.selectNewsList();
 	}
 }

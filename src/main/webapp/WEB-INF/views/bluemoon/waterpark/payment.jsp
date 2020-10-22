@@ -258,7 +258,7 @@ div.btns {
 			<form class="form01">
 				<div class="wrap100" style="">
 					<div>
-						<h5>결제정보</h5>
+						<h5>결제 정보</h5>
 						<table class="res01">
 							<colgroup>
 								<col width="40%">
