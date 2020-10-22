@@ -71,7 +71,7 @@
 											<c:set var="useDate" value="${fn:substring(useDate1, 0, 10) }"/>
 											<td align="center" >${useDate }</td>
 											
-											<td align="center" >성수기<br>${pr.rsTicket }</td>
+											<td align="center" >${pr.rsTicket }</td>
 											<td align="center" >대인: &nbsp;${pr.rsAdult }명 <br>소인: &nbsp;${pr.rsChild }명</td>
 											<td align="center" ><fmt:formatNumber value="${pr.rsPrice }" /> </td>
 											

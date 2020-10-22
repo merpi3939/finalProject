@@ -1,5 +1,15 @@
 package site.bluemoon.dto;
 
+/*
+ 이름        널        유형             
+--------- -------- -------------- 
+CG_NO     		NOT NULL		 NUMBER         
+CG_NAME        					  VARCHAR2(1000) 
+CG_SEASON          				  VARCHAR2(1000) 
+CG_PRICE              				  NUMBER 
+
+CG_NO_SEQ
+ */
 public class OceanChargeDTO {
 	private int cgNo;
 	private String cgName;

@@ -70,8 +70,6 @@ public class AdminWaterparkController {
 	@RequestMapping(value = "/prList")
 	public String prList(Model model) {
 		model.addAttribute("prList", adminWaterparkService.getSelectReservationList());
-		System.out.println("11111111");
-		
 		return "admin/waterpark/pr/prList";
 	}
 	

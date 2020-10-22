@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.AdminWaterparkDAO;
-import site.bluemoon.dto.AdminUserReservation;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
-import site.bluemoon.dto.User;
 
 @Service
 public class AdminWaterparkServiceImpl implements AdminWaterparkService {

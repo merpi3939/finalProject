@@ -61,23 +61,7 @@
 										<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
 										<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
 									</tr>
-									<tr>
-										<td style="text-align: center;">2</td>
-										<td style="text-align: center;">비수기</td>
-										<td style="text-align: center;">종일권실내</td>
-										<td style="text-align: center;">대인: 50,000원<br>소인: 40,000원</td>
-										<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
-										<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
-									</tr>
-									<tr>
-										<td style="text-align: center;">3</td>
-										<td style="text-align: center;">성수기</td>
-										<td style="text-align: center;">종일권실내</td>
-										<td style="text-align: center;">대인: 50,000원<br>소인: 40,000원</td>
-										<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
-										<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
-									</tr>
-								</tbody>
+
 							</table>
 							
 							<div>
