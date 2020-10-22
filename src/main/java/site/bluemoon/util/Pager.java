@@ -50,6 +50,7 @@ public class Pager {
 		nextPage=startPage+blockSize;
 		
 		no=totalBoard-(pageNum-1)*pageSize;
+		
 	}
 
 	

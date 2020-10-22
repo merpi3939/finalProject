@@ -9,4 +9,6 @@ public interface BoardService {
 	void addInfoBoard(InfoBoard infoBoard);
 	int findInfoBoardCount(Map<String, Object>map);
 	List<InfoBoard> findInfoBoardList(Map<String, Object>map);
+	InfoBoard findInfoBoard(Map<String, Object>map);
+	void modifyInfoBoard(InfoBoard infoBoard);
 }
