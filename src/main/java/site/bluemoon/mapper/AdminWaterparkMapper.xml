@@ -69,5 +69,49 @@
 	</delete>
 	
 	<!-- ■Waterpark's Reservation Mapper -->
+	<resultMap id="userOceanResultMap" type="AdminUserReservation">
+		<association property="user" javaType="User">
+			<id property="userNo" column="user_no" />
+			<result property="userId" column="user_id" />
+				<!-- 	
+			<result property="userpassword" column="user_password" />		
+			<result property="username" column="user_name" />		
+			<result property=	"userbirthday" column="user_birthday" />		
+			<result property="userphone" column="user_phone" />		
+			<result property="useremail" column="user_email" />		
+			<result property="usersex" column="user_email" />		
+			<result property="userzipcode" column="user_zipcode" />		
+			<result property="useraddress1" column="user_address1" />		
+			<result property="useraddress2" column="user_address2" />		
+			<result property="userpoint" column="user_point" />		
+			<result property="userjoindate" column="user_joindate" />		
+			<result property="userlogindate" column="user_logindate" />		
+			<result property="userwithdrowdate" column="user_withdrowdate" />		
+			<result property="userstate" column="user_state" />	
+				 -->
+		</association>
+		
+		<association property="ocean" javaType="OceanReservationDTO">
+			<id property="rsNo" column="rs_no" />
+			<result property="rsUno" column="rs_uno" />		
+			<result property="rsName" column="rs_name" />		
+			<result property="rsPhone" column="rs_phone" />		
+			<result property="rsDate" column="rs_date" />		
+			<result property="rsUsedate" column="rs_usedate" />		
+			<result property="rsTicket" column="rs_ticket" />		
+			<result property="rsAdult" column="rs_adult" />		
+			<result property="rsChild" column="rs_child" />		
+			<result property="rsState" column="rs_state" />		
+			<result property="rsPrice" column="rs_price" />		
+			<result property="rsOption" column="rs_option" />		
+		</association>
+	</resultMap>
 	
+	<select id="selectReservationList" resultType="OceanReservationDTO">
+		select
+			*
+		from 
+			ocean_reservation 
+		
+	</select>
 </mapper>
