@@ -11,6 +11,17 @@
 .table {
 	border-bottom: 1px solid #dee2e6;
 }
+
+/* @media screen and (max-width:375px) {
+#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
+	width: 31%;
+} */
+@media screen and (max-width:768px) {
+#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
+	width: 31%;
+}
+
+}
 </style>
 </head>
 <body>
@@ -82,10 +93,10 @@
 	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
 	    </div>
 	    <div class="write-div">
-	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>	    
-	    	<button type="button" class="write-btn btn" id="remove-btn" onclick="removeNotice();" style="margin-bottom: 50px;">삭제하기</button>	    
-	    	<button type="button" class="write-btn btn" id="update-btn" onclick="updateNotice();" style="margin-bottom: 50px; display: none;">수정하기</button>	    
-	    	<button type="button" class="write-btn btn" id="list-btn2" style="margin-bottom: 50px;">목록</button>	    
+	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>
+	    	<button type="button" class="write-btn btn" id="remove-btn" onclick="removeNotice();" style="margin-bottom: 50px;">삭제하기</button>
+	    	<button type="button" class="write-btn btn" id="update-btn" onclick="updateNotice();" style="margin-bottom: 50px; display: none;">수정하기</button>
+	    	<button type="button" class="write-btn btn" id="list-btn2" style="margin-bottom: 50px;">목록</button>
 	    </div>
 	</div>
 </div>
