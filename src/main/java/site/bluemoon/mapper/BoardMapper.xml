@@ -6,7 +6,7 @@
 			select info_board_sequence.nextval from dual
 		</selectKey>
 		insert into info_board values(#{infoNo},#{infoUserId},#{infoUserName},#{infoTitle},#{infoContent},sysdate,#{infoDivi},#{infoName}
-		,#{infoImg},#{infoState},#{infoCount}) 
+		,#{infoImg},#{infoState},#{infoCount},#{infoRemove})
 	</insert>
 	
 	<select id="selectInfoBoardCount" parameterType="map" resultType="int">
@@ -15,7 +15,7 @@
 			<if test="keyword!=null and keyword!=''">
 				${search} like '%'||#{keyword}||'%' and
 			</if>
-			info_name=#{infoName} and info_state=#{infoState}
+			info_name=#{infoName} and info_remove=#{infoRemove}
 		</where>
 	</select>
 		
@@ -23,15 +23,15 @@
 		select * from (select rownum rn, board.* from (select * from info_board
 		<where>
 			<if test="keyword!=null and keyword!=''">
-				${search} like '%'||#{keyword}||'%' and info_name=#{infoName} and info_state=#{infoState}
+				${search} like '%'||#{keyword}||'%' and 
 			</if>
-		info_name=#{infoName} and info_state=#{infoState}
+		info_name=#{infoName} and info_remove=#{infoRemove}
 		</where>
 		 order by info_no desc)board) where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="selectInfoBoard" resultType="infoBoard">
-		select * from info_board where info_no=#{infoNo} and info_name=#{infoName} and info_state=#{infoState}
+		select * from info_board where info_no=#{infoNo} and info_name=#{infoName} and info_remove=#{infoRemove}
 	</select>
 
 	<update id="updateInfoBoard">
@@ -47,7 +47,13 @@
 				info_state=#{infoState},
 			</if>
 			<if test="infoCount!=null and infoCount!=''">
-				info_count=#{infoCount}
+				info_count=#{infoCount},
+			</if>
+			<if test="infoDivi!=null and infoDivi!=''">
+				info_divi=#{infoDivi},
+			</if>
+			<if test="infoRemove!=null and infoRemove!=''">
+				info_remove=#{infoRemove}
 			</if>
 		</set>
 		where info_no=#{infoNo}

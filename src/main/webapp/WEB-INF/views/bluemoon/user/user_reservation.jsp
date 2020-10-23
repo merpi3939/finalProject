@@ -63,7 +63,7 @@
  		</c:forEach>	
 		 </tbody> 
 		</table>    
- 		<div id="message">${message }</div>   	
+ 		<div id="message">${message1 }</div>   	
 	</div>	 
 		
 	<div class="col-md-7 heading-section ftco-animate title-style">
@@ -90,6 +90,6 @@
 	 		</c:forEach>
 		 </tbody>  
 		</table>    
- 		<div id="message">${message }</div>   	
+ 		<div id="message">${message2 }</div>   	
 	</div>	 
 </div>
