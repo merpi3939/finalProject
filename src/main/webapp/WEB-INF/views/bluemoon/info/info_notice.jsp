@@ -30,8 +30,19 @@
             <h2><strong>공지사항</strong></h2>
     </div>
     <div class="table-responsive" style="overflow-x: hidden;">
-    	<div id="noticeListDiv">   	
-		</div>  
+    		<table class="table" style="margin-bottom: 50px;">
+ 			<thead>
+   				<tr>
+  					<th width="100">글번호</th>
+  					<th width="500">제목</th>
+  					<th width="100">조회수</th>
+  					<th width="100">작성일</th>
+				</tr>
+ 			</thead>
+    	<tbody id="noticeListDiv">   	
+ 			 		
+		</tbody>  
+		</table>   
 		<div style="margin-bottom: 96px;">
 			<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
 		</div>
@@ -100,29 +111,6 @@
 	    </div>
 	</div>
 </div>
-
-<script id="template" type="text/x-handlebars-template">
-	<table class="table" style="margin-bottom: 50px;">
- 			<thead>
-   				<tr>
-  					<th width="100">글번호</th>
-  					<th width="500">제목</th>
-  					<th width="100">조회수</th>
-  					<th width="100">작성일</th>
-				</tr>
- 			</thead>
-		{{#each noticeBoardList}}
- 		<tbody>   	
-   			<tr>
-      			<td>{{../pager.no}}</td>
-      			<td><a class="table-a" href='javascript:viewDisplay({{infoNo}})'>{{infoTitle}}</a></td>
-      			<td>{{infoCount}}</td>
-			    <td>{{infoDate}}</td>
-   			</tr>
-		 </tbody>
-		{{/each}}
-	</table>   
-</script>
 <script type="text/javascript">
 
 var page=1;
@@ -141,13 +129,18 @@ function boardDisplay(pageNum) {
 				$("#keyword").val("");
 				pageDisplay(json.pager);
 				return;
+			}		
+			var leng=json.noticeBoardList.length;
+			var html="";
+			for(var i=1,n=leng-1; i<=leng-1,n>=1; i++,n--) {
+				html+="<tr>";
+				html+="<td>"+n+"</td>";
+				html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
+				html+="<td>"+json.noticeBoardList[i].infoCount+"</td>";
+				html+="<td>"+json.noticeBoardList[i].infoDate+"</td>";		
+				html+="</tr>";
 			}
-			var no=json.pager.no;
-			var source=$("#template").html();
-			var template=Handlebars.compile(source);
-		
-			$("#noticeListDiv").html(template(json));
-						
+			$("#noticeListDiv").html(html);
 			pageDisplay(json.pager);
 		},
 		error: function(xhr) {
