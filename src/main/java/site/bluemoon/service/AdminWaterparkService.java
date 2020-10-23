@@ -25,5 +25,4 @@ public interface AdminWaterparkService {
 	
 	//°·Waterpark's Reservation Service
 	List<OceanReservationDTO> getSelectReservationList();
-	
 }

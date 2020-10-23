@@ -24,6 +24,7 @@ public interface AdminWaterparkMapper {
 	int deleteCharge(int cgNo);
 	int updateCharge(OceanChargeDTO oceanChargeDTO);
 	
-	//°·Waterpark's Reservation Mapper
+	//°·Waterpark's Reservation Mapper 
 	List<OceanReservationDTO> selectReservationList();
+	
 }

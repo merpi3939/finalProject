@@ -81,5 +81,4 @@ public class AdminWaterparkDAOImpl implements AdminWaterparkDAO {
 	public int updateCharge(OceanChargeDTO oceanChargeDTO) {
 		return sqlSession.getMapper(AdminWaterparkMapper.class).updateCharge(oceanChargeDTO);
 	}
-
 }

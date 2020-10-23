@@ -107,12 +107,6 @@ public class AdminWaterparkController {
 		return "redirect:/admin/chargeList";
 	}
 	
-	
-	
-	
-	
-	
-	
 	//■waterPark 예약/결제
 	@RequestMapping(value = "/prList")
 	public String prList(Model model) {

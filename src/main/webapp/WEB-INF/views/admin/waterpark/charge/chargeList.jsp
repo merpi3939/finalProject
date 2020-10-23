@@ -7,7 +7,6 @@
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
 	
-	
 	<!--■CONTENT CONTAINER-->
 	<!--===================================================-->
 	<div id="content-container">

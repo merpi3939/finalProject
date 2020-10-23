@@ -28,5 +28,4 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public void modifyUser(User user) {
 		adminUserDAO.updateUserInfo(user);
 	}
-
 }

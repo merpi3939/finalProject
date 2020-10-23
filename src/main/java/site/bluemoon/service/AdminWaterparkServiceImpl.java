@@ -74,6 +74,5 @@ public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 	public List<OceanReservationDTO> getSelectReservationList() {
 		return adminWaterparkDAO.selectReservationList();
 	}
-	
 }
 

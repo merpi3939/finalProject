@@ -26,7 +26,6 @@ public class AdminUserController {
 	@Autowired
 	private UserService userService;
 	
-	//UserList Ãâ·Â
 	@RequestMapping(value = "/userList")
 	public String userList(Model model) {
 		model.addAttribute("userList", adminUserService.getSelectUserList());
