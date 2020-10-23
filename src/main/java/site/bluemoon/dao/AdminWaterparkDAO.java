@@ -26,5 +26,8 @@ public interface AdminWaterparkDAO {
 	
 	//°·Waterpark's Reservation DAO
 	List<OceanReservationDTO> selectReservationList();
+	OceanReservationDTO selectReservation(int rsNo);
+	int deleteReservation(int rsNo);
+	int updateReservation(OceanReservationDTO oceanReservationDTO);
 	
 }

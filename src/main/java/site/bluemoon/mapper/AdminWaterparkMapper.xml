@@ -147,7 +147,55 @@
 			ocean_reservation 
 		order by
 			rs_no
-		
 	</select>
+	
+	<select id="selectReservation" resultType="OceanReservationDTO">
+		select
+			*
+		from 
+			ocean_reservation
+		where
+			rs_no=#{rsNo}
+	</select>
+	
+	<update id="deleteReservation" parameterType="int">
+		update
+			ocean_reservation
+		set
+			rs_state=0
+		where
+			rs_no=#{rsNo}
+	</update>	
+	
+	<update id="updateReservation" parameterType="OceanReservationDTO">
+		update
+			ocean_reservation
+		<set>
+			<if test="rsState!=null and rsState!=''">
+				rs_state=#{rsState},
+			</if>
+			<if test="rsPhone!=null and rsPhone!=''">
+				rs_phone=#{rsPhone},
+			</if>
+			<if test="rsUsedate!=null and rsUsedate!=''">
+				rs_usedate=#{rsUsedate}
+			</if>
+			<if test="rsTicket!=null and rsTicket!=''">
+				rs_ticket=#{rsTicket}
+			</if>
+			<if test="rsAdult!=null and rsAdult!=''">
+				rs_adult=#{rsAdult}
+			</if>
+			<if test="rsChild!=null and rsChild!=''">
+				rs_child=#{rsChild}
+			</if>
+			<if test="rsPrice!=null and rsPrice!=''">
+				rs_price=#{rsPrice}
+			</if>
+		</set>
+		
+		where
+			rs_no=#{rsNo}
+	</update>
 	
 </mapper>

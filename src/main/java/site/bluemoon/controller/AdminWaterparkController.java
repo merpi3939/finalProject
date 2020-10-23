@@ -113,4 +113,17 @@ public class AdminWaterparkController {
 		model.addAttribute("prList", adminWaterparkService.getSelectReservationList());
 		return "admin/waterpark/pr/prList";
 	}
+	
+	@RequestMapping(value = "/prRemove/{rsNo}")
+	public String prDelete(@PathVariable int rsNo) {
+		adminWaterparkService.removeReservation(rsNo);
+		return "redirect:/admin/prList";
+	}
+	
+	@RequestMapping(value = "/prModify/{rsNo}", method = RequestMethod.GET)
+	public String prModify(@PathVariable int rsNo, Model model) {
+		model.addAttribute("chargeNameList", adminWaterparkService.getSelectChargeList());
+		model.addAttribute("pr", adminWaterparkService.getSelectReservation(rsNo));
+		return "admin/waterpark/pr/prModify";
+	}
 }
