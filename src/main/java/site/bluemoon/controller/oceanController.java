@@ -76,18 +76,22 @@ public class oceanController {
 	}
 	
 	//È¯ºÒ
-	@RequestMapping(value = "/payment_delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/payment_delete")
+	public String oceanPaylist(@RequestParam("paymentList") int rsNo, Model model) {
+		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
+		return "bluemoon/waterpark/payment_delete";
+	}
+	
+	@RequestMapping(value = "/updateOcean", method = RequestMethod.GET)
 	public String updateOcean() {
 		return "bluemoon/waterpark/payment_delete";
 	}
 	
-	@RequestMapping(value = "/payment_delete", method = RequestMethod.POST)
-	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean, @RequestParam("paymentList") int rsNo, Model model) {
-		model.addAttribute("updateOcean");
-		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
+	@RequestMapping(value = "/updateOcean", method = RequestMethod.POST)
+	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean, Model model) {
+		oceanService.updateOcean(updateOcean);
 		return"redirect:/payment_list";
 	}
-	
 	
 	/*
 	@RequestMapping(value = "/payment_delete", method = RequestMethod.GET)

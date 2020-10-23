@@ -40,10 +40,16 @@
 		select * from ocean_reservation order by rs_no
 	</select>
 	
-	<update id="updateOcean" >
+	<delete id="updateOcean">
+		delete from ocean_reservation where rs_no=#{rsNo}
+	</delete>
+	
+	<!-- 
+	<update id="updateOcean" parameterType="int">
 		update ocean_reservation set rs_state=#{rsState} where rs_no=#{rsNo}
 	</update>
-    
+     -->
+     
 	<select id="selectNewsList" resultType="OceanNews">
 		select 
 			* 

@@ -258,7 +258,7 @@ div.btns {
 <body>
 	<div class="limiter">
 		<div class="con01">
-			<form class="form01" id="form01" action="addOcean" method="post">
+			<form class="form01" id="form01" action="updateOcean" method="post">
 				<div class="wrap100">
 					<h5>예약하기</h5>
 					<table class="res01">

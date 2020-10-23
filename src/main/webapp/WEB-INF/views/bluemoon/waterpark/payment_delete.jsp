@@ -255,7 +255,7 @@ div.btns {
 <body>
 	<div class="limiter">
 		<div class="con01">
-			<form class="form01" id="form01">
+			<form class="form01" id="form01" action="addOcean" method="post">
 				<div class="wrap100" style="">
 					<div>
 						<h5>환불 확인</h5>
@@ -266,21 +266,21 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>결제 번호</th>
-									<td id="rsNo" name="rsNo" >${paymentList.rsNo }</td>
+									<td id="rsNo" name="rsNo">${paymentList.rsNo }</td>
 								</tr>
 								<tr>
 									<th>이용 날짜</th>
-									<td id="rsUsedate" name="rsUsedate">${updateOcean.rsUsedate }</td>
+									<td id="rsUsedate" name="rsUsedate">${paymentList.rsUsedate }</td>
 								</tr>
 								<tr>
 									<th>이용권</th>
-									<td id="rsTicket" name="rsTicket">${updateOcean.rsTicket }</td>
+									<td id="rsTicket" name="rsTicket">${paymentList.rsTicket }</td>
 								</tr>
 							</tbody>
 						</table>
 						<input type="hidden" name="rsState" id="rsState" value="0">
 						<div class="btns">
-							<p style="color : red;">* 환불 하시겠습니까?</p>
+							<p style="color : red;">*** 환불 하시겠습니까?</p>
 							<button type="submit" class="formBtn">환불</button>
 						</div>
 					</div>
@@ -288,18 +288,19 @@ div.btns {
 			</form>
 		</div>
 	</div>
-<!-- <script type="text/javascript">
-	$("#form01").submit(function() {
-	     var state = ${updateOcean.rsState };
-	     var val = 0
+<script type="text/javascript">
+/*  	$("#form01").submit(function() {
+	     var state = ${paymentList.rsState };
 	     
 	     if(state == 1){
-	    	 $("#rsState").val(val);
-	     } 
+	    	 var st = 0;
+	    	 
+	    	 $("#rsState").val(st);
+	     }  
 	     
-	     alert(state);
-	});
 
-</script> -->
+	 });  */
+
+</script>
 </body>
 </html>
