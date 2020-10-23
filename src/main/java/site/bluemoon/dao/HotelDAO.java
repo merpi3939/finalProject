@@ -5,10 +5,14 @@ import java.util.List;
 import site.bluemoon.dto.HotelCategory;
 import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.dto.User;
 
 public interface HotelDAO {
 	 int insertReserveHotel(HotelReserveDTO reserve);
 	 public HotelCategory selectHotelCategory(int num);
 	 List<HotelCategory> selectHotelCategoryList();
 	 int insertHotelPay(HotelPay pay);
+	 HotelPay selectPayNo(int payNo);
+	 int updateUserPointPlus(User user);
+	 int updatePointUserMinus(User user);
 }

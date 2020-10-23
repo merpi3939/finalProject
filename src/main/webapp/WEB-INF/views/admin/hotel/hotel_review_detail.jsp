@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">글번호</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="commentNo">commentNo</span>
+						<span class="form-control" id="commentNo">${comment.commentNo }</span>
 					</div>
 				</div>
 				<div class="form-group">

@@ -62,4 +62,13 @@
 			<beans:ref bean="loginAuthInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/addOcean"/>
+			<mapping path="/myuser*"/>
+			<beans:ref bean="loginAuthInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

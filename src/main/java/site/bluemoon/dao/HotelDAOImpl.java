@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import site.bluemoon.dto.HotelCategory;
 import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.dto.User;
 import site.bluemoon.mapper.HotelMapper;
 @Repository
 public class HotelDAOImpl implements HotelDAO{
@@ -30,5 +31,18 @@ public class HotelDAOImpl implements HotelDAO{
 	public int insertHotelPay(HotelPay pay) {
 		return sqlSession.getMapper(HotelMapper.class).insertHotelPay(pay);
 	}
+	@Override
+	public HotelPay selectPayNo(int payNo) {
+		return sqlSession.getMapper(HotelMapper.class).selectPayNo(payNo);
+	}
+	@Override
+	public int updateUserPointPlus(User user) {
+		return sqlSession.getMapper(HotelMapper.class).updateUserPointPlus(user);
+	}
+	@Override
+	public int updatePointUserMinus(User user) {
+		return sqlSession.getMapper(HotelMapper.class).updatePointUserMinus(user);
+	}
+	
 
 }

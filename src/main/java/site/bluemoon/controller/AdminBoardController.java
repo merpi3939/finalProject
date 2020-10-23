@@ -76,7 +76,7 @@ public class AdminBoardController {
 	public String infoDelete( int infoNo) {
 		InfoBoard infoBoard= new InfoBoard();
 		infoBoard.setInfoNo(infoNo);
-		infoBoard.setInfoState("4");
+		infoBoard.setInfoState(4);
 		adminBoardService.updateInfoState(infoBoard);
 		return "redirect:/admin/info_list";
 	}
