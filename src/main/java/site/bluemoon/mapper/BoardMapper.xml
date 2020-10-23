@@ -8,4 +8,47 @@
 		insert into info_board values(#{infoNo},#{infoUserId},#{infoUserName},#{infoTitle},#{infoContent},sysdate,#{infoDivi},#{infoName}
 		,#{infoImg},#{infoState},#{infoCount}) 
 	</insert>
+	
+	<select id="selectInfoBoardCount" parameterType="map" resultType="int">
+		select count(*) from info_board
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%'||#{keyword}||'%' and
+			</if>
+			info_name=#{infoName} and info_state=#{infoState}
+		</where>
+	</select>
+		
+	<select id="selectInfoBoardList" parameterType="map" resultType="infoBoard">
+		select * from (select rownum rn, board.* from (select * from info_board
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%'||#{keyword}||'%' and info_name=#{infoName} and info_state=#{infoState}
+			</if>
+		</where>
+		 order by info_no desc)board) where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<select id="selectInfoBoard" resultType="infoBoard">
+		select * from info_board where info_no=#{infoNo} and info_name=#{infoName} and info_state=#{infoState}
+	</select>
+
+	<update id="updateInfoBoard">
+		update info_board
+		<set>
+			<if test="infoTitle!=null and infoTitle!=''">
+				info_title=#{infoTitle},
+			</if>
+			<if test="infoContent!=null and infoContent!=''">
+				info_content=#{infoContent},
+			</if>
+			<if test="infoState!=null and infoState!=''">
+				info_state=#{infoState},
+			</if>
+			<if test="infoCount!=null and infoCount!=''">
+				info_count=#{infoCount}
+			</if>
+		</set>
+		where info_no=#{infoNo}
+	</update>
 </mapper>

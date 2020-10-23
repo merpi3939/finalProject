@@ -20,7 +20,7 @@
 			)
 	</insert>
 	
-	<update id="updateNews" >
+	<update id="updateNews">
 		update
 			ocean_news
 		set
@@ -36,37 +36,47 @@
 			news_no=#{newsNo}
 	</delete>
 	
-	<select id="selectNews" resultType="OceanNews">
-		select 
-			* 
-		from 
-			ocean_news 
+	<resultMap id="newsResultMap" type="AdminOceanNews" >
+		<result property="newsNo" column="news_no"/>
+		<result property="newsDate" column="news_date"/>
+		<result property="newsCont" column="news_cont"/>
+		<result property="newsUno" column="news_uno"/>
+		<result property="userNo" column="user_no"/>
+		<result property="userId" column="user_id"/>
+		<result property="userName" column="user_name"/>
+	</resultMap>
+	
+	<select id="selectNewsList" resultMap="newsResultMap">
+		 select 
+			a.*,
+			b.user_no,
+			b.user_id,
+			b.user_name
+		from
+			ocean_news a
+		join
+			bluemoon_user b
+		on
+			a.news_uno=b.user_no
+		order by
+			a.news_no desc
+	</select>
+	
+	<select id="selectNews" resultMap="newsResultMap">
+		 select 
+			a.*,
+			b.user_no,
+			b.user_id,
+			b.user_name
+		from
+			ocean_news a
+		join
+			bluemoon_user b
+		on
+			a.news_uno=b.user_no
 		where 
 			news_no=#{newsNo}
 	</select>
-	
-	<select id="selectNewsList" resultType="OceanNews">
-		select 
-			* 
-		from 
-			ocean_news  
-		order by 
-			news_no desc
-	</select>
-	
-	<!--  체크박스 선택되 사람만 삭제-->
-	<delete id="deleteCheckNews" parameterType="list">
-		delete from
-			ocean_news
-	
-		<if test="list != null">
-			where newsNo in
-		
-			<foreach item="newsNo" collection="list" open="(" close=")" separator=",">
-				#{newsNo}
-			</foreach>
-		</if>
-	</delete>
 	
 	<!-- ■Waterpark's Reservation Mapper -->
 	<!-- 

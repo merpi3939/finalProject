@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import site.bluemoon.dto.AdminUserReservation;
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -36,12 +36,12 @@ public class AdminWaterparkDAOImpl implements AdminWaterparkDAO {
 	}
 
 	@Override
-	public OceanNews selectNews(int newsNo) {
+	public AdminOceanNews selectNews(int newsNo) {
 		return sqlSession.getMapper(AdminWaterparkMapper.class).selectNews(newsNo);
 	}
 	
 	@Override
-	public List<OceanNews> selectNewsList() {
+	public List<AdminOceanNews> selectNewsList() {
 		return sqlSession.getMapper(AdminWaterparkMapper.class).selectNewsList();
 	}
 
@@ -61,4 +61,5 @@ public class AdminWaterparkDAOImpl implements AdminWaterparkDAO {
 	public List<OceanChargeDTO> selectChargeList() {
 		return sqlSession.getMapper(AdminWaterparkMapper.class).selectChargeList();
 	}
+
 }

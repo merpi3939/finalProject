@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import site.bluemoon.dto.OceanReservationDTO;
+import site.bluemoon.mapper.OceanMapper;
 import site.bluemoon.service.OceanService;
 
 @Controller
@@ -16,10 +19,12 @@ public class oceanController {
 	private OceanService oceanService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String waterPark() {
+	public String waterPark(Model model) {
+		model.addAttribute("newsList", oceanService.getSelectNewsList());
 		return "main";
 	}
 	
+	/*
 	@RequestMapping(value = "/ocean_charge", method = RequestMethod.GET)
 	public String oceanCharge() {
 		return "bluemoon/waterpark/charge";
@@ -29,17 +34,68 @@ public class oceanController {
 	public String oceanResercation() {
 		return "bluemoon/waterpark/reservation";
 	}
-
-	@RequestMapping(value = "/addOcean", method = RequestMethod.POST)
-	public String addOcean(@ModelAttribute OceanReservationDTO oceanReservation, Model model) {
-		OceanService.addOceanReservation(oceanReservation);
+	*/
+	
+	//요금표
+	@RequestMapping(value = "/ocean_charge")
+	public String oceanReservation(Model model) {
+		model.addAttribute("oceanChaereList", oceanService.getOceanChargeList());
+		return "bluemoon/waterpark/charge";
+	}
+	
+	@RequestMapping(value = "/reservation")
+	public String oceanChargeList(@RequestParam("chargeList") int cgNo, Model model) {
+		model.addAttribute("chargeList", oceanService.getOceanCharge(cgNo));
 		return "bluemoon/waterpark/reservation";
 	}
 	
-	@RequestMapping(value = "/ocean_payment", method = RequestMethod.GET)
-	public String oceanPayment() {
+	//예약 추가	
+	@RequestMapping(value = "/addOcean", method = RequestMethod.GET)
+	public String addOcean() {
+		return "bluemoon/waterpark/reservation";
+	}
+	
+	@RequestMapping(value = "/addOcean", method = RequestMethod.POST)
+	public String addOcean(@ModelAttribute("addOcean") OceanReservationDTO oceanReservation, Model model) {
+		oceanService.addOceanReservation(oceanReservation);
+		return"redirect:/payment_list";
+	}	
+	
+	//결제 페이지
+	@RequestMapping(value = "/payment_list")
+	public String oceanPayment(Model model) {
+		model.addAttribute("oceanPaymentList", oceanService.getOceanPaymentList());
+		return "bluemoon/waterpark/payment_list";
+	}
+	
+	//결제 확인
+	@RequestMapping(value = "/payment")
+	public String oceanPaymentList(@RequestParam("paymentList") int rsNo, Model model) {
+		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
 		return "bluemoon/waterpark/payment";
 	}
+	
+	//환불
+	@RequestMapping(value = "/payment_delete", method = RequestMethod.GET)
+	public String updateOcean() {
+		return "bluemoon/waterpark/payment_delete";
+	}
+	
+	@RequestMapping(value = "/payment_delete", method = RequestMethod.POST)
+	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean, @RequestParam("paymentList") int rsNo, Model model) {
+		model.addAttribute("updateOcean");
+		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
+		return"redirect:/payment_list";
+	}
+	
+	
+	/*
+	@RequestMapping(value = "/payment_delete", method = RequestMethod.GET)
+	public String updateOcean(@PathVariable int rsNo, Model model) {
+		model.addAttribute("updateOcean", oceanService.getupdateOcean(rsNo));
+	    return "bluemoon/waterpark/payment_delete";
+	}
+	*/
 	
 	//어트랙션
 	@RequestMapping(value = "/attraction1", method = RequestMethod.GET)

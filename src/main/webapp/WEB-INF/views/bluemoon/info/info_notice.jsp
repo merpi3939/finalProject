@@ -3,57 +3,53 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
 <link rel="stylesheet" href=<c:url value="bluemoon/css/board.css"/>>
-</head>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+<style type="text/css">
+.writeCon, .viewCon {
+	display: none;
+}
+.table {
+	border-bottom: 1px solid #dee2e6;
+}
 
+/* @media screen and (max-width:375px) {
+#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
+	width: 31%;
+} */
+@media screen and (max-width:768px) {
+#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
+	width: 31%;
+}
+
+}
+</style>
+</head>
+<body>
 <div class="container noticeCon">	
 	<div class="col-md-7 heading-section ftco-animate title-style">
             <h2><strong>공지사항</strong></h2>
     </div>
     <div class="table-responsive" style="overflow-x: hidden;">
-    	<table class="table table-striped" style="margin-bottom: 50px;">
- 			<thead>
-   				<tr>
-  					<th width="100">글번호</th>
-  					<th width="500">제목</th>
-  					<th width="100">조회수</th>
-  					<th width="100">작성일</th>
-				</tr>
- 			</thead>
- 		<tbody>   	
-   			<tr>
-      			<td>1</td>
-      			<td><a class="table-a" href="#">공지사항ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</a></td>
-      			<td>10</td>
-			    <td>2020-01-01</td>
-   			</tr>
-		 </tbody> 
-		</table>   
+    	<div id="noticeListDiv">   	
+		</div>  
 		<div style="margin-bottom: 96px;">
-			<button type="button" class="btn noticeBtn" id="noticeWriter">Write</button>
+			<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
 		</div>
 		<div class="row mt-5" style="margin-bottom: 20px;">
 			<div class="col text-center">
-				<div class="block-27">
-					<ul>
-						<li><a href="#">&lt;</a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&gt;</a></li>
-					</ul>
+				<div class="block-27" id="pageing">
+					
 				</div>
 			</div>
 		</div>
 		<div class="searchForm">
-			<select name="search">
-				<option value="writer" selected="selected">&nbsp;작성자&nbsp;</option>
-				<option value="subject">&nbsp;제목&nbsp;</option>
-				<option value="content">&nbsp;내용&nbsp;</option>
+			<select name="search" id="search">
+				<option value="info_Title" selected="selected">&nbsp;제목&nbsp;</option>
+				<option value="info_Content">&nbsp;내용&nbsp;</option>
 			</select>	
-			<input type="text" name="keyword">
-			<button type="button" class="btn noticeBtn">Search</button>
+			<input type="text" name="keyword" id="keyword">
+			<button type="button" class="btn noticeBtn" onclick="boardDisplay(1);">검색</button>
+			<button type="button" class="btn noticeBtn" onclick="alllist();">전체목록</button>
 		</div>
 	</div>	 	 	
 </div>
@@ -68,52 +64,229 @@
 		<input id="infoUserName" type="hidden" value="${userInfo.userName }">
 	    <label for="title" class="cols-sm-2 control-label board-frame" style="margin-top: 50px;">제목</label>
 	    <span class="titleMsg msg board-frame" style="color: red"></span>
-	    <input type="text" autocomplete="off" class="form-control board-frame add" name="title" id="title" value=""/>	 	 
+	    <input type="text" autocomplete="off" class="form-control board-frame add" name="infoTitle" id="title"/>	 	 
 	    <label for="content" class="cols-sm-2 control-label board-frame">내용</label>
 	    <span class="contentMsg msg board-frame" style="color: red"></span>
-	    <!-- <textarea class="form-control board-frame" rows="15"></textarea> -->
-	    <textarea name="summernote" id="summernote" class="summernote add"></textarea>
-	    <!-- <div>
+	    <textarea class="form-control board-frame add" id="content" name="infoContent" rows="15"></textarea>
+	    <div>
 	    	<input type="file" class="img-input board-frame" id="img-input" accept="image/*">
-	    </div> -->
+	    </div>
 	    <div class="write-div">
 	    	<button type="button" class="write-btn btn" id="write-btn" style="margin-bottom: 50px;">글쓰기</button>	    
 	    	<button type="button" class="write-btn btn" id="list-btn" style="margin-bottom: 50px;">목록</button>	    
 	    </div>
 	</div>
 </div>
+<div class="container viewCon">
+	<div class="col-md-7 heading-section ftco-animate title-style">
+            <h2><strong>공지사항</strong></h2>
+    </div>
+	<div class="board-border">
+		<input type="hidden" name="infoNo" id="viewNum">
+	    <label for="title" class="cols-sm-2 control-label board-frame" style="margin-top: 50px;">제목</label>
+	    <span class="titleMsg msg board-frame" style="color: red"></span>
+	    <input type="text" autocomplete="off" class="form-control board-frame view" name="title" id="titleView" readonly="readonly"/>	 	 
+	    <label for="content" class="cols-sm-2 control-label board-frame">내용</label>
+	    <span class="contentMsg msg board-frame" style="color: red"></span>
+	    <textarea name="infoContent" id="contentView" class="form-control board-frame view" rows="15" readonly="readonly"></textarea>
+	    <div>
+	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
+	    </div>
+	    <div class="write-div">
+	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>
+	    	<button type="button" class="write-btn btn" id="remove-btn" onclick="removeNotice();" style="margin-bottom: 50px;">삭제하기</button>
+	    	<button type="button" class="write-btn btn" id="update-btn" onclick="updateNotice();" style="margin-bottom: 50px; display: none;">수정하기</button>
+	    	<button type="button" class="write-btn btn" id="list-btn2" style="margin-bottom: 50px;">목록</button>
+	    </div>
+	</div>
+</div>
 
+<script id="template" type="text/x-handlebars-template">
+	<table class="table" style="margin-bottom: 50px;">
+ 			<thead>
+   				<tr>
+  					<th width="100">글번호</th>
+  					<th width="500">제목</th>
+  					<th width="100">조회수</th>
+  					<th width="100">작성일</th>
+				</tr>
+ 			</thead>
+		{{#each noticeBoardList}}
+ 		<tbody>   	
+   			<tr>
+      			<td>{{../pager.no}}</td>
+      			<td><a class="table-a" href='javascript:viewDisplay({{infoNo}})'>{{infoTitle}}</a></td>
+      			<td>{{infoCount}}</td>
+			    <td>{{infoDate}}</td>
+   			</tr>
+		 </tbody>
+		{{/each}}
+	</table>   
+</script>
 <script type="text/javascript">
-$(document).ready(function() {
-	$('#summernote').summernote({
-		height: 500,                 
-		minHeight: null,             
-		maxHeight: null,             
-		focus: true,
-		popover: {
-			image: [],
-			link: [],
-			air: []
+
+var page=1;
+boardDisplay(page);
+function boardDisplay(pageNum) {
+	var search=$("#search").val();
+	var keyword=$("#keyword").val();
+	page=pageNum;
+	$.ajax({
+		type: "GET",
+		url: "listNotice?pageNum="+pageNum+"&search="+search+"&keyword="+keyword,
+		dataType: "json",
+		success: function(json) {
+			if(json.noticeBoardList.length==0) {
+				$("#noticeListDiv").html("검색된 게시글이 존재하지 않습니다.");
+				$("#keyword").val("");
+				pageDisplay(json.pager);
+				return;
+			}
+			var no=json.pager.no;
+			var source=$("#template").html();
+			var template=Handlebars.compile(source);
+		
+			$("#noticeListDiv").html(template(json));
+						
+			pageDisplay(json.pager);
+		},
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
 		}
 	});
-});
+}
 
-$("#noticeWriter").click(function() {
+function pageDisplay(pager) {
+	var html="<ul>";
+	
+	if(pager.startPage>pager.blockSize) {
+		html+="<li><a href='javascript:boardDisplay("+pager.prevPage+")'>&&lt</a></li>";
+	} else {
+		html+="<li><a>&lt;</a></li>";
+	}
+	
+	for(var i=pager.startPage; i<=pager.endPage; i++) {
+		if(pager.pageNum!=i) {
+			html+="<li><a href='javascript:boardDisplay("+i+")'>"+i+"</a></li>"
+		} else {
+			html+="<li><a>"+i+"</a></li>";
+		}
+	}
+	if(pager.endPage!=pager.totalPage) {
+		html+="<li><a href='javascript:boardDisplay("+pager.nextPage+")'>&gt;</a></li>";
+	} else {
+		html+="<li><a>&gt;</a></li>";
+	}
+	
+	html+="</ul>"
+	$("#pageing").html(html);
+}
+function alllist() {
+	$("#keyword").val("");
+	boardDisplay(1);
+}
+
+function viewDisplay(num) {
+	$(".viewCon").show();
 	$(".noticeCon").hide();
-	$(".writeCon").show();
-	$("#title").focus();
-});
-$("#list-btn").click(function() {
-	$(".noticeCon").show();
-	$(".writeCon").hide();
-});
+	$(".view").val("");
+	
+	$.ajax({
+		type: "GET",
+		url: "viewNotice/"+num,
+		dataType: "json",
+		success: function(json) {
+			$("#viewNum").val(json.infoNo);
+			$("#titleView").val(json.infoTitle);
+			$("#contentView").val(json.infoContent);
+		},
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+}
+
+function updateViewNotice() {
+	$(".msg").text("");
+	$("#titleView").attr("readonly",false);
+	$("#contentView").attr("readonly",false);
+	$("#titleView").focus();
+	$("#updateView-btn").hide();
+	$("#remove-btn").hide();
+	$("#img-input-view").show();
+	$("#update-btn").show();
+}
+
+function updateCancleNotice() {
+	$(".msg").text("");
+	$("#titleView").attr("readonly",true);
+	$("#contentView").attr("readonly",true);
+	$("#updateView-btn").show();
+	$("#update-btn").hide();
+	$("#img-input-view").hide();
+}
+
+function updateNotice() {
+	var num=$("#viewNum").val();
+	var title=$("#titleView").val();
+	var content=$("#contentView").val();
+	
+	if(title=="") {
+		$(".titleMsg").text("제목을 입력해주세요.");
+		$("#titleView").focus();
+		return;
+	}
+	if(content=="") {
+		$(".contentMsg").text("내용을 입력해주세요.");
+		$("#contentView").focus();
+		return;
+	}
+	$.ajax({
+		type: "PUT",
+		url: "modifyNotice",
+		headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
+		data: JSON.stringify({"infoNo":num,"infoTitle":title, "infoContent":content}),
+		dataType: "text",
+		success: function(text) {
+			if(text=="ok") {
+				updateCancleNotice();
+				boardDisplay(page);
+			}
+		}, 
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+}
+
+function removeNotice() {
+	var num=$("#viewNum").val();
+	
+	$.ajax({
+		type: "PUT",
+		url: "removeNotice",
+		headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
+		data: JSON.stringify({"infoNo":num}),
+		dataType: "text",
+		success: function(text) {
+			if(text=="ok") {
+				boardDisplay(page);
+				$(".viewCon").hide();
+				$(".noticeCon").show();
+			}
+		}, 
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+}
 
 $("#write-btn").click(function() {
 	$(".msg").text("");
 	var id=$("#infoUserId").val();	
 	var name=$("#infoUserName").val();	
 	var title=$("#title").val();	
-	var content=$("#summernote").val();
+	var content=$("#content").val();
 	
 	if(title=="") {
 		$(".titleMsg").text("제목을 입력해주세요.");
@@ -122,7 +295,7 @@ $("#write-btn").click(function() {
 	}
 	if(content=="") {
 		$(".contentMsg").text("내용을 입력해주세요.");
-		$("#summernote").focus();
+		$("#noticeAdd").focus();
 		return;
 	}
 	
@@ -134,9 +307,9 @@ $("#write-btn").click(function() {
 		dataType: "text",
 		success: function(text) {
 			if(text=="ok") {
-				$(".add").val("");
-				$(".noticeCon").show();
 				$(".writeCon").hide();
+				$(".noticeCon").show();
+				boardDisplay(1);
 			}
 		},
 		error: function(xhr) {
@@ -144,4 +317,23 @@ $("#write-btn").click(function() {
 		}
 	});
 });
+
+$("#noticeWriter").click(function() {
+	$(".add").val("");
+	$(".noticeCon").hide();
+	$(".writeCon").show();
+	$("#title").focus();
+});
+$("#list-btn").click(function() {
+	$(".noticeCon").show();
+	$(".writeCon").hide();
+});
+$("#list-btn2").click(function() {
+	$(".noticeCon").show();
+	$(".viewCon").hide();
+	updateCancleNotice();
+	boardDisplay(1);
+});
+
 </script>
+</body>

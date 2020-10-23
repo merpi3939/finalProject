@@ -39,12 +39,12 @@
 					<!--■Static-->
 					<div class="form-group" >
 						<label class="col-md-3 control-label">회원번호</label>
-						<div class="col-md-9"><p class="form-control-static">111111</p></div>
+						<div class="col-md-9"><p class="form-control-static">${user.userNo }</p></div>
 					</div>
 	
 					<div class="form-group">
 						<label class="col-md-3 control-label">회원아이디</label>
-						<div class="col-md-9"><p class="form-control-static">asdfasdfadsf</p></div>
+						<div class="col-md-9"><p class="form-control-static">${user.userId }</p></div>
 					</div>
 					
 					<!--■회원상태-->
@@ -62,22 +62,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">이름</label>
 						<div class="col-md-9">
-							<input type="text" id="name" class="form-control" style="width: 300px;">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="demo-text-input">비밀번호</label>
-						<div class="col-md-9">
-							<input type="password" id="password" class="form-control" style="width: 300px;">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="demo-text-input">비밀번호 확인</label>
-						<div class="col-md-9">
-							<input type="password" id="passwordCheck" class="form-control" style="width: 300px;">
-							<span id="checkPassword_collection_error" style="color: red;"></span>
+							<input type="text" id="name" class="form-control" style="width: 300px;" value="${user.userName }">
 						</div>
 					</div>
 					
@@ -85,7 +70,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">포인트</label>
 						<div class="col-md-9">
-							<input type="text" id="point" class="form-control" style="width: 100px; display: inline-block; color: red">&nbsp;point
+							<input type="text" id="point" class="form-control" style="width: 100px; display: inline-block; color: red" value="${user.userPoint }">&nbsp;point
 						</div>
 					</div>
 					
@@ -93,7 +78,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">생년월일</label>
 						<div class="col-md-9">
-							<input type="text" id="birthday" class="form-control" style="width: 300px;">
+							<input type="text" id="birthday" class="form-control" style="width: 300px;" value="${user.userBirthday }">
 						</div>
 					</div>
 					
@@ -101,7 +86,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">전화번호</label>
 						<div class="col-md-9">
-							<input type="text" id="phone" class="form-control" style="width: 300px;">
+							<input type="text" id="phone" class="form-control" style="width: 300px;" value="${user.userPhone }">
 						</div>
 					</div>
 					
@@ -109,7 +94,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">이메일</label>
 						<div class="col-md-9">
-							<input type="text" id="email" class="form-control" style="width: 300px;">
+							<input type="text" id="email" class="form-control" style="width: 300px;" value="${user.userEmail }">
 						</div>
 					</div>
 					
@@ -128,10 +113,10 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">우편번호</label>
 						<div class="col-md-9" data-validate="Userzip is required" >
-							<input type="text" id="postZip" class="form-control" readonly="readonly" style="width: 130px; display: inline-block;">
+							<input type="text" id="postZip" class="form-control" readonly="readonly" style="width: 130px; display: inline-block;" value="${user.userZipcode }">
 							<button class="btn btn-warning" onclick="execDaumPostcode()" style="width: 80px; display: inline-block;">검색</button>
-							<input type="text" id="userAddr1" class="form-control" readonly="readonly" style="width: 300px;">
-							<input type="text" class="form-control" style="width: 300px;" required="required">
+							<input type="text" id="userAddr1" class="form-control" readonly="readonly" style="width: 300px;" value="${user.userAddress1 }">
+							<input type="text" class="form-control" style="width: 300px;" required="required" value="${user.userAddress2 }">
 						</div>
 					</div>
 					
@@ -139,7 +124,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">가입날짜</label>
 						<div class="col-md-9">
-							<input type="text" id="joinDate" class="form-control" style="width: 300px;">
+							<input type="text" id="joinDate" class="form-control" style="width: 300px;" value="${user.userJoindate }">
 						</div>
 					</div>
 					
@@ -147,7 +132,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">마지막 로그인 날짜</label>
 						<div class="col-md-9">
-							<input type="text" id="lastLogin" class="form-control" style="width: 300px;">
+							<input type="text" id="lastLogin" class="form-control" style="width: 300px;"  value="${user.userLogindate }">
 						</div>
 					</div>
 					
@@ -155,7 +140,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">탈퇴날짜</label>
 						<div class="col-md-9">
-							<input type="text" id="outDate" class="form-control" style="width: 300px;">
+							<input type="text" id="outDate" class="form-control" style="width: 300px;"  value="${user.userWithdrowdate }">
 						</div>
 					</div>
 				</form>

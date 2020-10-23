@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
 
@@ -135,53 +135,36 @@
 		</div>
 	</section>
 
-	<!-- ê³µì§ì¬í­ -->
 	<section class="ftco-section testimony-section bg-light">
 		<div class="container">
 			<div class="row justify-content-start">
-				<div class="col-md-5 heading-section ftco-animate">
+				<!-- <div class="col-md-5 heading-section ftco-animate">
 					<h2 class="mb-4 pb-3">
 						<strong>공지사항</strong>
 					</h2>
 					<p>공지사항</p>
-				</div>
+				</div> -->
 				<div class="col-md-1"></div>
-				<div class="col-md-6 heading-section ftco-animate">
-					<h2 class="mb-4 pb-3">
-						<strong>생생 정보</strong>
-					</h2>
-					<div class="row ftco-animate">
-						<div class="col-md-12">
-							<div class="carousel-testimony owl-carousel">
-								<div class="item">
-									<div class="testimony-wrap d-flex">
-										<div class="text ml-md-4">
-											<p class="mb-5">정보</p>
-											<p class="name">날짜</p>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="testimony-wrap d-flex">
-										<div class="text ml-md-4">
-											<div class="text ml-md-4">
-												<p class="mb-5">정보</p>
-												<p class="name">날짜</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">
-									<div class="testimony-wrap d-flex">
-										<div class="text ml-md-4">
-											<div class="text ml-md-4">
-												<p class="mb-5">정보</p>
-												<p class="name">날짜</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+				<div class="carousel-testimony owl-carousel">
+					<div class="col-md-6 heading-section ftco-animate">
+						<h2 class="mb-4 pb-3">
+							<strong>생생 정보</strong>
+						</h2>
+						<div>
+							<table>
+								<colgroup>
+									<col width="30%">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>오늘의 News</th>
+										<c:forEach items="${newsList}" var="list">
+											<td>${list.newsCont }</td>
+											<td>${list.newsDate }</td>
+										</c:forEach>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
