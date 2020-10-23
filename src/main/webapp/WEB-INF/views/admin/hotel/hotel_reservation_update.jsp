@@ -236,4 +236,5 @@ $("#hotelPayState").val(hotelPayStateV).prop("selected",true);
 
 
 
+
 </script>
