@@ -1,6 +1,7 @@
 package site.bluemoon.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
 import site.bluemoon.exception.LoginAuthFailException;
 import site.bluemoon.exception.UserinfoNotFoundException;
@@ -35,6 +38,7 @@ public class UserController {
 	public String userJointerms() {
 		return "bluemoon/user/user_join_terms";
 	}
+
 	//유저이름번호체크 이동
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String userJoinCheck() {
@@ -161,7 +165,19 @@ public class UserController {
 	
 	//마이페이지-예약현황
 	@RequestMapping(value = "/myuserreservation", method = RequestMethod.GET)
-	public String userMyPage() {
+	public String userMyPage(HttpSession session,Model model) {
+		
+		User user=(User)session.getAttribute("userInfo");
+		List<OceanReservationDTO> oceanList=userService.findUserWater(user.getUserNo());
+		List<HotelReserveDTO> hotelList=userService.findUserHotel(user.getUserNo());
+		
+		
+		if(oceanList.size()<=0 || hotelList.size()<=0) {
+			model.addAttribute("message", "예약 정보가 없습니다.");
+		}
+		
+		model.addAttribute("ocean", oceanList);
+		model.addAttribute("hotel", hotelList);
 		
 		return "bluemoon/user/user_reservation";
 	}
@@ -212,5 +228,6 @@ public class UserController {
 		}
 		return "no";
 	}
+
 	
 }

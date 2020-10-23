@@ -1,6 +1,7 @@
 package site.bluemoon.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import site.bluemoon.dao.UserDAO;
+import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
 import site.bluemoon.exception.LoginAuthFailException;
 import site.bluemoon.exception.UserinfoExistsException;
@@ -119,14 +122,20 @@ public class UserServiceImpl implements UserService{
 	@Transactional
 	@Override
 	public void updatePassUser(User user) throws UserinfoNotFoundException {
-		System.out.println(user.getUserPassword());
 		if(userDao.selectUserId(user.getUserId())==null) {
 			throw new UserinfoNotFoundException("아이디의 회원 정보가 없습니다");
 		};
 		if(user.getUserPassword()!=null && !user.getUserPassword().equals("")) {
 			user.setUserPassword(BCrypt.hashpw(user.getUserPassword(), BCrypt.gensalt()));
 		}
-		System.out.println(user.getUserPassword());
 		userDao.updateUserInfo(user);
+	}
+	@Override
+	public List<OceanReservationDTO> findUserWater(int userNo) {
+		return userDao.selectUserWater(userNo);
+	}
+	@Override
+	public List<HotelReserveDTO> findUserHotel(int userNo) {
+		return userDao.selectUserHotel(userNo);
 	}
 }

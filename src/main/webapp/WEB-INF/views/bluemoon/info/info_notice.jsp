@@ -42,7 +42,8 @@
     	<tbody id="noticeListDiv">   	
  			 		
 		</tbody>  
-		</table>   
+		</table>
+		<div id="noselcet" style="text-align: center;"></div>   
 		<div style="margin-bottom: 96px;">
 			<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
 		</div>
@@ -125,14 +126,15 @@ function boardDisplay(pageNum) {
 		dataType: "json",
 		success: function(json) {
 			if(json.noticeBoardList.length==0) {
-				$("#noticeListDiv").html("검색된 게시글이 존재하지 않습니다.");
+				$("#noselcet").html("검색된 게시글이 존재하지 않습니다.");
 				$("#keyword").val("");
 				pageDisplay(json.pager);
 				return;
 			}		
 			var leng=json.noticeBoardList.length;
+			var num=json.pager.no;
 			var html="";
-			for(var i=1,n=leng-1; i<=leng-1,n>=1; i++,n--) {
+			for(var i=0,n=num; i<=leng-1,n>=1; i++,n--) {
 				html+="<tr>";
 				html+="<td>"+n+"</td>";
 				html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
@@ -217,6 +219,7 @@ function updateCancleNotice() {
 	$("#updateView-btn").show();
 	$("#update-btn").hide();
 	$("#img-input-view").hide();
+	$("#remove-btn").show();
 }
 
 function updateNotice() {
