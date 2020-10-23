@@ -9,4 +9,5 @@ public interface AdminUserMapper {
 	int updateUserInfo(User user);
 	User selectUserId(int userNo);
 	List<User>	selectUserList();
+	
 }

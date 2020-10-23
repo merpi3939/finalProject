@@ -11,5 +11,4 @@ public interface AdminUserDAO {
 	int updateUserInfo(User user);
 	List<User>	selectUserList();
 	User selectUserId(int userNo);
-	
 }

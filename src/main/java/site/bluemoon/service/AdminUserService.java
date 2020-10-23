@@ -9,5 +9,6 @@ public interface AdminUserService {
 	void modifyUser(User user);
 	List<User> getSelectUserList();
 	User getSelectUserId(int userNo);
+	
 }
 

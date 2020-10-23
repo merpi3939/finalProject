@@ -6,10 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.User;
 import site.bluemoon.mapper.AdminUserMapper;
-import site.bluemoon.mapper.AdminWaterparkMapper;
 
 @Repository
 public class AdminUserDAOImpl implements AdminUserDAO {

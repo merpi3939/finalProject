@@ -17,10 +17,14 @@ public interface AdminWaterparkDAO {
 	List<AdminOceanNews> selectNewsList();
 	int deleteCheckNews(Integer newsNo);
 	
-	//°·Waterpark's Reservation DAO
-	List<OceanReservationDTO> selectReservationList();
-	
 	//°·Waterpark's Charge DAO
 	List<OceanChargeDTO> selectChargeList();
+	OceanChargeDTO selectCharge(int cgNo);
+	int insertCharge(OceanChargeDTO oceanChargeDTO);
+	int deleteCharge(int cgNo);
+	int updateCharge(OceanChargeDTO oceanChargeDTO);
+	
+	//°·Waterpark's Reservation DAO
+	List<OceanReservationDTO> selectReservationList();
 	
 }

@@ -60,5 +60,4 @@
 		order by
 			user_no desc
 	</select>
-	
 </mapper>

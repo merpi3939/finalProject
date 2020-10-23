@@ -78,69 +78,6 @@
 			news_no=#{newsNo}
 	</select>
 	
-	<!-- ■Waterpark's Reservation Mapper -->
-	<!-- 
-	<resultMap id="userOceanResultMap" type="AdminUserReservation">
-		<association property="user" javaType="User">
-			<id property="userNo" column="user_no" />
-			<result property="userId" column="user_id" />
-			<result property="userName" column="user_name" />
-			<result property="userPassword" column="user_password" />		
-			<result property="userName" column="user_name" />		
-			<result property="userBirthday" column="user_birthday" />		
-			<result property="userPhone" column="user_phone" />		
-			<result property="userEmail" column="user_email" />		
-			<result property="userSex" column="user_sex" />		
-			<result property="userZipcode" column="user_zipcode" />		
-			<result property="useraddress1" column="user_address1" />		
-			<result property="useraddress2" column="user_address2" />		
-			<result property="userPoint" column="user_point" />		
-			<result property="userJoindate" column="user_joindate" />		
-			<result property="userLogindate" column="user_logindate" />		
-			<result property="userWithdrowdate" column="user_withdrowdate" />		
-			<result property="userState" column="user_state" />	
-		</association>
-		
-		<association property="ocean" javaType="OceanReservationDTO">
-			<id property="rsNo" column="rs_no" />
-			<result property="rsUno" column="rs_uno" />		
-			<result property="rsName" column="rs_name" />		
-			<result property="rsPhone" column="rs_phone" />		
-			<result property="rsDate" column="rs_date" />		
-			<result property="rsUsedate" column="rs_usedate" />		
-			<result property="rsTicket" column="rs_ticket" />		
-			<result property="rsAdult" column="rs_adult" />		
-			<result property="rsChild" column="rs_child" />		
-			<result property="rsState" column="rs_state" />		
-			<result property="rsPrice" column="rs_price" />		
-			<result property="rsOption" column="ps_option" />		
-		</association>
-	</resultMap>
-	 -->
-	<select id="selectReservationList" resultType="OceanReservationDTO">
-		select
-			*
-		from 
-			ocean_reservation 
-		order by
-			rs_no
-		
-	</select>
-<!-- 	 
- 	<select id="selectReservationList" resultMap="userOceanResultMap">
-  		select
-		  a.*,
-		  b.user_no, 
-		  b.user_id
-		from 
-		  ocean_reservation a
-		join 
-		  bluemoon_user b
-		on 
-		  a.rs_uno=b.user_no
-	</select>
-	 -->
-	 
 	<!-- ■Waterpark's Charge Mapper -->
 	<select id="selectChargeList" resultType="OceanChargeDTO">
 		select
@@ -149,6 +86,68 @@
 			ocean_charge
 		order by
 			cg_no
+	</select>
+	
+	<select id="selectCharge" resultType="OceanChargeDTO">
+		select
+			*
+		from
+			ocean_charge
+		where
+			cg_no=#{cgNo}
+	</select>
+	
+	<insert id="insertCharge" parameterType="OceanChargeDTO">
+		<selectKey resultType="int" keyProperty="cgNo" order="BEFORE">
+			select cg_no_seq.nextval from dual
+		</selectKey>
+		
+		insert into
+			ocean_charge
+		values
+			(
+				#{cgNo},
+				#{cgName},
+				#{cgSeason},
+				#{cgPrice}
+			)
+	</insert>
+	
+	<delete id="deleteCharge" parameterType="int">
+		delete from
+			ocean_charge
+		where
+			cg_no=#{cgNo}
+	</delete>
+	
+	<update id="updateCharge" parameterType="OceanChargeDTO">
+		update
+			ocean_charge
+		<set>
+			<if test="cgName!=null and cgName!=''">
+				cg_name=#{cgName},
+			</if>
+			<if test="cgSeason!=null and cgSeason!=''">
+				cg_season=#{cgSeason},
+			</if>
+			<if test="cgPrice!=null and cgPrice!=''">
+				cg_price=#{cgPrice}
+			</if>
+		</set>
+		
+		where
+			cg_no=#{cgNo}
+	</update>
+	 
+	<!-- ■Waterpark's Reservation Mapper -->
+	<select id="selectReservationList" resultType="OceanReservationDTO">
+		select
+			*
+		from 
+			ocean_reservation 
+		order by
+			rs_no
+		
 	</select>
 	
 </mapper>
