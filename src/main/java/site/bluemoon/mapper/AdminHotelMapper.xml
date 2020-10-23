@@ -12,6 +12,12 @@
 		select * from HOTEL_RESERVE order by RESERVE_NO desc
 	</select>
 	
+	<!-- 호텔 예약 리스트 상태별 검색하기 -->
+	<select id="selectHotelReserveStateList" resultType="hotelReserveDTO" parameterType="int">
+		select * from HOTEL_RESERVE where RESERVE_STATE=#{ReserveState} order by RESERVE_NO desc
+	</select>
+
+	
 	<!-- 호텔 예약 변경하기 -->
 	<update id="updateHotelReserve">
 		UPDATE HOTEL_RESERVE
@@ -107,7 +113,7 @@
 	</select>
 	
 	<!-- 호텔 카테고리 리스트 검색 -->
-	<select id="selectHotelCategoryList" parameterType="int" resultType="hotelCategory">
+	<select id="selectHotelCategoryList"  resultType="hotelCategory">
 		select * from hotel_category order by HOTEL_CATEGORY_NO
 	</select>
 	
@@ -149,5 +155,6 @@
 		 -->
 		where HOTEL_PAY_NO=#{hotelPayNo}
 	</update>
+	<!-- =========================================================================================================== -->
 
 </mapper>

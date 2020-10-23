@@ -43,16 +43,12 @@ public class AdminHotelController {
 	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
 	public String hotelReservationListPrint(Model model) {
 		model.addAttribute("reservationList", adminHotelService.selectHotelReserveList());
+		model.addAttribute("newReserveList", adminHotelService.selectHotelReserveStateList(1));
+		model.addAttribute("confirmedReserveList", adminHotelService.selectHotelReserveStateList(2));
+		model.addAttribute("cancelReserveList", adminHotelService.selectHotelReserveStateList(0));
 		return "admin/hotel/hotel_reservation_list";
 	}
 	
-	/*
-	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
-	public List<HotelReserveDTO> hotelReservationList(Model model) {
-		//model.addAttribute("reservationList", );
-		return adminHotelService.selectHotelReserveList();
-	}
-	*/
 	
 	@RequestMapping(value = "/hotel_reservation_update",method = RequestMethod.GET)
 	public String hotelReservationUpdate(int reserveNo,Model model) {
@@ -105,11 +101,12 @@ public class AdminHotelController {
 	@RequestMapping(value = "/hotel_review_detail")
 	public String hotelReviewDetail(int commentNo,Model model) {
 		model.addAttribute("comment", adminHotelService.selectHotelReview(commentNo));
-		return "admin/hotel_review_detail";
+		return "admin/hotel/hotel_review_detail";
 	}
 	
 	@RequestMapping(value = "/hotel_room_type")
 	public String hotelRoomType(Model model) {
+		model.addAttribute("categoryList", adminHotelService.selectHotelCategoryList());
 		return "admin/hotel/hotel_room_type";
 	}
 

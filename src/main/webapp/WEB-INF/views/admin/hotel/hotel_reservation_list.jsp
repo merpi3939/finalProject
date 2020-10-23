@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!--Bootstrap Table [ OPTIONAL ]-->
-<link href=<c:url value="/admin/plugins/bootstrap-table/bootstrap-table.min.css"/> rel="stylesheet">
-
-
+<link href=<c:url value = "/admin/plugins/bootstrap-table/bootstrap-table.min.css"/> rel="stylesheet">
 <!--X-editable [ OPTIONAL ]-->
-<link href=<c:url value="/admin/plugins/x-editable/css/bootstrap-editable.css"/> rel="stylesheet">
+<link href=<c:url value = "/admin/plugins/x-editable/css/bootstrap-editable.css"/> rel="stylesheet">
+<!--FooTable [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/fooTable/css/footable.core.css"/> rel="stylesheet">
+<!--Demo [ DEMONSTRATION ]-->
+<link href=<c:url value = "/admin/css/demo/nifty-demo.min.css"/> rel="stylesheet">
 
-
+<!--Bootstrap Table [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/datatables/media/css/dataTables.bootstrap.css" /> rel="stylesheet">
+<link href=<c:url value="/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"/>  rel="stylesheet">    
 
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
@@ -60,80 +65,166 @@
 			<!--Tabs Content-->
 			<div class="tab-content">
 				<div id="demo-lft-tab-1" class="tab-pane fade active in">
-					<!--Editable - combination with X-editable-->
-					<!--===================================================-->
-
-							<table id="demo-editable"
-								   data-search="true"
-								   data-show-refresh="true"
-								   data-show-toggle="true"
-								   data-show-columns="true"
-								   data-sort-name="id"
-								   data-page-list="[5, 10, 20]"
-								   data-page-size="10"
-								   data-pagination="true" data-show-pagination-switch="true">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">호텔 예약 리스트</h3>
+						</div>
+					
+						<!-- Foo Table - Filtering -->
+						<!--===================================================-->
+						<div class="panel-body">
+							<table id="demo-dt-delete" class="table table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th data-toggle="true">예약번호</th>
+										<th>예약일자</th>
+										<th>예약회원번호</th>
+										<th data-hide="phone, tablet">체크인</th>
+										<th data-hide="phone, tablet">체크아웃</th>
+										<th data-hide="phone, tablet">예약금액</th>
+										<th data-hide="phone, tablet">예약상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${newReserveList}" var="reservation">
+										<tr>
+											<td><a href="${pageContext.request.contextPath }/admin/hotel_reservation_detail?reserveNo=${reservation.reserveNo }">${reservation.reserveNo }</a></td>
+											<td>${reservation.reserveDate.substring(0,10) }</td>
+											<td>${reservation.reserveMemno }</td>
+											<td>${reservation.reserveCheckIn.substring(0,10) }</td>
+											<td>${reservation.reserveCheckOut.substring(0,10) }</td>
+											<td>${reservation.reservePrice }원</td>
+											<td>
+												<c:choose>
+													<c:when test="${reservation.reserveState==1}">
+														<span class="label label-table label-warning">미완료</span>
+													</c:when>
+													<c:when test="${reservation.reserveState==2 }">
+														<span class="label label-table label-success">예약완료</span>
+													</c:when>
+													<c:when test="${reservation.reserveState==0 }">
+														<span class="label label-table label-danger">취소</span>
+													</c:when>										
+												</c:choose>
+											</td>
+										</tr>
+									</c:forEach>
+									
+								</tbody>
 							</table>
+						</div>
+						<!--===================================================-->
+						<!-- End Foo Table - Filtering -->
+					
+					</div>
 
 				</div>
 				<div id="demo-lft-tab-2" class="tab-pane fade">
-					<!--Editable - combination with X-editable-->
-					<!--===================================================-->
-							<!-- 
-							<table id="confirmedTable"
-								   data-search="true"
-								   data-show-refresh="true"
-								   data-show-toggle="true"
-								   data-show-columns="true"
-								   data-sort-name="id"
-								   data-page-list="[5, 10, 20]"
-								   data-page-size="10"
-								   data-pagination="true" data-show-pagination-switch="true">
-							</table>
-							 -->
-							
-							<div id="display">
-							
-							</div>
-				</div>
-				<div id="demo-lft-tab-3" class="tab-pane fade">
-					<!--Editable - combination with X-editable-->
-					<!--===================================================-->
 					<div class="panel">
 						<div class="panel-heading">
-							<h3 class="panel-title">호텔 예약 목록</h3>
+							<h3 class="panel-title">호텔 예약 리스트</h3>
 						</div>
+					
+						<!-- Foo Table - Filtering -->
+						<!--===================================================-->
 						<div class="panel-body">
-							<div id="display">
-							</div>
-							<table id="oracleDB"
-								data-search="true"
-								data-show-refresh="true"
-								data-show-toggle="true"
-								data-show-columns="true"
-								data-sort-name="id"
-								data-page-list="[5, 10, 20]"
-								data-page-size="10"
-								data-pagination="true" data-show-pagination-switch="true">
-								<tr>
-									<th>예약번호</th>
-									<th>예약자</th>
-									<th>예약날짜</th>
-									<th>예약금액</th>
-									<th>예약상태</th>
-								</tr>
-								<c:forEach var="reservation" items="${reservationList }">
+							<table id="confirmedReserve" class="table table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
 									<tr>
-										<td>${reservation.reserveNo}</td>
-										<td>${reservation.reserveperson}</td>
-										<td>${reservation.reserveDate}</td>
-										<td>${reservation.reservePrice}</td>
-										<td>${reservation.reserveState}</td>
+										<th data-toggle="true">예약번호</th>
+										<th>예약일자</th>
+										<th>예약회원번호</th>
+										<th data-hide="phone, tablet">체크인</th>
+										<th data-hide="phone, tablet">체크아웃</th>
+										<th data-hide="phone, tablet">예약금액</th>
+										<th data-hide="phone, tablet">예약상태</th>
 									</tr>
-								</c:forEach>
-
-							
+								</thead>
+								<tbody>
+									<c:forEach items="${confirmedReserveList}" var="reservation">
+										<tr>
+											<td><a href="${pageContext.request.contextPath }/admin/hotel_reservation_detail?reserveNo=${reservation.reserveNo }">${reservation.reserveNo }</a></td>
+											<td>${reservation.reserveDate.substring(0,10) }</td>
+											<td>${reservation.reserveMemno }</td>
+											<td>${reservation.reserveCheckIn.substring(0,10) }</td>
+											<td>${reservation.reserveCheckOut.substring(0,10) }</td>
+											<td>${reservation.reservePrice }원</td>
+											<td>
+												<c:choose>
+													<c:when test="${reservation.reserveState==1}">
+														<span class="label label-table label-warning">미완료</span>
+													</c:when>
+													<c:when test="${reservation.reserveState==2 }">
+														<span class="label label-table label-success">예약완료</span>
+													</c:when>
+													<c:when test="${reservation.reserveState==0 }">
+														<span class="label label-table label-danger">취소</span>
+													</c:when>										
+												</c:choose>
+											</td>
+										</tr>
+									</c:forEach>
+									
+								</tbody>
 							</table>
 						</div>
+						<!--===================================================-->
+						<!-- End Foo Table - Filtering -->
+					
+					</div>
+				</div>
+				<div id="demo-lft-tab-3" class="tab-pane fade">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">호텔 예약 리스트</h3>
+						</div>
+					
+						<!-- Foo Table - Filtering -->
+						<!--===================================================-->
+						<div class="panel-body">
+							<table id="oldReserve" class="table table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th data-toggle="true">예약번호</th>
+										<th>예약일자</th>
+										<th>예약회원번호</th>
+										<th data-hide="phone, tablet">체크인</th>
+										<th data-hide="phone, tablet">체크아웃</th>
+										<th data-hide="phone, tablet">예약금액</th>
+										<th data-hide="phone, tablet">예약상태</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${cancelReserveList}" var="reservation">
+										<tr>
+											<td><a href="${pageContext.request.contextPath }/admin/hotel_reservation_detail?reserveNo=${reservation.reserveNo }">${reservation.reserveNo }</a></td>
+											<td>${reservation.reserveDate.substring(0,10) }</td>
+											<td>${reservation.reserveMemno }</td>
+											<td>${reservation.reserveCheckIn.substring(0,10) }</td>
+											<td>${reservation.reserveCheckOut.substring(0,10) }</td>
+											<td>${reservation.reservePrice }원</td>
+											<td>
+												<c:choose>
+													<c:when test="${reservation.reserveState==1}">
+														<span class="label label-table label-warning">미완료</span>
+													</c:when>
+													<c:when test="${reservation.reserveState==2 }">
+														<span class="label label-table label-success">예약완료</span>
+													</c:when>
+													<c:when test="${reservation.reserveState==0 }">
+														<span class="label label-table label-danger">취소</span>
+													</c:when>										
+												</c:choose>
+											</td>
+										</tr>
+									</c:forEach>
+									
+								</tbody>
+							</table>
+						</div>
+						<!--===================================================-->
+						<!-- End Foo Table - Filtering -->
+					
 					</div>
 				</div>
 			</div>
@@ -155,80 +246,25 @@
 <!--END CONTENT CONTAINER-->
 
 
-<!-- handler 활용  DB데이터 가져오기 -->
-<script id="template" type="text/x-handlebars-template">
-<table id="handlertable"
-	data-search="true"
-	data-show-refresh="true"
-	data-show-toggle="true"
-	data-show-columns="true"
-	data-sort-name="id"
-	data-page-list="[5, 10, 20]"
-	data-page-size="10"
-	data-pagination="true" data-show-pagination-switch="true">
+<!--X-editable [ OPTIONAL ]-->
+<script src=<c:url value ="/admin/plugins/x-editable/js/bootstrap-editable.min.js"/>></script>
+<!--Bootstrap Table [ OPTIONAL ]-->
+<script src=<c:url value ="/admin/plugins/bootstrap-table/bootstrap-table.min.js"/>></script>
+<!--Bootstrap Table Extension [ OPTIONAL ]-->
+<script src=<c:url value ="/admin/plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"/>></script>
+<!--FooTable [ OPTIONAL ]-->
+<script src=<c:url value="/admin/plugins/fooTable/dist/footable.all.min.js"/>></script>
+<!--Demo script [ DEMONSTRATION ]-->
+<script src=<c:url value="/admin/js/demo/nifty-demo.min.js"/>></script>
+<!--Bootstrap Table Sample [ SAMPLE ]-->
+<script src=<c:url value="/admin/js/demo/tables-bs-table.js"/>></script>
+<!--FooTable Example [ SAMPLE ]-->
+<script src=<c:url value="/admin/js/demo/tables-footable.js"/>></script>
 
-	{{#each .}}
-	<tr>예약번호 = {{reserveNo}}</tr>
-	<tr>예약자 = {{reserveperson}}</tr>
-	<tr>예약날짜 = {{reserveDate}}</tr>
-	<tr>예약금액 = {{reservePrice}}</tr>
-	<tr>예약상태 = {{reserveState}}</tr>
-	{{/each}}
+<!--DataTables [ OPTIONAL ]-->
+<script <c:url value="/admin/plugins/datatables/media/js/jquery.dataTables.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/media/js/dataTables.bootstrap.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"/>></script>
 
-</table>
-</script>
-
-<script type="text/javascript">
-$.ajax({
-	type: "GET",
-	url: "hotel_reservation_list",
-	dataType: "json",
-	success: function(json) {
-		//템플릿 코드를 반환받아 저장
-		var source=$("#template").html();
-		//템플릿 코드를 전달하여 템플릿 객체 생성
-		var template=Handlebars.compile(source);
-		//템플릿 객체에 JavaScript 객체를 전달하여 HTML 코드로 변환하여 반환받아 응답 처리
-		$("#display").html(template(json));
-	},
-	error: function(xhr) {
-		$("#display").text("응답오류 = "+xhr.status);
-	}
-});
-</script>
-
- 
- <%--
- 	<script type="text/javascript">
-	$('#confirmedTable').bootstrapTable({
-		idField: 'id',
-		url: '${pageContext.request.contextPath }/admin/data/bs-table.json',
-		columns: [{
-			field: 'id',
-			formatter:'invoiceFormatter',
-			title: '예약번호'
-		}, {
-			field: 'name',
-			title: '예약자',
-			editable: {
-				type: 'text'
-			}
-		}, {
-			field: 'date',
-			title: '예약날짜'
-		}, {
-			field: 'amount',
-			title: '예약금액',
-			editable: {
-				type: 'text'
-			}
-		}, {
-			field: 'status',
-			align: 'center',
-			title: '예약상태',
-			formatter:'statusFormatter'
-		}]
-	});
-	</script>
-	
-	 --%>
+<!--DataTables Sample [ SAMPLE ]-->
+<script <c:url value="/admin/js/demo/tables-datatables.js"/>></script>

@@ -51,6 +51,7 @@
 					최신순
 				</button>
 			 -->
+			 <!-- 
 				<div class="form-group" >
 					<div style="float: right; margin-left: 5px; margin-top: 2px;">
 						<button  class="btn btn-sm btn-mint">검색</button>
@@ -59,7 +60,7 @@
 						<input type="text" name="keyword" class="form-control">
 					</div>
 				</div>
-				
+				 -->
 				<table id="demo-dt-delete" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
@@ -74,7 +75,7 @@
 					<tbody>
 						<c:forEach var="comment" items="${commentList}" >
 							<tr>
-								<td style="text-align: right;"><a href="${pageContext.request.contextPath }/admin/review_detail?commentNo=${comment.commentNo }">${comment.commentNo }</a></td>
+								<td style="text-align: right;"><a href="${pageContext.request.contextPath }/admin/hotel_review_detail?commentNo=${comment.commentNo }">${comment.commentNo }</a></td>
 								<td style="text-align: right;">${comment.commentRoom }</td>
 								<td style="text-align: right;">${comment.commentMemno }</td>
 								<td>${comment.commentTitle }</td>
