@@ -281,9 +281,7 @@ div.btns {
 						</table>
 						<div class="btns">
 					
-							<a href='payment_delete?paymentList=${payment.rsNo }' >
 								<span style="color : black;" class="formBtn">환불</span>
-							</a>
 						
 							<a href='payment?paymentList=${payment.rsNo }' >
 								<span style="color : black;" class="formBtn">상세 정보</span>

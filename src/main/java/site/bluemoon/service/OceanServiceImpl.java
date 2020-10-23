@@ -44,10 +44,6 @@ public class OceanServiceImpl implements OceanService {
 	
 	//환불
 
-	@Override
-	public void updateOcean(OceanReservationDTO updateOcean) {
-		OceanDAO.updateOcean(updateOcean);
-	}
 	
 	//생생뉴스
 	@Override

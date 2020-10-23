@@ -16,7 +16,6 @@ public interface OceanService {
 	OceanReservationDTO getOceanPayment(int rsNo);
 	List<OceanReservationDTO> getOceanPaymentList();
 	//환불
-	void updateOcean(OceanReservationDTO updateOcean);
 
 	//생생뉴스
 	List<OceanNews> getSelectNewsList();

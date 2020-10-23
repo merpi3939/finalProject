@@ -16,7 +16,7 @@ public interface OceanDAO {
 	OceanReservationDTO selectOceanPayment(int rsNo);
 	List<OceanReservationDTO> selectOceanPaymentList();
 	//환불
-	int updateOcean(OceanReservationDTO updateOcean);
+
 	//생생뉴스
 	List<OceanNews> selectNewsList();
 }

@@ -44,10 +44,7 @@ public class OceanDAOImpl implements OceanDAO {
 	}
 	
 	//환불	
-	@Override
-	public int updateOcean(OceanReservationDTO updateOcean) {
-		return sqlSession.getMapper(OceanMapper.class).updateOcean(updateOcean);
-	}
+
 	
 	//생생뉴스	
 	@Override
