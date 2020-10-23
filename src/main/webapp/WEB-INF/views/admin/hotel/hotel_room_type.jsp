@@ -62,7 +62,7 @@
 								<th>이미지2</th>
 								<th>이미지3</th>
 								<th>이미지4</th>
-								<th>카테고리가격</th>
+								<th>1일당 가격</th>
 								<th>객실수</th>
 							</tr>
 					</thead>
@@ -71,11 +71,19 @@
 							<tr>
 								<td>${category.hotelCategoryNo }</td>
 								<td><a href="${pageContext.request.contextPath }/admin/hotel_room_detail?hotelCategoryNo=${category.hotelCategoryNo }">${category.hotelCategoryName }</a></td>
-								<td>${category.hotelCategoryImg1 }</td>
-								<td>${category.hotelCategoryImg2 }</td>
-								<td>${category.hotelCategoryImg3 }</td>
-								<td>${category.hotelCategoryImg4 }</td>
-								<td>${category.hotelCategoryPrice }</td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg1 }"/> style="height: 50px;">
+								</td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg2 }"/> style="height: 50px;">
+								</td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg3 }"/> style="height: 50px;">
+								</td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg4 }"/> style="height: 50px;">
+								</td>
+								<td>${category.hotelCategoryPrice }원</td>
 								<td>${category.hotelCategoryQty }</td>
 							</tr>
 						</c:forEach>
