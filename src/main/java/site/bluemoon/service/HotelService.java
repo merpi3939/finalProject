@@ -11,5 +11,6 @@ public interface HotelService {
 	public HotelCategory selectHotelCategory(int num);
 	 List<HotelCategory> selectHotelCategoryList();
 	 void addHotelPay(HotelPay pay);
+	 void erasePointHotelPay(HotelPay pay);
 	
 }

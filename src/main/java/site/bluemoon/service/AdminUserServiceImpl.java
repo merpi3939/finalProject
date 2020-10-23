@@ -18,8 +18,15 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public List<User> getSelectUserList() {
 		return adminUserDAO.selectUserList();
 	}
+
 	@Override
-	public User getUpdateUserInfo(int userNo) {
-		return adminUserDAO.updateUserInfo(userNo);
+	public User getSelectUserId(int userNo) {
+		return adminUserDAO.selectUserId(userNo);
 	}
+
+	@Override
+	public void modifyUser(User user) {
+		adminUserDAO.updateUserInfo(user);
+	}
+
 }

@@ -41,7 +41,7 @@
 							<h3 class="panel-title">블루문 워터파크 현장소식 게시판입니다.</h3>
 				</div>
 						<div class="panel-body">
-							<form name="form1">
+							<form name="newsForm">
 								<table id="demo-dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
 									<thead>
 										<tr>
@@ -75,8 +75,8 @@
 														<td style="text-align: center;">${newsDate }</td>
 														
 														<td style="width: 600px;">${list.newsCont }</td>
-														<td ><p class="btn btn-mint" onclick="newsModify(${list.newsNo })">수정</p></td>
-														<td><p class="btn btn-danger" onclick="newsRemove(${list.newsNo })">삭제</p></td>
+														<td style="text-align: center;"><p class="btn btn-mint" onclick="newsModify(${list.newsNo })">수정</p></td>
+														<td style="text-align: center;"><p class="btn btn-danger" onclick="newsRemove(${list.newsNo })">삭제</p></td>
 													</tr>
 												</c:forEach>
 											</c:otherwise>
@@ -110,7 +110,9 @@
 		}
 		
 		function newsRemove(newsNo) {
-			location.href="newsRemove/"+newsNo;
+			if(confirm("정말로 탈퇴처리 하시겠습니까?")) {
+				location.href="newsRemove/"+newsNo;
+			}
 		}
 		
 		$("#checkAll").click(function () {
@@ -122,16 +124,24 @@
 		});
 		
 		$("#deleteBtn").click(function () {
-			form1.method="post";
-			form1.action="deleteCheckNews";
-			var checkDataArray=[];
-			
-			$("input[name='checkData']:checked").each(function(i) {
-				console.log(i + " : " + $(this).val());
-				checkDataArray.push($(this).val());
-			});
-			form1.checkData=checkDataArray;
-			form1.submit();
+			if(confirm("정말로 탈퇴처리 하시겠습니까?")) {
+				var checkDataArray=[];
+				$("input[name='checkData']:checked").each(function(i) {
+					checkDataArray.push($(this).val());
+				});
+				newsForm.checkData=checkDataArray;
+				
+				if(checkDataArray.length==0) {
+					alert("선택된 값이 없습니다.");
+					return;
+				}
+				newsForm.method="post";
+				newsForm.action="deleteCheckNews";
+				newsForm.submit();
+				
+			} else {
+				$("input[type=checkbox]").prop("checked",false);
+			}
 		});
 		
 	</script>
