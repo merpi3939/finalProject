@@ -258,7 +258,7 @@ div.btns {
 			<form class="form01" id="form01">
 				<div class="wrap100" style="">
 					<div>
-						<h5>결제 정보</h5>
+						<h5>환불 확인</h5>
 						<table class="res01">
 							<colgroup>
 								<col width="40%">
@@ -266,86 +266,40 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>결제 번호</th>
-									<td name="rsNo" id="pmNo">${paymentList.rsNo }</td>
+									<td id="rsNo" name="rsNo" >${paymentList.rsNo }</td>
 								</tr>
 								<tr>
 									<th>이용 날짜</th>
-									<td name="rsUseDate" id="pmUsedate">${paymentList.rsUsedate}</td>
+									<td id="rsUsedate" name="rsUsedate">${updateOcean.rsUsedate }</td>
 								</tr>
 								<tr>
 									<th>이용권</th>
-									<td name="rsTicket" id="pmTicket">${paymentList.rsTicket}</td>
-								</tr>
-								<tr>
-									<th>이용권 총 수량</th>
-									<td name="rsAdult" id="pmAdult">대인 :
-										${paymentList.rsAdult} / 소인 : ${paymentList.rsChild }</td>
-								</tr>
-								<tr>
-									<th>이용권 총 금액</th>
-									<td name="rsPrice" id="pmPrice">${paymentList.rsPrice }</td>
-								</tr>
-								<tr>
-									<th>결제 날짜</th>
-									<td name="rsDate" id="pmDate">${paymentList.rsDate }</td>
-								</tr>
-								<tr>
-									<th>결제 방법</th>
-									<td>
-										<ul>
-											<li><input name="rsOption" id="rsOption" class="pay"
-												value="" readonly="readonly" style="width : 50%;"></li>
-											<!-- <li><input name="rsOption" id="pmOption1" class="pay"
-												type="radio" value="0">신용카드</li>
-											<li><input name="rsOption" id="pmOption2" class="pay"
-												type="radio" value="1">무통장입금</li> -->
-										</ul>
-									</td>
+									<td id="rsTicket" name="rsTicket">${updateOcean.rsTicket }</td>
 								</tr>
 							</tbody>
 						</table>
-						<h5>회원 정보</h5>
-						<table class="res01">
-							<colgroup>
-								<col width="30%">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>회원 이름</th>
-									<td id="rsName" value="" name="pmName">${paymentList.rsName}</td>
-								</tr>
-								<tr>
-									<th>회원 전화번호</th>
-									<td id="rsPhone1" value="" name="pmPhone">${paymentList.rsPhone}</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<div class="btns">							
-							<button class="formBtn">확인</button></a>							
+						<input type="hidden" name="rsState" id="rsState" value="0">
+						<div class="btns">
+							<p style="color : red;">* 환불 하시겠습니까?</p>
+							<button type="submit" class="formBtn">환불</button>
 						</div>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
-	
-<script type="text/javascript">
-	$("#form01").ready(function() {
-	     var radio = ${paymentList.rsOption };
-	     var val0 = '신용카드'
-	     var val1 = '무통장입금'
+<!-- <script type="text/javascript">
+	$("#form01").submit(function() {
+	     var state = ${updateOcean.rsState };
+	     var val = 0
 	     
-	     if(radio == 0){
-	    	 $("#rsOption").val(val0);
-	     } else if(radio == 1 ){
-	    	/* $("input[name='rsOption2']:checked").val(); */
-	    	 $("#rsOption").val(val1);
-	     }
+	     if(state == 1){
+	    	 $("#rsState").val(val);
+	     } 
 	     
-	     /* alert(radio); */
+	     alert(state);
 	});
 
-</script>
+</script> -->
 </body>
 </html>

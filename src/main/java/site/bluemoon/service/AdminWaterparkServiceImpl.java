@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.AdminWaterparkDAO;
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -33,17 +34,13 @@ public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 	}
 
 	@Override
-	public OceanNews getSelectNews(int newsNo) {
+	public AdminOceanNews getSelectNews(int newsNo) {
 		return adminWaterparkDAO.selectNews(newsNo);
 	}
 	
 	@Override
-	public List<OceanNews> getSelectNewsList() {
+	public List<AdminOceanNews> getSelectNewsList() {
 		return adminWaterparkDAO.selectNewsList();
-	}
-	
-	public void removeCheckNews(Integer newsNo) {
-		adminWaterparkDAO.deleteCheckNews(newsNo);
 	}
 
 	//°·Waterpark's Reservation Service
@@ -58,6 +55,5 @@ public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 		return adminWaterparkDAO.selectChargeList();
 	}
 
-	
 }
 

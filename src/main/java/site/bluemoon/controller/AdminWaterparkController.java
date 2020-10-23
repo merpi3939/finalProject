@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.service.AdminWaterparkService;
 
@@ -26,7 +27,7 @@ public class AdminWaterparkController {
 	//■news 현장소식
 	@RequestMapping(value = "/newsList")
 	public String newsList(Model model) {
-		model.addAttribute("newsList", adminWaterparkService.getSelectNewsList());
+		model.addAttribute("newsUserList", adminWaterparkService.getSelectNewsList() );
 		return "admin/waterpark/news/newsList";
 	}
 	

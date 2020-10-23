@@ -14,12 +14,6 @@
 				<li class="nav-item">
 					<a class="nav-link my-page" href="<c:url value="/qna"/>">Q&A</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="/adminfind">습득물 관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link my-page" href="/userfind">분실물 문의</a>
-				</li>
 			</ul>
 		</div>
 </div>

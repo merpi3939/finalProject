@@ -29,12 +29,14 @@ public class HotelPay {
 		this.hotelPayMemno = hotelPayMemno;
 	}
 
-	public String getPayment() {
+	
+
+	public String getHotelPayment() {
 		return hotelPayment;
 	}
 
-	public void setPayment(String payment) {
-		this.hotelPayment = payment;
+	public void setHotelPayment(String hotelPayment) {
+		this.hotelPayment = hotelPayment;
 	}
 
 	public int getHotelPayState() {

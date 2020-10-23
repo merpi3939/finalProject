@@ -27,7 +27,7 @@
 
 .searchForm{
 	text-align: center;
-	margin-bottom: 50px;
+	margin-bottom: 92px;
 }
 
 .noticeBtn {
@@ -46,7 +46,7 @@ ul{
 }
 
 .block-27 ul li.active span {
-    background: #e3e3e3;
+    background: #000000;
     color: #000000;
     border: 1px solid transparent;
 }	
@@ -108,7 +108,4 @@ ul{
 	list-style:none;
 	text-align: center;
 	padding-inline-start: 0px;
-}
-.writeCon {
-	display: none;
 }

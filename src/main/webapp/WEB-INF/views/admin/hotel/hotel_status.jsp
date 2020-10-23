@@ -17,6 +17,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
+<!--Bootstrap Table [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/datatables/media/css/dataTables.bootstrap.css" /> rel="stylesheet">
+<link href=<c:url value="/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"/>  rel="stylesheet">
     
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
@@ -54,257 +57,44 @@
 			<!-- Foo Table - Filtering -->
 			<!--===================================================-->
 			<div class="panel-body">
-				<table id="demo-foo-filtering" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+				<table id="demo-dt-delete" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th data-toggle="true">First Name</th>
-							<th>Last Name</th>
-							<th data-hide="phone, tablet">Job Title</th>
-							<th data-hide="phone, tablet">DOB</th>
-							<th data-hide="phone, tablet">Status</th>
+							<th data-toggle="true">예약번호</th>
+							<th>예약일자</th>
+							<th>예약회원번호</th>
+							<th data-hide="phone, tablet">체크인</th>
+							<th data-hide="phone, tablet">체크아웃</th>
+							<th data-hide="phone, tablet">예약금액</th>
+							<th data-hide="phone, tablet">예약상태</th>
 						</tr>
 					</thead>
-					<div class="pad-btm form-inline">
-						<div class="row">
-							<div class="col-sm-6 text-xs-center">
-								<div class="form-group">
-									<label class="control-label">Status</label>
-									<select id="demo-foo-filter-status" class="form-control">
-										<option value="">Show all</option>
-										<option value="active">Active</option>
-										<option value="disabled">Disabled</option>
-										<option value="suspended">Suspended</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-sm-6 text-xs-center text-right">
-								<div class="form-group">
-									<input id="demo-foo-search" type="text" placeholder="Search" class="form-control" autocomplete="off">
-								</div>
-							</div>
-						</div>
-					</div>
 					<tbody>
-						<tr>
-							<td>Isidra</td>
-							<td>Boudreaux</td>
-							<td>Traffic Court Referee</td>
-							<td>22 Jun 1972</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Shona</td>
-							<td>Woldt</td>
-							<td>Airline Transport Pilot</td>
-							<td>3 Oct 1981</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Granville</td>
-							<td>Leonardo</td>
-							<td>Business Services Sales Representative</td>
-							<td>19 Apr 1969</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Easer</td>
-							<td>Dragoo</td>
-							<td>Drywall Stripper</td>
-							<td>13 Dec 1977</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Maple</td>
-							<td>Halladay</td>
-							<td>Aviation Tactical Readiness Officer</td>
-							<td>30 Dec 1991</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Maxine</td>
-							<td><a href="#">Woldt</a></td>
-							<td><a href="#">Business Services Sales Representative</a></td>
-							<td>17 Oct 1987</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Lorraine</td>
-							<td>Mcgaughy</td>
-							<td>Hemodialysis Technician</td>
-							<td>11 Nov 1983</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Lizzee</td>
-							<td><a href="#">Goodlow</a></td>
-							<td>Technical Services Librarian</td>
-							<td>1 Nov 1961</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Judi</td>
-							<td>Badgett</td>
-							<td>Electrical Lineworker</td>
-							<td>23 Jun 1981</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Lauri</td>
-							<td>Hyland</td>
-							<td>Blackjack Supervisor</td>
-							<td>15 Nov 1985</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Isidra</td>
-							<td>Boudreaux</td>
-							<td>Traffic Court Referee</td>
-							<td>22 Jun 1972</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Shona</td>
-							<td>Woldt</td>
-							<td>Airline Transport Pilot</td>
-							<td>3 Oct 1981</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Granville</td>
-							<td>Leonardo</td>
-							<td>Business Services Sales Representative</td>
-							<td>19 Apr 1969</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Easer</td>
-							<td>Dragoo</td>
-							<td>Drywall Stripper</td>
-							<td>13 Dec 1977</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Maple</td>
-							<td>Halladay</td>
-							<td>Aviation Tactical Readiness Officer</td>
-							<td>30 Dec 1991</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Maxine</td>
-							<td><a href="#">Woldt</a></td>
-							<td><a href="#">Business Services Sales Representative</a></td>
-							<td>17 Oct 1987</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Lorraine</td>
-							<td>Mcgaughy</td>
-							<td>Hemodialysis Technician</td>
-							<td>11 Nov 1983</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Lizzee</td>
-							<td><a href="#">Goodlow</a></td>
-							<td>Technical Services Librarian</td>
-							<td>1 Nov 1961</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Judi</td>
-							<td>Badgett</td>
-							<td>Electrical Lineworker</td>
-							<td>23 Jun 1981</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Lauri</td>
-							<td>Hyland</td>
-							<td>Blackjack Supervisor</td>
-							<td>15 Nov 1985</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Isidra</td>
-							<td>Boudreaux</td>
-							<td>Traffic Court Referee</td>
-							<td>22 Jun 1972</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Shona</td>
-							<td>Woldt</td>
-							<td>Airline Transport Pilot</td>
-							<td>3 Oct 1981</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Granville</td>
-							<td>Leonardo</td>
-							<td>Business Services Sales Representative</td>
-							<td>19 Apr 1969</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Easer</td>
-							<td>Dragoo</td>
-							<td>Drywall Stripper</td>
-							<td>13 Dec 1977</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Maple</td>
-							<td>Halladay</td>
-							<td>Aviation Tactical Readiness Officer</td>
-							<td>30 Dec 1991</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Maxine</td>
-							<td><a href="#">Woldt</a></td>
-							<td><a href="#">Business Services Sales Representative</a></td>
-							<td>17 Oct 1987</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Lorraine</td>
-							<td>Mcgaughy</td>
-							<td>Hemodialysis Technician</td>
-							<td>11 Nov 1983</td>
-							<td><span class="label label-table label-dark">Disabled</span></td>
-						</tr>
-						<tr>
-							<td>Lizzee</td>
-							<td><a href="#">Goodlow</a></td>
-							<td>Technical Services Librarian</td>
-							<td>1 Nov 1961</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
-						<tr>
-							<td>Judi</td>
-							<td>Badgett</td>
-							<td>Electrical Lineworker</td>
-							<td>23 Jun 1981</td>
-							<td><span class="label label-table label-success">Active</span></td>
-						</tr>
-						<tr>
-							<td>Lauri</td>
-							<td>Hyland</td>
-							<td>Blackjack Supervisor</td>
-							<td>15 Nov 1985</td>
-							<td><span class="label label-table label-danger">Suspended</span></td>
-						</tr>
+						<c:forEach items="${reserveList}" var="reserve">
+							<tr>
+								<td><a href="${pageContext.request.contextPath }/admin/hotel_reservation_detail?reserveNo=${reserve.reserveNo }">${reserve.reserveNo }</a></td>
+								<td>${reserve.reserveDate.substring(0,10) }</td>
+								<td>${reserve.reserveMemno }</td>
+								<td>${reserve.reserveCheckIn.substring(0,10) }</td>
+								<td>${reserve.reserveCheckOut.substring(0,10) }</td>
+								<td>${reserve.reservePrice }원</td>
+								<td>
+									<c:choose>
+										<c:when test="${reserve.reserveState==1}">
+											<span class="label label-table label-warning">미완료</span>
+										</c:when>
+										<c:when test="${reserve.reserveState==2 }">
+											<span class="label label-table label-success">예약완료</span>
+										</c:when>
+										<c:when test="${reserve.reserveState==0 }">
+											<span class="label label-table label-danger">취소</span>
+										</c:when>										
+									</c:choose>
+								</td>
+							</tr>
+						</c:forEach>
+						
 					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="5">
-								<div class="text-right">
-									<ul class="pagination"></ul>
-								</div>
-							</td>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 			<!--===================================================-->
@@ -312,56 +102,6 @@
 		
 		</div>
 
-
-		<!--Custom Toolbar-->
-		<!--===================================================-->
-		<!--
-		<div class="panel">
-			<div class="panel-heading">
-				<h3 class="panel-title">호텔 예약 리스트</h3>
-			</div>
-			<div class="panel-body">
-				<button id="demo-delete-row" class="btn btn-danger btn-labeled fa fa-times" disabled>Delete</button>
-				<table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-					   data-url="${pageContext.request.contextPath }/admin/data/bs-table.json"
-					   data-toolbar="#demo-delete-row"
-					   data-search="true"
-					   data-show-refresh="true"
-					   data-show-toggle="true"
-					   data-show-columns="true"
-					   data-sort-name="id"
-					   data-page-list="[5, 10, 20]"
-					   data-page-size="5"
-					   data-pagination="true" data-show-pagination-switch="true">
-					<thead>
-						<tr>
-							<th data-field="state" data-checkbox="true">ID</th>
-							<th data-field="id" data-sortable="true" data-formatter="invoiceFormatter">ID</th>
-							<th data-field="name" data-sortable="true">Name</th>
-							<th data-field="date" data-sortable="true" data-formatter="dateFormatter">Order date</th>
-							<th data-field="amount" data-align="center" data-sortable="true" data-sorter="priceSorter">Balance</th>
-							<th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>
-							<th data-field="track" data-align="center" data-sortable="true" data-formatter="trackFormatter">Tracking Number</th>
-						</tr>
-					</thead>
-					<%--
-					<tbody>
-						<tr>
-							<td data-field="state" data-checkbox="true">ID</td>
-							<td data-field="id" data-sortable="true" data-formatter="invoiceFormatter">abc123</td>
-							<td data-field="name" data-sortable="true">김말이</td>
-							<td data-field="date" data-sortable="true" data-formatter="dateFormatter">Today 01:25 PM</td>
-							<td data-field="amount" data-align="center" data-sortable="true" data-sorter="priceSorter">$132.20</td>
-							<td data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Active</td>
-							<td data-field="track" data-align="center" data-sortable="true" data-formatter="trackFormatter">sdifj234</td>
-						</tr>
-					</tbody>
-					 --%>
-				</table>
-			</div>
-		</div>
-		 -->
-		<!--===================================================-->
 
 		<div class="row equal">
 		
@@ -377,48 +117,25 @@
 						<table class="table table-hover table-vcenter">
 							<thead>
 								<tr>
-									<th class="min-width">Device</th>
-									<th>Name</th>
-									<th class="text-center">Value</th>
+									<th class="min-width">호텔 리뷰 번호</th>
+									<th>객실</th>
+									<th>회원번호</th>
+									<th>리뷰제목</th>
+									<th>리뷰내용</th>
+									<th>작성날짜</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td class="text-center"><span class="icon-wrap icon-wrap-sm icon-circle bg-purple"><i class="fa fa-desktop fa-lg"></i></span></td>
-									<td>
-										<span class="text-semibold">Desktop</span>
-										<br>
-										<small class="text-muted">Last 7 days : 4,234k</small>
-									</td>
-									<td class="text-center"><span class="text-danger text-semibold">- 28.76%</span></td>
-								</tr>
-								<tr>
-									<td class="text-center"><span class="icon-wrap icon-wrap-sm icon-circle bg-info"><i class="fa fa-laptop fa-lg"></i></span></td>
-									<td>
-										<span class="text-semibold">Laptop</span>
-										<br>
-										<small class="text-muted">Last 7 days : 3,876k</small>
-									</td>
-									<td class="text-center"><span class="text-warning text-semibold">- 8.55%</span></td>
-								</tr>
-								<tr>
-									<td class="text-center"><span class="icon-wrap icon-wrap-sm icon-circle bg-danger"><i class="fa fa-tablet fa-lg"></i></span></td>
-									<td>
-										<span class="text-semibold">Tablet</span>
-										<br>
-										<small class="text-muted">Last 7 days : 45,678k</small>
-									</td>
-									<td class="text-center"><span class="text-success text-semibold">+ 58.56%</span></td>
-								</tr>
-								<tr>
-									<td class="text-center"><span class="icon-wrap icon-wrap-sm icon-circle bg-mint"><i class="fa fa-mobile fa-lg"></i></span></td>
-									<td>
-										<span class="text-semibold">Smartphone</span>
-										<br>
-										<small class="text-muted">Last 7 days : 34,553k</small>
-									</td>
-									<td class="text-center"><span class="text-success text-semibold">+ 35.76%</span></td>
-								</tr>
+								<c:forEach var="comment" items="${commentList}" >
+									<tr>
+										<td style="text-align: right;">${comment.commentNo }</td>
+										<td style="text-align: right;">${comment.commentRoom }</td>
+										<td style="text-align: right;">${comment.commentMemno }</td>
+										<td>${comment.commentTitle }</td>
+										<td>${comment.commentContent }</td>
+										<td>${comment.commentDate.substring(0,10) }</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
@@ -506,3 +223,11 @@ new Morris.Line({
 	hideHover: 'auto'
 });
 </script>
+
+<!--DataTables [ OPTIONAL ]-->
+<script <c:url value="/admin/plugins/datatables/media/js/jquery.dataTables.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/media/js/dataTables.bootstrap.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"/>></script>
+
+<!--DataTables Sample [ SAMPLE ]-->
+<script <c:url value="/admin/js/demo/tables-datatables.js"/>></script>

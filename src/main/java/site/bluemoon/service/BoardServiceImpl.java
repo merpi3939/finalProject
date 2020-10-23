@@ -30,6 +30,16 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectInfoBoardCount(map);
 	}
 
+	@Override
+	public InfoBoard findInfoBoard(Map<String, Object> map) {
+		return boardDAO.selectInfoBoard(map);
+	}
+
+	@Override
+	public void modifyInfoBoard(InfoBoard infoBoard) {
+		boardDAO.updateInfoBoard(infoBoard);
+	}
+
 	
 	
 }

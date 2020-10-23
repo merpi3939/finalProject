@@ -42,7 +42,7 @@
 						<!--■Static-->
 						<div class="form-group" >
 							<label class="col-md-3 control-label">작성자</label>
-							<div class="col-md-9"><p class="form-control-static">${news.newsNo }</p></div>
+							<div class="col-md-9"><p class="form-control-static">${news.userName }&nbsp;(${news.userId })</p></div>
 						</div>
 						
 						<!--■content-->

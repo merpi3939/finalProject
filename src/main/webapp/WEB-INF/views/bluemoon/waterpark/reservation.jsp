@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -242,77 +243,111 @@ div.btns {
 	padding: 0px 22px 22px 22px;
 	display: inline-block;
 }
+
+.msg {
+	display: none;
+	color: red;
+}
+
+#datepicker {
+	z-index: 999 !important;
+}
 </style>
 
 </head>
 <body>
 	<div class="limiter">
 		<div class="con01">
-			<form class="form01" action="addOcean" method="post">
+			<form class="form01" id="form01" action="addOcean" method="post">
 				<div class="wrap100">
-						<h5>예약하기</h5>
-						<table class="res01">
-							<colgroup>
-								<col width="30%">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>예약 날짜</th>
-									<td><input type="text" id="datepicker" name="rsUserdate"></td>
-								</tr>
-								<tr>
-									<th>이용권</th>
+					<h5>예약하기</h5>
+					<table class="res01">
+						<colgroup>
+							<col width="30%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>예약 날짜</th>
+								<td>
+									<input id="datepicker" name="rsUsedate" value="${addOcean.rsUsedate}"><span id="datepickerNullMsg"
+									class="msg nameMsg"> 날짜는 필수 입력입니다.</span>
+								</td>
+							</tr>
+							<tr>
+								<th>이용권</th>
+								<td>
+									<input id="rsTicket" name="rsTicket" value="${chargeList.cgName }" readonly="readonly">
+								</td>
+							</tr>
+							<tr>
+								<th>이용권 수량</th>
+								<td>
+									
+									<span class="age01">대인</span>
+									<input id="rsAdult" type="number" min="0" max="99" class="agein" value="${addOcean.rsAdult}" name="rsAdult">
 
-									<td><select name="sel">
-											<option name="rsName" value="rsTicket">리스트</option>
-									</select></td>
-								</tr>
-								<tr>
-									<th>이용권 수량</th>
-									<td><strong> <span class="age01">대인</span>
-									</strong> <input type="number" class="agein" name="rsAdult"> <strong>
-											<span class="age01">소인</span>
-									</strong> <input type="number" class="agein" name="rsChild"></td>
-								</tr>
-								<tr>
-									<th>이용권 금액</th>
-									<td><input name="rsPrice"></td>
-								</tr>
-							</tbody>
-						</table>
+									<span class="age01">소인</span>
+									<input id="rsChild" type="number" min="0" max="99" class="agein" value="${addOcean.rsChild}" name="rsChild">
 
-						<h5>회원 정보</h5>
-						<table class="res01">
-							<colgroup>
-								<col width="30%">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>회원 이름</th>
-									<td><input name="rsName"></td>
-								</tr>
-								<tr>
-									<th>회원 전화번호</th>
-									<td><input name="rsPhone"></td>
-								</tr>
-								<tr>
-									<th>결제 방법</th>
-									<td>
-										<ul>
-											<li><input type="radio" class="pay" name="rsOption"
-												type="radio" value="0">신용카드</li>
-											<li><input type="radio" class="pay" name="rsOption"
-												type="radio" value="1">무통장입금</li>
-										</ul>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="btns">
-							<button class="formBtn" type="submit">결제하기</button>
-						</div>
+								<span id="rsAdultNullMsg" class="msg nameMsg">숫자는 필수 입력입니다.</span>
+								<span id="rsChildNullMsg" class="msg nameMsg">원하는 구매 수량을 선택하세요.</span>
+								
+								</td>
+							</tr>
+							<tr>
+								<th>이용권 금액</th>
+								<%-- <td id="rsPrice" name="rsPrice" value="">${chargeList.cgPrice }</td> --%>
+								<td>${chargeList.cgPrice }</td>
+								<input type="hidden" id="rsPrice" name="rsPrice" value="" />
+							</tr>
+							
+						</tbody>
+					</table>
+
+					<h5>회원 정보</h5>
+					<table class="res01">
+						<colgroup>
+							<col width="30%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>회원 이름</th>
+								<td><input id="rsName" value="${addOcean.rsName}"
+									name="rsName"> <span id="nameNullMsg"
+									class="msg nameMsg">이름은 필수 입력입니다.</span> <span
+									id="nameValidMsg" class="msg nameMsg">이름을 형식에 맞게 입력해
+										주세요.</span>
+							</tr>
+							<tr>
+								<th>회원 전화번호</th>
+								<td><input id="rsPhone" value="${addOcean.rsPhone}"
+									onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+									name="rsPhone" maxlength="11"> <span id="phoneNullMsg"
+									class="msg phoneMsg">전화번호는 필수 입력입니다.</span><span
+									id="phoneValidMsg" class="msg phoneMsg">형식에 맞는 전화번호를
+										입력해주세요.</span></td>
+
+							</tr>
+							<tr>
+								<th>결제 방법</th>
+								<td>
+									<ul>
+										<li><input type="radio" class="pay" id="rsOption"
+											name="rsOption" type="radio" value="0" checked="checked">신용카드</li>
+										<li><input type="radio" class="pay" id="rsOption"
+											name="rsOption" type="radio" value="1">무통장입금</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="btns">
+						<button type="submit" class="formBtn">결제하기</button>
+					</div>
 				</div>
 			</form>
+			
 		</div>
 	</div>
 
@@ -321,24 +356,90 @@ div.btns {
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<script>
-		$.datepicker.setDefaults({
-			dateFormat : 'yyyy-mm-dd',
-			prevText : '이전 달',
-			nextText : '다음 달',
-			monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-					'9월', '10월', '11월', '12월' ],
-			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-					'9월', '10월', '11월', '12월' ],
-			dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-			showMonthAfterYear : true,
-			yearSuffix : '년'
+		$(function() {
+			 $("#datepicker").datepicker({
+				format : "yyyy-mm-dd",
+				language : "kr",
+				maxDate: "+2w",
+				minDate : "+1d",
+				todayHighlight : true,
+				autoclose : true
+
+			});
+			 
 		});
 
-		$(function() {
-			$("#datepicker").datepicker();
+		$("#form01").submit(function() {
+			var result = true;
+			$(".msg").hide();
+
+			//이름
+			var name = $("#rsName").val();
+			var nameReg = /^[가-힣]{2,10}$/g;
+
+			if (name == "") {
+				$("#nameNullMsg").show();
+				result = false;
+			} else if (!nameReg.test(name)) {
+				$("#nameValidMsg").show();
+				result = false;
+			}
+
+			//전화번호
+			var phone = $("#rsPhone").val()
+			var phoneReg = /^([0-9]{11})$/;
+
+			if (phone == "") {
+				$("#phoneNullMsg").show();
+				result = false;
+			} else if (!phoneReg.test(phone)) {
+				$("#phoneValidMsg").show();
+				result = false;
+			} 
+			
+			var datepicker1 = $("#datepicker").val()
+			
+			if (datepicker1 == "") {
+				$("#datepickerNullMsg").show();
+				result = false;
+			}
+			
+			var rsAdult = $("#rsAdult").val()
+			var rschild = $("#rsChild").val()
+			
+			if (rsAdult == "" || rschild == "") {
+				$("#rsAdultNullMsg").show();
+				result = false;
+			} else if (rsAdult == "" && rschild == "") {
+				$("#rsAdultNullMsg").show();
+				result = false;
+			}else if (rschild == 0 && rschild == 0) {
+				$("#rschildNullMsg").show();
+				result = false;
+			}
+			
+			var adult = $("#rsAdult").val();
+			var child = $("#rsChild").val();
+			var price = ${chargeList.cgPrice };
+			
+			var price2 = price - 10000;
+			var sum1 = price * adult;
+			var sum2 = price2 * child;
+			
+			var sum = sum1 + sum2;
+			
+			$("#rsPrice").val(sum);
+			/* 
+			alert(price);
+			alert(sum);
+			 */
+			
+			
+			return result;
+
 		});
+		
+
 	</script>
 </body>
 </html>
