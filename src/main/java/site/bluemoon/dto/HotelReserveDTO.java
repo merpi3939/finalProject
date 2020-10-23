@@ -16,10 +16,14 @@ public class HotelReserveDTO {
 	private String reserveDate;
 	private String reserveCheckIn;
 	private String reserveCheckOut;
-	private String reserveMemno;
+	private int reserveMemno;
 	private String reserveRoom;	
 	private String reserveperson;		
 	private String reserveMemname;
+	private String reserveMemphone;
+	private String reserveMememail;
+	private int reservePrice;
+	private int reserveState;
 	
 	
 	public String getReserveperson() {
@@ -36,15 +40,6 @@ public class HotelReserveDTO {
 
 	public void setReserveMemname(String reserveMemname) {
 		this.reserveMemname = reserveMemname;
-	}
-
-	private String reserveMemphone;
-	private String reserveMememail;
-	private int reservePrice;
-	private int reserveState;
-	
-	public HotelReserveDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getReserveNo() {
@@ -79,11 +74,11 @@ public class HotelReserveDTO {
 		this.reserveCheckOut = reserveCheckOut;
 	}
 
-	public String getReserveMemno() {
+	public int getReserveMemno() {
 		return reserveMemno;
 	}
 
-	public void setReserveMemno(String reserveMemno) {
+	public void setReserveMemno(int reserveMemno) {
 		this.reserveMemno = reserveMemno;
 	}
 

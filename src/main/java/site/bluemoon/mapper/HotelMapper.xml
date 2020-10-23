@@ -3,8 +3,12 @@
 <mapper namespace="site.bluemoon.mapper.HotelMapper">
 	<!-- 예약 테이블 값 저장 -->
 	<insert id="insertReserveHotel">
-		insert into hotel_reserve values('20200015',sysdate,(TO_DATE(#{reserveCheckIn},'YYYY-MM-DD'))
-		,(TO_DATE(#{reserveCheckOut},'YYYY-MM-DD')),'1013',#{reserveRoom},#{reserveMemphone},#{reserveMememail},#{reservePrice},1)
+	<selectKey resultType="int" keyProperty="reserveNo" order="BEFORE">
+			select RESERVE_SEQ.nextval from dual
+		</selectKey>
+		insert into hotel_reserve values(#{reserveNo},sysdate,(TO_DATE(#{reserveCheckIn},'YYYY-MM-DD'))
+		,(TO_DATE(#{reserveCheckOut},'YYYY-MM-DD')),#{reserveMemno},#{reserveRoom},#{reserveMemphone}
+		,#{reserveMememail},#{reservePrice},1,#{reserveMemname},#{reserveperson})
 	</insert>
 	
 	<!-- 카테고리 테이블 값 출력 -->
@@ -19,6 +23,6 @@
 	
 	<!-- 결제 테이블 값 저장 -->
 	<insert id="insertHotelPay">
-	insert into hotel_pay values('20200015','1013',#{hotelPayment},1,#{hotelPayPrice},#{hotelMempoint},sysdate)
+	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},1,#{hotelPayPrice},#{hotelMempoint},sysdate)
 	</insert>
 </mapper>

@@ -308,11 +308,17 @@ p {
 									name="hotelCategoryName" value="${hotelCategoryNo.hotelCategoryName }" placeholder="선택룸">
 							</div>
 						</div>
+						<div class="col-md-6" style="display: none;">
+							<div class="form-group">
+								<input type="text" class="form-control"
+									name="hotelCategoryNo" value="${hotelCategoryNo.hotelCategoryNo }" placeholder="선택룸번호">
+							</div>
+						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" class="form-control"
-									id="hotelCategoryPrice" name="hotelCategoryPrice" value="" placeholder="룸가격">
-								<input id="onePrice" hidden="hidden" value="2000">
+									id="hotelCategoryPrice" name="hotelCategoryPrice" value="" placeholder="금액">
+								<input id="onePrice" hidden="hidden" value="${hotelCategoryNo.hotelCategoryPrice }">
 							</div>
 						</div>
 						 <div class="col-md-6">
