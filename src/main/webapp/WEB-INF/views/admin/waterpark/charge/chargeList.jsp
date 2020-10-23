@@ -62,8 +62,8 @@
 											<td style="text-align: center;">${cl.cgSeason }</td>
 											<td style="text-align: center;">${cl.cgName }</td>
 											<td style="text-align: center;">대인: <fmt:formatNumber value="${cl.cgPrice }"  type="number" />원<br>소인: <fmt:formatNumber value="${cl.cgPrice-10000 }"  type="number" />원</td>
-											<td style="text-align: center;"><button class="btn btn-mint">수정</button></td>
-											<td style="text-align: center;"><button class="btn btn-danger">삭제</button></td>
+											<td style="text-align: center;"><button onclick="modifyBtn(${cl.cgNo })" class="btn btn-mint">수정</button></td>
+											<td style="text-align: center;"><button onclick="removeBtn(${cl.cgNo })" class="btn btn-danger">삭제</button></td>
 										</tr>
 									</c:forEach>
 							</table>
@@ -82,3 +82,15 @@
 			</div>
 			<!--===================================================-->
 			<!--END CONTENT CONTAINER-->
+			
+	<script type="text/javascript">
+		function modifyBtn(cgNo) {
+			location.href="${pageContext.request.contextPath}/admin/chargeModify/"+cgNo;
+		};
+		
+		function removeBtn(cgNo) {
+			if(confirm("삭제하시겠습니까?")) {
+				location.href="${pageContext.request.contextPath}/admin/chargeRemove/"+cgNo;
+			}
+		}
+	</script>

@@ -78,6 +78,67 @@
 			news_no=#{newsNo}
 	</select>
 	
+	<!-- ■Waterpark's Charge Mapper -->
+	<select id="selectChargeList" resultType="OceanChargeDTO">
+		select
+			* 
+		from
+			ocean_charge
+		order by
+			cg_no
+	</select>
+	
+	<select id="selectCharge" resultType="OceanChargeDTO">
+		select
+			*
+		from
+			ocean_charge
+		where
+			cg_no=#{cgNo}
+	</select>
+	
+	<insert id="insertCharge" parameterType="OceanChargeDTO">
+		<selectKey resultType="int" keyProperty="cgNo" order="BEFORE">
+			select cg_no_seq.nextval from dual
+		</selectKey>
+		
+		insert into
+			ocean_charge
+		values
+			(
+				#{cgNo},
+				#{cgName},
+				#{cgSeason},
+				#{cgPrice}
+			)
+	</insert>
+	
+	<delete id="deleteCharge" parameterType="int">
+		delete from
+			ocean_charge
+		where
+			cg_no=#{cgNo}
+	</delete>
+	
+	<update id="updateCharge" parameterType="OceanChargeDTO">
+		update
+			ocean_charge
+		<set>
+			<if test="cgName!=null and cgName!=''">
+				cg_name=#{cgName},
+			</if>
+			<if test="cgSeason!=null and cgSeason!=''">
+				cg_season=#{cgSeason},
+			</if>
+			<if test="cgPrice!=null and cgPrice!=''">
+				cg_price=#{cgPrice}
+			</if>
+		</set>
+		
+		where
+			cg_no=#{cgNo}
+	</update>
+	 
 	<!-- ■Waterpark's Reservation Mapper -->
 	<!-- 
 	<resultMap id="userOceanResultMap" type="AdminUserReservation">
@@ -141,14 +202,6 @@
 	</select>
 	 -->
 	 
-	<!-- ■Waterpark's Charge Mapper -->
-	<select id="selectChargeList" resultType="OceanChargeDTO">
-		select
-			* 
-		from
-			ocean_charge
-		order by
-			cg_no
-	</select>
+
 	
 </mapper>

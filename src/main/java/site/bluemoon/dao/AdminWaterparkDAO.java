@@ -22,5 +22,9 @@ public interface AdminWaterparkDAO {
 	
 	//°·Waterpark's Charge DAO
 	List<OceanChargeDTO> selectChargeList();
+	OceanChargeDTO selectCharge(int cgNo);
+	int insertCharge(OceanChargeDTO oceanChargeDTO);
+	int deleteCharge(int cgNo);
+	int updateCharge(OceanChargeDTO oceanChargeDTO);
 	
 }

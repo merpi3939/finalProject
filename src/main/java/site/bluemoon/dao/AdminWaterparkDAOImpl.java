@@ -62,4 +62,24 @@ public class AdminWaterparkDAOImpl implements AdminWaterparkDAO {
 		return sqlSession.getMapper(AdminWaterparkMapper.class).selectChargeList();
 	}
 
+	@Override
+	public OceanChargeDTO selectCharge(int cgNo) {
+		return sqlSession.getMapper(AdminWaterparkMapper.class).selectCharge(cgNo);
+	}
+
+	@Override
+	public int insertCharge(OceanChargeDTO oceanChargeDTO) {
+		return sqlSession.getMapper(AdminWaterparkMapper.class).insertCharge(oceanChargeDTO);
+	}
+
+	@Override
+	public int deleteCharge(int cgNo) {
+		return sqlSession.getMapper(AdminWaterparkMapper.class).deleteCharge(cgNo);
+	}
+
+	@Override
+	public int updateCharge(OceanChargeDTO oceanChargeDTO) {
+		return sqlSession.getMapper(AdminWaterparkMapper.class).updateCharge(oceanChargeDTO);
+	}
+
 }

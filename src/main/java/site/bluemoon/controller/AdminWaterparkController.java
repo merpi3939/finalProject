@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
 import site.bluemoon.dto.AdminOceanNews;
+import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.service.AdminWaterparkService;
 
@@ -70,13 +71,6 @@ public class AdminWaterparkController {
 		return "redirect:/admin/newsList";
 	}
 
-	//■waterPark 예약/결제
-	@RequestMapping(value = "/prList")
-	public String prList(Model model) {
-		model.addAttribute("prList", adminWaterparkService.getSelectReservationList());
-		return "admin/waterpark/pr/prList";
-	}
-	
 	//■waterPark 요금표
 	@RequestMapping(value = "/chargeList")
 	public String chargeList(Model model) {
@@ -84,9 +78,45 @@ public class AdminWaterparkController {
 		return "admin/waterpark/charge/chargeList";
 	}
 	
-	@RequestMapping(value = "/chargeInsert")
+	@RequestMapping(value = "/chargeInsert", method = RequestMethod.GET)
 	public String chargeInsert() {
 		return "admin/waterpark/charge/chargeInsert";
 	}
 	
+	@RequestMapping(value = "/chargeInsert", method = RequestMethod.POST)
+	public String chargeInsert(@ModelAttribute OceanChargeDTO oceanChargeDTO) {
+		adminWaterparkService.addCharge(oceanChargeDTO);
+		return "redirect:/admin/chargeList";
+	}
+	
+	@RequestMapping(value = "/chargeModify/{cgNo}", method = RequestMethod.GET)
+	public String chargeModify(@PathVariable int cgNo, Model model) {
+		model.addAttribute("charge", adminWaterparkService.getSelectCharge(cgNo));
+		return "admin/waterpark/charge/chargeModify";
+	}
+	
+	@RequestMapping(value = "/chargeModify", method = RequestMethod.POST)
+	public String chargeModify(@ModelAttribute OceanChargeDTO oceanChargeDTO) {
+		adminWaterparkService.modifyCharge(oceanChargeDTO);
+		return "redirect:/admin/chargeList";
+	}
+
+	@RequestMapping(value = "/chargeRemove/{cgNo}")
+	public String chargeModify(@PathVariable int cgNo) {
+		adminWaterparkService.removeCharge(cgNo);
+		return "redirect:/admin/chargeList";
+	}
+	
+	
+	
+	
+	
+	
+	
+	//■waterPark 예약/결제
+	@RequestMapping(value = "/prList")
+	public String prList(Model model) {
+		model.addAttribute("prList", adminWaterparkService.getSelectReservationList());
+		return "admin/waterpark/pr/prList";
+	}
 }
