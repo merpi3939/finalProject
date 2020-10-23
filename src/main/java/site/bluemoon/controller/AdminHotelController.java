@@ -3,7 +3,9 @@ package site.bluemoon.controller;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,6 +20,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import site.bluemoon.dto.HotelCategory;
+import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
 import site.bluemoon.service.AdminHotelService;
 
@@ -31,40 +34,78 @@ public class AdminHotelController {
 	private WebApplicationContext context;
 	
 	@RequestMapping(value = "/hotel_status", method = RequestMethod.GET)
-	public String hotelStatus() {
+	public String hotelStatus(Model model) {
+		model.addAttribute("commentList", adminHotelService.selectHotelReviewList());
+		model.addAttribute("reserveList", adminHotelService.selectHotelReserveList());
 		return "admin/hotel/hotel_status";
 	}
 	
-	@RequestMapping(value = "/hotel_reservation_list_display", method = RequestMethod.GET)
+	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
 	public String hotelReservationListPrint(Model model) {
 		model.addAttribute("reservationList", adminHotelService.selectHotelReserveList());
 		return "admin/hotel/hotel_reservation_list";
 	}
 	
+	/*
 	@RequestMapping(value = "/hotel_reservation_list", method = RequestMethod.GET)
 	public List<HotelReserveDTO> hotelReservationList(Model model) {
 		//model.addAttribute("reservationList", );
 		return adminHotelService.selectHotelReserveList();
 	}
+	*/
 	
-	@RequestMapping(value = "/hotel_reservation_update")
-	public String hotelReservationUpdate(Model model) {
+	@RequestMapping(value = "/hotel_reservation_update",method = RequestMethod.GET)
+	public String hotelReservationUpdate(int reserveNo,Model model) {
+		model.addAttribute("hotelCategoryList", adminHotelService.selectHotelCategoryList());
+		
+		HotelReserveDTO reserve= adminHotelService.selectHotelReserve(reserveNo);
+		model.addAttribute("reserve", reserve);
+		
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("hotelPayNo", reserve.getReserveNo());
+		model.addAttribute("pay", adminHotelService.selectHotelPay(map));
+		
+		model.addAttribute("category", adminHotelService.selectHotelCategory(Integer.parseInt(reserve.getReserveRoom())));
 		return "admin/hotel/hotel_reservation_update";
 	}
 	
+	@RequestMapping(value = "/hotel_reservation_update",method = RequestMethod.POST)
+	public String hotelReservationUpdate(@ModelAttribute HotelReserveDTO hotelReserve , @ModelAttribute HotelPay hotelPay, Model model) {
+		adminHotelService.updateHotelReserve(hotelReserve);
+		adminHotelService.updateHotelPay(hotelPay);
+		
+		return "redirect:/admin/hotel_reservation_detail?reserveNo="+hotelReserve.getReserveNo();
+	}
+	
 	@RequestMapping(value = "/hotel_reservation_detail")
-	public String hotelReservationDetail(Model model) {
+	public String hotelReservationDetail(Integer reserveNo,Model model) {
+		if(reserveNo==null || reserveNo==0) {
+			model.addAttribute("message", "잘못된 접근입니다.");
+			return "admin/hotel/hotel_reservation_list";
+		}
+		
+		HotelReserveDTO reserve= adminHotelService.selectHotelReserve(reserveNo);
+		model.addAttribute("reserve", reserve);
+		
+		Map<String, Object> map=new HashMap<String, Object>();
+		//map.put("hotelPayMemno", reserve.getReserveMemno());
+		map.put("hotelPayNo", reserve.getReserveNo());
+		model.addAttribute("pay", adminHotelService.selectHotelPay(map));
+		
+		model.addAttribute("category", adminHotelService.selectHotelCategory(Integer.parseInt(reserve.getReserveRoom())));
 		return "admin/hotel/hotel_reservation_detail";
 	}
 	
 	@RequestMapping(value = "/hotel_review_list")
 	public String hotelReviewList(Model model) {
+		model.addAttribute("commentList", adminHotelService.selectHotelReviewList());
 		return "admin/hotel/hotel_review_list";
 	}
 	
 	@RequestMapping(value = "/hotel_review_detail")
-	public String hotelReviewDetail(Model model) {
-		return "admin/hotel/hotel_review_detail";
+	public String hotelReviewDetail(int commentNo,Model model) {
+		model.addAttribute("comment", adminHotelService.selectHotelReview(commentNo));
+		return "admin/hotel_review_detail";
 	}
 	
 	@RequestMapping(value = "/hotel_room_type")

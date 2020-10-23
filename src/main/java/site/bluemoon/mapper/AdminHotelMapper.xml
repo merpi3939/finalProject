@@ -17,42 +17,53 @@
 		UPDATE HOTEL_RESERVE
 		
 		<set>
-			<if test="reserveCheckIn!=null and reserveCheckIn!=''">
-				RESERVE_CHECK_IN=#{reserveCheckIn}
-			</if>
-			<if test="reserveCheckOut!=null and reserveCheckOut!=''">
-				RESERVE_CHECK_OUT=#{reserveCheckOut}
-			</if>
-			<if test="reserveMemno!=null ">
-				RESERVE_MEMNO=#{reserveMemno}
-			</if>
-			<if test="reserveRoom!=null and reserveRoom!=''">
-				RESERVE_ROOM=#{reserveRoom}
-			</if>
-			<if test="reserveMemphone!=null and reserveMemphone!=''">
-				RESERVE_MEMPHONE=#{reserveMemphone}
-			</if>
-			<if test="reserveMememail!=null and reserveMememail!=''">
-				RESERVE_MEMEMAIL=#{reserveMememail}
+			<if test="reserveState!=null">
+				RESERVE_STATE=#{reserveState}
 			</if>
 			<if test="reservePrice!=null and reservePrice!=''">
-				RESERVE_PRICE=#{reservePrice}
+				,RESERVE_PRICE=#{reservePrice}
+			</if>
+			<if test="reserveMemno!=null ">
+				,RESERVE_MEMNO=#{reserveMemno}
+			</if>
+			<if test="reserveMemname!=null">
+				,RESERVE_MEMNAME=#{reserveMemname}
+			</if>
+			<if test="reserveperson!=null">
+				,RESERVEPERSON=#{reserveperson}
+			</if>
+			<if test="reserveMemphone!=null and reserveMemphone!=''">
+				,RESERVE_MEMPHONE=#{reserveMemphone}
+			</if>
+			<if test="reserveMememail!=null and reserveMememail!=''">
+				,RESERVE_MEMEMAIL=#{reserveMememail}
+			</if>
+			<if test="reserveRoom!=null and reserveRoom!=''">
+				,RESERVE_ROOM=#{reserveRoom}
+			</if>
+			<if test="reserveCheckIn!=null and reserveCheckIn!=''">
+				,RESERVE_CHECK_IN=#{reserveCheckIn}
+			</if>
+			<if test="reserveCheckOut!=null and reserveCheckOut!=''">
+				,RESERVE_CHECK_OUT=#{reserveCheckOut}
 			</if>
 		</set>
 		
 		 WHERE RESERVE_NO=#{reserveNo}
 	</update>
 	
+	<!-- =========================================================================================================== -->
 	<!-- 호텔 리뷰 리스트 검색하기 -->
-	<select id="selectHotelReviewList">
+	<select id="selectHotelReviewList" resultType="hotelComment">
 		select * from HOTEL_COMMENT order by COMMENT_NO desc
 	</select>
 	
 	<!-- 호텔 리뷰 단일행 검색하기 -->
-	<select id="selectHotelReview">
+	<select id="selectHotelReview" resultType="hotelComment" parameterType="int">
 		select * from HOTEL_COMMENT where COMMENT_NO =#{commentNo}
 	</select>
 	
+	<!-- =========================================================================================================== -->
 	<!-- 호텔 카테고리 추가 -->
 	<insert id="insertHotelCategory">
 		<selectKey resultType="int" keyProperty="hotelCategoryNo" order="BEFORE">
@@ -69,25 +80,74 @@
 					HOTEL_CATEGORY_NAME=#{HotelCategoryName}
 				</if>
 				<if test="hotelCategoryImg1!=null and hotelCategoryImg1!=''">
-					HOTEL_CATEGORY_IMG1=#{hotelCategoryImg1}
+					,HOTEL_CATEGORY_IMG1=#{hotelCategoryImg1}
 				</if>
 				<if test="hotelCategoryImg2!=null and hotelCategoryImg2!=''">
-					HOTEL_CATEGORY_IMG2=#{hotelCategoryImg2}
+					,HOTEL_CATEGORY_IMG2=#{hotelCategoryImg2}
 				</if>
 				<if test="hotelCategoryImg3!=null and hotelCategoryImg3!=''">
-					HOTEL_CATEGORY_IMG3=#{hotelCategoryImg3}
+					,HOTEL_CATEGORY_IMG3=#{hotelCategoryImg3}
 				</if>
 				<if test="hotelCategoryImg4!=null and hotelCategoryImg4!=''">
-					HOTEL_CATEGORY_IMG4=#{hotelCategoryImg4}
+					,HOTEL_CATEGORY_IMG4=#{hotelCategoryImg4}
 				</if>
 				<if test="HotelCategoryPrice!=null">
-					HOTEL_CATEGORY_PRICE=#{HotelCategoryPrice}
+					,HOTEL_CATEGORY_PRICE=#{HotelCategoryPrice}
 				</if>
 				<if test="hotelCategoryQty!=null">
-					HOTEL_CATEGORY_QTY=#{hotelCategoryQty}
+					,HOTEL_CATEGORY_QTY=#{hotelCategoryQty}
 				</if>
 			</set>
 		where HOTEL_CATEGORY_NO=#{hotelCategoryNo}
+	</update>
+	
+	<!-- 호텔 카테고리 단일행 검색 -->
+	<select id="selectHotelCategory" parameterType="int" resultType="hotelCategory">
+		select * from hotel_category where HOTEL_CATEGORY_NO=#{hotelCategoryNo}
+	</select>
+	
+	<!-- 호텔 카테고리 리스트 검색 -->
+	<select id="selectHotelCategoryList" parameterType="int" resultType="hotelCategory">
+		select * from hotel_category order by HOTEL_CATEGORY_NO
+	</select>
+	
+	
+	<!-- =========================================================================================================== -->
+	<!-- 호텔 결제 정보 단일행 검색 -->
+	<select id="selectHotelPay" parameterType="hashMap" resultType="hotelPay">
+		select * from hotel_pay
+		<where>
+			<choose>
+				<when test="hotelPayNo!=null and hotelPayNo!=0">
+					HOTEL_PAY_NO=#{hotelPayNo}
+				</when>
+				<otherwise>
+					HOTEL_PAY_MEMNO=#{hotelPayMemno}
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+	
+	<!-- 호텔 결제 정보 변경 -->
+	<update id="updateHotelPay" parameterType="hotelPay">
+		update hotel_pay
+		set
+		HOTEL_PAY_MEMNO=#{hotelPayMemno},
+		HOTEL_PAYMENT=#{hotelPayment},
+		HOTEL_PAY_PRICE=#{hotelPayPrice},
+		HOTEL_PAY_STATE=#{hotelPayState},
+		HOTEL_PAY_MEMPOINT=#{hotelMempoint}
+		
+		<!-- 
+		<set>
+			<if test="hotelPayMemno!=null and hotelPayMemno!=0">HOTEL_PAY_MEMNO=#{hotelPayMemno}</if>
+			<if test="hotelPayment!=null and hotelPayment!=''">HOTEL_PAYMENT=#{hotelPayment}</if>
+			<if test="hotelPayPrice!=null">HOTEL_PAY_PRICE=#{hotelPayPrice}</if>
+			<if test="hotelPayState!=null">HOTEL_PAY_STATE=#{hotelPayState}</if>
+			<if test="hotelMempoint!=null">HOTEL_PAY_MEMPOINT=#{hotelMempoint}</if>
+		</set>
+		 -->
+		where HOTEL_PAY_NO=#{hotelPayNo}
 	</update>
 
 </mapper>
