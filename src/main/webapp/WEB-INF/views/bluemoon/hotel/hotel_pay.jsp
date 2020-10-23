@@ -206,7 +206,11 @@ ul {
 						</div>
 					</div>
 				</div>
+				<div class="col-12 d-flex shopping-box"> <button type="submit" class="ml-auto btn hvr-hover" style="background-color: red !important; color: white !important;">Place Order</button> </div>
+                 
+				
 			</div>
+			
 		</form>
 	</div>
 </div>
