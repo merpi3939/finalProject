@@ -38,7 +38,7 @@
 						<h3 class="panel-title">블루문 워터파크 현장소식 등록 페이지입니다.</h3>
 					</div>
 					
-					<form name="newsModify" method="post" class="panel-body form-horizontal form-padding" action="${pageContext.request.contextPath }/admin/newsModify">
+					<form method="post" class="panel-body form-horizontal form-padding" action="${pageContext.request.contextPath }/admin/newsModify">
 						<!--■Static-->
 						<div class="form-group" >
 							<label class="col-md-3 control-label">작성자</label>
@@ -56,8 +56,9 @@
 						<input type="hidden" name="newsNo" value="${news.newsNo }">
 					
 					<!--■버튼-->
-					<div style="margin-left: 660px; margin-top: 10px;">
+					<div style="margin-left: 500px; margin-top: 10px;">
 						<button type="submit" class="btn btn-primary">수정완료</button>
+						<p onclick="newsListBtn()" class="btn btn-pink">리스트로 돌아가기</p>
 					</div>
 					
 					</form>
@@ -75,6 +76,8 @@
 			</div>
 			<!--===================================================-->
 			<!--END CONTENT CONTAINER-->
-	
 	<script type="text/javascript">
+		function newsListBtn() {
+			location.href="${pageContext.request.contextPath }/admin/newsList";
+		}
 	</script>

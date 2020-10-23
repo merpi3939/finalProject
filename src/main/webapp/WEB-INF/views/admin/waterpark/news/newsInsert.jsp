@@ -44,14 +44,15 @@
 						</div>
 						
 						<!--■content-->
-						<div class="form-group">
+						<div class="form-group" style="margin-bottom: 20px;">
 							<label class="col-md-3 control-label" for="demo-text-input">글 내용</label>
 							<div class="col-md-9">
 								<textarea id="form-control" name="newsCont" class="form-control" style="width: 600px; height: 100px; resize: none;" > </textarea>
 							</div>
 						</div>
 					</form>
-
+					<br>
+					
 					<!--■버튼-->
 					<div style="margin-left: 560px; margin-top: 50px;">
 						<button onclick="enterNews()" class="btn btn-primary" type="reset">소식등록</button>

@@ -3,6 +3,9 @@
     
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions"%>
 
 	<!--■CONTENT CONTAINER-->
 	<!--===================================================-->
@@ -35,7 +38,7 @@
 					<h3 class="panel-title">블루문 회원 수정페이지 입니다.</h3>
 				</div>
 				
-				<form id="memberModify" class="panel-body form-horizontal form-padding" action="">
+				<form name="modifyForm" class="panel-body form-horizontal form-padding">
 					<!--■Static-->
 					<div class="form-group" >
 						<label class="col-md-3 control-label">회원번호</label>
@@ -51,10 +54,29 @@
 					<div class="form-group pad-ver">
 						<label class="col-md-3 control-label">회원상태</label>
 						<div class="col-md-9">
+						
 							<div class="radio">
-								<label class="form-radio form-normal active"><input type="radio" checked="" name="def-w-label">가입</label>
-								<label class="form-radio form-normal"><input type="radio" name="def-w-label"> 탈퇴</label>
+								<c:choose >
+									<c:when test="${user.userState eq 1}">
+										<label class="form-radio form-normal active"><input type="radio" checked="checked" name="userState" value="1"><b>가입</b> </label>
+										<label class="form-radio form-normal"><input type="radio" name="userState" value="4" > 탈퇴</label>
+										<label class="form-radio form-normal"><input type="radio" name="userState" value="9"> 관리자</label>
+									</c:when>
+									
+									<c:when test="${user.userState eq 4}">
+										<label class="form-radio form-normal active"><input type="radio" name="userState" name="userState" value="1">가입</label>
+										<label class="form-radio form-normal"><input type="radio" checked="checked" name="userState" value="4" ><b> 탈퇴</b></label>
+										<label class="form-radio form-normal"><input type="radio" name="userState" value="9"> 관리자</label>
+									</c:when>
+									
+									<c:when test="${user.userState eq 9}">
+										<label class="form-radio form-normal active"><input type="radio" name="userState" value="1">가입</label>
+										<label class="form-radio form-normal"><input type="radio" name="userState" value="4" > 탈퇴</label>
+										<label class="form-radio form-normal"><input type="radio" checked="checked" name="userState" value="9"><b> 관리자</b></label>
+									</c:when>
+								</c:choose>
 							</div>
+							
 						</div>
 					</div>
 					
@@ -62,7 +84,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">이름</label>
 						<div class="col-md-9">
-							<input type="text" id="name" class="form-control" style="width: 300px;" value="${user.userName }">
+							<input type="text" name="userName" class="form-control" style="width: 300px;" value="${user.userName }">
 						</div>
 					</div>
 					
@@ -70,7 +92,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">포인트</label>
 						<div class="col-md-9">
-							<input type="text" id="point" class="form-control" style="width: 100px; display: inline-block; color: red" value="${user.userPoint }">&nbsp;point
+							<input type="text" name="userPoint" class="form-control" style="width: 100px; text-align:right; display: inline-block; color: red" value="${user.userPoint }">&nbsp;point
 						</div>
 					</div>
 					
@@ -78,7 +100,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">생년월일</label>
 						<div class="col-md-9">
-							<input type="text" id="birthday" class="form-control" style="width: 300px;" value="${user.userBirthday }">
+							<input type="text" name="userBirthday" class="form-control" style="width: 300px;" value="${user.userBirthday }">
 						</div>
 					</div>
 					
@@ -86,7 +108,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">전화번호</label>
 						<div class="col-md-9">
-							<input type="text" id="phone" class="form-control" style="width: 300px;" value="${user.userPhone }">
+							<input type="text" name="userPhone" class="form-control" style="width: 300px;" value="${user.userPhone }">
 						</div>
 					</div>
 					
@@ -94,7 +116,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">이메일</label>
 						<div class="col-md-9">
-							<input type="text" id="email" class="form-control" style="width: 300px;" value="${user.userEmail }">
+							<input type="text" name="userEmail" class="form-control" style="width: 300px;" value="${user.userEmail }">
 						</div>
 					</div>
 					
@@ -103,8 +125,17 @@
 						<label class="col-md-3 control-label">성별</label>
 						<div class="col-md-9">
 							<div class="radio">
-								<label class="form-radio form-normal active"><input type="radio" name="def-w-label"> 남자</label>
-								<label class="form-radio form-normal"><input type="radio" name="def-w-label"> 여자</label>
+								<c:choose>
+									<c:when test="${user.userSex eq '남자' }">
+										<label class="form-radio form-normal active"><input name="userSex" value="남자" type="radio" checked="checked" ><b> 남자</b></label>
+										<label class="form-radio form-normal"><input name="userSex" type="radio" value="여자"> 여자</label>
+									</c:when>
+									
+									<c:when test="${user.userSex eq '여자' }">
+										<label class="form-radio form-normal active"><input type="radio" name="userSex" value="남자"> 남자</label>
+										<label class="form-radio form-normal"><input type="radio" checked="checked" name="userSex" value="여자"><b>여자</b></label>
+									</c:when>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -113,10 +144,10 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">우편번호</label>
 						<div class="col-md-9" data-validate="Userzip is required" >
-							<input type="text" id="postZip" class="form-control" readonly="readonly" style="width: 130px; display: inline-block;" value="${user.userZipcode }">
+							<input type="text"  name="userZipcode" id="postZip" class="form-control" readonly="readonly" style="width: 130px; display: inline-block;" value="${user.userZipcode }">
 							<button class="btn btn-warning" onclick="execDaumPostcode()" style="width: 80px; display: inline-block;">검색</button>
-							<input type="text" id="userAddr1" class="form-control" readonly="readonly" style="width: 300px;" value="${user.userAddress1 }">
-							<input type="text" class="form-control" style="width: 300px;" required="required" value="${user.userAddress2 }">
+							<input type="text" id="userAddr1" name="userAddress1" class="form-control" readonly="readonly" style="width: 300px;" value="${user.userAddress1 }">
+							<input type="text" name="userAddress2" class="form-control" style="width: 300px;" required="required" value="${user.userAddress2 }">
 						</div>
 					</div>
 					
@@ -124,7 +155,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">가입날짜</label>
 						<div class="col-md-9">
-							<input type="text" id="joinDate" class="form-control" style="width: 300px;" value="${user.userJoindate }">
+							<input type="text" id="joinDate" class="form-control" style="width: 300px;" value="${user.userJoindate }" readonly="readonly">
 						</div>
 					</div>
 					
@@ -132,7 +163,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">마지막 로그인 날짜</label>
 						<div class="col-md-9">
-							<input type="text" id="lastLogin" class="form-control" style="width: 300px;"  value="${user.userLogindate }">
+							<input type="text" id="lastLogin" class="form-control" style="width: 300px;"  value="${user.userLogindate }" readonly="readonly">
 						</div>
 					</div>
 					
@@ -140,16 +171,19 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="demo-text-input">탈퇴날짜</label>
 						<div class="col-md-9">
-							<input type="text" id="outDate" class="form-control" style="width: 300px;"  value="${user.userWithdrowdate }">
+							<input type="text" id="outDate" class="form-control" style="width: 300px;"  value="${user.userWithdrowdate }" readonly="readonly">
 						</div>
 					</div>
+					
+					<!--■버튼-->
+					<div style="text-align: center;">
+						<button id="modifyBtn" class="btn btn-primary" type="reset">수정완료</button>
+						<p onclick="userListBtn()" class="btn btn-pink">리스트로 돌아가기</p>
+					</div>
+				
+					<input type="hidden" name="userNo" value="${user.userNo }">
 				</form>
 									
-				<!--■버튼-->
-				<div style="text-align: center;">
-					<button class="btn btn-primary" type="reset">수정완료</button>
-					<button class="btn btn-pink">리스트로 돌아가기</button>
-				</div>
 					
 				<br>
 				<br>
@@ -165,6 +199,10 @@
 	<!--END CONTENT CONTAINER-->
 	
 	<script type="text/javascript">
+	function userListBtn() {
+	 	location.href="admin/userList"; 
+	}
+	
 	//다음 우편번호 검색 창 띄우기
 	function execDaumPostcode() {
 	    new daum.Postcode({
@@ -198,4 +236,13 @@
 	    }).open();
 	}
 	
+	function userListBtn() {
+		location.href="${pageContext.request.contextPath }/admin/userList";
+	}
+	
+	$("#modifyBtn").click(function() {
+		modifyForm.method="post";
+		modifyForm.action="${pageContext.request.contextPath }/admin/userModify";
+		modifyForm.submit();
+	});
 	</script>

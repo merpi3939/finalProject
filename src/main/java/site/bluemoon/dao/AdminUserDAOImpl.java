@@ -23,7 +23,12 @@ public class AdminUserDAOImpl implements AdminUserDAO {
 	}
 
 	@Override
-	public User updateUserInfo(int userNo) {
-		return sqlSession.getMapper(AdminUserMapper.class).updateUserInfo(userNo);
+	public User selectUserId(int userNo) {
+		return sqlSession.getMapper(AdminUserMapper.class).selectUserId(userNo);
+	}
+
+	@Override
+	public int updateUserInfo(User user) {
+		return sqlSession.getMapper(AdminUserMapper.class).updateUserInfo(user);
 	}
 }

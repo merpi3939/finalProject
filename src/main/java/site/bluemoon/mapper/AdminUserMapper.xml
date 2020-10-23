@@ -3,24 +3,30 @@
 
 <mapper namespace="site.bluemoon.mapper.AdminUserMapper">
 
-	<update id="updateUserInfo" parameterType="User">
+	<update id="updateUserInfo" parameterType="int">
 		update 
 			bluemoon_user
 		<set>
-			<if test="userPassword!=null and userPassword!=''">
-				user_password=#{userPassword},
+			<if test="userState!=null and userState!=''">
+				user_state=#{userState},
 			</if>
 			<if test="userName!=null and userName!=''">
 				user_name=#{userName},
 			</if>
+			<if test="userPoint!=null and userPoint!=''">
+				user_point=#{userPoint},
+			</if>
+			<if test="userBirthday!=null and userBirthday!=''">
+				user_birthday=#{userBirthday},
+			</if>
 			<if test="userPhone!=null and userPhone!=''">
 				user_phone=#{userPhone},
+			</if>	
+			<if test="userEmail!=null and userEmail!=''">
+				user_Email=#{userEmail},
 			</if>
 			<if test="userSex!=null and userSex!=''">
 				user_sex=#{userSex},
-			</if>
-			<if test="userEmail!=null and userEmail!=''">
-				user_Email=#{userEmail},
 			</if>
 			<if test="userZipcode!=null and userZipcode!=''">
 				user_zipcode=#{userZipcode},
@@ -29,28 +35,13 @@
 				user_address1=#{userAddress1},
 			</if>
 			<if test="userAddress2!=null and userAddress2!=''">
-				user_address2=#{userAddress2},
+				user_address2=#{userAddress2}
 			</if>
-			<if test="userState!=null and userState!=''">
-				user_state=#{userState}
-			</if>
+
 		</set>
-		
-		where u
+		where
 			user_no=#{userNo}
 	</update>
-	
-	<!-- 
-	<update id="deleteUser" parameterType="int">
-		update 
-			bluemoon_user 
-		set 
-			user_withdrowdate=sysdate,
-			user_state=4 
-		where 
-			user_no=#{userNo}
-	</update>
- -->
 	
 	<select id="selectUserId" parameterType="int" resultType="User">
 		select 
@@ -69,4 +60,5 @@
 		order by
 			user_no desc
 	</select>
+	
 </mapper>
