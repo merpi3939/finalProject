@@ -56,9 +56,7 @@ public class AdminUserController {
 	
 	@RequestMapping(value = "/userModify", method = RequestMethod.POST)
 	public String userModify(@ModelAttribute User user) {
-		System.out.println("1111111111");
 		adminUserService.modifyUser(user);
-		System.out.println("222222222222222");
 		return "redirect:/admin/userList";
 	}
 }

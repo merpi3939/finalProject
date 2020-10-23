@@ -88,4 +88,5 @@ public class AdminWaterparkController {
 	public String chargeInsert() {
 		return "admin/waterpark/charge/chargeInsert";
 	}
+	
 }
