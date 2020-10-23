@@ -19,7 +19,18 @@ public class OceanServiceImpl implements OceanService {
 	public void addOceanReservation(OceanReservationDTO oceanReservation) {
 		OceanDAO.insertOceanReservation(oceanReservation);
 	}
-
+	
+	//유저 리스트 테스트
+	@Override
+	public List<OceanReservationDTO> getOceanUnoList() {
+		return OceanDAO.getOceanUnoList();
+	}
+	@Override
+	public OceanReservationDTO getOceanUno(int rsUno) {
+		return OceanDAO.getOceanUno(rsUno);
+	}
+	
+	
 	//요금
 	@Override
 	public OceanChargeDTO getOceanCharge(int cgNo) {

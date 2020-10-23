@@ -257,13 +257,13 @@ div.btns {
 		<div class="con01">
 			<form class="form01">
 				<c:forEach var="payment" items="${oceanPaymentList}">
-					<div class="wrap100">
+					<div class="wrap100" style="overflow:auto;">
 						<h5>결제 내역</h5>
 						<table class="res01">
 							<colgroup>
 								<col width="40%">
 							</colgroup>
-
+							<input type="hidden" id="rsUno" name="rsUno" value="${payment.rsUno }">
 							<tbody>
 								<tr>
 									<th>결제 번호</th>
@@ -293,5 +293,47 @@ div.btns {
 		</div>
 	</div>
 
+	<%-- 
+	<div class="limiter">
+		<div class="con01">
+			<form class="form01">
+				
+					<div class="wrap100" style="overflow:auto;">
+						<h5>결제 내역</h5>
+						<table class="res01">
+							<colgroup>
+								<col width="40%">
+							</colgroup>
+							<input type="hidden" id="rsUno" name="rsUno" value="${uno.rsUno }">
+							<tbody>
+								<tr>
+									<th>결제 번호</th>
+									<td name="rsNo" id="pmNo">${uno.rsNo }</td>
+								</tr>
+								<tr>
+									<th>결제 날짜</th>
+									<td name="rsDate" id="pmDate">${uno.rsDate }</td>
+								</tr>
+								<tr>
+									<th>이용권</th>
+									<td name="rsTicket" id="pmTicket">${uno.rsTicket }</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="btns">
+					
+								<span style="color : black;" class="formBtn">환불</span>
+							<c:forEach var="payment" items="${oceanPaymentList}">
+								<a href='payment?paymentList=${payment.rsNo }' >
+									<span style="color : black;" class="formBtn">상세 정보</span>
+								</a>
+							</c:forEach>
+						</div>
+					</div>
+				
+			</form>
+		</div>
+	</div>
+	 --%>
 </body>
 </html>

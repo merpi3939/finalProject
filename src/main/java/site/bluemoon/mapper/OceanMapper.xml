@@ -23,6 +23,18 @@
 		#{rsOption})
 	</insert>
 	
+	<!-- 유저테스트 리스트 시작 -->
+	<select id="getOceanUnoList" resultType="OceanReservationDTO">
+		select * from ocean_reservation order by rs_uno
+	</select>
+	
+	<select id="getOceanUno" resultType="OceanReservationDTO" parameterType="int">
+		select * from ocean_reservation where rs_uno=#{rsUno}
+	</select>
+	
+	<!-- 끝 -->
+
+	
 	<select id="selectOceanCharge" resultType="OceanChargeDTO" parameterType="int">
 		select * from ocean_charge where cg_no=#{cgNo}
 	</select>
@@ -38,7 +50,6 @@
 	<select id="selectOceanPaymentList" resultType="OceanReservationDTO">
 		select * from ocean_reservation order by rs_no
 	</select>
-
      
 	<select id="selectNewsList" resultType="OceanNews">
 		select 

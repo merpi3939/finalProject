@@ -21,6 +21,17 @@ public class OceanDAOImpl implements OceanDAO {
 	public int insertOceanReservation(OceanReservationDTO oceanReservation) {
 		return sqlSession.getMapper(OceanMapper.class).insertOceanReservation(oceanReservation);
 	}
+	
+	//유저 리스트 테스트
+	@Override
+	public List<OceanReservationDTO> getOceanUnoList() {
+		return sqlSession.getMapper(OceanMapper.class).getOceanUnoList();
+	}
+	@Override
+	public OceanReservationDTO getOceanUno(int rsUno) {
+		return sqlSession.getMapper(OceanMapper.class).getOceanUno(rsUno);
+	}
+	
 	//요금
 	@Override
 	public OceanChargeDTO selectOceanCharge(int cgNo) {
