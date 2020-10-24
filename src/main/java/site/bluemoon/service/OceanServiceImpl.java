@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.OceanDAO;
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -48,7 +49,8 @@ public class OceanServiceImpl implements OceanService {
 	
 	//생생뉴스
 	@Override
-	public List<OceanNews> getSelectNewsList() {
+	public List<AdminOceanNews> getSelectNewsList() {
 		return OceanDAO.selectNewsList();
 	}
+
 }

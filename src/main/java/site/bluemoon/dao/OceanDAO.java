@@ -3,6 +3,7 @@ package site.bluemoon.dao;
 
 import java.util.List;
 
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -20,6 +21,6 @@ public interface OceanDAO {
 	//환불
 
 	//생생뉴스
-	List<OceanNews> selectNewsList();
+	List<AdminOceanNews> selectNewsList();
 }
 

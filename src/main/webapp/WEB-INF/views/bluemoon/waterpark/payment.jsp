@@ -293,12 +293,9 @@ div.btns {
 									<th>결제 방법</th>
 									<td>
 										<ul>
-											<li><input name="rsOption" id="rsOption" class="pay"
-												value="" readonly="readonly" style="width : 50%;"></li>
-											<!-- <li><input name="rsOption" id="pmOption1" class="pay"
-												type="radio" value="0">신용카드</li>
-											<li><input name="rsOption" id="pmOption2" class="pay"
-												type="radio" value="1">무통장입금</li> -->
+											<li>
+												<input name="rsOption" id="rsOption" class="pay" value="" readonly="readonly" style="width : 50%;">
+											</li>
 										</ul>
 									</td>
 								</tr>
@@ -321,7 +318,8 @@ div.btns {
 							</tbody>
 						</table>
 
-						<div class="btns">							
+						<div class="btns">		
+							<button class="formBtn" onclick="location.href='/payment_list';">환불</button></a>						
 							<button class="formBtn">확인</button></a>							
 						</div>
 					</div>

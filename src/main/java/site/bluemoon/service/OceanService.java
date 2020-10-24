@@ -2,6 +2,7 @@ package site.bluemoon.service;
 
 import java.util.List;
 
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -22,5 +23,6 @@ public interface OceanService {
 	//환불
 
 	//생생뉴스
-	List<OceanNews> getSelectNewsList();
+	/* List<OceanNews> getSelectNewsList(); */
+	List<AdminOceanNews> getSelectNewsList();
 }

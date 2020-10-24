@@ -10,6 +10,56 @@
 	-ms-flex-align: center !important;
 	align-items: flex-end !important;
 }
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+	text-align: center;
+}
+
+table {
+	display: table;
+	border-collapse: separate;
+	box-sizing: border-box;
+	border-spacing: 2px;
+	border-color: grey;
+	overflow: auto;
+	margin-top: 20px;
+}
+
+th, td {
+	line-height: 1.4 !important;
+}
+
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+table.res01 {
+	width: 100%;
+	text-align: center;
+	border-top: 3px solid #black;
+}
+
+table.res01 th {
+	padding: 10px 0 10px 15px;
+	text-align: left;
+	font-weight: normal;
+	color: #fff;
+	vertical-align: top;
+	background: #ffc321;
+	text-align: center;
+}
+
+table.res01 td {
+	padding: 10px 10px;
+	text-align: left;
+	line-height: 1.4;
+	text-align: center;
+}
 </style>
 
 </head>
@@ -47,8 +97,7 @@
 					<div class="destination-slider owl-carousel ftco-animate">
 						<div class="item">
 							<div class="destination">
-								<a href="#"
-									class="img d-flex justify-content-center align-items-center"
+								<a href=<c:url value="/attraction1"/> class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon08.jpg);">
 								</a>
 								<div class="text p-3">
@@ -140,24 +189,27 @@
 			<div class="row justify-content-start">
 				<div class="col-md-1"></div>
 				<div class="carousel-testimony owl-carousel">
-					<div class="col-md-6 heading-section ftco-animate">
+					<div class="heading-section ftco-animate">
 						<h2 class="mb-4 pb-3">
 							<strong>생생 정보</strong>
 						</h2>
 						<div>
-							<table>
+							<table class="res01">
 								<colgroup>
 									<col width="30%">
 								</colgroup>
-								<tbody>
-									<tr>
-										<th>오늘의 News</th>
-										<c:forEach items="${newsList}" var="list">
+								<c:forEach items="${newsUserList}" var="list" >
+									<tbody>
+										<tr colspan="2" rowspan="2">
+											<th rowspan="2">생생정보 News</th>
 											<td>${list.newsCont }</td>
-											<td>${list.newsDate }</td>
-										</c:forEach>
-									</tr>
-								</tbody>
+										</tr>
+										<tr>
+											<td
+												style="font-weight: bold; border-bottom: 1px solid #e1e1e1;">${list.newsDate }</td>
+										</tr>
+									</tbody>
+								</c:forEach>
 							</table>
 						</div>
 					</div>
@@ -178,6 +230,24 @@
 			<div class="row d-flex">
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
+						<a href=<c:url value="/event2"/> class="block-20"
+							style="background-image: url('resources/bluemoon/images/ocean_img/event2.jpg');">
+						</a>
+						<div class="text p-4">
+							<span class="tag">Discount</span>
+							<h3 class="heading mt-3">
+								<a href="#">오션월드 골드시즌 특별 할인 이벤트</a>
+							</h3>
+							<div class="meta mb-3">
+								<div>
+									<a href="#">October 12, 2020</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex ftco-animate">
+					<div class="blog-entry align-self-stretch">
 						<a href="" class="block-20"
 							style="background-image: url('resources/bluemoon/images/ocean_img/event01.jpg');">
 						</a>
@@ -189,24 +259,6 @@
 							<div class="meta mb-3">
 								<div>
 									<a href="#">August 12, 2020</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="" class="block-20"
-							style="background-image: url('resources/bluemoon/images/ocean_img/event2.jpg');">
-						</a>
-						<div class="text p-4">
-							<span class="tag">Discount</span>
-							<h3 class="heading mt-3">
-								<a href="#">오션월드 골드시즌 특별 할인 이벤트</a>
-							</h3>
-							<div class="meta mb-3">
-								<div>
-									<a href="#">October 12, 2020</a>
 								</div>
 							</div>
 						</div>

@@ -256,9 +256,9 @@ div.btns {
 
 	<div class="limiter">
 		<div class="con01">
-			<form class="form01">
+			<form class="form01" style="overflow: auto;">
 				<c:forEach var="payment" items="${oceanPaymentList}">
-					<div class="wrap100" style="overflow:auto;">
+					<div class="wrap100">
 						<h5>결제 내역</h5>
 						<table class="res01">
 							<colgroup>
@@ -281,8 +281,10 @@ div.btns {
 							</tbody>
 						</table>
 						<div class="btns">
-					
+							
+							<a href='payment?paymentList=${payment.rsNo }' >
 								<span style="color : black;" class="formBtn">환불</span>
+							</a>
 						
 							<a href='payment?paymentList=${payment.rsNo }' >
 								<span style="color : black;" class="formBtn">상세 정보</span>
@@ -293,6 +295,8 @@ div.btns {
 			</form>
 		</div>
 	</div>
-
+<script type="text/javascript">
+	function del()
+</script>
 </body>
 </html>
