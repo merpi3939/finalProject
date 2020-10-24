@@ -44,7 +44,7 @@ public class HotelDAOImpl implements HotelDAO{
 		return sqlSession.getMapper(HotelMapper.class).updatePointUserMinus(user);
 	}
 	@Override
-	public List<HotelReserveDTO> selectMemreserve(int num) {
+	public HotelReserveDTO selectMemreserve(int num) {
 		return sqlSession.getMapper(HotelMapper.class).selectMemreserve(num);
 	}
 	@Override
@@ -54,6 +54,10 @@ public class HotelDAOImpl implements HotelDAO{
 	@Override
 	public int removeReserve(HotelReserveDTO reserve) {
 		return sqlSession.getMapper(HotelMapper.class).removeReserve(reserve);
+	}
+	@Override
+	public  int selectReserveNo() {
+		return sqlSession.getMapper(HotelMapper.class).selectReserveNo();
 	}
 
 

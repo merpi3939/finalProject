@@ -49,7 +49,9 @@ public class HotelConteroller {
 	
 	//예약,결제 값 저장
 	@RequestMapping(value = "/hotelinsert", method = RequestMethod.POST)
-	public String Hotelinsert(HttpSession session ,@ModelAttribute HotelReserveDTO reserve,@ModelAttribute  HotelPay pay) throws UserinfoNotFoundException {
+	public String Hotelinsert(HttpSession session ,@ModelAttribute HotelReserveDTO reserve,@ModelAttribute  HotelPay pay, Model model) throws UserinfoNotFoundException {
+		int hotel_no=hotelReserveService.selectReserveNo();
+		
 		User userId=(User)session.getAttribute("userInfo");
 		User userModify=userService.selectUserId(userId.getUserId());
 		int memno=userModify.getUserNo();
@@ -61,12 +63,13 @@ public class HotelConteroller {
 		System.out.println(pointadd);
 		pay.setHotelMempoint(pointadd);
 		reserve.setReservePrice(hotelPrice);
-		
+		reserve.setReserveNo(hotel_no);
+		int room=reserve.getReserveRoom();
 		hotelReserveService.addHotelReserve(reserve);
-		int payno=reserve.getReserveNo();
-		pay.setHotelPayNo(payno);
-		
+		pay.setHotelPayNo(hotel_no);
 		hotelReserveService.addHotelPay(pay);
+		model.addAttribute("hotelCategoryNo", hotelReserveService.selectHotelCategory(room));
+		model.addAttribute("reserveList", hotelReserveService.selectMemreserve(hotel_no));
 		return "bluemoon/hotel/hotel_order";
 	}
 	/*@RequestMapping(value = "/hotelpay", method = RequestMethod.POST)
@@ -80,14 +83,14 @@ public class HotelConteroller {
 	}
 	
 	//회원별 전체 예약 
-	@RequestMapping(value = "/hotelAllList", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/hotelAllList", method = RequestMethod.GET)
 	public String HotelAllList(HttpSession session,Model model ) throws UserinfoNotFoundException {
 		User userId=(User)session.getAttribute("userInfo");
 		User userModify=userService.selectUserId(userId.getUserId());
 		int num=userModify.getUserNo();
 		model.addAttribute("reserveList", hotelReserveService.selectMemreserve(num));
 		return "bluemoon/hotel/hotelAllList";
-	}
+	}*/
 	/*@RequestMapping(value = "/HotelAllList", method = RequestMethod.GET)
 	public String HotelAllList(HttpSession session,Model model) throws UserinfoNotFoundException {
 		User userId=(User)session.getAttribute("userInfo");
@@ -96,10 +99,6 @@ public class HotelConteroller {
 		model.addAttribute("AllList", hotelReserveService.selectHotelAllList(no));
 		return "bluemoon/hotel/HotelAllList";
 	}*/
-	@RequestMapping(value = "/hotelremove", method = RequestMethod.GET)
-	public String hotelremove() {
-		return "bluemoon/hotel/hotel";
-	}
-	
+
 
 }

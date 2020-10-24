@@ -12,8 +12,9 @@ public interface HotelService {
 	 List<HotelCategory> selectHotelCategoryList();
 	 void addHotelPay(HotelPay pay);
 	 void erasePointHotelPay(HotelPay pay);
-	 List<HotelReserveDTO> selectMemreserve(int num);
+	 public HotelReserveDTO selectMemreserve(int num);
 	 void deletePay(HotelPay pay);
 	 void deleteReserve(HotelReserveDTO reserve);
+	 int selectReserveNo();
 	
 }

@@ -61,7 +61,7 @@ public class HotelServiceImpl implements HotelService{
 	}
 
 	@Override
-	public List<HotelReserveDTO> selectMemreserve(int num) {
+	public HotelReserveDTO selectMemreserve(int num) {
 		return hotelReserveDAO.selectMemreserve(num);
 	}
 
@@ -74,6 +74,11 @@ public class HotelServiceImpl implements HotelService{
 	public void deleteReserve(HotelReserveDTO reserve) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int selectReserveNo() {
+		return hotelReserveDAO.selectReserveNo();
 	}
 
 /*	@Override
