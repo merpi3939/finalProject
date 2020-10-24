@@ -19,5 +19,4 @@ public class AdminMainController {
 	public String adminLogin() {
 		return "redirect:/login";
 	}
-	
 }
