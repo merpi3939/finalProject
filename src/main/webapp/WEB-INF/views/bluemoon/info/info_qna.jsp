@@ -1,243 +1,401 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="kr">
-  <head>
-    <title>DirEngine - Free Bootstrap 4 Template by Colorlib</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<head>
+<link rel="stylesheet" href=<c:url value="bluemoon/css/board.css"/>>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+<style type="text/css">
+.writeCon, .viewCon {
+	display: none;
+}
+.table {
+	border-bottom: 1px solid #dee2e6;
+}
 
-    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+@media screen and (max-width:768px) {
+#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
+	width: 31%;
+}
+.mobile {
+	display: none;
+}
+.mobileTitle {
+	width:134px;
+}
+}
 
-    <link rel="stylesheet" href="../css/aos.css">
+.divi{
+	margin-top: 50px;
+	font-size: 20px;
+	border: 1px solid #dee2e6;
+}
 
-    <link rel="stylesheet" href="../css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/jquery.timepicker.css">
-
-    
-    <link rel="stylesheet" href="../css/flaticon.css">
-    <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-	
-	<style type="text/css">
-		
-		.title-style {
-			margin-top: 50px;
-		}
-		.user-btn {
-			 border-radius: 0px;
-		}
-		
-		.info-page {
-			color: black;
-		}
-		
-		.info-title {
-			font-size: xx-large;
-		}
-		
-		.table-a {
-			color: black;
-		}
-		
-		.info-table {
-			margin-bottom: 50px;
-		}
-		
-		#noticeBtn {
-			float: right;
-		}
-		
-		.searchForm{
-			text-align: center;
-			margin-bottom: 50px;
-		}
-		
-		.noticeBtn {
-			line-height: 1.1;
-			border-radius: 0px;
-		}
-		ul{
-   			list-style:none;
-   			text-align: center;
-   			padding-inline-start: 0px;
-   		}
-   		
-		.block-27 ul li a {
-			color: #241515;
-    		border: 1px solid #d1d1d1;
-		}
-		
-		.block-27 ul li.active span {
-		    background: #e3e3e3;
-		    color: #000000;
-		    border: 1px solid transparent;
-		}	
-	</style>
-	
-  </head>
+</style>
+</head>
 <body>
-  <!-- startnav -->  
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="../index.html"><img alt="Brand" src="../images/bluemoon/bluemoonlogo.png" style="width: 150px;"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
-
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="../index.html" class="nav-link">BlueMoonWaterPark</a></li>
-          <li class="nav-item"><a href="../hotel.html" class="nav-link">BlueMoonHotels</a></li>
-          <li class="nav-item"><a href="../contact.html" class="nav-link">Information</a></li>
-          <li class="nav-item cta"><a href="../login.html" class="nav-link"><span>Login</span></a></li>
-          <li class="nav-item cta"><a href="../contact.html" class="nav-link"><span>Logout</span></a></li>
-          <li class="nav-item cta"><a href="../contact.html" class="nav-link"><span>Admin</span></a></li>
-          <li class="nav-item"><a href="../contact.html" class="nav-link">Join</a></li>
-          <li class="nav-item"><a href="../contact.html" class="nav-link">MyPage</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <!-- END nav -->
-
-<div class="container">
-	<div class="row" style="margin-top: 50px">
-		<div class="col-md-12">
-			<ul>
-				<li class="nav-item">
-					<a class="nav-link active info-title" style="border-bottom: 1px solid black;">Infomation</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link info-page" href="#" >공지사항</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link info-page" href="#">Q&A</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link info-page" href="#">분실물 관리</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link info-page" href="#" style="border-bottom: 1px solid #d1d1d1;">분실물 문의</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	
-	
+<!-- 게시판목록 -->
+<div class="container noticeCon">	
 	<div class="col-md-7 heading-section ftco-animate title-style">
             <h2><strong>Q&A</strong></h2>
     </div>
+    <input id="checkSecretUser" hidden="hidden" value="${userInfo.userId }">
     <div class="table-responsive" style="overflow-x: hidden;">
-    	<table class="table table-striped" style="margin-bottom: 50px;">
+    		<table class="table" style="margin-bottom: 50px;">
  			<thead>
    				<tr>
-  					<th width="100">글번호</th>
-  					<th width="500">제목</th>
+  					<th class="mobile" width="100">글번호</th>
+  					<th class="mobile" width="100">질문유형</th>
+  					<th class="mobileTitle" width="500">제목</th>
   					<th width="100">작성자</th>
   					<th width="100">작성일</th>
 				</tr>
  			</thead>
- 		<tbody>   	
-   			<tr>
-      			<td>1</td>
-      			<td><a class="table-a" href="#">QNA</a></td>
-			    <td>홍길동</td>
-			    <td>2020-01-01</td>
-   			</tr>
-		 </tbody> 
-		</table>   
+    	<tbody id="noticeListDiv">   	
+ 			 		
+		</tbody>  
+		</table>
+		<div id="noselcet" style="text-align: center;"></div>   
 		<div style="margin-bottom: 96px;">
-			<button type="button" class="btn noticeBtn" id="noticeBtn" onclick="location.href='#'">Write</button>
+			<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
 		</div>
-		
 		<div class="row mt-5" style="margin-bottom: 20px;">
 			<div class="col text-center">
-				<div class="block-27">
-					<ul>
-						<li><a href="#">&lt;</a></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">&gt;</a></li>
-					</ul>
+				<div class="block-27" id="pageing">
+					
 				</div>
 			</div>
 		</div>
-		
-		<form class="searchForm">
-			<select name="search">
-				<option value="subject">&nbsp;제목&nbsp;</option>
-				<option value="content">&nbsp;내용&nbsp;</option>
+		<div class="searchForm">
+			<select name="search" id="search">
+				<option value="info_Title" selected="selected">&nbsp;제목&nbsp;</option>
+				<option value="info_Content">&nbsp;내용&nbsp;</option>
 			</select>	
-			<input type="text" name="keyword">
-			<button type="submit" class="btn noticeBtn">Search</button>
-		</form>
-	</div>	 	 
-		
+			<input type="text" name="keyword" id="keyword">
+			<button type="button" class="btn noticeBtn" onclick="boardDisplay(1);">검색</button>
+			<button type="button" class="btn noticeBtn" onclick="alllist();">전체목록</button>
+		</div>
+	</div>	 	 	
 </div>
 
-	<!-- FootStart -->	
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
- 
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p>(주)소노호텔앤리조트    강원도 홍천군 서면 한치골길 262    대표이사 : 최주영   개인정보관리 책임자: 김태흥
-				사업자등록번호 : 223-81-08341    통신판매업신고 : 2004-강원홍천-00008    통신판매사업자 정보
-				CONTACT CENTER 1588-4888    운영시간 09:00 ~ 18:00 (연중무휴)    이메일 webmaster@daemyung.com</p>
-          </div>
-         </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- endFoot -->
-  
+<!-- 글쓰기 -->
+<div class="container writeCon">
+	<div class="col-md-7 heading-section ftco-animate title-style">
+            <h2><strong>Q&A 글쓰기</strong></h2>
+    </div>
+	<div class="board-border">
+		<input id="infoUserId" type="hidden" value="${userInfo.userId }">
+		<input id="infoUserName" type="hidden" value="${userInfo.userName }">
+		<label for="title" class="cols-sm-2 control-label board-frame" style="margin-top: 50px;">질문유형</label>
+	    <select class="board-frame qnaList" id="infoDivi">
+	    	<option value="워터파크 관련" selected="selected">워터파크 관련</option>
+			<option value="호텔 관련">호텔 관련</option>
+			<option value="예약 관련">예약 관련</option>
+			<option value="홈페이지 관련">홈페이지 관련</option>
+			<option value="기타">기타</option>
+	    </select>
+	    <label for="title" class="cols-sm-2 control-label board-frame" style="margin-top: 20px;">제목</label>
+	    <span class="titleMsg msg board-frame" style="color: red"></span>
+	    <input type="text" autocomplete="off" class="form-control board-frame add" name="infoTitle" id="title"/>	 	 
+	    <label for="content" class="cols-sm-2 control-label board-frame">내용</label>
+	    <span class="contentMsg msg board-frame" style="color: red"></span>
+	    <textarea class="form-control board-frame add" id="content" name="infoContent" rows="15"></textarea>
+	    <div>
+	    	<input type="file" class="img-input board-frame" id="img-input" accept="image/*">
+	    </div>
+	    <div class="write-div">
+	    <div style="margin-right: 158px;">
+	    	<input type="checkbox" name="check" id="check"><span>비밀글</span>
+	    </div>
+	    	<button type="button" class="write-btn btn" id="write-btn" style="margin-bottom: 50px;">글쓰기</button>	    
+	    	<button type="button" class="write-btn btn" id="list-btn" style="margin-bottom: 50px;">목록</button>	    
+	    </div>
+	</div>
+</div>
+<!-- 글수정 및 보기 -->
+<div class="container viewCon">
+	<div class="col-md-7 heading-section ftco-animate title-style">
+            <h2><strong>Q&A</strong></h2>
+    </div>
+	<div class="board-border">
+		<input type="hidden" name="infoNo" id="viewNum">
+		<label for="title" class="cols-sm-2 control-label board-frame" style="margin-top: 50px;">질문유형</label>
+		<label for="title" id="diviTitle" class="cols-sm-2 control-label board-frame divi" style="margin-top: 1px;"></label>
+		<select class="board-frame qnaList" id="infoDiviView" style="display: none">
+	    	<option value="워터파크 관련" selected="selected">워터파크 관련</option>
+			<option value="호텔 관련">호텔 관련</option>
+			<option value="예약 관련">예약 관련</option>
+			<option value="홈페이지 관련">홈페이지 관련</option>
+			<option value="기타">기타</option>
+	    </select>
+	    <label for="title" class="cols-sm-2 control-label board-frame" style="margin-top: 20px; font-size: ">제목</label>
+	    <span class="titleMsg msg board-frame" style="color: red"></span>
+	    <input type="text" autocomplete="off" class="form-control board-frame view" name="title" id="titleView" readonly="readonly"/>	 	 
+	    <label for="content" class="cols-sm-2 control-label board-frame">내용</label>
+	    <span class="contentMsg msg board-frame" style="color: red"></span>
+	    <textarea name="infoContent" id="contentView" class="form-control board-frame view" rows="15" readonly="readonly"></textarea>
+	    <div>
+	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
+	    </div>
+	    <div class="write-div">
+	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>
+	    	<button type="button" class="write-btn btn" id="remove-btn" onclick="removeNotice();" style="margin-bottom: 50px;">삭제하기</button>
+	    	<button type="button" class="write-btn btn" id="update-btn" onclick="updateNotice();" style="margin-bottom: 50px; display: none;">수정하기</button>
+	    	<button type="button" class="write-btn btn" id="list-btn2" style="margin-bottom: 50px;">목록</button>
+	    </div>
+	</div>
+</div>
+<script type="text/javascript">
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+var page=1;
+boardDisplay(page);
+function boardDisplay(pageNum) {
+	var search=$("#search").val();
+	var keyword=$("#keyword").val();
+	var checkSecretUser=$("#checkSecretUser").val();
+	page=pageNum;
+	$.ajax({
+		type: "GET",
+		url: "listQna?pageNum="+pageNum+"&search="+search+"&keyword="+keyword,
+		dataType: "json",
+		success: function(json) {
+			if(json.noticeBoardList.length==0) {
+				$("#noticeListDiv").html("");
+				$("#noselcet").html("검색된 게시글이 존재하지 않습니다.");
+				$("#keyword").val("");
+				pageDisplay(json.pager);
+				return;
+			} 
+			$("#noselcet").html("");
+			var leng=json.noticeBoardList.length;
+			var num=json.pager.no;
+			var html="";
+			for(var i=0,n=num; i<=leng-1,n>=1; i++,n--) {
+				html+="<tr>";
+				html+="<td class='mobile'>"+n+"</td>";
+				html+="<td class='mobile'>"+json.noticeBoardList[i].infoDivi+"</td>";
+				if(json.noticeBoardList[i].infoState==1){
+					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
+				} else if(checkSecretUser==json.noticeBoardList[i].infoUserId) {
+					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
+				} else {
+					html+="<td><a class=table-a>작성자 본인만 확인 가능 한 글입니다.</a></td>";
+				}
+				html+="<td>"+json.noticeBoardList[i].infoUserName+"</td>";
+				html+="<td>"+json.noticeBoardList[i].infoDate+"</td>";		
+				html+="</tr>";
+	
+			}
+			$("#noticeListDiv").html(html);
+			pageDisplay(json.pager);
+			
+		},
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+}
 
+function pageDisplay(pager) {
+	var html="<ul>";
+	
+	if(pager.startPage>pager.blockSize) {
+		html+="<li><a href='javascript:boardDisplay("+pager.prevPage+")'>&&lt</a></li>";
+	} else {
+		html+="<li><a>&lt;</a></li>";
+	}
+	
+	for(var i=pager.startPage; i<=pager.endPage; i++) {
+		if(pager.pageNum!=i) {
+			html+="<li><a href='javascript:boardDisplay("+i+")'>"+i+"</a></li>"
+		} else {
+			html+="<li><a>"+i+"</a></li>";
+		}
+	}
+	if(pager.endPage!=pager.totalPage) {
+		html+="<li><a href='javascript:boardDisplay("+pager.nextPage+")'>&gt;</a></li>";
+	} else {
+		html+="<li><a>&gt;</a></li>";
+	}
+	
+	html+="</ul>"
+	$("#pageing").html(html);
+}
+function alllist() {
+	$("#keyword").val("");
+	boardDisplay(1);
+}
 
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.waypoints.min.js"></script>
-  <script src="../js/jquery.stellar.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
-  <script src="../js/jquery.animateNumber.min.js"></script>
-  <script src="../js/bootstrap-datepicker.js"></script>
-  <script src="../js/jquery.timepicker.min.js"></script>
-  <script src="../js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../js/google-map.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  
-  <script type="text/javascript">
+function viewDisplay(num) {
+	$(".viewCon").show();
+	$(".noticeCon").hide();
+	$(".view").val("");
+	
+	$.ajax({
+		type: "GET",
+		url: "viewQna/"+num,
+		dataType: "json",
+		success: function(json) {
+			$("#viewNum").val(json.infoNo);
+			$("#titleView").val(json.infoTitle);
+			$("#contentView").val(json.infoContent);
+			$("#diviTitle").text(json.infoDivi);
+			
+		},
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+}
 
-  </script>
-  </body>
-</html>
+function updateViewNotice() {
+	$(".msg").text("");
+	$("#titleView").attr("readonly",false);
+	$("#contentView").attr("readonly",false);
+	$("#titleView").focus();
+	$("#updateView-btn").hide();
+	$("#remove-btn").hide();
+	$("#img-input-view").show();
+	$("#update-btn").show();
+	$("#infoDiviView").show();
+	$("#diviTitle").hide();
+	var divititle=$("#diviTitle").text();
+	$("#infoDiviView").val(divititle).prop("selected",true);
+
+}
+
+function updateCancleNotice() {
+	$(".msg").text("");
+	$("#titleView").attr("readonly",true);
+	$("#contentView").attr("readonly",true);
+	$("#updateView-btn").show();
+	$("#update-btn").hide();
+	$("#img-input-view").hide();
+	$("#remove-btn").show();
+	$("#infoDiviView").hide();
+	$("#diviTitle").show();
+	$("#diviTitle").text($("#infoDiviView").val());
+}
+
+function updateNotice() {
+	var num=$("#viewNum").val();
+	var divi=$("#infoDiviView").val();
+	var title=$("#titleView").val();
+	var content=$("#contentView").val();
+	
+	if(title=="") {
+		$(".titleMsg").text("제목을 입력해주세요.");
+		$("#titleView").focus();
+		return;
+	}
+	if(content=="") {
+		$(".contentMsg").text("내용을 입력해주세요.");
+		$("#contentView").focus();
+		return;
+	}
+	if(confirm("게시글을 수정 하겠습니까?")) {
+		$.ajax({
+			type: "PUT",
+			url: "modifyQna",
+			headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
+			data: JSON.stringify({"infoNo":num,"infoTitle":title, "infoContent":content, "infoDivi":divi}),
+			dataType: "text",
+			success: function(text) {
+				if(text=="ok") {
+					updateCancleNotice();
+					boardDisplay(page);
+				}
+			}, 
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
+			}
+		});
+	}
+}
+
+function removeNotice() {
+	if(confirm("게시글을 삭제 하겠습니까?")) {	
+		var num=$("#viewNum").val();
+		$.ajax({
+			type: "PUT",
+			url: "removeQna",
+			headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
+			data: JSON.stringify({"infoNo":num}),
+			dataType: "text",
+			success: function(text) {
+				if(text=="ok") {
+					boardDisplay(page);
+					$(".viewCon").hide();
+					$(".noticeCon").show();
+				}
+			}, 
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
+			}
+		});
+	}
+}
+
+$("#write-btn").click(function() {
+	$(".msg").text("");
+	var id=$("#infoUserId").val();	
+	var name=$("#infoUserName").val();
+	var divi=$("#infoDivi").val();	
+	var title=$("#title").val();	
+	var content=$("#content").val();
+	var state=1;
+	
+	var check=$("#check").is(":checked");
+	if(check==true) {
+		state=2;
+	} 
+	
+	if(title=="") {
+		$(".titleMsg").text("제목을 입력해주세요.");
+		$("#title").focus();
+		return;
+	}
+	if(content=="") {
+		$(".contentMsg").text("내용을 입력해주세요.");
+		$("#noticeAdd").focus();
+		return;
+	}
+	
+	$.ajax({
+		type: "post",
+		url: "addQna",
+		headers: {"content-type":"application/json"},
+		data: JSON.stringify({"infoUserId":id, "infoUserName":name, "infoTitle":title, "infoContent":content, "infoDivi":divi, "infoState":state}),
+		dataType: "text",
+		success: function(text) {
+			if(text=="ok") {
+				$(".writeCon").hide();
+				$(".noticeCon").show();
+				boardDisplay(1);
+			}
+		},
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+});
+
+$("#noticeWriter").click(function() {
+	$(".add").val("");
+	$(".noticeCon").hide();
+	$(".writeCon").show();
+	$("#title").focus();
+});
+$("#list-btn").click(function() {
+	$(".noticeCon").show();
+	$(".writeCon").hide();
+});
+$("#list-btn2").click(function() {
+	$(".noticeCon").show();
+	$(".viewCon").hide();
+	updateCancleNotice();
+	boardDisplay(1);
+});
+
+</script>
+</body>

@@ -12,6 +12,7 @@ public interface AdminHotelService {
 	//호텔 예약
 	HotelReserveDTO selectHotelReserve(int reserveNo);
 	List<HotelReserveDTO> selectHotelReserveList();
+	List<HotelReserveDTO> selectHotelReserveStateList(int reserveState);
 	void updateHotelReserve(HotelReserveDTO hotelReserve);
 	
 	

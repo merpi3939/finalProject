@@ -9,6 +9,7 @@ import site.bluemoon.dao.OceanDAO;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
+import site.bluemoon.dto.User;
 
 @Service
 public class OceanServiceImpl implements OceanService {
@@ -44,10 +45,6 @@ public class OceanServiceImpl implements OceanService {
 	
 	//환불
 
-	@Override
-	public void updateOcean(OceanReservationDTO updateOcean) {
-		OceanDAO.updateOcean(updateOcean);
-	}
 	
 	//생생뉴스
 	@Override

@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!--Bootstrap Table [ OPTIONAL ]-->
+<link href=<c:url value = "/admin/plugins/bootstrap-table/bootstrap-table.min.css"/> rel="stylesheet">
+<!--X-editable [ OPTIONAL ]-->
+<link href=<c:url value = "/admin/plugins/x-editable/css/bootstrap-editable.css"/> rel="stylesheet">
+<!--FooTable [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/fooTable/css/footable.core.css"/> rel="stylesheet">
+<!--Demo [ DEMONSTRATION ]-->
+<link href=<c:url value = "/admin/css/demo/nifty-demo.min.css"/> rel="stylesheet">
+
+<!--Bootstrap Table [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/datatables/media/css/dataTables.bootstrap.css" /> rel="stylesheet">
+<link href=<c:url value="/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"/>  rel="stylesheet">    
+
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">
@@ -37,30 +52,43 @@
 			</div>
 	
 			<div class="panel-body">
-				<button id="demo-delete-row" class="btn btn-danger btn-labeled fa fa-times" disabled>Delete</button>
-					<table id="demo-custom-toolbar" class="demo-add-niftycheck" data-toggle="table"
-						   data-url="data/bs-table.json"
-						   data-toolbar="#demo-delete-row"
-						   data-search="true"
-						   data-show-refresh="true"
-						   data-show-toggle="true"
-						   data-show-columns="true"
-						   data-sort-name="id"
-						   data-page-list="[5, 10, 20]"
-						   data-page-size="5"
-						   data-pagination="true" data-show-pagination-switch="true">
-						<thead>
+				<!-- <button id="demo-delete-row" class="btn btn-danger btn-labeled fa fa-times" disabled>Delete</button> -->
+				<table id="demo-dt-delete" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					<thead>
 							<tr>
-								<th data-field="state" data-checkbox="true">ID</th>
-								<th data-field="id" data-sortable="true" data-formatter="invoiceFormatter">ID</th>
-								<th data-field="name" data-sortable="true">Name</th>
-								<th data-field="date" data-sortable="true" data-formatter="dateFormatter">Order date</th>
-								<th data-field="amount" data-align="center" data-sortable="true" data-sorter="priceSorter">Balance</th>
-								<th data-field="status" data-align="center" data-sortable="true" data-formatter="statusFormatter">Status</th>
-								<th data-field="track" data-align="center" data-sortable="true" data-formatter="trackFormatter">Tracking Number</th>
+								<th data-toggle="true">카테고리번호</th>
+								<th>카테고리이름</th>
+								<th>이미지1</th>
+								<th>이미지2</th>
+								<th>이미지3</th>
+								<th>이미지4</th>
+								<th>1일당 가격</th>
+								<th>객실수</th>
 							</tr>
-						</thead>
-					</table>
+					</thead>
+					<tbody>
+						<c:forEach items="${categoryList }" var="category">
+							<tr>
+								<td>${category.hotelCategoryNo }</td>
+								<td><a href="${pageContext.request.contextPath }/admin/hotel_room_detail?hotelCategoryNo=${category.hotelCategoryNo }">${category.hotelCategoryName }</a></td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg1 }"/> style="height: 50px;">
+								</td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg2 }"/> style="height: 50px;">
+								</td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg3 }"/> style="height: 50px;">
+								</td>
+								<td>
+									<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg4 }"/> style="height: 50px;">
+								</td>
+								<td>${category.hotelCategoryPrice }원</td>
+								<td>${category.hotelCategoryQty }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		
 		</div>
@@ -73,3 +101,26 @@
 </div>
 <!--===================================================-->
 <!--END CONTENT CONTAINER-->
+
+<!--X-editable [ OPTIONAL ]-->
+<script src=<c:url value ="/admin/plugins/x-editable/js/bootstrap-editable.min.js"/>></script>
+<!--Bootstrap Table [ OPTIONAL ]-->
+<script src=<c:url value ="/admin/plugins/bootstrap-table/bootstrap-table.min.js"/>></script>
+<!--Bootstrap Table Extension [ OPTIONAL ]-->
+<script src=<c:url value ="/admin/plugins/bootstrap-table/extensions/editable/bootstrap-table-editable.js"/>></script>
+<!--FooTable [ OPTIONAL ]-->
+<script src=<c:url value="/admin/plugins/fooTable/dist/footable.all.min.js"/>></script>
+<!--Demo script [ DEMONSTRATION ]-->
+<script src=<c:url value="/admin/js/demo/nifty-demo.min.js"/>></script>
+<!--Bootstrap Table Sample [ SAMPLE ]-->
+<script src=<c:url value="/admin/js/demo/tables-bs-table.js"/>></script>
+<!--FooTable Example [ SAMPLE ]-->
+<script src=<c:url value="/admin/js/demo/tables-footable.js"/>></script>
+
+<!--DataTables [ OPTIONAL ]-->
+<script <c:url value="/admin/plugins/datatables/media/js/jquery.dataTables.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/media/js/dataTables.bootstrap.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"/>></script>
+
+<!--DataTables Sample [ SAMPLE ]-->
+<script <c:url value="/admin/js/demo/tables-datatables.js"/>></script>

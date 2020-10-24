@@ -197,7 +197,7 @@
 					<div class="row">
 						<div class="col-sm-7 col-sm-offset-3">
 							<button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_reservation_update?reserveNo=${reserve.reserveNo }';">수정</button>
-							<button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_reservation_list'">목록</button>
+							<button class="btn btn-info btn-labeled fa fa-send fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_reservation_list'">목록</button>
 						</div>
 					</div>
 				</div>

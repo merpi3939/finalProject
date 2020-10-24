@@ -343,16 +343,5 @@ div.btns {
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		var date = new Date();
-		var month = date.getMonth() + 1;
-
-		var list = '${charge.cgNo }';
-
-		if (month == 7 || month == 8 || month == 9) {
-
-		}
-	</script>
-
 </body>
 </html>

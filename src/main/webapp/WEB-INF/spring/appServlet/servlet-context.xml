@@ -59,14 +59,7 @@
 		<interceptor>
 			<mapping path="/Hoteladd"/>
 			<mapping path="/myuser*"/>
-			<beans:ref bean="loginAuthInterceptor"/>
-		</interceptor>
-	</interceptors>
-	
-	<interceptors>
-		<interceptor>
 			<mapping path="/addOcean"/>
-			<mapping path="/myuser*"/>
 			<beans:ref bean="loginAuthInterceptor"/>
 		</interceptor>
 	</interceptors>

@@ -201,8 +201,8 @@
 				<div class="panel-footer">
 					<div class="row">
 						<div class="col-sm-7 col-sm-offset-3">
-							<button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit" >수정</button>
-							<button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_reservation_detail?reserveNo=${reserve.reserveNo }'">취소</button>
+							<button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit" >수정완료</button>
+							<button class="btn btn-danger btn-labeled fa fa-send fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_reservation_detail?reserveNo=${reserve.reserveNo }'">취소</button>
 						</div>
 					</div>
 				</div>

@@ -27,6 +27,11 @@ public class AdminHotelDAOImpl implements AdminHotelDAO{
 	public List<HotelReserveDTO> selectHotelReserveList() {
 		return sqlSession.getMapper(AdminHotelMapper.class).selectHotelReserveList();
 	}
+	
+	@Override
+	public List<HotelReserveDTO> selectHotelReserveStateList(int reserveState) {
+		return sqlSession.getMapper(AdminHotelMapper.class).selectHotelReserveStateList(reserveState);
+	}
 
 	@Override
 	public int updateHotelReserve(HotelReserveDTO hotelReserve) {
