@@ -110,9 +110,9 @@
 	    <label for="content" class="cols-sm-2 control-label board-frame">내용</label>
 	    <span class="contentMsg msg board-frame" style="color: red"></span>
 	    <textarea class="form-control board-frame add" id="content" name="infoContent" rows="15"></textarea>
-	    <div>
+	    <!-- <div>
 	    	<input type="file" class="img-input board-frame" id="img-input" accept="image/*">
-	    </div>
+	    </div> -->
 	    <div class="write-div">
 	    <div style="margin-right: 158px;">
 	    	<input type="checkbox" name="check" id="check"><span>비밀글</span>
@@ -144,9 +144,9 @@
 	    <label for="content" class="cols-sm-2 control-label board-frame">내용</label>
 	    <span class="contentMsg msg board-frame" style="color: red"></span>
 	    <textarea name="infoContent" id="contentView" class="form-control board-frame view" rows="15" readonly="readonly"></textarea>
-	    <div>
+	    <!-- <div>
 	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
-	    </div>
+	    </div> -->
 	    <div class="write-div">
 	    	<button type="button" class="write-btn btn" id="reply-btn" onclick="replyWrite();" style="margin-bottom: 50px;">리플작성</button>
 	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>
