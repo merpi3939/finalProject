@@ -179,7 +179,8 @@ public class UserController {
 		
 		if(oceanList.size()<=0) {
 			model.addAttribute("message1", "워터파크 예약 정보가 없습니다.");
-		} else if(hotelList.size()<=0) {
+		} 
+		if(hotelList.size()<=0) {
 			model.addAttribute("message2", "호텔 예약 정보가 없습니다.");
 		}
 		
