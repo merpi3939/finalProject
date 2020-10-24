@@ -4,7 +4,6 @@
 <head>
 <style type="text/css">
 #removeUser {
-    background-color: #ece5d6cc;
     position: absolute;
     top: 119%;
     left: 52%;

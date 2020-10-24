@@ -29,8 +29,18 @@
 	font-size: 20px;
 	border: 1px solid #dee2e6;
 }
-
-
+.reply {
+	border: 1px solid #dee2e6;
+	height: 250px;
+}
+.form-control:focus, .form-control:active {
+    border-color: #dee2e6;
+}
+.replyWrite {
+    padding: 5px;
+    z-index: 100;
+    display: none;
+}
 </style>
 </head>
 <body>
@@ -138,15 +148,31 @@
 	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
 	    </div>
 	    <div class="write-div">
+	    	<button type="button" class="write-btn btn" id="reply-btn" onclick="replyWrite();" style="margin-bottom: 50px;">리플작성</button>
 	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>
 	    	<button type="button" class="write-btn btn" id="remove-btn" onclick="removeNotice();" style="margin-bottom: 50px;">삭제하기</button>
 	    	<button type="button" class="write-btn btn" id="update-btn" onclick="updateNotice();" style="margin-bottom: 50px; display: none;">수정하기</button>
 	    	<button type="button" class="write-btn btn" id="list-btn2" style="margin-bottom: 50px;">목록</button>
 	    </div>
+		<!-- 
+		<div class="reply replyWrite board-frame">
+			<textarea class="board-frame" style="height: 221px; border: 1px solid;"></textarea>
+			<div style="text-align: right;">   
+	    		<button type="button" class="write-btn btn" id="reply-btn" style="margin-top: 10px; margin-right: 47px;">작성</button>
+	    	</div>
+		</div>
+		<div class="reply board-frame">
+			<span>작성자 re:</span>
+			<textarea class="board-frame" style="height: 221px; border: 0px;" readonly="readonly"></textarea>
+			<div style="text-align: right;"> 
+				<button type="button" class="write-btn btn" id="reply-btn" style="margin-top: 10px; margin-right: 9px;">수정</button>
+				<button type="button" class="write-btn btn" id="reply-btn" style="margin-top: 10px; ">삭제</button>
+			</div>
+		</div>
+		 -->
 	</div>
 </div>
 <script type="text/javascript">
-
 var page=1;
 boardDisplay(page);
 function boardDisplay(pageNum) {
@@ -396,6 +422,11 @@ $("#list-btn2").click(function() {
 	updateCancleNotice();
 	boardDisplay(1);
 });
+
+function replyWrite() {
+	$(".replyWrite").show(300);
+	
+}
 
 </script>
 </body>
