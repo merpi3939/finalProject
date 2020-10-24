@@ -26,6 +26,14 @@
 	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},1,#{hotelPayPrice},#{hotelMempoint},sysdate)
 	</insert>
 	
+	<update id="removeReserve">
+		update hotel_reserve set reserve_state=0 where reserve_no=#{reserveNo}
+	</update>
+	
+	<update id="removePay">
+		update hotel_Pay set reserve_state=0 where hotel_pay_no=#{hotelPayNo}
+	</update>
+	
 	<!-- 포인트 처리용 결제번호 검색 -->
 	<select id="selectPayNo" resultType="HotelPay">
 		select * from hotel_pay where hotel_pay_no=#{hotelPayNo}
@@ -40,4 +48,30 @@
 		update bluemoon_user user_point =user_point- #{userPoint} where user_no=#{userNo}
 	</update>
 	
+	<!-- 조인용 리절트맵 
+	<resultMap type="hotelPay" id="hotelPayMap">
+		<id column="hotel_pay_no" property="hotelPayNo"/>
+		<result column="hotel_pay_mempoint" property="hotelMempoint"/>
+		<result column="hotel_pay_price" property="hotelPayPrice"/>
+	</resultMap>
+	
+	<resultMap type="HotelReserve" id="HotelReserveMap">
+		<association property="hotelPay" javaType="hotelPay" resultMap="hotelPayMap"/>
+		<association property="hotelReserve" column="reserve_no" select="selectMemList"/>
+	</resultMap>
+	  전체 내역 조회  
+	 
+	 <select id="selectAllList" resultMap="HotelReserveMap">
+		select * from hotel_Pay where hotel_pay_no=#{hotelPayNo}
+	</select>
+	 
+	<select id="selectMemList" parameterType="int" resultType="HotelReserveDTO">
+		select * from hotel_reserve where reserve_no=#{reserveNo} order by reserve_no desc
+	</select>-->
+	<!-- 단일행 카테고리 값 출력 -->
+		<select id="selectMemreserve" resultType="HotelReserveDTO" parameterType="int">
+			select * from hotel_reserve where reserve_memno =#{reserveMemno} and reserve_state=1
+		</select>
+
+
 </mapper>

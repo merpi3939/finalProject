@@ -15,4 +15,8 @@ public interface HotelDAO {
 	 HotelPay selectPayNo(int payNo);
 	 int updateUserPointPlus(User user);
 	 int updatePointUserMinus(User user);
+	 //List<HotelReserveDTO>selectAllList(int no);
+	 List<HotelReserveDTO> selectMemreserve(int num);
+	 int removePay(HotelPay pay);
+	 int removeReserve(HotelReserveDTO reserve);
 }

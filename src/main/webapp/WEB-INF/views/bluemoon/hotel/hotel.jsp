@@ -83,7 +83,8 @@ body {
   <li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
   <li><a href=<c:url value="hotel"/>>ROOMS</a></li>
   <li><a href=<c:url value="hotel_event"/>>EVENT</a></li>
-  <li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>
+  <li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>2
+  <li><a href=<c:url value="hotelAllList"/>>My</a></li>
 </ul>
 </div>
 

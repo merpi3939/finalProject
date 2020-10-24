@@ -55,11 +55,13 @@ public class HotelConteroller {
 		int memno=userModify.getUserNo();
 		reserve.setReserveMemno(memno);
 		pay.setHotelPayMemno(memno);
-		
+		int hotelPrice=pay.getHotelPayPrice();
 		int point=pay.getHotelPayPrice();
 		int pointadd=(int) (point*0.1);
 		System.out.println(pointadd);
 		pay.setHotelMempoint(pointadd);
+		reserve.setReservePrice(hotelPrice);
+		
 		hotelReserveService.addHotelReserve(reserve);
 		int payno=reserve.getReserveNo();
 		pay.setHotelPayNo(payno);
@@ -77,6 +79,27 @@ public class HotelConteroller {
 		return "bluemoon/hotel/hotel_service";
 	}
 	
+	//회원별 전체 예약 
+	@RequestMapping(value = "/hotelAllList", method = RequestMethod.GET)
+	public String HotelAllList(HttpSession session,Model model ) throws UserinfoNotFoundException {
+		User userId=(User)session.getAttribute("userInfo");
+		User userModify=userService.selectUserId(userId.getUserId());
+		int num=userModify.getUserNo();
+		model.addAttribute("reserveList", hotelReserveService.selectMemreserve(num));
+		return "bluemoon/hotel/hotelAllList";
+	}
+	/*@RequestMapping(value = "/HotelAllList", method = RequestMethod.GET)
+	public String HotelAllList(HttpSession session,Model model) throws UserinfoNotFoundException {
+		User userId=(User)session.getAttribute("userInfo");
+		User userModify=userService.selectUserId(userId.getUserId());
+		int no=userModify.getUserNo();
+		model.addAttribute("AllList", hotelReserveService.selectHotelAllList(no));
+		return "bluemoon/hotel/HotelAllList";
+	}*/
+	@RequestMapping(value = "/hotelremove", method = RequestMethod.GET)
+	public String hotelremove() {
+		return "bluemoon/hotel/hotel";
+	}
 	
 
 }
