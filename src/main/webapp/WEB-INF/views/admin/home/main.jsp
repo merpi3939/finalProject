@@ -75,7 +75,7 @@
 			<div class="col-sm-6 col-md-6">
 				<div class="panel panel-dark panel-colorful">
 					<div class="panel-body text-center">
-						<p class="text-uppercase mar-btm text-sm">Visit Today</p>
+						<p class="text-uppercase mar-btm text-sm">Join Today</p>
 						<i class="fa fa-users fa-5x"></i>
 						<hr>
 						<p class="h2 text-thin">${joinQty.joinCount }</p>
