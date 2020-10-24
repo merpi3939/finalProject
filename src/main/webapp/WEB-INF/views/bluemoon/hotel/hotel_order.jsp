@@ -122,11 +122,11 @@ color: white;!important;
                                     <div class="ml-auto h5">${reserveList.reservePrice } Won</div>
                                 </div>
                                 <hr> </div>
-                                <div class="col-12 d-flex shopping-box"> <button type="button" class="ml-auto btn hvr-hover" style="background-color: red !important; color: white !important;">Place Order</button> </div>
+                                <div class="col-12 d-flex shopping-box"> <a href='Hotelcansle?reserveNo=${reserveList.reserveNo }' type="button" class="ml-auto btn hvr-hover" style="background-color: red !important; color: white !important;">예약취소</a> </div>
                  
 				
 			</div>
                         </div>
                     </div>
                 </div>
-            </div>
+            

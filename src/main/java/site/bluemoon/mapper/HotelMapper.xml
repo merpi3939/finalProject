@@ -28,7 +28,7 @@
 	</update>
 	
 	<update id="removePay">
-		update hotel_Pay set reserve_state=0 where hotel_pay_no=#{hotelPayNo}
+		update hotel_Pay set hotel_pay_state=0 where hotel_pay_no=#{hotelPayNo}
 	</update>
 	
 	<!-- 포인트 처리용 결제번호 검색 -->
@@ -42,7 +42,7 @@
 	
 	<!-- 결제 취소시 포인트 변경 -->
 	<update id="updatePointUserMinus">
-		update bluemoon_user user_point =user_point- #{userPoint} where user_no=#{userNo}
+		update bluemoon_user set user_point =user_point- #{userPoint} where user_no=#{userNo}
 	</update>
 	
 	<!-- 조인용 리절트맵 

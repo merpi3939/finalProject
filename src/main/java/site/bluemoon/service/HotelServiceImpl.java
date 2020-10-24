@@ -70,38 +70,33 @@ public class HotelServiceImpl implements HotelService{
 		
 	}
 
-	@Override
-	public void deleteReserve(HotelReserveDTO reserve) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public int selectReserveNo() {
 		return hotelReserveDAO.selectReserveNo();
 	}
 
-/*	@Override
+@Override
 	public void deleteReserve(HotelReserveDTO reserve) {
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		Date day=new Date();
-		String day1=sdf.format(day);
-		String reserveday=reserve.getReserveCheckIn();
+	
 		int reserveno=reserve.getReserveNo();
+		HotelPay pay=hotelReserveDAO.selectPayNo(reserveno);
+		int mem=pay.getHotelPayMemno();
+		int hotelPoint=pay.getHotelMempoint();
+		int hotelp=pay.getHotelPayPrice();
+		System.out.println(mem);
+		System.out.println(hotelp);
+		System.out.println(hotelPoint);
 		User user=new User();
-		user.setUserPoint(userPoint);
-		HotelPay pay=new HotelPay();
-		pay.setHotelPayNo(reserveno);
-		if (reserveday!=day1) {
+		user.setUserNo(mem);
+		user.setUserPoint(hotelPoint);
 			hotelReserveDAO.removeReserve(reserve);
 			hotelReserveDAO.removePay(pay);
 			hotelReserveDAO.updatePointUserMinus(user);
-		}else {
-			throw new RuntimeException("당일 취소는 불가합니다.");
 		
-		}
 		
-	}*/
+	}
 
 	
 
