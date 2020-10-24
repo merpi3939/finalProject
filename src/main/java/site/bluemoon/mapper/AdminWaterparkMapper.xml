@@ -146,7 +146,7 @@
 		from 
 			ocean_reservation 
 		order by
-			rs_no
+			rs_no desc
 	</select>
 	
 	<select id="selectReservation" resultType="OceanReservationDTO">

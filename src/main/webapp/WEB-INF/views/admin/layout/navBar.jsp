@@ -379,29 +379,55 @@
 					<ul class="nav navbar-top-links pull-right">
 
 						<!-- 블루문 워터파크 홈페이지 바로가기 -->
-						<li><a href="#">블루문 홈페이지 바로가기</a></li>
+						<li><a href="${pageContext.request.contextPath}/">블루문 홈페이지 바로가기</a></li>
 
+						<c:set var="choice" value="${userInfo.userState }"/>
+						<c:choose>
+							<c:when test="${choice==null }">
+								<a href="<c:url value="/admin/login"/>"><li class="username hidden-xs">(로그인을 해주세요.)</li></a>
+								<li> <img class="img-circle img-user media-object" src=<c:url value="/admin/img/av1.png"/> alt="Profile Picture"></li>
+							</c:when>
+							
+							<c:when test="${choice==9 }">
+								<li class="username hidden-xs"> ${userInfo.userName }(${userInfo.userId })</li>
+								<li> <img class="img-circle img-user media-object" src=<c:url value="/admin/img/av1.png"/> alt="Profile Picture"></li>
+								<a href="<c:url value="/admin/logout"/>"><span class="username hidden-xs" style="color: red;">Logout</span></a>
+							</c:when>
+						</c:choose>
 
 						<!--User dropdown-->
 						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+						<%-- 
 						<li id="dropdown-user" class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+							<span class="username hidden-xs" style="color: red;"><a href="${pageContext.request.contextPath}/admin/logout }">Logout</a></span>
+						</li>
+								 --%>
+	
+							<!-- <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right"> -->
+								<!-- 
 								<span class="pull-right">
 									<img class="img-circle img-user media-object" src=<c:url value="/admin/img/av1.png"/> alt="Profile Picture">
 								</span>
-								<div class="username hidden-xs">John Doe</div>
-							</a>
+								 -->
+								<!-- 
+								<span><div class="pad-all text-right">
+	  									  <a href="pages-login.html" class="btn btn-primary">
+										  <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+										  </div>
+								</span>
+ -->								
 
-
-							<div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+<!-- 							<div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default"> -->
 
 								<!-- User dropdown menu -->
+							<!-- 	
 								<ul class="head-list">
 									<li>
 										<a href="#">
 											<i class="fa fa-user fa-fw fa-lg"></i> Profile
 										</a>
 									</li>
+								 -->	
 									<!-- 
 									<li>
 										<a href="#">
@@ -425,17 +451,19 @@
 											<i class="fa fa-lock fa-fw fa-lg"></i> Lock screen
 										</a>
 									</li>
-									 -->
+									
 								</ul>
-
-								<!-- Dropdown footer -->
+								 -->
+<!-- 
+								Dropdown footer
 								<div class="pad-all text-right">
 									<a href="pages-login.html" class="btn btn-primary">
 										<i class="fa fa-sign-out fa-fw"></i> Logout
 									</a>
 								</div>
 							</div>
-						</li>
+							 -->
+						
 						<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 						<!--End user dropdown-->
 

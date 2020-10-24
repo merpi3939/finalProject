@@ -126,4 +126,7 @@ public class AdminWaterparkController {
 		model.addAttribute("pr", adminWaterparkService.getSelectReservation(rsNo));
 		return "admin/waterpark/pr/prModify";
 	}
+	
+//	@RequestMapping(value = "/prModify/{rsNo}", method = RequestMethod.GET)
+	//public String prModify(@PathVariable int rsNo, Model model) {
 }
