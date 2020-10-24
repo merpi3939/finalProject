@@ -58,7 +58,7 @@
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지1</label>
 					<div class="col-sm-6">
-						<input type="file" name="hotelCategoryImg1" value="/bluemoon/images/hotel_img/${category.hotelCategoryImg1 }">
+						<input type="file" name="hotelCategoryImg1">
 					</div>
 				</div>
 				<div class="form-group">

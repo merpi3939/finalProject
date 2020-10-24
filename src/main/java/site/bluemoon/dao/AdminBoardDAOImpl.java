@@ -15,7 +15,32 @@ public class AdminBoardDAOImpl implements AdminBoardDAO{
 
 	@Autowired
 	private SqlSession sqlSession;
+
+	@Override
+	public List<InfoBoard> selectInfoList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InfoBoard selectInfo(int infoNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateInfo(InfoBoard infoBoard) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateInfoState(InfoBoard infoBoard) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
+	/*
 	@Override
 	public List<InfoBoard> selectInfoList(Map<String, Object> map) {
 		return sqlSession.getMapper(AdminBoardMapper.class).selectInfoList(map);
@@ -35,5 +60,5 @@ public class AdminBoardDAOImpl implements AdminBoardDAO{
 	public int updateInfoState(InfoBoard infoBoard) {
 		return sqlSession.getMapper(AdminBoardMapper.class).updateInfoState(infoBoard);
 	}
-
+*/
 }
