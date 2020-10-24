@@ -12,7 +12,7 @@
 					<a class="nav-link my-page" href="<c:url value="/info"/>">공지사항</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link my-page" href="<c:url value="/qna"/>">Q&A</a>
+					<a class="nav-link my-page" href="<c:url value="/infoQna"/>">Q&A</a>
 				</li>
 			</ul>
 		</div>

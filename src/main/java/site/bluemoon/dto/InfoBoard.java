@@ -26,6 +26,7 @@ public class InfoBoard {
 	private String infoName;
 	private String infoImg;
 	private int infoState;
+	private int infoRemove;
 	private int infoCount;
 	
 	public InfoBoard() {
@@ -119,5 +120,14 @@ public class InfoBoard {
 	public void setInfoCount(int infoCount) {
 		this.infoCount = infoCount;
 	}
+
+	public int getInfoRemove() {
+		return infoRemove;
+	}
+
+	public void setInfoRemove(int infoRemove) {
+		this.infoRemove = infoRemove;
+	}
+	
 	
 }

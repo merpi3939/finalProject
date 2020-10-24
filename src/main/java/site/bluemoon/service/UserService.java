@@ -1,7 +1,10 @@
 package site.bluemoon.service;
 
+import java.util.List;
 import java.util.Map;
 
+import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
 import site.bluemoon.exception.LoginAuthFailException;
 import site.bluemoon.exception.UserinfoExistsException;
@@ -16,4 +19,6 @@ public interface UserService {
 	User checkUser(Map<String, Object> user) throws UserinfoNotFoundException;
 	void removeUser(String userId) throws UserinfoNotFoundException;
 	void updatePassUser(User user) throws UserinfoNotFoundException;
+	List<OceanReservationDTO> findUserWater(int userNo);
+	List<HotelReserveDTO> findUserHotel(int userNo);
 }

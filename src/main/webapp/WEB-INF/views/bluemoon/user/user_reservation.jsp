@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-   
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>   
 	<style type="text/css">
 		.user-style { 
 			 margin-top: 60px;
@@ -34,6 +34,9 @@
 		.table-a {
 			color: black;
 		}
+		#message{
+			text-align: center;
+		}
 	</style>
 	
 <div class="container user-con">	
@@ -42,21 +45,25 @@
     </div>
  	 <div class="table-responsive">
     	<table class="table table-striped">
+
  			<thead>
    				<tr>
   					<th width="30%">예약번호</th>
   					<th width="40%">이용권</th>
-  					<th>예약날짜</th>
+  					<th>이용날짜</th>
 				</tr>
  			</thead>
- 		<tbody>   	
+ 		<tbody>   
+ 		<c:forEach var="oceanList" items="${ocean }"> 		
    			<tr>
-      			<td width="30%">1123123</td>
-      			<td width="40%"><a class="table-a" href="#">짱좋은 티켓asdasdasd</a></td>
-			    <td>2020-01-01</td>
+      			<td width="30%">${oceanList.rsNo }</td>
+      			<td width="40%"><a class="table-a" href="#">${oceanList.rsTicket }</a></td>
+			    <td>${fn:substring(oceanList.rsUsedate,0,10) }</td>
    			</tr>
+ 		</c:forEach>	
 		 </tbody> 
 		</table>    
+ 		<div id="message">${message1 }</div>   	
 	</div>	 
 		
 	<div class="col-md-7 heading-section ftco-animate title-style">
@@ -68,17 +75,21 @@
    				<tr>
   					<th width="30%">예약번호</th>
   					<th width="40%">객실</th>
-  					<th>예약날짜</th>
+  					<th>체크인</th>
+  					<th>체크아웃</th>
 				</tr>
  			</thead>
- 		<tbody>   	
-   			<tr>
-      			<td width="30%">1123123</td>
-      			<td width="40%"><a class="table-a" href="#">뭐선뭐asdasd선 방</a></td>
-			    <td>2020-01-01</td>
-   			</tr>
-   			
+ 		<tbody>
+   			<c:forEach var="hotelList" items="${hotel }"> 		
+	   			<tr>
+	   				<td width="30%">${hotelList.reserveNo }</td>
+	      			<td width="40%"><a class="table-a" href="#">${hotelList.reserveNo }</a></td>
+				    <td>${fn:substring(hotelList.reserveCheckIn,0,10)}</td>
+				    <td>${fn:substring(hotelList.reserveCheckOut,0,10) }</td>
+	   			</tr>
+	 		</c:forEach>
 		 </tbody>  
 		</table>    
+ 		<div id="message">${message2 }</div>   	
 	</div>	 
 </div>

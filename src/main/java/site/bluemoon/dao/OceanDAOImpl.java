@@ -21,6 +21,7 @@ public class OceanDAOImpl implements OceanDAO {
 	public int insertOceanReservation(OceanReservationDTO oceanReservation) {
 		return sqlSession.getMapper(OceanMapper.class).insertOceanReservation(oceanReservation);
 	}
+	
 	//요금
 	@Override
 	public OceanChargeDTO selectOceanCharge(int cgNo) {
@@ -44,10 +45,7 @@ public class OceanDAOImpl implements OceanDAO {
 	}
 	
 	//환불	
-	@Override
-	public int updateOcean(OceanReservationDTO updateOcean) {
-		return sqlSession.getMapper(OceanMapper.class).updateOcean(updateOcean);
-	}
+
 	
 	//생생뉴스	
 	@Override

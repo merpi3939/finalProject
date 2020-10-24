@@ -12,15 +12,13 @@
 	border-bottom: 1px solid #dee2e6;
 }
 
-/* @media screen and (max-width:375px) {
-#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
-	width: 31%;
-} */
 @media screen and (max-width:768px) {
-#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
-	width: 31%;
-}
-
+	#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
+		width: 31%;
+	}
+	.mobileTitle {
+		width:134px;
+	}
 }
 </style>
 </head>
@@ -30,8 +28,20 @@
             <h2><strong>공지사항</strong></h2>
     </div>
     <div class="table-responsive" style="overflow-x: hidden;">
-    	<div id="noticeListDiv">   	
-		</div>  
+    		<table class="table" style="margin-bottom: 50px;">
+ 			<thead>
+   				<tr>
+  					<th width="100">글번호</th>
+  					<th class="mobileTitle" width="500">제목</th>
+  					<th width="100">조회수</th>
+  					<th width="100">작성일</th>
+				</tr>
+ 			</thead>
+    	<tbody id="noticeListDiv">   	
+ 			 		
+		</tbody>  
+		</table>
+		<div id="noselcet" style="text-align: center;"></div>   
 		<div style="margin-bottom: 96px;">
 			<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
 		</div>
@@ -100,29 +110,6 @@
 	    </div>
 	</div>
 </div>
-
-<script id="template" type="text/x-handlebars-template">
-	<table class="table" style="margin-bottom: 50px;">
- 			<thead>
-   				<tr>
-  					<th width="100">글번호</th>
-  					<th width="500">제목</th>
-  					<th width="100">조회수</th>
-  					<th width="100">작성일</th>
-				</tr>
- 			</thead>
-		{{#each noticeBoardList}}
- 		<tbody>   	
-   			<tr>
-      			<td>{{../pager.no}}</td>
-      			<td><a class="table-a" href='javascript:viewDisplay({{infoNo}})'>{{infoTitle}}</a></td>
-      			<td>{{infoCount}}</td>
-			    <td>{{infoDate}}</td>
-   			</tr>
-		 </tbody>
-		{{/each}}
-	</table>   
-</script>
 <script type="text/javascript">
 
 var page=1;
@@ -137,18 +124,29 @@ function boardDisplay(pageNum) {
 		dataType: "json",
 		success: function(json) {
 			if(json.noticeBoardList.length==0) {
-				$("#noticeListDiv").html("검색된 게시글이 존재하지 않습니다.");
+				$("#noticeListDiv").html("");
+				$("#noselcet").html("검색된 게시글이 존재하지 않습니다.");
 				$("#keyword").val("");
 				pageDisplay(json.pager);
 				return;
+			} 
+			$("#noselcet").html("");
+			var leng=json.noticeBoardList.length;
+			var num=json.pager.no;
+			var html="";
+			for(var i=0,n=num; i<=leng-1,n>=1; i++,n--) {
+				if(json.noticeBoardList[i].infoState==1 || json.noticeBoardList[i].infoState==2) {
+					html+="<tr>";
+					html+="<td>"+n+"</td>";
+					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
+					html+="<td>"+json.noticeBoardList[i].infoCount+"</td>";
+					html+="<td>"+json.noticeBoardList[i].infoDate+"</td>";		
+					html+="</tr>";
+				}
 			}
-			var no=json.pager.no;
-			var source=$("#template").html();
-			var template=Handlebars.compile(source);
-		
-			$("#noticeListDiv").html(template(json));
-						
+			$("#noticeListDiv").html(html);
 			pageDisplay(json.pager);
+			
 		},
 		error: function(xhr) {
 			alert("에러코드 = "+xhr.status);
@@ -224,6 +222,7 @@ function updateCancleNotice() {
 	$("#updateView-btn").show();
 	$("#update-btn").hide();
 	$("#img-input-view").hide();
+	$("#remove-btn").show();
 }
 
 function updateNotice() {
@@ -241,44 +240,47 @@ function updateNotice() {
 		$("#contentView").focus();
 		return;
 	}
-	$.ajax({
-		type: "PUT",
-		url: "modifyNotice",
-		headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
-		data: JSON.stringify({"infoNo":num,"infoTitle":title, "infoContent":content}),
-		dataType: "text",
-		success: function(text) {
-			if(text=="ok") {
-				updateCancleNotice();
-				boardDisplay(page);
+	if(confirm("게시글을 수정 하겠습니까?")) {
+		$.ajax({
+			type: "PUT",
+			url: "modifyNotice",
+			headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
+			data: JSON.stringify({"infoNo":num,"infoTitle":title, "infoContent":content}),
+			dataType: "text",
+			success: function(text) {
+				if(text=="ok") {
+					updateCancleNotice();
+					boardDisplay(page);
+				}
+			}, 
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
 			}
-		}, 
-		error: function(xhr) {
-			alert("에러코드 = "+xhr.status);
-		}
-	});
+		});
+	}
 }
 
 function removeNotice() {
-	var num=$("#viewNum").val();
-	
-	$.ajax({
-		type: "PUT",
-		url: "removeNotice",
-		headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
-		data: JSON.stringify({"infoNo":num}),
-		dataType: "text",
-		success: function(text) {
-			if(text=="ok") {
-				boardDisplay(page);
-				$(".viewCon").hide();
-				$(".noticeCon").show();
+	if(confirm("게시글을 삭제 하겠습니까?")) {
+		var num=$("#viewNum").val();
+		$.ajax({
+			type: "PUT",
+			url: "removeNotice",
+			headers: {"content-type":"application/json","X-HTTP-Method-override":"PUT"},
+			data: JSON.stringify({"infoNo":num}),
+			dataType: "text",
+			success: function(text) {
+				if(text=="ok") {
+					boardDisplay(page);
+					$(".viewCon").hide();
+					$(".noticeCon").show();
+				}
+			}, 
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
 			}
-		}, 
-		error: function(xhr) {
-			alert("에러코드 = "+xhr.status);
-		}
-	});
+		});
+	}
 }
 
 $("#write-btn").click(function() {
@@ -287,6 +289,7 @@ $("#write-btn").click(function() {
 	var name=$("#infoUserName").val();	
 	var title=$("#title").val();	
 	var content=$("#content").val();
+	var state=1;
 	
 	if(title=="") {
 		$(".titleMsg").text("제목을 입력해주세요.");
@@ -303,7 +306,7 @@ $("#write-btn").click(function() {
 		type: "post",
 		url: "addNotice",
 		headers: {"content-type":"application/json"},
-		data: JSON.stringify({"infoUserId":id, "infoUserName":name, "infoTitle":title, "infoContent":content}),
+		data: JSON.stringify({"infoUserId":id, "infoUserName":name, "infoTitle":title, "infoContent":content, "infoState":state}),
 		dataType: "text",
 		success: function(text) {
 			if(text=="ok") {
