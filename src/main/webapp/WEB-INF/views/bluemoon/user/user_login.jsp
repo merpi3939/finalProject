@@ -7,7 +7,7 @@
 html,body{
 background-image: url('resources/bluemoon/images/loginimage.jpg');
 background-size: auto;
-background-repeat: no-repeat;
+background-repeat: inherit;
 height: 100%;
 font-family: 'Numans', sans-serif;
 }

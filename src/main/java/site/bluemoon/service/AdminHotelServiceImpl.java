@@ -1,6 +1,7 @@
 package site.bluemoon.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import site.bluemoon.dao.AdminHotelDAO;
 import site.bluemoon.dto.HotelCategory;
 import site.bluemoon.dto.HotelComment;
+import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
 
 @Service
@@ -17,13 +19,18 @@ public class AdminHotelServiceImpl implements AdminHotelService {
 
 	///////////호텔 예약/////////////
 	@Override
-	public HotelReserveDTO selectHotelReserve() {
-		return adminHotelDAO.selectHotelReserve();
+	public HotelReserveDTO selectHotelReserve(int reserveNo) {
+		return adminHotelDAO.selectHotelReserve(reserveNo);
 	}
 
 	@Override
 	public List<HotelReserveDTO> selectHotelReserveList() {
 		return adminHotelDAO.selectHotelReserveList();
+	}
+	
+	@Override
+	public List<HotelReserveDTO> selectHotelReserveStateList(int reserveState) {
+		return adminHotelDAO.selectHotelReserveStateList(reserveState);
 	}
 
 	@Override
@@ -38,8 +45,8 @@ public class AdminHotelServiceImpl implements AdminHotelService {
 	}
 
 	@Override
-	public HotelComment selectHotelReview() {
-		return adminHotelDAO.selectHotelReview();
+	public HotelComment selectHotelReview(int commentNo) {
+		return adminHotelDAO.selectHotelReview(commentNo);
 	}
 
 	//////////호텔 카테고리////////////
@@ -53,6 +60,28 @@ public class AdminHotelServiceImpl implements AdminHotelService {
 	public void updateHotelCategory(HotelCategory hotelCategory) {
 		adminHotelDAO.updateHotelCategory(hotelCategory);
 	}
+	
+	@Override
+	public HotelCategory selectHotelCategory(int hotelCategoryNo) {
+		return adminHotelDAO.selectHotelCategory(hotelCategoryNo);
+	}
+	
+	@Override
+	public List<HotelCategory> selectHotelCategoryList() {
+		return adminHotelDAO.selectHotelCategoryList();
+	}
+
+	///////////호텔 결제////////////
+	@Override
+	public HotelPay selectHotelPay(Map<String, Object> map) {
+		return adminHotelDAO.selectHotelPay(map);
+	}
+
+	@Override
+	public int updateHotelPay(HotelPay hotelPay) {
+		return adminHotelDAO.updateHotelPay(hotelPay);
+	}
+
 	
 
 

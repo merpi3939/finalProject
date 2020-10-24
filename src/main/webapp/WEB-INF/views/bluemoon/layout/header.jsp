@@ -13,7 +13,6 @@
           <li class="nav-item"><a href=<c:url value="/"/> class="nav-link">BlueMoonWaterPark</a></li>
           <li class="nav-item"><a href=<c:url value="/hotel"/> class="nav-link">BlueMoonHotels</a></li>
           <li class="nav-item"><a href=<c:url value="/info"/> class="nav-link">Information</a></li>
-         
           <c:set var="choice" value="${userInfo.userState }"/>
           <c:choose>
           	<c:when test="${choice==null }">

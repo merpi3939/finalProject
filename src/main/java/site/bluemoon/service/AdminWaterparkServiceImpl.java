@@ -43,17 +43,51 @@ public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 		return adminWaterparkDAO.selectNewsList();
 	}
 
+	//°·Waterpark's charge Service
+	@Override
+	public List<OceanChargeDTO> getSelectChargeList() {
+		return adminWaterparkDAO.selectChargeList();
+	}
+
+	@Override
+	public OceanChargeDTO getSelectCharge(int cgNo) {
+		return adminWaterparkDAO.selectCharge(cgNo);
+	}
+
+	@Override
+	public void addCharge(OceanChargeDTO oceanChargeDTO) {
+		adminWaterparkDAO.insertCharge(oceanChargeDTO);
+	}
+
+	@Override
+	public void removeCharge(int cgNo) {
+		adminWaterparkDAO.deleteCharge(cgNo);
+	}
+
+	@Override
+	public void modifyCharge(OceanChargeDTO oceanChargeDTO) {
+		adminWaterparkDAO.updateCharge(oceanChargeDTO);
+	}
+
 	//°·Waterpark's Reservation Service
 	@Override
 	public List<OceanReservationDTO> getSelectReservationList() {
 		return adminWaterparkDAO.selectReservationList();
 	}
 
-	//°·Waterpark's Reservation Service
 	@Override
-	public List<OceanChargeDTO> getSelectChargeList() {
-		return adminWaterparkDAO.selectChargeList();
+	public OceanReservationDTO getSelectReservation(int rsNo) {
+		return adminWaterparkDAO.selectReservation(rsNo);
 	}
 
+	@Override
+	public void removeReservation(int rsNo) {
+		adminWaterparkDAO.deleteReservation(rsNo);
+	}
+
+	@Override
+	public void ModifyReservation(OceanReservationDTO oceanReservationDTO) {
+		adminWaterparkDAO.updateReservation(oceanReservationDTO);
+	}
 }
 

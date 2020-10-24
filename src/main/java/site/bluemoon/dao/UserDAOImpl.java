@@ -1,11 +1,14 @@
 package site.bluemoon.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
 import site.bluemoon.mapper.UserMapper;
 
@@ -43,6 +46,16 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int deleteUser(String userId) {
 		return sqlSession.getMapper(UserMapper.class).deleteUser(userId);
+	}
+
+	@Override
+	public List<OceanReservationDTO> selectUserWater(int userNo) {
+		return sqlSession.getMapper(UserMapper.class).selectUserWater(userNo);
+	}
+
+	@Override
+	public List<HotelReserveDTO> selectUserHotel(int userNo) {
+		return sqlSession.getMapper(UserMapper.class).selectUserHotel(userNo);
 	}
 	
 }

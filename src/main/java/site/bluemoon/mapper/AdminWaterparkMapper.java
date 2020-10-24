@@ -17,10 +17,18 @@ public interface AdminWaterparkMapper {
 	List<AdminOceanNews> selectNewsList();
 	int deleteCheckNews(Integer newsNo);
 	
-	//°·Waterpark's Reservation Mapper
-	List<OceanReservationDTO> selectReservationList();
-	
 	//°·Waterpark's Charge Mapper
 	List<OceanChargeDTO> selectChargeList();
+	OceanChargeDTO selectCharge(int cgNo);
+	int insertCharge(OceanChargeDTO oceanChargeDTO);
+	int deleteCharge(int cgNo);
+	int updateCharge(OceanChargeDTO oceanChargeDTO);
+	
+	//°·Waterpark's Reservation Mapper 
+	List<OceanReservationDTO> selectReservationList();
+	OceanReservationDTO selectReservation(int rsNo);
+	int deleteReservation(int rsNo);
+	int updateReservation(OceanReservationDTO oceanReservationDTO);
+	
 	
 }

@@ -15,7 +15,7 @@ HOTEL_CATEGORY_QTY   NOT NULL NUMBER
 public class HotelCategory {
 	private int hotelCategoryNo;
 	private String hotelCategoryName;
-	private String hotelCategoryPrice;
+	private int hotelCategoryPrice;
 	private String hotelCategoryImg1;   
 	private String hotelCategoryImg2;   
 	private String hotelCategoryImg3;   
@@ -42,11 +42,11 @@ public class HotelCategory {
 		this.hotelCategoryName = hotelCategoryName;
 	}
 
-	public String getHotelCategoryPrice() {
+	public int getHotelCategoryPrice() {
 		return hotelCategoryPrice;
 	}
 
-	public void setHotelCategoryPrice(String hotelCategoryPrice) {
+	public void setHotelCategoryPrice(int hotelCategoryPrice) {
 		this.hotelCategoryPrice = hotelCategoryPrice;
 	}
 

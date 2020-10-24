@@ -55,7 +55,7 @@
 					
 					<!--■버튼-->
 					<div style="margin-left: 560px; margin-top: 50px;">
-						<button onclick="enterNews()" class="btn btn-primary" type="reset">소식등록</button>
+						<button onclick="enterNews()" class="btn btn-primary">소식등록</button>
 						<button class="btn btn-pink" id="backNewsList">리스트로 돌아가기</button>
 					</div>
 					

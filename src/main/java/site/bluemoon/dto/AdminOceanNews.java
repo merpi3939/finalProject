@@ -9,6 +9,16 @@ public class AdminOceanNews {
 	private String userId;
 	private String userName;
 	
+	private int joinCount;
+	
+	public int getJoinCount() {
+		return joinCount;
+	}
+
+	public void setJoinCount(int joinCount) {
+		this.joinCount = joinCount;
+	}
+
 	public AdminOceanNews() {
 		// TODO Auto-generated constructor stub
 	}

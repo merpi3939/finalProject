@@ -16,10 +16,16 @@ public interface AdminWaterparkService {
 	AdminOceanNews getSelectNews(int newsNo);
 	List<AdminOceanNews> getSelectNewsList();
 	
-	//°·Waterpark's Reservation Service
-	List<OceanReservationDTO> getSelectReservationList();
-	
 	//°·Waterpark's Charge Service
 	List<OceanChargeDTO> getSelectChargeList();
+	OceanChargeDTO getSelectCharge(int cgNo);
+	void addCharge(OceanChargeDTO oceanChargeDTO);
+	void removeCharge(int cgNo);
+	void modifyCharge(OceanChargeDTO oceanChargeDTO);
 	
+	//°·Waterpark's Reservation Service
+	List<OceanReservationDTO> getSelectReservationList();
+	OceanReservationDTO getSelectReservation(int rsNo);
+	void removeReservation(int rsNo);
+	void ModifyReservation(OceanReservationDTO oceanReservationDTO);
 }

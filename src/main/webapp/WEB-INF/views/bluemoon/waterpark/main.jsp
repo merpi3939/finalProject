@@ -47,7 +47,7 @@
 					<div class="destination-slider owl-carousel ftco-animate">
 						<div class="item">
 							<div class="destination">
-								<a href=<c:url value="/attraction1"/>
+								<a href="#"
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon08.jpg);">
 								</a>
@@ -138,12 +138,6 @@
 	<section class="ftco-section testimony-section bg-light">
 		<div class="container">
 			<div class="row justify-content-start">
-				<!-- <div class="col-md-5 heading-section ftco-animate">
-					<h2 class="mb-4 pb-3">
-						<strong>공지사항</strong>
-					</h2>
-					<p>공지사항</p>
-				</div> -->
 				<div class="col-md-1"></div>
 				<div class="carousel-testimony owl-carousel">
 					<div class="col-md-6 heading-section ftco-animate">
@@ -202,7 +196,7 @@
 				</div>
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
-						<a href=<c:url value="/event2"/> class="block-20"
+						<a href="" class="block-20"
 							style="background-image: url('resources/bluemoon/images/ocean_img/event2.jpg');">
 						</a>
 						<div class="text p-4">

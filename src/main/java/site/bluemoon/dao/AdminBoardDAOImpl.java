@@ -15,6 +15,7 @@ public class AdminBoardDAOImpl implements AdminBoardDAO{
 
 	@Autowired
 	private SqlSession sqlSession;
+
 	
 	@Override
 	public List<InfoBoard> selectInfoList(Map<String, Object> map) {
@@ -35,5 +36,4 @@ public class AdminBoardDAOImpl implements AdminBoardDAO{
 	public int updateInfoState(InfoBoard infoBoard) {
 		return sqlSession.getMapper(AdminBoardMapper.class).updateInfoState(infoBoard);
 	}
-
 }

@@ -258,7 +258,7 @@ div.btns {
 <body>
 	<div class="limiter">
 		<div class="con01">
-			<form class="form01" id="form01" action="updateOcean" method="post">
+			<form class="form01" id="form01" action="addOcean" method="post">
 				<div class="wrap100">
 					<h5>예약하기</h5>
 					<table class="res01">
@@ -343,7 +343,7 @@ div.btns {
 					</table>
 
 					<div class="btns">
-						<button type="submit" class="formBtn">결제하기</button>
+						<button type="submit" class="formBtn" >결제하기</button>
 					</div>
 				</div>
 			</form>
@@ -429,11 +429,7 @@ div.btns {
 			var sum = sum1 + sum2;
 			
 			$("#rsPrice").val(sum);
-			/* 
-			alert(price);
-			alert(sum);
-			 */
-			
+
 			
 			return result;
 

@@ -162,5 +162,4 @@
 				$("input[type=checkbox]").prop("checked",false);
 			}
 		});
-		
 	</script>

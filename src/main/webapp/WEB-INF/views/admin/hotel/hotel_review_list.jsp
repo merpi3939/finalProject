@@ -4,6 +4,10 @@
 <!--Bootstrap Table [ OPTIONAL ]-->
 <link href=<c:url value = "/admin/plugins/bootstrap-table/bootstrap-table.min.css"/> rel="stylesheet">
 
+<!--Bootstrap Table [ OPTIONAL ]-->
+<link href=<c:url value="/admin/plugins/datatables/media/css/dataTables.bootstrap.css" /> rel="stylesheet">
+<link href=<c:url value="/admin/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"/>  rel="stylesheet">
+
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <div id="content-container">
@@ -47,6 +51,7 @@
 					최신순
 				</button>
 			 -->
+			 <!-- 
 				<div class="form-group" >
 					<div style="float: right; margin-left: 5px; margin-top: 2px;">
 						<button  class="btn btn-sm btn-mint">검색</button>
@@ -55,78 +60,32 @@
 						<input type="text" name="keyword" class="form-control">
 					</div>
 				</div>
-				
-				<table class="table table-hover">
+				 -->
+				<table id="demo-dt-delete" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th>글 번호</th>
-							<th>회원이름</th>
-							<th >제목</th>
-							<th >내용</th>
-							<th >작성날짜</th>
-							<th class="">객실</th>
+							<th class="min-width">호텔 리뷰 번호</th>
+							<th>객실</th>
+							<th>회원번호</th>
+							<th>리뷰제목</th>
+							<th>리뷰내용</th>
+							<th>작성날짜</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>0001</td>
-							<td>강지우</td>
-							<td>제목</td>
-							<td>내용</td>
-							<td>작성날짜</td>
-							<td>
-								<span class="icon-wrap icon-wrap-sm icon-circle bg-purple"><i class="fa fa-desktop fa-lg"></i></span>
-								
-							</td>
-						</tr>
-						<tr>
-							<td>0002</td>
-							<td>강지우</td>
-							<td>제목</td>
-							<td>내용</td>
-							<td>작성날짜</td>
-							<td><span class="icon-wrap icon-wrap-sm icon-circle bg-purple"><i class="fa fa-desktop fa-lg"></i></span></td>
-						</tr>
-						<tr>
-							<td>0003</td>
-							<td>강지우</td>
-							<td>제목</td>
-							<td>내용</td>
-							<td>작성날짜</td>
-							<td><span class="icon-wrap icon-wrap-sm icon-circle bg-purple"><i class="fa fa-desktop fa-lg"></i></span></td>
-						</tr>
-						<tr>
-							<td>0004</td>
-							<td>강지우</td>
-							<td>제목</td>
-							<td>내용</td>
-							<td>작성날짜</td>
-							<td><span class="icon-wrap icon-wrap-sm icon-circle bg-purple"><i class="fa fa-desktop fa-lg"></i></span></td>
-						</tr>
-
+						<c:forEach var="comment" items="${commentList}" >
+							<tr>
+								<td style="text-align: right;"><a href="${pageContext.request.contextPath }/admin/hotel_review_detail?commentNo=${comment.commentNo }">${comment.commentNo }</a></td>
+								<td style="text-align: right;">${comment.commentRoom }</td>
+								<td style="text-align: right;">${comment.commentMemno }</td>
+								<td>${comment.commentTitle }</td>
+								<td>${comment.commentContent }</td>
+								<td>${comment.commentDate.substring(0,10) }</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				
-
-
-
-				<div style="float: right;">
-
-					<!--Pagination-->
-					<!--===================================================-->
-					<ul class="pagination">
-						<li><a href="#" class="fa fa-angle-double-left"></a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" class="fa fa-angle-double-right"></a></li>
-					</ul>
-					<!--===================================================-->
-					<!--End Default Pagination-->
-
-				</div>
 				
 			</div>
 			<!--===================================================-->
@@ -143,3 +102,11 @@
 </div>
 <!--===================================================-->
 <!--END CONTENT CONTAINER-->
+
+<!--DataTables [ OPTIONAL ]-->
+<script <c:url value="/admin/plugins/datatables/media/js/jquery.dataTables.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/media/js/dataTables.bootstrap.js"/>></script>
+<script <c:url value="/admin/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"/>></script>
+
+<!--DataTables Sample [ SAMPLE ]-->
+<script <c:url value="/admin/js/demo/tables-datatables.js"/>></script>
