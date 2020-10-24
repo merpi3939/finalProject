@@ -106,8 +106,8 @@
 					
 					<div>
 						<button id="deleteBtn" class="btn btn-danger" type="button">선택탈퇴</button>
-						<button class="btn btn-success" 	style="background: rgb(8,106,48);">회원 액셀다운로드</button>
-						<button class="btn btn-success" style="background: rgb(24,74,120);">회원 액셀업로드</button>
+						<%-- <button class="btn btn-success" 	style="background: rgb(8,106,48);">회원 액셀다운로드</button>--%>
+						<%--<button class="btn btn-success" style="background: rgb(24,74,120);">회원 액셀업로드</button>--%>
 					</div>
 					
 					</form>

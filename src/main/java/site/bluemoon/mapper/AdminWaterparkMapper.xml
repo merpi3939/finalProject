@@ -192,6 +192,9 @@
 			<if test="rsPrice!=null and rsPrice!=''">
 				rs_price=#{rsPrice}
 			</if>
+			<if test="rsOption!=null and rsOption!=''">
+				rs_Option=#{rsOption}
+			</if>
 		</set>
 		
 		where

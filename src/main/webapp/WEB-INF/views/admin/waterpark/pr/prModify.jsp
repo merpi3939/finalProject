@@ -35,7 +35,7 @@
 			<!--===================================================-->
 			<div class="panel">
 				<div class="panel-heading">
-					<h3 class="panel-title">블루문 회원 수정페이지 입니다.</h3>
+					<h3 class="panel-title">블루문 예약 수정페이지 입니다.</h3>
 				</div>
 				
 					
@@ -71,13 +71,13 @@
 					</div>
 	
 					<div class="form-group">
-						<label class="col-md-3 control-label">회원이름<br>(아이디)</label>
+						<label class="col-md-3 control-label">회원이름</label>
 						<div class="col-md-9"><p class="form-control-static">${pr.rsName }<br>(abc123)</p></div>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-md-3 control-label">전화번호</label>
-						<input type="text" class="form-control" style="width: 300px;" value="${pr.rsPhone }">
+						<input type="text" class="form-control" style="width: 300px;" value="${pr.rsPhone }" name="rsPhone">
 					</div>
 					
 					<div class="form-group">
@@ -85,14 +85,14 @@
 						
 						<c:set var="useDate1" value="${pr.rsUsedate }"/>
 						<c:set var="useDate" value="${fn:substring(useDate1, 0, 10) }"/>
-						<input type="text" class="form-control" style="width: 300px;" value="${useDate }">
+						<input type="text" class="form-control" style="width: 300px;" value="${useDate }" name="rsUsedate">
 					</div>
 					
 					<div class="form-group">
 						<label class="col-md-3 control-label">이용권명</label>
 						<div class="col-md-9">
 							<div>
-								<span id="beforeTicket" class="form-control-static">${pr.rsTicket }</span>&nbsp;&nbsp;
+								<span id="beforeTicket" class="form-control-static">${pr.rsTicket } </span>&nbsp;&nbsp;
 								<button id="ticketModifyBtn" type="button" style="width: 90px; height: 30px; background: white;">이용권 변경</button>
 							</div>
 						</div>
@@ -100,7 +100,7 @@
 					
 					<div id="prTicketSelectBox" class="form-group" style="display: none;">
 						<label class="col-md-3 control-label" ></label>
-						<select name="prTicket" style="height: 30px; width: 200px;" class="form-control" onchange="changePrice(this.value)">
+						<select name="prTicket" style="height: 30px; width: 200px;" class="form-control" >
 							<c:forEach	items="${chargeNameList }" var="cnl">
 								<option value="${cnl.cgPrice}">${cnl.cgName}: 대인 <fmt:formatNumber value="${cnl.cgPrice}" />원</option>
 							</c:forEach>
@@ -109,15 +109,14 @@
 											
 					<div class="form-group">
 						<label class="col-md-3 control-label">인원</label>
-						<span>대인: <input type="text" class="form-control" style="width: 50px; display: inline-block; text-align: right;" value="${pr.rsAdult }">&nbsp;명 / </span>
-						<span>소인: <input type="text" class="form-control" style="width: 50px; display: inline-block; text-align: right;" value="${pr.rsChild }">&nbsp;명</span>
-						<button id="qtyModifyBtn" type="button" style="width: 70px; height: 30px; background: white;">변경완료</button>
+						<span>대인: <input type="text" class="form-control" style="width: 50px; display: inline-block; text-align: right;" value="${pr.rsAdult }"  name="rsAdult">&nbsp;명 / </span>
+						<span>소인: <input type="text" class="form-control" style="width: 50px; display: inline-block; text-align: right;" value="${pr.rsChild }"  name="rsChild">&nbsp;명</span>
 					</div>
 					
 					<div class="form-group">
 						<label class="col-md-3 control-label">결제금액</label>
 						<span id="beforePrice"><fmt:formatNumber value="${pr.rsPrice}"/>&nbsp;원</span>&nbsp;&nbsp;
-						<span name="" id="afterPrice" style="color: red; font-weight: bold;">&nbsp;</span>
+						<span name="rsPrice" id="afterPrice" style="color: red; font-weight: bold;">&nbsp;</span>
 					</div>
 					
 					<div class="form-group">
@@ -150,7 +149,7 @@
 					
 					<div style="text-align: center;">
 						<button id="modifyBtn" class="btn btn-primary" type="reset">수정완료</button>
-						<p onclick="userListBtn()" class="btn btn-pink">리스트로 돌아가기</p>
+						<p onclick="prListBtn()" class="btn btn-pink">리스트로 돌아가기</p>
 					</div>
 				</form>
 									
@@ -173,8 +172,8 @@
 	 	location.href="admin/userList"; 
 	}
 	
-	function userListBtn() {
-		location.href="${pageContext.request.contextPath }/admin/userList";
+	function prListBtn() {
+		location.href="${pageContext.request.contextPath }/admin/prList";
 	}
 	
 	$("#modifyBtn").click(function() {
@@ -185,15 +184,12 @@
 
 	$("#ticketModifyBtn").click(function() {
 		$("#prTicketSelectBox").css('display','block');
-		$("#beforeTicket").css('text-decoration','line-through');
-		$("#beforePrice").css('text-decoration','line-through');
 	});
+	
 	
 	function changePrice(ticketPrice) {
 		 $("#afterPrice").text((${pr.rsAdult }*ticketPrice)+(${pr.rsChild }*ticketPrice-10000)+" 원");
 	};
 	
-	$("#qtyModifyBtn").click(function() {
-		 $("#afterPrice").text()
-	});
+	
 	</script>

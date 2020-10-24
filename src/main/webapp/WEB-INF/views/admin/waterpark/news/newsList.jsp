@@ -123,7 +123,7 @@
 		});
 		
 		$("#deleteBtn").click(function () {
-			if(confirm("정말로 탈퇴처리 하시겠습니까?")) {
+			if(confirm("정말로 삭제 하시겠습니까?")) {
 				var checkDataArray=[];
 				$("input[name='checkData']:checked").each(function(i) {
 					checkDataArray.push($(this).val());
