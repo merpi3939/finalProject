@@ -44,17 +44,17 @@
 							<table id="demo-dt-selection" class="table table-striped table-bordered" cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<th style="text-align: center; width: 70px;">예약번호</th>
-										<th style="text-align: center; width: 70px;">회원번호<br>(아이디)</th>
-										<th style="text-align: center; width: 80px;">이름</th>
-										<th style="text-align: center; width: 110px;" class="min-tablet">전화번호</th>
+										<th style="text-align: center; width: 70px;">예약<br>번호</th>
+										<th style="text-align: center; width: 70px;">회원<br>번호</th>
+										<th style="text-align: center; width: 80px;">이름<br>(아이디)</th>
+										<th style="text-align: center; width: 100px;" class="min-tablet">전화번호</th>
 										<th style="text-align: center; width: 80px;">이용날짜</th>
 										<th style="text-align: center; width: 90px;">이용권명</th>
-										<th  style="text-align: center ; width: 80px;" class="min-desktop" >대인/소인</th>
+										<th  style="text-align: center ; width: 80px;" class="min-desktop" >대인<br>소인</th>
 										<th style="text-align: center; width: 70px;">결제금액</th>
 										<th style="text-align: center; width: 90px;">예약날짜</th>
-										<th style="text-align: center; width: 100px;">결제방법<br>(카드/무통장)</th>
-										<th style="text-align: center; width: 60px;">예약상태</th>
+										<th style="text-align: center; width: 110px;">결제방법</th>
+										<th style="text-align: center; width: 60px;">예약<br>상태</th>
 										<th style="text-align: center; width: 70px;" class="min-desktop">수정</th>
 										<th style="text-align: center; width: 70px;" class="min-desktop">예약취소</th>
 									</tr>
@@ -63,8 +63,8 @@
 									<c:forEach items="${prList }"  var="pr">
 										<tr>
 											<td align="center" >${pr.rsNo }</td>
-											<td align="center" >${pr.rsUno }<br>(아이디)</td>
-											<td align="center" >${pr.rsName }</td>
+											<td align="center" >${pr.rsUno }</td>
+											<td align="center" >${pr.rsName }<br>(아이디)</td>
 											<td align="center" >${pr.rsPhone }</td>
 											
 											<c:set var="useDate1" value="${pr.rsUsedate }"/>
@@ -94,13 +94,13 @@
 													<td align="center" >정상</td>
 												</c:when>
 											
-												<c:otherwise>
+												<c:when test="${pr.rsState eq 0}">
 													<td style="text-align: center; color: red;">취소</td>
-												</c:otherwise>
+												</c:when>
 											</c:choose>											
 											
-											<td align="center" ><button type="button" class="btn btn-mint">수정 </button> </td>
-											<td align="center" ><button type="button" class="btn btn-danger">예약취소</button> </td> 
+											<td align="center" ><button onclick="prModify(${pr.rsNo })" type="button" class="btn btn-mint">수정 </button> </td>
+											<td align="center" ><button onclick="prCancel(${pr.rsNo })" type="button" class="btn btn-danger">예약취소</button> </td> 
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -120,7 +120,14 @@
 			<!--END CONTENT CONTAINER-->
 			
 	<script type="text/javascript">
+		 function prCancel(rsNo) {
+			if(confirm("정말로 예약을 취소 하시겠습니까?")) {
+				location.href="prRemove/"+rsNo;
+			}
+		 }
 		 
-
+		 function prModify(rsNo) {
+			 location.href="prModify/"+rsNo;
+		 }
 		
 	</script>

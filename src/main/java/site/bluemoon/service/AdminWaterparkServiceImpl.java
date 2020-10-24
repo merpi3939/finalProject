@@ -74,5 +74,20 @@ public class AdminWaterparkServiceImpl implements AdminWaterparkService {
 	public List<OceanReservationDTO> getSelectReservationList() {
 		return adminWaterparkDAO.selectReservationList();
 	}
+
+	@Override
+	public OceanReservationDTO getSelectReservation(int rsNo) {
+		return adminWaterparkDAO.selectReservation(rsNo);
+	}
+
+	@Override
+	public void removeReservation(int rsNo) {
+		adminWaterparkDAO.deleteReservation(rsNo);
+	}
+
+	@Override
+	public void ModifyReservation(OceanReservationDTO oceanReservationDTO) {
+		adminWaterparkDAO.updateReservation(oceanReservationDTO);
+	}
 }
 

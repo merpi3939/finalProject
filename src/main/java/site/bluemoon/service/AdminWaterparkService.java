@@ -25,4 +25,7 @@ public interface AdminWaterparkService {
 	
 	//°·Waterpark's Reservation Service
 	List<OceanReservationDTO> getSelectReservationList();
+	OceanReservationDTO getSelectReservation(int rsNo);
+	void removeReservation(int rsNo);
+	void ModifyReservation(OceanReservationDTO oceanReservationDTO);
 }
