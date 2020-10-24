@@ -343,16 +343,7 @@ div.btns {
 					</table>
 
 					<div class="btns">
-					
-							<!-- 리스트 테스트 -->
-								<c:forEach var="uno" items="${unoList}">
-									<td style="color: #999;">
-										<a href='payment_list?uno=${uno.rsUno }'><button type="submit" class="formBtn" >결제하기</button></a>
-									</td>
-								</c:forEach>
-							<!-- 리스트 테스트 -->
-					
-							<!-- <button type="submit" class="formBtn" >결제하기</button> -->
+						<button type="submit" class="formBtn" >결제하기</button>
 					</div>
 				</div>
 			</form>

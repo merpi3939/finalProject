@@ -53,7 +53,6 @@ public class oceanController {
 		return "bluemoon/waterpark/reservation";
 	}
 	
-	/*
 	//예약 추가 완료, 유저인증
 	@RequestMapping(value = "/addOcean", method = RequestMethod.POST)
 	public String addOcean(@ModelAttribute("addOcean") OceanReservationDTO oceanReservation, Model model, HttpSession session) throws UserinfoNotFoundException {
@@ -65,41 +64,14 @@ public class oceanController {
 		oceanService.addOceanReservation(oceanReservation);
 		return "redirect:/payment_list";
 	}	
-	*/
 	
-	//유저넘버를 가져오기 위한 테스트 리스트 시작
-	@RequestMapping(value = "/addOcean", method = RequestMethod.POST)
-	public String addOcean(@ModelAttribute("addOcean") OceanReservationDTO oceanReservation, Model model, HttpSession session) throws UserinfoNotFoundException {
-		User userId=(User)session.getAttribute("userInfo");
-		User userModify=userService.selectUserId(userId.getUserId());
-		int rsUno=userModify.getUserNo();
-		oceanReservation.setRsUno(rsUno);
-		
-		//유저넘버를 가져오기 위한 테스트 리스트 추가 내역
-		model.addAttribute("unoList", oceanService.getOceanUnoList());
-		
-		oceanService.addOceanReservation(oceanReservation);
-		return "redirect:/payment_list";
-	}	
-	
-	@RequestMapping(value = "/payment_list")
-	public String oceanPayment(Model model, @RequestParam("unoList") int reUno) {
-		model.addAttribute("oceanPaymentList", oceanService.getOceanPaymentList());
-		model.addAttribute("uno", oceanService.getOceanUno(reUno));
-		return "bluemoon/waterpark/payment_list";
-	}
-	
-	//테스트 끝
-	
-	
-	/*
 	//결제 리스트
 	@RequestMapping(value = "/payment_list")
 	public String oceanPayment(Model model) {
 		model.addAttribute("oceanPaymentList", oceanService.getOceanPaymentList());
 		return "bluemoon/waterpark/payment_list";
 	}
-	*/
+	
 	
 	//결제 상세페이지
 	@RequestMapping(value = "/payment")
