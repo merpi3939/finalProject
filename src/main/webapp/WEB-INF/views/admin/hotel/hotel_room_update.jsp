@@ -8,7 +8,7 @@
 	<!--Page Title-->
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<div id="page-title">
-		<h1 class="page-header text-overflow">객실 상세 페이지</h1>
+		<h1 class="page-header text-overflow">객실 수정 페이지</h1>
 	</div>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--End page title-->
@@ -18,7 +18,7 @@
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<ol class="breadcrumb">
 		<li><a href="#">호텔 관리</a></li>
-		<li class="active">객실 상세페이지</li>
+		<li class="active">객실 수정페이지</li>
 	</ol>
 	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 	<!--End breadcrumb-->
@@ -40,56 +40,49 @@
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">카테고리번호</label>
 					<div class="col-sm-6">
-						<span class="form-control" >${category.hotelCategoryNo}</span>
-						<input type="hidden" id="hotelCategoryNo" name="hotelCategoryNo" value="${category.hotelCategoryNo}">
+						<input class="form-control" id="hotelCategoryNo" name="hotelCategoryNo" value="${category.hotelCategoryNo}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">카테고리이름</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="hotelCategoryName">${category.hotelCategoryName}</span>
+						<input class="form-control" id="hotelCategoryName" name="hotelCategoryName" value="${category.hotelCategoryName}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">객실 수</label>
-					<div class="col-sm-4">
-						<span class="form-control" id="hotelCategoryQty">${category.hotelCategoryQty}</span>
-					</div>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="addRoom"></input>
-					</div>
-					<div class="col-sm-1 ">
-						<button class="btn btn-primary">추가</button>
+					<div class="col-sm-6">
+						<input class="form-control" id="hotelCategoryQty" name="hotelCategoryQty" value="${category.hotelCategoryQty}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지1</label>
 					<div class="col-sm-6">
-						<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg1 }"/> style="width: 100%;">
+						<input type="file" name="hotelCategoryImg1" value="/bluemoon/images/hotel_img/${category.hotelCategoryImg1 }">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지2</label>
 					<div class="col-sm-6">
-						<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg2 }"/> style="width: 100%;">
+						<input type="file" name="hotelCategoryImg2">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지3</label>
 					<div class="col-sm-6">
-						<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg3 }"/> style="width: 100%;">
+						<input type="file" name="hotelCategoryImg3">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지4</label>
 					<div class="col-sm-6">
-						<img src=<c:url value="/bluemoon/images/hotel_img/${category.hotelCategoryImg4 }"/> style="width: 100%;">
+						<input type="file" name="hotelCategoryImg4">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">객실요금</label>
 					<div class="col-sm-6">
-						<span class="form-control" id="hotelCategoryPrice">${category.hotelCategoryPrice}원</span>
+						<input class="form-control" id="hotelCategoryPrice" name="hotelCategoryPrice" value="${category.hotelCategoryPrice}">
 					</div>
 				</div>
 
@@ -99,9 +92,8 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-9 col-sm-offset-3">
-						<button class="btn btn-primary  fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_room_update?hotelCategoryNo=${category.hotelCategoryNo }';">수정</button>
-						<button class="btn btn-info  fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_room_type';">목록</button>
-						<button class="btn btn-danger  fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_room_delete?hotelCategoryNo=${category.hotelCategoryNo }';">삭제</button>
+						<button class="btn btn-primary  fa-lg" type="submit" >수정</button>
+						<button class="btn btn-danger  fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_room_detail?hotelCategoryNo=${hotelCategory.hotelCategoryNo }';">취소</button>
 					</div>
 				</div>
 			</div>
