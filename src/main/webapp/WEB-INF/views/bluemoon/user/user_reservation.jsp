@@ -83,7 +83,7 @@
    			<c:forEach var="hotelList" items="${hotel }"> 		
 	   			<tr>
 	   				<td width="30%">${hotelList.reserveNo }</td>
-	      			<td width="40%"><a class="table-a" href="#">${hotelList.reserveNo }</a></td>
+	      			<td width="40%"><a class="table-a" href=<c:url value="/userReservation?hotelNum=${hotelList.reserveNo }&hotelRoom=${hotelList.reserveRoom }"/>>${hotelList.reserveNo }</a></td>
 				    <td>${fn:substring(hotelList.reserveCheckIn,0,10)}</td>
 				    <td>${fn:substring(hotelList.reserveCheckOut,0,10) }</td>
 	   			</tr>
