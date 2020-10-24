@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import site.bluemoon.controller.oceanController;
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -48,8 +49,9 @@ public class OceanDAOImpl implements OceanDAO {
 
 	
 	//생생뉴스	
+	
 	@Override
-	public List<OceanNews> selectNewsList() {
+	public List<AdminOceanNews> selectNewsList() {
 		return sqlSession.getMapper(OceanMapper.class).selectNewsList();
 	}
 	

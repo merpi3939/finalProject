@@ -222,11 +222,6 @@ div.btns {
 	background: #a3b3c7;
 }
 
-.formBtn:hover {
-	color: #fff;
-	background-color: #ffc321;
-}
-
 .formBtn a {
 	height: 22px;
 	padding: 0px 22px 22px 22px;
@@ -237,6 +232,10 @@ div.btns {
 	-webkit-box-align: center !important;
 	-ms-flex-align: center !important;
 	align-items: flex-end !important;
+}
+
+a {
+	color : #4d4d4d;
 }
 </style>
 
@@ -330,7 +329,7 @@ div.btns {
 							<tr>
 								<th>이용권</th>
 								<c:forEach var="charge" items="${oceanChaereList}">
-									<td style="color: #999;"><a
+									<td style="color: #999;" id="sel"><a
 										href='reservation?chargeList=${charge.cgNo }'>${charge.cgName }</a></td>
 								</c:forEach>
 							</tr>
@@ -342,6 +341,16 @@ div.btns {
 			</form>
 		</div>
 	</div>
-
+<script type="text/javascript">
+	var date = new Date();
+	var mon = date.setMonth()+1;
+	var select = ${charge.cgSeason };
+	var arr = 10;
+	
+	
+	if(select == '비수기' && mon == arr) {
+		$("#sel").hide();
+	}
+</script>
 </body>
 </html>

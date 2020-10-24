@@ -43,6 +43,22 @@ public class HotelDAOImpl implements HotelDAO{
 	public int updatePointUserMinus(User user) {
 		return sqlSession.getMapper(HotelMapper.class).updatePointUserMinus(user);
 	}
-	
+	@Override
+	public HotelReserveDTO selectMemreserve(int num) {
+		return sqlSession.getMapper(HotelMapper.class).selectMemreserve(num);
+	}
+	@Override
+	public int removePay(HotelPay pay) {
+		return sqlSession.getMapper(HotelMapper.class).removePay(pay);
+	}
+	@Override
+	public int removeReserve(HotelReserveDTO reserve) {
+		return sqlSession.getMapper(HotelMapper.class).removeReserve(reserve);
+	}
+	@Override
+	public  int selectReserveNo() {
+		return sqlSession.getMapper(HotelMapper.class).selectReserveNo();
+	}
+
 
 }

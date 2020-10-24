@@ -17,7 +17,7 @@ public class HotelReserveDTO {
 	private String reserveCheckIn;
 	private String reserveCheckOut;
 	private int reserveMemno;
-	private String reserveRoom;	
+	private int reserveRoom;	
 	private String reserveperson;		
 	private String reserveMemname;
 	private String reserveMemphone;
@@ -82,11 +82,11 @@ public class HotelReserveDTO {
 		this.reserveMemno = reserveMemno;
 	}
 
-	public String getReserveRoom() {
+	public int getReserveRoom() {
 		return reserveRoom;
 	}
 
-	public void setReserveRoom(String reserveRoom) {
+	public void setReserveRoom(int reserveRoom) {
 		this.reserveRoom = reserveRoom;
 	}
 

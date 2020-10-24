@@ -255,95 +255,70 @@ div.btns {
 <body>
 	<div class="limiter">
 		<div class="con01">
-			<form class="form01" id="form01">
-				<div class="wrap100" style="">
-					<div>
-						<h5>결제 정보</h5>
+			<form class="form01">
+				<c:forEach var="hotelReserve" items="${reserveList}">
+					<div class="wrap100">
+						<h5>결제 내역</h5>
 						<table class="res01">
 							<colgroup>
 								<col width="40%">
 							</colgroup>
-							<tbody>
-								<tr>
-									<th>결제 번호</th>
-									<td name="rsNo" id="pmNo">${paymentList.rsNo }</td>
-								</tr>
-								<tr>
-									<th>이용 날짜</th>
-									<td name="rsUseDate" id="pmUsedate">${paymentList.rsUsedate}</td>
-								</tr>
-								<tr>
-									<th>이용권</th>
-									<td name="rsTicket" id="pmTicket">${paymentList.rsTicket}</td>
-								</tr>
-								<tr>
-									<th>이용권 총 수량</th>
-									<td name="rsAdult" id="pmAdult">대인 :
-										${paymentList.rsAdult} / 소인 : ${paymentList.rsChild }</td>
-								</tr>
-								<tr>
-									<th>이용권 총 금액</th>
-									<td name="rsPrice" id="pmPrice">${paymentList.rsPrice }</td>
-								</tr>
-								<tr>
-									<th>결제 날짜</th>
-									<td name="rsDate" id="pmDate">${paymentList.rsDate }</td>
-								</tr>
-								<tr>
-									<th>결제 방법</th>
-									<td>
-										<ul>
-											<li>
-												<input name="rsOption" id="rsOption" class="pay" value="" readonly="readonly" style="width : 50%;">
-											</li>
-										</ul>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<h5>회원 정보</h5>
-						<table class="res01">
-							<colgroup>
-								<col width="30%">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>회원 이름</th>
-									<td id="rsName" value="" name="pmName">${paymentList.rsName}</td>
-								</tr>
-								<tr>
-									<th>회원 전화번호</th>
-									<td id="rsPhone1" value="" name="pmPhone">${paymentList.rsPhone}</td>
-								</tr>
-							</tbody>
-						</table>
 
-						<div class="btns">		
-							<button class="formBtn" onclick="location.href='/payment_list';">환불</button></a>						
-							<button class="formBtn">확인</button></a>							
+							<tbody>
+								<tr>
+									<th>예약번호</th>
+									<td name="reserveNo" id="pmNo">${hotelReserve.reserveNo}</td>
+								</tr>
+								<tr>
+									<th>체크인 날짜</th>
+									<td name="reserveCheckIn" id="pmDate">${hotelReserve.reserveCheckIn}</td>
+								</tr>
+								<tr>
+									<th>체크아웃 날짜</th>
+									<td name="reserveCheckOut" id="pmTicket">${hotelReserve.reserveCheckOut}</td>
+								</tr>
+								<tr>
+									<th>예약 인원</th>
+									<td name="reserveperson" id="pmTicket">${hotelReserve.reserveperson}</td>
+								</tr>
+								<tr>
+									<th>예약자 이름</th>
+									<td name="reserveMemname" id="pmTicket">${hotelReserve.reserveMemname}</td>
+								</tr>
+								<tr>
+									<th>전화번호</th>
+									<td name="reserveMemphone" id="pmTicket">${hotelReserve.reserveMemphone}</td>
+								</tr>
+								<tr>
+									<th>이메일</th>
+									<td name="reserveMememail" id="pmTicket">${hotelReserve.reserveMememail}</td>
+								</tr>
+								<tr>
+									<th>결제금액</th>
+									<td name="hotelPayPrice" id="pmTicket">${hotelReserve.reservePrice}</td>
+								</tr>
+								<tr>
+									<th>예약날짜</th>
+									<td name="hotelPayDate" id="pmTicket">${hotelReserve.reserveDate}</td>
+								</tr>
+								
+							</tbody>
+						</table>
+						<div class="btns">
+					
+							<a href='payment_delete?paymentList=' >
+								<span style="color : black;" class="formBtn">환불</span>
+							</a>
+						
+							<a href='payment?paymentList=' >
+								<span style="color : black;" class="formBtn">상세 정보</span>
+							</a>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</form>
 		</div>
 	</div>
-	
-<script type="text/javascript">
-	$("#form01").ready(function() {
-	     var radio = ${paymentList.rsOption };
-	     var val0 = '신용카드'
-	     var val1 = '무통장입금'
-	     
-	     if(radio == 0){
-	    	 $("#rsOption").val(val0);
-	     } else if(radio == 1 ){
-	    	/* $("input[name='rsOption2']:checked").val(); */
-	    	 $("#rsOption").val(val1);
-	     }
-	     
-	     /* alert(radio); */
-	});
 
-</script>
 </body>
 </html>

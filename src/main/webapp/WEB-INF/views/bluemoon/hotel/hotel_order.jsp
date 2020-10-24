@@ -91,41 +91,41 @@ color: white;!important;
                                 <hr class="my-1">
                                 <div class="d-flex">
                                     <h4>예약번호</h4>
-                                    <div class="ml-auto font-weight-bold"><p>${HotelReserveDTO.reserveNo }</p> </div>
+                                    <div class="ml-auto font-weight-bold">${reserveList.reserveNo } </div>
                                 </div>
                                 <div class="d-flex">
                                     <h4>예약자 성함</h4>
-                                    <div class="ml-auto font-weight-bold"><p>${HotelReserveDTO.reservememName }</p> </div>
+                                    <div class="ml-auto font-weight-bold">${reserveList.reserveMemname } </div>
                                 </div>
                                 <div class="d-flex">
                                     <h4>예약자 전화번호</h4>
-                                    <div class="ml-auto font-weight-bold"><p>${HotelReserveDTO.reserveMemphone }</p> </div>
+                                    <div class="ml-auto font-weight-bold">${reserveList.reserveMemphone } </div>
                                 </div>
                                 <div class="d-flex">
                                     <h4>예약자 이메일</h4>
-                                    <div class="ml-auto font-weight-bold"><p>${HotelReserveDTO.reserveMememail }</p>  </div>
+                                    <div class="ml-auto font-weight-bold">${reserveList.reserveMememail } </div>
                                 </div>
                                 
                                 <div class="d-flex">
                                     <h4>인원</h4>
-                                    <div class="ml-auto font-weight-bold"><p>${HotelReserveDTO.reserveperson }</p> </div>
+                                    <div class="ml-auto font-weight-bold">${reserveList.reserveperson } 명</div>
                                 </div>
                                 <div class="d-flex">
                                     <h4>예약룸</h4>
-                                    <div class="ml-auto font-weight-bold"><p>${HotelReserveDTO.reserveRoom }</p> </div>
+                                    <div class="ml-auto font-weight-bold">${hotelCategoryNo.hotelCategoryName } </div>
                                 </div>
                                 
                                 <hr class="my-1">
                                 
                                 <div class="d-flex gr-total">
-                                    <h5>결제방법</h5>
-                                    <div class="ml-auto h5"><p>${HotelPay.hotelPayment}</p>  </div>
-                                </div>
-                                <div class="d-flex gr-total">
                                     <h5>결제금액</h5>
-                                    <div class="ml-auto h5"><p>${HotelPay.hotelPayPrice}</p>  </div>
+                                    <div class="ml-auto h5">${reserveList.reservePrice } Won</div>
                                 </div>
                                 <hr> </div>
+                                <div class="col-12 d-flex shopping-box"> <button type="button" class="ml-auto btn hvr-hover" style="background-color: red !important; color: white !important;">Place Order</button> </div>
+                 
+				
+			</div>
                         </div>
                     </div>
                 </div>

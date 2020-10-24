@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.HtmlUtils;
 
+import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
 import site.bluemoon.exception.UserinfoNotFoundException;
 import site.bluemoon.mapper.OceanMapper;
+import site.bluemoon.service.AdminWaterparkService;
 import site.bluemoon.service.OceanService;
 import site.bluemoon.service.UserService;
 
@@ -26,10 +29,15 @@ public class oceanController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private AdminWaterparkService adminWaterparkService;
+	
 	//메인, 생생뉴스
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String waterPark(Model model) {
-		model.addAttribute("newsList", oceanService.getSelectNewsList());
+		
+		model.addAttribute("newsUserList", adminWaterparkService.getSelectNewsList());
+		 
 		return "main";
 	}
 
@@ -52,6 +60,7 @@ public class oceanController {
 	public String addOcean() {
 		return "bluemoon/waterpark/reservation";
 	}
+	
 	
 	//예약 추가 완료, 유저인증
 	@RequestMapping(value = "/addOcean", method = RequestMethod.POST)
