@@ -60,4 +60,13 @@
 		order by
 			user_no desc
 	</select>
+	
+	<select id="selectJoinQty" resultType="AdminOceanNews">
+		select 
+  			count(*) as joinCount
+		from 
+			bluemoon_user
+		where 
+			to_char(user_joindate,'yyyyMMdd')=to_char(sysdate, 'yyyyMMdd')
+	</select>
 </mapper>

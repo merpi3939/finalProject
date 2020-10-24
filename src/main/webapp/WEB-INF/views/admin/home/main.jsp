@@ -78,7 +78,7 @@
 						<p class="text-uppercase mar-btm text-sm">Visit Today</p>
 						<i class="fa fa-users fa-5x"></i>
 						<hr>
-						<p class="h2 text-thin">254,487</p>
+						<p class="h2 text-thin">${joinQty.joinCount }</p>
 						<small><span class="text-semibold">7%</span> Higher than yesterday</small>
 					</div>
 				</div>

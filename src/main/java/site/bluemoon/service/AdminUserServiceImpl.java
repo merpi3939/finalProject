@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.AdminUserDAO;
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.User;
 
 @Service
@@ -27,5 +28,10 @@ public class AdminUserServiceImpl implements AdminUserService {
 	@Override
 	public void modifyUser(User user) {
 		adminUserDAO.updateUserInfo(user);
+	}
+
+	@Override
+	public AdminOceanNews getSelectJoinQty() {
+		return adminUserDAO.selectJoinQty();
 	}
 }

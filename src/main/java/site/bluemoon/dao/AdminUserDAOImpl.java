@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.User;
 import site.bluemoon.mapper.AdminUserMapper;
 
@@ -28,5 +29,10 @@ public class AdminUserDAOImpl implements AdminUserDAO {
 	@Override
 	public int updateUserInfo(User user) {
 		return sqlSession.getMapper(AdminUserMapper.class).updateUserInfo(user);
+	}
+
+	@Override
+	public AdminOceanNews selectJoinQty() {
+		return sqlSession.getMapper(AdminUserMapper.class).selectJoinQty();
 	}
 }
