@@ -82,7 +82,7 @@
 						<small><span class="text-semibold">7%</span> Higher than yesterday</small>
 					</div>
 				</div>
-			</div>
+			</div> 
 			<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 			<!--End large tile (Visit Today)-->
 
