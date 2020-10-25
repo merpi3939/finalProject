@@ -22,13 +22,17 @@ public interface OceanService {
 	OceanReservationDTO getOceanPayment(int rsNo);
 	List<OceanReservationDTO> getOceanPaymentList();
 	
-	void updateOcean(OceanReservationDTO updateOcean);
-	
 	//환불
+
+	void removeOcean(int rsNo);
+	
+	/* void updateOcean(OceanReservationDTO updateOcean); */
+	
 	/*
 	void updateOcean(OceanReservationDTO updateOcean);
 	OceanReservationDTO updateList(int rsNo);
 	*/
+	
 	//생생뉴스
 	/* List<OceanNews> getSelectNewsList(); */
 	List<AdminOceanNews> getSelectNewsList();

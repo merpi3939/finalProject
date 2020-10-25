@@ -319,10 +319,15 @@ div.btns {
 							</tbody>
 						</table>
 
-						<div class="btns">		
-							<%--<a href='seleteOcean?rsNo=${paymentList.rsNo }' type="button"> --%>
+						<div class="btns">	
+							<%-- 
+							<a href='seleteOcean?rsNo=${paymentList.rsNo }' type="button">
 								<button class="formBtn" type="submit">환불</button>
-							<!-- </a> -->													
+							</a>		
+							--%>	
+							
+							<input type="button" value="환불" onclick="remove('${paymentList.rsNo}');">
+																
 						</div>
 					</div>
 				</div>

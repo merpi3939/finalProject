@@ -52,9 +52,18 @@ public class OceanDAOImpl implements OceanDAO {
 	//È¯ºÒ	
 	
 	@Override
+	public int deleteOcean(int rsNo) {
+		return sqlSession.getMapper(OceanMapper.class).deleteOcean(rsNo);
+	}
+	
+	
+	/*
+	@Override
 	public int updateOcean(OceanReservationDTO updateOcean) {
 		return sqlSession.getMapper(OceanMapper.class).updateOcean(updateOcean);
 	}
+	*/
+	
 	
 	/*
 	@Override

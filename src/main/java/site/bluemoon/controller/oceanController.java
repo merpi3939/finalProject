@@ -90,7 +90,14 @@ public class oceanController {
 
 		return "bluemoon/waterpark/payment";
 	}
-
+	
+	@RequestMapping(value = "/remove")
+	public String remove(@RequestParam int rsNo) {
+		oceanService.removeOcean(rsNo);
+		return "main";
+	}
+	
+	/*
 	// 환불 state 변경
 	@RequestMapping(value = "/seleteOcean/{rsNo}", method = RequestMethod.GET)
 	public String seleteOcean() {
@@ -100,11 +107,11 @@ public class oceanController {
 	// 환불 state 변경 완료
 	@RequestMapping(value = "/seleteOcean", method = RequestMethod.POST)
 	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean, Model model) {
-
 		oceanService.updateOcean(updateOcean);
 		return "main";
 	}
-
+	*/
+	
 	/*
 	 * //환불
 	 * 

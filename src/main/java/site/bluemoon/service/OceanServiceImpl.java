@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import oracle.jdbc.proxy.annotation.GetDelegate;
 import site.bluemoon.dao.OceanDAO;
 import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.HotelPay;
@@ -47,12 +48,23 @@ public class OceanServiceImpl implements OceanService {
 		return OceanDAO.selectOceanPaymentList();
 	}
 	
+	
+	
+	//환불
+	
+	@Override
+	public void removeOcean(int rsNo) {
+		OceanDAO.deleteOcean(rsNo);
+	}
+	
+	/*
 	@Override
 	public void updateOcean(OceanReservationDTO updateOcean) {
 		OceanDAO.updateOcean(updateOcean);
 	}
+	*/
 	
-	//환불
+	
 	/*
 	@Override
 	public void updateOcean(OceanReservationDTO updateOcean) {
