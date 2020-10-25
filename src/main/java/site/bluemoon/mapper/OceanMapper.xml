@@ -30,20 +30,10 @@
 		delete from ocean_reservation where rs_no=#{rsNo}
 	</delete>
 	
-	<!-- 
-	<update id="updateOcean">
-		update ocean_reservation set rs_state=0 where rs_no=#{rsNo}
-	</update>
-	 -->
-	<!-- 
 	<update id="updateOcean">
 		update ocean_reservation set rs_state=0 where rs_no=#{rsNo}
 	</update>
 	
-	<select id="updateList" resultType="OceanReservationDTO" parameterType="int">
-		select * from ocean_reservation where rs_no=#{rsNo}		
-	</select>
-	-->
 	<select id="selectOceanCharge" resultType="OceanChargeDTO" parameterType="int">
 		select * from ocean_charge where cg_no=#{cgNo}
 	</select>

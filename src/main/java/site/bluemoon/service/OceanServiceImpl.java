@@ -19,64 +19,45 @@ import site.bluemoon.dto.User;
 public class OceanServiceImpl implements OceanService {
 	@Autowired
 	private OceanDAO OceanDAO;
-	
-	//예약
+
+	// 예약
 	@Override
 	public void addOceanReservation(OceanReservationDTO oceanReservation) {
 		OceanDAO.insertOceanReservation(oceanReservation);
 	}
 
-	//요금
+	// 요금
 	@Override
 	public OceanChargeDTO getOceanCharge(int cgNo) {
 		return OceanDAO.selectOceanCharge(cgNo);
 	}
-	
+
 	@Override
 	public List<OceanChargeDTO> getOceanChargeList() {
 		return OceanDAO.selectOceanChargeList();
 	}
-	
-	//결제
+
+	// 결제
 	@Override
 	public OceanReservationDTO getOceanPayment(int rsNo) {
 		return OceanDAO.selectOceanPayment(rsNo);
 	}
-	
+
 	@Override
 	public List<OceanReservationDTO> getOceanPaymentList() {
 		return OceanDAO.selectOceanPaymentList();
 	}
-	
-	
-	
-	//환불
-	
-	@Override
-	public void removeOcean(int rsNo) {
-		OceanDAO.deleteOcean(rsNo);
-	}
-	
-	/*
+
+	// 환불
 	@Override
 	public void updateOcean(OceanReservationDTO updateOcean) {
+		
+		/* int rsno=updateOcean.getRsNo(); */
+		
 		OceanDAO.updateOcean(updateOcean);
 	}
-	*/
-	
-	
-	/*
-	@Override
-	public void updateOcean(OceanReservationDTO updateOcean) {
-		OceanDAO.updateOcean(updateOcean);
-	}
-	
-	@Override
-	public OceanReservationDTO updateList(int rsNo) {
-		return OceanDAO.updateList(rsNo);
-	}
-	*/
-	//생생뉴스
+
+	// 생생뉴스
 	@Override
 	public List<AdminOceanNews> getSelectNewsList() {
 		return OceanDAO.selectNewsList();

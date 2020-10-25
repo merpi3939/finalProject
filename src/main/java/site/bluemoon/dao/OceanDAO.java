@@ -25,9 +25,7 @@ public interface OceanDAO {
 	
 	//환불
 	
-	int deleteOcean(int rsNo);
-	
-	/* int updateOcean(OceanReservationDTO updateOcean); */
+	int updateOcean(OceanReservationDTO updateOcean);
 	
 	//생생뉴스
 	List<AdminOceanNews> selectNewsList();

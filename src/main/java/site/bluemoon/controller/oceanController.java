@@ -44,14 +44,14 @@ public class oceanController {
 	}
 
 	// 요금표 리스트
-	@RequestMapping(value = "/ocean_charge")
+	@RequestMapping(value = "/WaterParkCharge") /* ocean_charge */
 	public String oceanReservation(Model model) {
 		model.addAttribute("oceanChaereList", oceanService.getOceanChargeList());
 		return "bluemoon/waterpark/charge";
 	}
 
 	// 요금표 가져옴
-	@RequestMapping(value = "/reservation")
+	@RequestMapping(value = "/WaterParkChargeList")
 	public String oceanChargeList(@RequestParam("chargeList") int cgNo, Model model) {
 		model.addAttribute("chargeList", oceanService.getOceanCharge(cgNo));
 		return "bluemoon/waterpark/reservation";
@@ -64,7 +64,7 @@ public class oceanController {
 	}
 
 	// 예약 추가 완료, 유저인증
-	@RequestMapping(value = "/addOcean", method = RequestMethod.POST)
+	@RequestMapping(value = "/addOcean", method = RequestMethod.POST) /* addOcean */
 	public String addOcean(@ModelAttribute("addOcean") OceanReservationDTO oceanReservation, Model model,
 			HttpSession session) throws UserinfoNotFoundException {
 		User userId = (User) session.getAttribute("userInfo");
@@ -84,46 +84,20 @@ public class oceanController {
 	}
 
 	// 결제 상세페이지
-	@RequestMapping(value = "/payment")
+	@RequestMapping(value = "/WaterParkPaymentDetail")
 	public String oceanPaymentList(@RequestParam("paymentList") int rsNo, Model model) {
 		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
 
 		return "bluemoon/waterpark/payment";
 	}
 	
-	@RequestMapping(value = "/remove")
-	public String remove(@RequestParam int rsNo) {
-		oceanService.removeOcean(rsNo);
-		return "main";
-	}
+	//환불
 	
-	/*
-	// 환불 state 변경
-	@RequestMapping(value = "/seleteOcean/{rsNo}", method = RequestMethod.GET)
-	public String seleteOcean() {
-		return "bluemoon/waterpark/payment";
+	@RequestMapping(value = "/WaterParkRefund", method = RequestMethod.GET)
+	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean) {
+			oceanService.updateOcean(updateOcean);		
+			return "main";
 	}
 
-	// 환불 state 변경 완료
-	@RequestMapping(value = "/seleteOcean", method = RequestMethod.POST)
-	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean, Model model) {
-		oceanService.updateOcean(updateOcean);
-		return "main";
-	}
-	*/
-	
-	/*
-	 * //환불
-	 * 
-	 * @RequestMapping(value = "/payment", method = RequestMethod.GET) public String
-	 * updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean,
-	 * Model model, @RequestParam("paymentList") int rsNo) {
-	 * 
-	 * model.addAttribute("paymentList", oceanService.updateList(rsNo));
-	 * 
-	 * oceanService.updateOcean(updateOcean);
-	 * 
-	 * return "main"; }
-	 */
 
 }//

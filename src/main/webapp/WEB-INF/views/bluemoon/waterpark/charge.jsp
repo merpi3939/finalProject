@@ -330,7 +330,7 @@ a {
 								<th>이용권</th>
 								<c:forEach var="charge" items="${oceanChaereList}">
 									<td style="color: #999;" id="sel"><a
-										href='reservation?chargeList=${charge.cgNo }'>${charge.cgName }</a></td>
+										href='WaterParkChargeList?chargeList=${charge.cgNo }'>${charge.cgName }</a></td>
 								</c:forEach>
 							</tr>
 						</tbody>

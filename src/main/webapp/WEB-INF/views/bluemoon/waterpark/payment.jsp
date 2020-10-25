@@ -320,14 +320,13 @@ div.btns {
 						</table>
 
 						<div class="btns">	
-							<%-- 
-							<a href='seleteOcean?rsNo=${paymentList.rsNo }' type="button">
-								<button class="formBtn" type="submit">환불</button>
-							</a>		
-							--%>	
+
+							<!-- <button class="formBtn" type="submit">환불</button> -->	
+
 							
-							<input type="button" value="환불" onclick="remove('${paymentList.rsNo}');">
-																
+							<a href='WaterParkRefund?rsNo=${paymentList.rsNo }' type="button">환불</a>
+                 
+														
 						</div>
 					</div>
 				</div>

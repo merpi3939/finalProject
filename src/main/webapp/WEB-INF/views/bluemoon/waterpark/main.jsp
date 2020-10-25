@@ -77,7 +77,7 @@ table.res01 td {
 					<p class="browse d-md-flex" style="float: right">
 						<span
 							class="d-flex justify-content-md-center align-items-md-center"><a
-							href=<c:url value="/ocean_charge"/>>예약하기</a></span>
+							href=<c:url value="/WaterParkCharge"/>>예약하기</a></span>
 				</div>
 			</div>
 		</div>
@@ -97,12 +97,12 @@ table.res01 td {
 					<div class="destination-slider owl-carousel ftco-animate">
 						<div class="item">
 							<div class="destination">
-								<a href=<c:url value="/attraction1"/> class="img d-flex justify-content-center align-items-center"
+							<a class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon08.jpg);">
 								</a>
 								<div class="text p-3">
 									<h3>
-										<a href="#">익스트림 러버</a>
+										<a>익스트림 러버</a>
 									</h3>
 									<span class="listing">익스트림존</span>
 								</div>
@@ -110,13 +110,13 @@ table.res01 td {
 						</div>
 						<div class="item">
 							<div class="destination">
-								<a href="#"
+								<a
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon09.jpg);">
 								</a>
 								<div class="text p-3">
 									<h3>
-										<a href="#">슈퍼 익스트림 러버</a>
+										<a>슈퍼 익스트림 러버</a>
 									</h3>
 									<span class="listing">익스트림존</span>
 								</div>
@@ -124,13 +124,13 @@ table.res01 td {
 						</div>
 						<div class="item">
 							<div class="destination">
-								<a href="#"
+								<a 
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon10.jpg);">
 								</a>
 								<div class="text p-3">
 									<h3>
-										<a href="#">키즈존</a>
+										<a>키즈존</a>
 									</h3>
 									<span class="listing">익스트림존</span>
 								</div>
@@ -138,13 +138,13 @@ table.res01 td {
 						</div>
 						<div class="item">
 							<div class="destination">
-								<a href="#"
+								<a 
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon07.jpg);">
 								</a>
 								<div class="text p-3">
 									<h3>
-										<a href="#">서핑마운트</a>
+										<a>서핑마운트</a>
 									</h3>
 									<span class="listing">익스트림존</span>
 								</div>
@@ -152,13 +152,13 @@ table.res01 td {
 						</div>
 						<div class="item">
 							<div class="destination">
-								<a href="#"
+								<a
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon04.jpg);">
 								</a>
 								<div class="text p-3">
 									<h3>
-										<a href="#">파도풀</a>
+										<a>파도풀</a>
 									</h3>
 									<span class="listing">아쿠아존</span>
 								</div>
@@ -166,7 +166,7 @@ table.res01 td {
 						</div>
 						<div class="item">
 							<div class="destination">
-								<a href="#"
+								<a 
 									class="img d-flex justify-content-center align-items-center"
 									style="background-image: url(resources/bluemoon/images/ocean_img/moon14.jpg);">
 								</a>
@@ -230,17 +230,17 @@ table.res01 td {
 			<div class="row d-flex">
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
-						<a href=<c:url value="/event2"/> class="block-20"
+						<a class="block-20"
 							style="background-image: url('resources/bluemoon/images/ocean_img/event2.jpg');">
 						</a>
 						<div class="text p-4">
 							<span class="tag">Discount</span>
 							<h3 class="heading mt-3">
-								<a href="#">오션월드 골드시즌 특별 할인 이벤트</a>
+								<a>오션월드 골드시즌 특별 할인 이벤트</a>
 							</h3>
 							<div class="meta mb-3">
 								<div>
-									<a href="#">October 12, 2020</a>
+									<a>October 12, 2020</a>
 								</div>
 							</div>
 						</div>
@@ -248,17 +248,17 @@ table.res01 td {
 				</div>
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
-						<a href="" class="block-20"
+						<a class="block-20"
 							style="background-image: url('resources/bluemoon/images/ocean_img/event01.jpg');">
 						</a>
 						<div class="text p-4 d-block">
 							<span class="tag">Event</span>
 							<h3 class="heading mt-3">
-								<a href="#">나만의 포토 스팟을 찾아라! 소노포토스팟</a>
+								<a>나만의 포토 스팟을 찾아라! 소노포토스팟</a>
 							</h3>
 							<div class="meta mb-3">
 								<div>
-									<a href="#">August 12, 2020</a>
+									<a>August 12, 2020</a>
 								</div>
 							</div>
 						</div>
@@ -266,17 +266,17 @@ table.res01 td {
 				</div>
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
-						<a href="" class="block-20"
+						<a class="block-20"
 							style="background-image: url('resources/bluemoon/images/ocean_img/event3.jpg');">
 						</a>
 						<div class="text p-4">
 							<span class="tag">Event</span>
 							<h3 class="heading mt-3">
-								<a href="#">더욱 업그레이드 되어 돌아 온 '썸머 올인클루시브 패키지'</a>
+								<a>더욱 업그레이드 되어 돌아 온 '썸머 올인클루시브 패키지'</a>
 							</h3>
 							<div class="meta mb-3">
 								<div>
-									<a href="#">October 12, 2020</a>
+									<a>October 12, 2020</a>
 								</div>
 							</div>
 						</div>
@@ -284,17 +284,17 @@ table.res01 td {
 				</div>
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
-						<a href="" class="block-20"
+						<a class="block-20"
 							style="background-image: url('resources/bluemoon/images/ocean_img/event04.jpg');">
 						</a>
 						<div class="text p-4">
 							<span class="tag">Discount</span>
 							<h3 class="heading mt-3">
-								<a href="#">오션월드 레이트 썸머시즌 최대 60% 현장할인</a>
+								<a>오션월드 레이트 썸머시즌 최대 60% 현장할인</a>
 							</h3>
 							<div class="meta mb-3">
 								<div>
-									<a href="#">October 12, 2018</a>
+									<a>October 12, 2018</a>
 								</div>
 							</div>
 						</div>
