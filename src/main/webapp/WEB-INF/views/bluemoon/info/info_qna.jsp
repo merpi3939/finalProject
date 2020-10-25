@@ -294,6 +294,7 @@ function viewDisplay(num) {
 				html+="<button type='button' class='write-btn btn' id='list-btn2' onclick='listView()' style='margin-left: 6px; margin-bottom: 50px;'>목록</button>";
 		    	
 			} else if(admin=='9') {
+				html="";
 				html+="<button type='button' class='write-btn btn' id='reply-write-viewbtn' onclick='replyWrite();' style='margin-bottom: 50px; margin-left: 6px;'>리플작성</button>";
 				html+="<button type='button' class='write-btn btn' id='updateView-btn' onclick='updateViewNotice();' style='margin-bottom: 50px; margin-left: 6px;'>수정</button>";
 				html+="<button type='button' class='write-btn btn' id='remove-btn' onclick='removeNotice();' style='margin-bottom: 50px; margin-left: 6px;'>삭제하기</button>";

@@ -69,7 +69,7 @@
 	<div class="col-md-7 heading-section ftco-animate title-style">
             <h2><strong>호텔 예약</strong></h2>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive"style="overflow:auto;">
     	<table class="table table-striped" style="margin-bottom: 50px;">
  			<thead>
    				<tr>
