@@ -3,6 +3,7 @@ package site.bluemoon.dao;
 import java.util.List;
 
 import site.bluemoon.dto.HotelCategory;
+import site.bluemoon.dto.HotelComment;
 import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
 import site.bluemoon.dto.User;
@@ -20,4 +21,5 @@ public interface HotelDAO {
 	 int removePay(HotelPay pay);
 	 int removeReserve(HotelReserveDTO reserve);
 	 int selectReserveNo();
+	 public List<HotelComment> hotelComment(int no);
 }

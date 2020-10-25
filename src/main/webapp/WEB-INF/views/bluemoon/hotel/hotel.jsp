@@ -54,7 +54,7 @@ body {
 .sub_info div.ins{display:inline-block; position:relative; padding-right:90px;}
 
 .sub_info .rsvn_wrap {text-align: center;}
-.sub_info .rsvn_wrap span {text-align: center;display: inline-block;border: 2px solid #f85959;;color: #ffffff;font-size: 15px;padding: 10px 88px;margin-top: 40px;background-color: #f85959;}
+.sub_info .rsvn_wrap span {text-align: center;display: inline-block;border: 2px solid #ffdc5f;;color: black;font-size: 15px;padding: 10px 88px;margin-top: 40px;background-color: #ffdc5f;}
 	img { display: block; margin: 0px auto; }
  
 
@@ -104,7 +104,7 @@ body {
 		                </ul>
 	                </div>
 	                <div class="rsvn_wrap">
-	                	<a href='hotel_single?hotelCategoryNo=${HotelCategory.hotelCategoryNo }' ><span>상세정보</span></a>
+	                	<a href='hotel_single?hotelCategoryNo=${HotelCategory.hotelCategoryNo }'  ><span>상세정보</span></a>
 	                </div>
 	            </div>
 	

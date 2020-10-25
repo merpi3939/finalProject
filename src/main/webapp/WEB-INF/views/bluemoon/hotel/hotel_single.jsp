@@ -194,16 +194,14 @@ p {
 </style>
 </head>
 
-<div class="top-bar" style="border-bottom: 1px solid #E2E2E2;">
-	<ul>
-		<li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
-		<li><a href=<c:url value="hotel"/>>ROOMS</a></li>
-		<li><a href=<c:url value="hotel_event"/>>EVENT</a></li>
-		<li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>
-	</ul>
+    <div class="top-bar"style="border-bottom: 1px solid #E2E2E2; ">
+ <ul>
+  <li style="font-weight: bold; padding-right: 30px;"><a>HOTELCATEGORY</a></li>
+  <li><a href=<c:url value="hotel"/>>ROOMS</a></li>
+  <li><a href=<c:url value="hotel_event"/>>EVENT</a></li>
+  <li><a href=<c:url value="hotel_service"/>>CONVENIENCE</a></li>
+</ul>
 </div>
-
-  
 <div class="shop-detail-box-main">
 	<div class="container" style="padding-top: 50px;">
 	<form action="Hoteladd" id="hotelCategoryForm" name="hotelCategoryForm" method="post">
@@ -278,33 +276,42 @@ p {
 					<div class="row">
 					<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" id="reserveMemname"
 									name="reserveMemname" value="${hotel.reserveMemname }" placeholder="예약자 이름">
+									 <span class="error" id="namech"></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 							<div class="form-group">
-								<input type="text" class="form-control"
+								<select type="text" class="form-control" id="reserveperson"
 									name="reserveperson" value="${hotel.reserveperson }" placeholder="예약 인원">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									</select>
+									 <span class="error" id="personch"></span>
 							</div>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" id="reserveMemphone"  onKeyup="inputPhoneNumber(this);" maxlength="13"
 									name="reserveMemphone" value="${hotel.reserveMemphone }"placeholder="전화번호">
+									 <span class="error" id="phonech"></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control"
+								<input type="email" class="form-control" id="reserveMememail"
 									name="reserveMememail" value="${hotel.reserveMememail }" placeholder="이메일">
+									 <span class="error" id="emailch"></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" readonly="readonly"
 									name="hotelCategoryName" value="${hotelCategoryNo.hotelCategoryName }" placeholder="선택룸">
 							</div>
 						</div>
@@ -316,7 +323,7 @@ p {
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" readonly="readonly"
 									id="hotelCategoryPrice" name="hotelCategoryPrice" value="" placeholder="금액">
 								<input id="onePrice" hidden="hidden" value="${hotelCategoryNo.hotelCategoryPrice }">
 							</div>
@@ -325,17 +332,19 @@ p {
 							<div class="form-group">
 								<input type="text" id="datepicker1" class="form-control"
 									name="reserveCheckIn" readonly="readonly" placeholder="체크인 날짜">
+									 <span class="error" id="datech"></span>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<input type="text" id="datepicker2" class="form-control" 
 								name="reserveCheckOut" readonly="readonly" placeholder="체크아웃 날짜">
+								<span class="error" id="datech2"></span>
 							</div>
 						</div> 
 						<div class="col-md-12">
 							<div class="form-group">
-								<button type="submit" class="btn" style="background-color: #ffc321; margin-top: 15px; font-weight: 500;">예약하기</button>
+								<button type="submit" id="save"  class="btn" style="background-color: #ffc321; margin-top: 15px; font-weight: 500;">예약하기</button>
 							</div>
 						</div>
 					</div>
@@ -345,62 +354,7 @@ p {
 	</div>
 </div>
 
-<div class="row my-5">
-	<div class="card card-outline-secondary my-4" style="    margin-left: 10%;
-    margin-right: 10%;">
-		<div class="card-header">
-			<h2>Room Reviews</h2>
-		</div>
-		<div class="card-body">
-			<div class="media mb-3">
-				<div class="mr-2">
-					<img class="rounded-circle border p-1"
-						src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-						alt="Generic placeholder image">
-				</div>
-				<div class="media-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Omnis et enim aperiam inventore, similique necessitatibus neque
-						non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
-						Sequi mollitia, necessitatibus quae sint natus.</p>
-					<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-				</div>
-			</div>
-			<hr>
-			<div class="media mb-3">
-				<div class="mr-2">
-					<img class="rounded-circle border p-1"
-						src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-						alt="Generic placeholder image">
-				</div>
-				<div class="media-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Omnis et enim aperiam inventore, similique necessitatibus neque
-						non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
-						Sequi mollitia, necessitatibus quae sint natus.</p>
-					<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-				</div>
-			</div>
-			<hr>
-			<div class="media mb-3">
-				<div class="mr-2">
-					<img class="rounded-circle border p-1"
-						src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-						alt="Generic placeholder image">
-				</div>
-				<div class="media-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Omnis et enim aperiam inventore, similique necessitatibus neque
-						non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum.
-						Sequi mollitia, necessitatibus quae sint natus.</p>
-					<small class="text-muted">Posted by Anonymous on 3/1/18</small>
-				</div>
-			</div>
-			<hr>
-			<a href="#" class="btn hvr-hover">Leave a Review</a>
-		</div>
-	</div>
-</div>
+
 <script type="text/javascript">
 	
 	function formatDate(date) {
@@ -504,9 +458,123 @@ p {
         return listDate;
     };
 
+    //전화번호 입력 자동 하이픈
+    function inputPhoneNumber(obj) {
 
 
+
+        var number = obj.value.replace(/[^0-9]/g, "");
+        var phone = "";
+
+
+
+        if(number.length < 4) {
+            return number;
+        } else if(number.length < 7) {
+            phone += number.substr(0, 3);
+            phone += "-";
+            phone += number.substr(3);
+        } else if(number.length < 11) {
+            phone += number.substr(0, 3);
+            phone += "-";
+            phone += number.substr(3, 3);
+            phone += "-";
+            phone += number.substr(6);
+        } else {
+            phone += number.substr(0, 3);
+            phone += "-";
+            phone += number.substr(3, 4);
+            phone += "-";
+            phone += number.substr(7);
+        }
+        obj.value = phone;
+    }
+//유효성 검사 
 	
+	$("#reserveMemname").focus();
+	var checkName=/^[가-힣]{2,10}$/;//Name 유효성 검사 정규식
+    var checkPWD=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;// PASSWORD 유효성 검사 정규식
+    var checkEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;//Email 유효성 검사 정규식
+   	//아이디 유효성
+   	
+
+   	  	//이름 확인 유효성
+   	$("#reserveMemname").blur(function() {
+   		if (checkName.test($("#reserveMemname").val())) {
+			console.log('true');
+	   		$("#namech").text("");
+			$("#reserveperson").focus();
+   		}else if ($("#reserveMemname").val()=="") {
+   			console.log('false');
+   			$("#namech").text("이름을 입력해 주세요.");
+   			$("#namech").css('color', 'red');   		
+			$("#reserveMemname").focus();
+		}else if (checkName.test($("#reserveMemname").val())!=true) {
+			console.log('false');
+			$("#namech").text("잘못된 문자가 입력되었습니다. 다시 입력해 주세요.");
+			$("#namech").css('color', 'red');
+			$("#reserveMemname").focus();
+		}
+   	})
+	
+		//전화번호 확인 유효성   	
+   	  	$("#reserveMemphone").blur(function() {
+   		 if($("#reserveMemphone").val()=="") {
+   			console.log('false');
+   			$("#phonech").text("전화번호를 입력해 주세요.");
+   			$("#phonech").css('color', 'red');
+			$("#reserveMemphone").focus();
+   		 }else{
+   				console.log('true');
+   		   		$("#phonech").text("");
+   				$("#reserveMememail").focus();
+   		 }
+   		
+   	})
+   	
+
+  
+		
+   		//이메일  확인 유효성   	
+   	  	$("#reserveMememail").blur(function() {
+   		if (checkEmail.test($("#reserveMememail").val())) {
+			console.log('true');
+	   		$("#emailch").text("");
+   		}else if ($("#reserveMememail").val()=="") {
+   			console.log('false');
+   			$("#emailch").text("이메일을 입력해 주세요.");
+   			$("#emailch").css('color', 'red');
+			$("#reserveMememail").focus();
+		}else if (checkEmail.test($("#reserveMememail").val())!=true) {
+   			console.log('false');
+   			$("#emailch").text("올바른 이메일 형식을 입력해 주세요.");
+   			$("#emailch").css('color', 'red');
+			$("#reserveMememail").focus();
+		}
+   	 });
+    
+  //체크인 ,체크아웃 확인 유효성   	
+	  	$("#hotelCategoryForm").submit(function() {
+	  		var result=true;
+	  		 if($("#datepicker1").val()=="") {
+	    			$("#datech").text("체크인 날짜를 선택해 주세요.");
+	    			$("#datech").css('color', 'red');
+	 			$("#datepicker1").focus();
+	 			result=false;
+	    		 }else{
+	    				console.log('true');
+	    		   		$("#datech").text("");
+	    				$("#datepicker2").focus();
+	    		 }
+	  		 if($("#datepicker2").val()=="") {
+	    			$("#datech2").text("체크아웃 날짜를 선택해 주세요.");
+	    			$("#datech2").css('color', 'red');
+	 			result=false;
+	    		 }
+	  		return result;
+	    	});
+	
+    
 </script>
 
 

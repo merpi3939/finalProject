@@ -6,7 +6,7 @@ public class HotelPay {
 	private String hotelPayment;
 	private int hotelPayPrice;
 	private int hotelPayState;
-	private int hotelMempoint;
+	private int hotelPayMempoint;
 	private String hotelPayDate;
 	
 	public HotelPay() {
@@ -47,12 +47,12 @@ public class HotelPay {
 		this.hotelPayState = hotelPayState;
 	}
 
-	public int getHotelMempoint() {
-		return hotelMempoint;
+	public int gethotelPayMempoint() {
+		return hotelPayMempoint;
 	}
 
-	public void setHotelMempoint(int hotelMempoint) {
-		this.hotelMempoint = hotelMempoint;
+	public void sethotelPayMempoint(int hotelPayMempoint) {
+		this.hotelPayMempoint = hotelPayMempoint;
 	}
 
 	public String getHotelPayDate() {

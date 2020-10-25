@@ -58,7 +58,7 @@ margin-top: 30px;
 		    							<div class="one">
 				    						<h3><a href="#">호텔 조식 패키지</a></h3>
 				    						<br>
-				    						<p>현장 결제 이벤트 </p>
+				    						<p>종료된 이벤트 입니다. </p>
 			    						</div>
 			    						<div class="two">
 			    							<span class="price per-price"><br><small></small></span>
@@ -78,21 +78,15 @@ margin-top: 30px;
 		    					<img  src=<c:url value="bluemoon/images/hotel_img/event.jpg"/> style="width: 100%;"><div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="#">호텔 조식 패키지</a></h3>
+				    						<br>
+				    						<p>종료된 이벤트 입니다. </p>
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><br><small></small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>현장 결제시 조식 50% 할인 이벤트 </p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
@@ -106,21 +100,15 @@ margin-top: 30px;
 		    					<img  src=<c:url value="bluemoon/images/hotel_img/event.jpg"/> style="width: 100%;"><div class="text p-3">
 		    						<div class="d-flex">
 		    							<div class="one">
-				    						<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-				    						<p class="rate">
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star"></i>
-				    							<i class="icon-star-o"></i>
-				    							<span>8 Rating</span>
-				    						</p>
+				    						<h3><a href="#">호텔 조식 패키지</a></h3>
+				    						<br>
+				    						<p>종료된 이벤트 입니다. </p>
 			    						</div>
 			    						<div class="two">
-			    							<span class="price per-price">$40<br><small>/night</small></span>
+			    							<span class="price per-price"><br><small></small></span>
 		    							</div>
 		    						</div>
-		    						<p>Far far away, behind the word mountains, far from the countries</p>
+		    						<p>현장 결제시 조식 50% 할인 이벤트 </p>
 		    						<hr>
 		    						<p class="bottom-area d-flex">
 		    							<span><i class="icon-map-o"></i> Miami, Fl</span> 
@@ -129,8 +117,6 @@ margin-top: 30px;
 		    					</div>
 		    				</div>
 		    			</div>
-		    			
-          	</div>
           	<div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27">
