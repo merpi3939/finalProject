@@ -266,28 +266,29 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>결제 번호</th>
-									<td name="rsNo" id="pmNo">${paymentList.rsNo }</td>
+									<td>${paymentList.rsNo }</td>
+									<input type="hidden" name="rsNo" id="rsNo" value="" readonly="readonly" style="width : 50%;">
 								</tr>
 								<tr>
 									<th>이용 날짜</th>
-									<td name="rsUseDate" id="pmUsedate">${paymentList.rsUsedate}</td>
+									<td name="rsUseDate" id="rsUseDate">${paymentList.rsUsedate}</td>
 								</tr>
 								<tr>
 									<th>이용권</th>
-									<td name="rsTicket" id="pmTicket">${paymentList.rsTicket}</td>
+									<td name="rsTicket" id="rsTicket">${paymentList.rsTicket}</td>
 								</tr>
 								<tr>
 									<th>이용권 총 수량</th>
-									<td name="rsAdult" id="pmAdult">대인 :
+									<td name="rsAdult" id="rsAdult">대인 :
 										${paymentList.rsAdult} / 소인 : ${paymentList.rsChild }</td>
 								</tr>
 								<tr>
 									<th>이용권 총 금액</th>
-									<td name="rsPrice" id="pmPrice">${paymentList.rsPrice }</td>
+									<td name="rsPrice" id="rsPrice">${paymentList.rsPrice }</td>
 								</tr>
 								<tr>
 									<th>결제 날짜</th>
-									<td name="rsDate" id="pmDate">${paymentList.rsDate }</td>
+									<td name="rsDate" id="rsDate">${paymentList.rsDate }</td>
 								</tr>
 								<tr>
 									<th>결제 방법</th>
@@ -309,18 +310,19 @@ div.btns {
 							<tbody>
 								<tr>
 									<th>회원 이름</th>
-									<td id="rsName" value="" name="pmName">${paymentList.rsName}</td>
+									<td id="rsName" value="" name="rsName">${paymentList.rsName}</td>
 								</tr>
 								<tr>
 									<th>회원 전화번호</th>
-									<td id="rsPhone1" value="" name="pmPhone">${paymentList.rsPhone}</td>
+									<td id="rsPhone" value="" name="rsPhone">${paymentList.rsPhone}</td>
 								</tr>
 							</tbody>
 						</table>
 
 						<div class="btns">		
-							<button class="formBtn" onclick="location.href='/payment_list';">환불</button></a>						
-							<button class="formBtn">확인</button></a>							
+							<%--<a href='seleteOcean?rsNo=${paymentList.rsNo }' type="button"> --%>
+								<button class="formBtn" type="submit">환불</button>
+							<!-- </a> -->													
 						</div>
 					</div>
 				</div>
@@ -341,9 +343,12 @@ div.btns {
 	    	 $("#rsOption").val(val1);
 	     }
 	     
+	     var del = ${paymentList.rsNo };
+	     
+	     $("#rsNo").val(del);
+	     
 	     /* alert(radio); */
 	});
-
 </script>
 </body>
 </html>

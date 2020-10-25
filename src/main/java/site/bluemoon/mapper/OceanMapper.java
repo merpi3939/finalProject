@@ -8,6 +8,8 @@ import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
 
 public interface OceanMapper {
+	
+	//예약
 	int insertOceanReservation(OceanReservationDTO oceanReservation);
 	
 	//요금
@@ -19,7 +21,15 @@ public interface OceanMapper {
 	List<OceanReservationDTO> selectOceanPaymentList();
 	
 	//환불
-
+	
+	int updateOcean(OceanReservationDTO updateOcean);
+	
+	/*
+	int updateOcean(OceanReservationDTO updateOcean);
+	OceanReservationDTO updateList(int rsNo);
+	*/
+	
 	//생생뉴스
 	List<AdminOceanNews> selectNewsList();
+
 }

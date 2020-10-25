@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.OceanDAO;
 import site.bluemoon.dto.AdminOceanNews;
+import site.bluemoon.dto.HotelPay;
+import site.bluemoon.dto.HotelReserveDTO;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
@@ -16,7 +18,8 @@ import site.bluemoon.dto.User;
 public class OceanServiceImpl implements OceanService {
 	@Autowired
 	private OceanDAO OceanDAO;
-
+	
+	//예약
 	@Override
 	public void addOceanReservation(OceanReservationDTO oceanReservation) {
 		OceanDAO.insertOceanReservation(oceanReservation);
@@ -44,9 +47,23 @@ public class OceanServiceImpl implements OceanService {
 		return OceanDAO.selectOceanPaymentList();
 	}
 	
-	//환불
-
+	@Override
+	public void updateOcean(OceanReservationDTO updateOcean) {
+		OceanDAO.updateOcean(updateOcean);
+	}
 	
+	//환불
+	/*
+	@Override
+	public void updateOcean(OceanReservationDTO updateOcean) {
+		OceanDAO.updateOcean(updateOcean);
+	}
+	
+	@Override
+	public OceanReservationDTO updateList(int rsNo) {
+		return OceanDAO.updateList(rsNo);
+	}
+	*/
 	//생생뉴스
 	@Override
 	public List<AdminOceanNews> getSelectNewsList() {
