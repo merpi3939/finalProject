@@ -40,7 +40,6 @@
 				
 					
 				<form name="modifyForm" class="panel-body form-horizontal form-padding">
-				
 					<div class="form-group pad-ver">
 							<label class="col-md-3 control-label">예약상태</label>
 							<div class="col-md-9">
@@ -72,7 +71,7 @@
 	
 					<div class="form-group">
 						<label class="col-md-3 control-label">회원이름</label>
-						<div class="col-md-9"><p class="form-control-static">${pr.rsName }<br>(abc123)</p></div>
+						<div class="col-md-9"><p class="form-control-static">${pr.rsName }</p></div>
 					</div>
 					
 					<div class="form-group">
@@ -91,8 +90,9 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">이용권명</label>
 						<div class="col-md-9">
-							<div>
-								<span id="beforeTicket" class="form-control-static">${pr.rsTicket } </span>&nbsp;&nbsp;
+							<div id="before">
+								<span id="beforeTicketName" class="form-control-static" name="rsTicket">${pr.rsTicket }</span>&nbsp;&nbsp;
+								<span id="beforeTicketPrice" class="form-control-static" >${pr.cgPrice }</span>&nbsp;&nbsp;
 								<button id="ticketModifyBtn" type="button" style="width: 90px; height: 30px; background: white;">이용권 변경</button>
 							</div>
 						</div>
@@ -100,23 +100,34 @@
 					
 					<div id="prTicketSelectBox" class="form-group" style="display: none;">
 						<label class="col-md-3 control-label" ></label>
-						<select name="prTicket" style="height: 30px; width: 200px;" class="form-control" >
+						<select name="prTicket" id="prTicket" style="height: 30px; width: 200px;" class="form-control"  onchange="selectTicket(this.value)">
 							<c:forEach	items="${chargeNameList }" var="cnl">
-								<option value="${cnl.cgPrice}">${cnl.cgName}: 대인 <fmt:formatNumber value="${cnl.cgPrice}" />원</option>
+								<option value="${cnl.cgName}" value2="${cnl.cgPrice}">${cnl.cgName}: 대인 <fmt:formatNumber value="${cnl.cgPrice}" />원</option>
 							</c:forEach>
 						</select>
 					</div>
 											
 					<div class="form-group">
 						<label class="col-md-3 control-label">인원</label>
-						<span>대인: <input type="text" class="form-control" style="width: 50px; display: inline-block; text-align: right;" value="${pr.rsAdult }"  name="rsAdult">&nbsp;명 / </span>
-						<span>소인: <input type="text" class="form-control" style="width: 50px; display: inline-block; text-align: right;" value="${pr.rsChild }"  name="rsChild">&nbsp;명</span>
+						대인: <span id="adultQty" name="rsAdult">${pr.rsAdult }</span>&nbsp;명/&nbsp;
+						소인: <span id="childQty" name="rsChild">${pr.rsChild }</span>&nbsp;명
+						<button id="qtyBtn" type="button" style="width: 70px; height: 30px; background: white;">인원 변경</button>
+						<br>
+						<br>
+						<span id="aa" style=" display: none; margin-left: 350px; ">대인: <input type="text" class="form-control"  id="rsAdult" onchange="rsAdultQty()" style="width: 50px; display: inline-block; text-align: right;">&nbsp;명 / </span>
+						<span id="cc" style=" display: none;">소인: <input type="text" class="form-control"  id="rsChild" onchange="rsChildQty()" style="width: 50px; display: inline-block; text-align: right;">&nbsp;명</span>
 					</div>
-					
+
+					<div class="form-group" id="resultDiv" style="display: none;">
+						<label class="col-md-3 control-label"><button id="calc" type="button" style="width: 70px; height: 30px; background: white; margin-left: 260px;">요금계산</button></label>
+						<span id="result" style="color: red; " ></span>
+						<span id="totalCharge" style="cursor:pointer;"></span>
+					</div>
+
 					<div class="form-group">
 						<label class="col-md-3 control-label">결제금액</label>
-						<span id="beforePrice"><fmt:formatNumber value="${pr.rsPrice}"/>&nbsp;원</span>&nbsp;&nbsp;
-						<span name="rsPrice" id="afterPrice" style="color: red; font-weight: bold;">&nbsp;</span>
+						<span id="beforePrice" ><fmt:formatNumber value="${pr.rsPrice}"/>&nbsp;원</span>&nbsp;&nbsp;
+						<span id="afterPrice" style="color: red; font-weight: bold;">&nbsp;</span>
 					</div>
 					
 					<div class="form-group">
@@ -145,7 +156,9 @@
 							</div>
 					</div>
 					
-					<input type="hidden" name="rsNo" value="${pr.rsNo }}">
+					<input type="hidden" name="rsNo" value="${pr.rsNo }">
+					<input type="hidden" name="rsPrice" id="rsPrice">
+					
 					
 					<div style="text-align: center;">
 						<button id="modifyBtn" class="btn btn-primary" type="reset">수정완료</button>
@@ -178,7 +191,9 @@
 	
 	$("#modifyBtn").click(function() {
 		modifyForm.method="post";
-		modifyForm.action="${pageContext.request.contextPath }/admin/userModify";
+		modifyForm.action="${pageContext.request.contextPath }/admin/prModify";
+		var rsPrice = $("#beforePrice").text();
+		$("#rsPrice").val(rsPrice);
 		modifyForm.submit();
 	});
 
@@ -186,10 +201,52 @@
 		$("#prTicketSelectBox").css('display','block');
 	});
 	
+	$("#ticketModifyBtn").click(function() {
+		$("#resultDiv").css("display","block");
+	});	
 	
-	function changePrice(ticketPrice) {
-		 $("#afterPrice").text((${pr.rsAdult }*ticketPrice)+(${pr.rsChild }*ticketPrice-10000)+" 원");
-	};
+	$("#qtyBtn").click(function() {
+		$("#resultDiv").css("display","block");
+	});	
 	
 	
+	function selectTicket(ticketName) {
+		var tName=document.getElementById("beforeTicketName");
+		tName.innerHTML=ticketName;
+		tName.style.color="red";
+		
+		var tPrice=document.getElementById("beforeTicketPrice");
+		tPrice.innerHTML=$("#prTicket option:selected").attr('value2');
+		tPrice	.style.color="red";
+	}	
+	
+	$("#qtyBtn").click(function() {
+		$("#aa").css("display","inline-block");
+		$("#cc").css("display","inline-block");
+	}); 
+	
+	function rsAdultQty() {
+		var aq=$("#rsAdult").val();
+		$("#adultQty").text(aq);
+	}
+	
+	function rsChildQty() {
+		var cq=$("#rsChild").val();
+		$("#childQty").text(cq);
+	}
+	
+	$("#calc").click(function() {
+		//alert();
+		var tAdult=$("#adultQty").text();
+		var tChild=$("#childQty").text();
+		var tAmount=$("#before span:nth-child(2)").text();
+		var total=(tAmount*tAdult)+((tAmount-10000)*tChild);
+		$("#result").text(total+" 원");
+		$("#totalCharge").text("[결제금액 반영]");
+		$("#beforePrice").text(total);
+	});
+
+	$("#totalCharge").click(function() {
+		$("#beforePrice").text($("#result").text());
+	});
 	</script>

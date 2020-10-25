@@ -16,6 +16,7 @@ import org.springframework.web.util.HtmlUtils;
 import site.bluemoon.dto.AdminOceanNews;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
+import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.service.AdminWaterparkService;
 
 @Controller
@@ -126,7 +127,10 @@ public class AdminWaterparkController {
 		model.addAttribute("pr", adminWaterparkService.getSelectReservation(rsNo));
 		return "admin/waterpark/pr/prModify";
 	}
-	
-//	@RequestMapping(value = "/prModify/{rsNo}", method = RequestMethod.GET)
-	//public String prModify(@PathVariable int rsNo, Model model) {
+
+	@RequestMapping(value = "/prModify", method = RequestMethod.POST)
+	public String prModify(@ModelAttribute OceanReservationDTO oceanReservationDTO) {
+		adminWaterparkService.ModifyReservation(oceanReservationDTO);
+		return "redirect:/admin/prList";
+	}
 }

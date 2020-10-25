@@ -142,18 +142,28 @@
 	<!-- ■Waterpark's Reservation Mapper -->
 	<select id="selectReservationList" resultType="OceanReservationDTO">
 		select
-			*
+			a.*,
+			b.user_id as userId
 		from 
-			ocean_reservation 
+			ocean_reservation a
+		join 
+			bluemoon_user b
+		on 
+			a.rs_uno=b.user_no
 		order by
 			rs_no desc
 	</select>
-	
+
 	<select id="selectReservation" resultType="OceanReservationDTO">
 		select
-			*
+			a.*,
+			b.cg_price as cgPrice
 		from 
-			ocean_reservation
+			ocean_reservation a
+		join 
+			ocean_charge b
+		on 
+			rs_ticket=cg_name
 		where
 			rs_no=#{rsNo}
 	</select>
@@ -178,19 +188,19 @@
 				rs_phone=#{rsPhone},
 			</if>
 			<if test="rsUsedate!=null and rsUsedate!=''">
-				rs_usedate=#{rsUsedate}
+				rs_usedate=#{rsUsedate},
 			</if>
 			<if test="rsTicket!=null and rsTicket!=''">
-				rs_ticket=#{rsTicket}
+				rs_ticket=#{rsTicket},
 			</if>
 			<if test="rsAdult!=null and rsAdult!=''">
-				rs_adult=#{rsAdult}
+				rs_adult=#{rsAdult},
 			</if>
 			<if test="rsChild!=null and rsChild!=''">
-				rs_child=#{rsChild}
+				rs_child=#{rsChild},
 			</if>
 			<if test="rsPrice!=null and rsPrice!=''">
-				rs_price=#{rsPrice}
+				rs_price=#{rsPrice},
 			</if>
 			<if test="rsOption!=null and rsOption!=''">
 				rs_Option=#{rsOption}

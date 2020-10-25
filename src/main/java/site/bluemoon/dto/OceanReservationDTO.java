@@ -34,6 +34,25 @@ public class OceanReservationDTO {
 	private String rsState;
 	private int rsPrice;
 	private String rsOption;
+	
+	private int cgPrice;
+	private String userId;
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public int getCgPrice() {
+		return cgPrice;
+	}
+
+	public void setCgPrice(int cgPrice) {
+		this.cgPrice = cgPrice;
+	}
 
 	public OceanReservationDTO() {
 		// TODO Auto-generated constructor stub

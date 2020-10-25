@@ -46,7 +46,7 @@
 									<tr>
 										<th style="text-align: center; width: 70px;">예약<br>번호</th>
 										<th style="text-align: center; width: 70px;">회원<br>번호</th>
-										<th style="text-align: center; width: 80px;">이름</th>
+										<th style="text-align: center; width: 80px;">이름<br>(아이디)</th>
 										<th style="text-align: center; width: 100px;" class="min-tablet">전화번호</th>
 										<th style="text-align: center; width: 80px;">이용날짜</th>
 										<th style="text-align: center; width: 90px;">이용권명</th>
@@ -64,7 +64,7 @@
 										<tr>
 											<td align="center" >${pr.rsNo }</td>
 											<td align="center" >${pr.rsUno }</td>
-											<td align="center" >${pr.rsName }</td>
+											<td align="center" >${pr.rsName }<br>(${pr.userId })</td>
 											<td align="center" >${pr.rsPhone }</td>
 											
 											<c:set var="useDate1" value="${pr.rsUsedate }"/>
