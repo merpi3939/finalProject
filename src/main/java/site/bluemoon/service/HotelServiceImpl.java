@@ -63,16 +63,8 @@ public class HotelServiceImpl implements HotelService{
 		
 	}
 
-	@Override
-	public void erasePointHotelPay(HotelPay pay) {
-		hotelReserveDAO.insertHotelPay(pay);
-		int hotelPayno=pay.getHotelPayNo();
-		hotelReserveDAO.selectPayNo(hotelPayno);
-		int hotelmem=pay.getHotelPayMemno();
-		User user=new User();
-		user.setUserNo(hotelmem);
-		
-		
+	public void erasePointHotelPay(User user) {
+		hotelReserveDAO.updatePointUserMinus(user);
 	}
 
 	@Override

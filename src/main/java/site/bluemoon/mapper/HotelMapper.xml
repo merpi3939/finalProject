@@ -5,7 +5,7 @@
 	<insert id="insertReserveHotel">
 		insert into hotel_reserve values(#{reserveNo},sysdate,(TO_DATE(#{reserveCheckIn},'YYYY-MM-DD'))
 		,(TO_DATE(#{reserveCheckOut},'YYYY-MM-DD')),#{reserveMemno},#{reserveRoom},#{reserveMemphone}
-		,#{reserveMememail},#{reservePrice},1,#{reserveMemname},#{reserveperson})
+		,#{reserveMememail},#{reservePrice},2,#{reserveMemname},#{reserveperson})
 	</insert>
 	
 	<!-- 카테고리 테이블 값 출력 -->
@@ -20,7 +20,7 @@
 	
 	<!-- 결제 테이블 값 저장 -->
 	<insert id="insertHotelPay">
-	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},1,#{hotelPayPrice},#{hotelPayMempoint},sysdate)
+	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},2,#{hotelPayPrice},#{hotelPayMempoint},sysdate)
 	</insert>
 	
 	<update id="removeReserve">
@@ -67,7 +67,7 @@
 	</select>-->
 	<!-- 단일행 카테고리 값 출력 -->
 		<select id="selectMemreserve" resultType="HotelReserveDTO" parameterType="int">
-			select * from hotel_reserve where reserve_no =#{no} and reserve_state=1
+			select * from hotel_reserve where reserve_no =#{no} and reserve_state!=0
 		</select>
 	<!-- 예약번호 시퀀스 요청용 -->
 	<select id="selectReserveNo"  resultType="int">

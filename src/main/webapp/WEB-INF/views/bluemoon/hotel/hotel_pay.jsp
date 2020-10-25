@@ -9,7 +9,7 @@ img {
 .top-bar ul {
 	list-style-type: none;
 	margin: 0;
-	padding-left: 100px;
+	padding-left: 30%;
 	overflow: hidden;
 }
 
@@ -77,7 +77,6 @@ ul {
 	important;
 }
 .container {
-    max-width: 100%;
     margin-left: 20%;
 }
 
@@ -93,7 +92,8 @@ ul {
 </div>
 
 
-<div class="cart-box-main">
+<div class="cart-box-main" style="
+    max-width: 100%;">
 	<div class="container">
 		<form class="needs-validation" action="hotelinsert" method="post">
 			<div class="row">
@@ -178,7 +178,7 @@ ul {
 								<input type="text" class="form-control" id="hotelMemPoint" hidden="hidden" value="${User.userPoint }">
 										<div class="input-group">
 										<label for="username">포인트 사용</label>
-											<input type="text" class="form-control" id="hotelUsePoint" style="width: 100%;" placeholder=" 보유 포인트 = ${User.userPoint }">
+											<input type="text" class="form-control" name="hotelUsePoint" id="hotelUsePoint" style="width: 100%;" placeholder=" 보유 포인트 = ${User.userPoint }">
 											<div><span class="error" id="pointch" style="color: red; width: 100%;"></span></div>
 										</div>
 									</div></div>
@@ -186,7 +186,7 @@ ul {
 										<label for="username">결제금액</label>
 										<div class="input-group">
 											<input type="text" class="form-control" id="hotelPayPrice" name="hotelPayPrice" readonly="readonly"
-												value="">
+												value="${category.hotelCategoryPrice }">
 												<input id="Price" hidden="hidden" value="${category.hotelCategoryPrice }">
 											<div class="invalid-feedback" style="width: 100%;">Your
 												username is required.</div>
@@ -229,14 +229,21 @@ ul {
 <div>
 </div>
 <script type="text/javascript">
+$("#hotelUsePoint").focus();
 	$("#hotelUsePoint").blur(function() {
 		var userp=Number($("#hotelUsePoint").val());
 		var memp=Number($("#hotelMemPoint").val());
+		var Price=Number($("#Price").val());
    		if (memp < userp) {
    			console.log('false');
 	   		$("#pointch").text("사용 포인트가 보유 포인트보다 많습니다!!! 다시 입력해 주세요.");
 			$("#hotelUsePoint").focus();
-   		}else{
+   		}else if(Price < userp){
+   			console.log('false');
+	   		$("#pointch").text("사용 포인트가 금액보다 많습니다!!! 다시 입력해 주세요.");
+			$("#hotelUsePoint").focus();
+   		
+   		}else {
    			console.log('true');
    			$("#pointch").text("");
    			priceChange();
@@ -251,4 +258,7 @@ ul {
 	    	  $("#hotelPayPrice").val(totalPrice);
 	
 	   };
+	   
+	 
+	
 </script>

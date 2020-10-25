@@ -8,7 +8,7 @@ img{
   .top-bar ul {
    list-style-type: none;
     margin: 0;
-    padding-left: 100px;
+    padding-left: 30%;
     overflow: hidden;
 }
 

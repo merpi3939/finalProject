@@ -54,12 +54,16 @@ public class HotelConteroller {
 	
 	//예약,결제 값 저장
 	@RequestMapping(value = "/hotelinsert", method = RequestMethod.POST)
-	public String Hotelinsert(HttpSession session ,@ModelAttribute HotelReserveDTO reserve,@ModelAttribute  HotelPay pay, Model model) throws UserinfoNotFoundException {
+	public String Hotelinsert(HttpSession session ,@ModelAttribute HotelReserveDTO reserve,@ModelAttribute  HotelPay pay
+			, Model model,@ModelAttribute("User") User user1,@RequestParam("hotelUsePoint")int hotelUsePoint) throws UserinfoNotFoundException {
 		User userId=(User)session.getAttribute("userInfo");
 		User userModify=userService.selectUserId(userId.getUserId());
 		int memno=userModify.getUserNo();
 		reserve.setReserveMemno(memno);
 		pay.setHotelPayMemno(memno);
+		user1.setUserPoint(hotelUsePoint);
+		user1.setUserNo(memno);
+		hotelReserveService.erasePointHotelPay(user1);
 		int hotel_no=hotelReserveService.selectReserveNo();
 		int hotelPrice=pay.getHotelPayPrice();
 		int point=pay.getHotelPayPrice();
@@ -79,7 +83,7 @@ public class HotelConteroller {
 	@RequestMapping(value = "/Hotelcansle", method = RequestMethod.GET)
 	public String Hotelcansle(@ModelAttribute("reserveList") HotelReserveDTO reserve) {
 			hotelReserveService.deleteReserve(reserve);		
-			return "bluemoon/hotel/hotel";
+			return "main";
 	}
 	
 	@RequestMapping(value = "/hotel_service", method = RequestMethod.GET)

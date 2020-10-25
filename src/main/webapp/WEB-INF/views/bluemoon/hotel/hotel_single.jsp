@@ -6,7 +6,7 @@
 .top-bar ul {
 	list-style-type: none;
 	margin: 0;
-	padding-left: 100px;
+	padding-left: 30%;
 	overflow: hidden;
 }
 
@@ -552,10 +552,41 @@ p {
 			$("#reserveMememail").focus();
 		}
    	 });
-    
-  //체크인 ,체크아웃 확인 유효성   	
+    //==================================================================
+  //서브밋 유효성   	
 	  	$("#hotelCategoryForm").submit(function() {
 	  		var result=true;
+	  		//이름
+	  		if($("#reserveMemname").val()=="") {
+	    			$("#namech").text("체크인 날짜를 선택해 주세요.");
+	    			$("#namech").css('color', 'red');
+	 			$("#reserveMemname").focus();
+	 			result=false;
+	    		 }else{
+	    				console.log('true');
+	    		   		$("#namech").text("");
+	    		 }
+	  		//전화번호
+	  		if($("#reserveMemphone").val()=="") {
+	    			$("#phonech").text("체크인 날짜를 선택해 주세요.");
+	    			$("#phonech").css('color', 'red');
+	 			$("#reserveMemphone").focus();
+	 			result=false;
+	    		 }else{
+	    				console.log('true');
+	    		   		$("#phonech").text("");
+	    		 }
+	  		//이메일
+	  		if($("#reserveMememail").val()=="") {
+	    			$("#emailch").text("체크인 날짜를 선택해 주세요.");
+	    			$("#emailch").css('color', 'red');
+	 			$("#reserveMememail").focus();
+	 			result=false;
+	    		 }else{
+	    				console.log('true');
+	    		   		$("#datech").text("");
+	    		 }
+	  		//체크인
 	  		 if($("#datepicker1").val()=="") {
 	    			$("#datech").text("체크인 날짜를 선택해 주세요.");
 	    			$("#datech").css('color', 'red');
@@ -564,8 +595,8 @@ p {
 	    		 }else{
 	    				console.log('true');
 	    		   		$("#datech").text("");
-	    				$("#datepicker2").focus();
 	    		 }
+	  		//체크아웃
 	  		 if($("#datepicker2").val()=="") {
 	    			$("#datech2").text("체크아웃 날짜를 선택해 주세요.");
 	    			$("#datech2").css('color', 'red');
