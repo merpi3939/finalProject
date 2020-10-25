@@ -57,7 +57,7 @@
  		<c:forEach var="oceanList" items="${ocean }"> 		
    			<tr>
       			<td width="30%">${oceanList.rsNo }</td>
-      			<td width="40%"><a class="table-a" href="#">${oceanList.rsTicket }</a></td>
+      			<td width="40%"><a class="table-a" href=<c:url value="/userWater?rsNo=${oceanList.rsNo }"/>>${oceanList.rsTicket }</a></td>
 			    <td>${fn:substring(oceanList.rsUsedate,0,10) }</td>
    			</tr>
  		</c:forEach>	

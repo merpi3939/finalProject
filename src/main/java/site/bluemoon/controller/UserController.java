@@ -28,6 +28,7 @@ import site.bluemoon.dto.User;
 import site.bluemoon.exception.LoginAuthFailException;
 import site.bluemoon.exception.UserinfoNotFoundException;
 import site.bluemoon.service.HotelService;
+import site.bluemoon.service.OceanService;
 import site.bluemoon.service.UserService;
 import site.bluemoon.util.NewPassword;
 
@@ -37,6 +38,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private HotelService hotelService;
+	@Autowired
+	private OceanService oceanService;
 	
 	//약관이동
 	@RequestMapping(value = "/jointerms", method = RequestMethod.GET)
@@ -190,13 +193,20 @@ public class UserController {
 		return "bluemoon/user/user_reservation";
 	}
 	//예약 상세정보
-	@RequestMapping(value = "/userReservation", method = RequestMethod.GET)
+	@RequestMapping(value = "/userHotel", method = RequestMethod.GET)
 	public String userHotelView(@RequestParam(value = "hotelNum") int hotelNum, @RequestParam(value = "hotelRoom") int hotelRoom, Model model) {
 		model.addAttribute("hotelCategoryNo",hotelService.selectHotelCategory(hotelRoom));
 		model.addAttribute("reserveList", hotelService.selectMemreserve(hotelNum));
 		
 		return "bluemoon/hotel/hotel_order";
 	}
+	@RequestMapping(value = "/userWater", method = RequestMethod.GET)
+	public String userHotelView(@RequestParam(value = "rsNo") int rsNo, Model model) {
+		model.addAttribute("paymentList",oceanService.getOceanPayment(rsNo));
+		
+		return "bluemoon/waterpark/payment";
+	}
+	
 	
 	//회원수정
 	@RequestMapping(value = "/myusermodify", method = RequestMethod.GET)
