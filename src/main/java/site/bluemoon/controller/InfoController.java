@@ -67,6 +67,7 @@ public class InfoController {
 		int totalBoard=boardService.findInfoBoardCount(countMap);
 		int pageSize=9;
 		int blockSize=5;
+		
 		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
 		Map<String, Object> pagerMap=new HashMap<String, Object>();
 		pagerMap.put("startRow", pager.getStartRow());

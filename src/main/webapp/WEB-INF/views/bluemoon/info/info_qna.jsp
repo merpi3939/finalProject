@@ -214,9 +214,10 @@ function boardDisplay(pageNum) {
 			var leng=json.noticeBoardList.length;
 			var num=json.pager.no;
 			var html="";
-			for(var i=0,n=num; i<=leng-1,n>=1; i++,n--) {
+			for(var i=0; i<=leng-1; i++) {
+				var no=Number(num)-Number(i);
 				html+="<tr>";
-				html+="<td class='mobile'>"+n+"</td>";
+				html+="<td class='mobile'>"+no+"</td>";
 				html+="<td class='mobile'>"+json.noticeBoardList[i].infoDivi+"</td>";
 				if(json.noticeBoardList[i].infoState==1 || admin=='9'){
 					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";

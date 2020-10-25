@@ -7,10 +7,10 @@ public class Pager {
 	private int pageNum;//요청 페이지 번호
 	private int totalBoard;//검색 게시글의 갯수
 	private int pageSize;//하나의 페이지에 출력될 게시글의 갯수
-	private int blockSize;//하나의 페이지 블럭에 출력될 페이지의 갯수
+	private int blockSize;//하나의 페이지 블럭에 출력될 페이지의 갯수 
 
 	//생성자 매개변수에 전달된 값을 연산하여 필드값 저장
-	private int totalPage;//전체 페이지 갯수
+	private int totalPage;//전체 페이지 갯수 
 	private int startRow;//요청 페이지에 출력될 게시글의 시작 행번호
 	private int endRow;//요청 페이지에 출력될 게시글의 종료 행번호
 	private int startPage;//페이지 블럭에 출력될 시작 페이지 번호
@@ -27,7 +27,6 @@ public class Pager {
 		
 		calcPager();
 	}
-	
 	private void calcPager() {
 		totalPage=(int)Math.ceil((double)totalBoard/pageSize);
 		if(pageNum<=0 || pageNum>totalPage) {

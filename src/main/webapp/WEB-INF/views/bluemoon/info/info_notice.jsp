@@ -138,18 +138,17 @@ function boardDisplay(pageNum) {
 			var leng=json.noticeBoardList.length;
 			var num=json.pager.no;
 			var html="";
-			for(var i=0,n=num; i<=leng-1,n>=1; i++,n--) {
-				if(json.noticeBoardList[i].infoState==1 || json.noticeBoardList[i].infoState==2) {
+			for(var i=0; i<=leng-1; i++) {
+				var no=Number(num)-Number(i);
 					html+="<tr>";
-					html+="<td>"+n+"</td>";
+					html+="<td>"+no+"</td>";
 					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
 					html+="<td>"+json.noticeBoardList[i].infoCount+"</td>";
 					html+="<td>"+json.noticeBoardList[i].infoDate+"</td>";		
 					html+="</tr>";
-				}
 			}
 			$("#noticeListDiv").html(html);
-			pageDisplay(json.pager);
+			pageDisplay(json.pager); 
 			
 		},
 		error: function(xhr) {

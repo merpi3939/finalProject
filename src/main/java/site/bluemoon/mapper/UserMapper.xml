@@ -82,6 +82,6 @@
 		select reserve_no, reserve_check_in, reserve_check_out, hotel_category_name 
 		from hotel_reserve hr 
 		join hotel_category hc on hr.reserve_room=hc.hotel_category_no 
-		where hr.reserve_memno=#{reserveMemno} and reserve_state=1
+		where hr.reserve_memno=#{reserveMemno} and reserve_state!=0
 	</select>
 </mapper>

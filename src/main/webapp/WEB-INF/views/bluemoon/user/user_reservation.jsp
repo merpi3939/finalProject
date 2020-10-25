@@ -53,7 +53,7 @@
   					<th>이용날짜</th>
 				</tr>
  			</thead>
- 		<tbody>   
+ 		<tbody style="overflow:auto;">   
  		<c:forEach var="oceanList" items="${ocean }"> 		
    			<tr>
       			<td width="30%">${oceanList.rsNo }</td>
@@ -69,7 +69,7 @@
 	<div class="col-md-7 heading-section ftco-animate title-style">
             <h2><strong>호텔 예약</strong></h2>
     </div>
-    <div class="table-responsive"style="overflow:auto;">
+    <div class="table-responsive">
     	<table class="table table-striped" style="margin-bottom: 50px;">
  			<thead>
    				<tr>
@@ -79,11 +79,11 @@
   					<th>체크아웃</th>
 				</tr>
  			</thead>
- 		<tbody>
+ 		<tbody style="overflow:auto;">
    			<c:forEach var="hotelList" items="${hotel }"> 		
 	   			<tr>
 	   				<td width="30%">${hotelList.reserveNo }</td>
-	      			<td width="40%"><a class="table-a" href=<c:url value="/userReservation?hotelNum=${hotelList.reserveNo }&hotelRoom=${hotelList.reserveRoom }"/>>${hotelList.hotelCategoryName }</a></td>
+	      			<td width="40%"><a class="table-a" href=<c:url value="/userHotel?hotelNum=${hotelList.reserveNo }&hotelRoom=${hotelList.reserveRoom }"/>>${hotelList.hotelCategoryName }</a></td>
 				    <td>${fn:substring(hotelList.reserveCheckIn,0,10)}</td>
 				    <td>${fn:substring(hotelList.reserveCheckOut,0,10) }</td>
 	   			</tr>
