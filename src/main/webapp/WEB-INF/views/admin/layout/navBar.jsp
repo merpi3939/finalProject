@@ -9,7 +9,7 @@
 				<!--Brand logo & name-->
 				<!--================================-->
 				<div class="navbar-header">
-					<a href="index.html" class="navbar-brand">
+					<a href="${pageContext.request.contextPath}/admin" class="navbar-brand">
 						<div >
 						<img src=<c:url value = "/admin/img/blueMoonLogo.jpg"/> alt="BlueMoon Logo" class="brand-icon" style="border-radius: 50%; padding: 7px;">
 						</div>

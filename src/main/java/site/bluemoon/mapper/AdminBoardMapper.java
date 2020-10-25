@@ -14,4 +14,6 @@ public interface AdminBoardMapper {
 	int updateInfo(InfoBoard infoBoard);
 	int updateInfoState(InfoBoard infoBoard);
 	
+	int selectNewQna();
+	
 }

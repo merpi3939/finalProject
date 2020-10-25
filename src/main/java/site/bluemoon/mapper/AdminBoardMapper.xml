@@ -23,6 +23,9 @@
 	<select id="selectInfo" resultType="infoBoard" parameterType="int">
 		select * from info_board where info_no=#{infoNo}
 	</select>
+	<select id="selectNewQna" resultType="int" >
+		select count(*) from info_board where to_char(INFO_DATE,'yyyyMMdd')=to_char(sysdate, 'yyyyMMdd') and INFO_NAME='qna'
+	</select>
 	<update id="updateInfo" parameterType="infoBoard">
 		update info_board
 		<set>

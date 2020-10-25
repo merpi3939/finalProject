@@ -36,4 +36,9 @@ public class AdminBoardDAOImpl implements AdminBoardDAO{
 	public int updateInfoState(InfoBoard infoBoard) {
 		return sqlSession.getMapper(AdminBoardMapper.class).updateInfoState(infoBoard);
 	}
+
+	@Override
+	public int selectNewQna() {
+		return sqlSession.getMapper(AdminBoardMapper.class).selectNewQna();
+	}
 }

@@ -12,6 +12,11 @@
 		select * from HOTEL_RESERVE order by RESERVE_NO desc
 	</select>
 	
+	<!-- 호텔 예약 리스트 검색하기 -->
+	<select id="selectNewReservation" resultType="int">
+		select count(*) from hotel_reserve where to_char(RESERVE_DATE,'yyyyMMdd')=to_char(sysdate, 'yyyyMMdd')
+	</select>
+	
 	<!-- 호텔 예약 리스트 상태별 검색하기 -->
 	<select id="selectHotelReserveStateList" resultType="hotelReserveDTO" parameterType="int">
 		select * from HOTEL_RESERVE where RESERVE_STATE=#{ReserveState} order by RESERVE_NO desc

@@ -7,6 +7,7 @@
 
 					<!--Shortcut buttons-->
 					<!--================================-->
+					<!-- 
 					<div id="mainnav-shortcut">
 						<ul class="list-unstyled">
 							<li class="col-xs-4" data-content="Additional Sidebar">
@@ -26,6 +27,7 @@
 							</li>
 						</ul>
 					</div>
+					 -->
 					<!--================================-->
 					<!--End shortcut buttons-->
 
@@ -42,7 +44,7 @@
 						
 									<!--Menu list item-->
 									<li>
-										<a href="index.html">
+										<a href="${pageContext.request.contextPath}/admin">
 											<i class="fa fa-dashboard"></i>
 											<span class="menu-title">
 												<strong>Home</strong>
@@ -93,8 +95,10 @@
 											<i class="arrow"></i>
 										</a>
 										<ul class="collapse">
-											<li><a href="layouts-collapsed-navigation.html">호텔 관리</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">호텔 수정</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/hotel_status">호텔 관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/hotel_reservation_list">호텔 예약 관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/hotel_review_list">호텔 후기 관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/hotel_room_type">호텔 객실 관리</a></li>
 										</ul>
 									</li>
 									
@@ -103,29 +107,16 @@
 											<i class="fa fa-flask"></i>
 											<span class="menu-title">
 												<strong>게시판 관리</strong>
-												<span class="badge badge-warning">9</span>
+												<!-- <span class="badge badge-warning">9</span> -->
 											</span>
 											<i class="arrow"></i>
 										</a>
 										<ul class="collapse">
-											<li><a href="layouts-collapsed-navigation.html">공지사항 & QnA 관리</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">분실물 관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/info_list">공지사항 & QnA 관리</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/info_write">게시글 작성</a></li>
 										</ul>
 									</li>
-									
-									<li>
-										<a href="widgets.html">
-											<i class="fa fa-flask"></i>
-											<span class="menu-title">
-												<strong>통계분석</strong>
-											</span>
-											<i class="arrow"></i>
-										</a>
-										<ul class="collapse">
-											<li><a href="layouts-collapsed-navigation.html">매출분석</a></li>
-											<li><a href="layouts-offcanvas-navigation.html">상품분석</a></li>
-										</ul>
-									</li>
+
 						
 									<li class="list-divider"></li>
 						
