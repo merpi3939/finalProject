@@ -193,7 +193,6 @@
 	
 
 
-
 <script>
 var day_data = [
 	{"elapsed": "I", "value": 34},
