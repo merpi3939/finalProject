@@ -6,7 +6,6 @@
 		select * from info_board 
 		 
 		<where>
-		<if test="infoBoard.infoState==null">info_state!=4</if>
 		<if test="infoBoard.infoNo!=null and infoBoard.infoNo!=0 ">and INFO_NO=#{infoBoard.infoNo}</if>
 		<if test="infoBoard.infoUserName!=null and infoBoard.infoUserName!=''">and 
 		INFO_USER_NAME LIKE '%'||#{infoBoard.infoUserName}||'%'</if>
@@ -15,7 +14,8 @@
 		<if test="infoBoard.infoContent!=null and infoBoard.infoContent!=''">and 
 		INFO_CONTENT LIKE '%'||#{infoBoard.infoContent}||'%'</if>
 		<if test="infoBoard.infoName!=null and infoBoard.infoName!=''">and INFO_NAME=#{infoBoard.infoName}</if>
-		<if test="infoBoard.infoState!=null and infoBoard.infoState!=''">and INFO_STATE=#{infoBoard.infoState}</if>
+		<if test="infoBoard.infoState!=null and infoBoard.infoState!=0">and INFO_STATE=#{infoBoard.infoState}</if>
+		<if test="infoBoard.infoRemove!=null">and INFO_REMOVE=#{infoBoard.infoRemove}</if>
 		<if test="start!=null and start!='' and end!=null and end!=''" >and info_date between #{start} and #{end}</if>
 		</where>
 		order by info_no desc
@@ -25,7 +25,13 @@
 	</select>
 	<update id="updateInfo" parameterType="infoBoard">
 		update info_board
-		set INFO_TITLE=#{infoTitle}, INFO_CONTENT=#{infoContent}, INFO_IMG=#{infoImg}
+		<set>
+			<if test="infoTitle!=null and infoTitle!=''">INFO_TITLE=#{infoTitle}</if>
+			<if test="infoContent!=null and infoContent!=''">, INFO_CONTENT=#{infoContent}</if>
+			<if test="infoImg!=null and infoImg!=''">, INFO_IMG=#{infoImg}</if>
+			<if test="infoState!=null and infoState!=''">, INFO_STATE=#{infoState}</if>
+			<if test="infoRemove!=null and infoRemove!=''">, INFO_REMOVE=#{infoRemove}</if>
+		</set>
 		where info_no=#{infoNo}
 	</update>
 	<update id="updateInfoState" parameterType="infoBoard">
@@ -33,5 +39,6 @@
 		set INFO_STATE=#{infoState}
 		where info_no=#{infoNo}
 	</update>
+
 
 </mapper>

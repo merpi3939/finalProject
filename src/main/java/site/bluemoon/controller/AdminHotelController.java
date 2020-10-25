@@ -181,10 +181,6 @@ public class AdminHotelController {
 	
 	@RequestMapping(value = "/hotel_room_update", method = RequestMethod.POST)
 	public String hotelRoomUpdate(@ModelAttribute HotelCategory hotelCategory,
-			/*
-			  @RequestParam(name = "img1")MultipartFile img1,  @RequestParam(value = "img2")MultipartFile img2,
-			  @RequestParam(value = "img3")MultipartFile img3,   @RequestParam(value = "img4")MultipartFile img4,
-			*/
 			MultipartHttpServletRequest mRequest,
 			 Model model) throws IllegalStateException, IOException {
 		

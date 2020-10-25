@@ -74,7 +74,7 @@
 						<div>
 							<div class="col-md-12 mar-btm">
 								<span style="font: bold;">이미지</span>
-								<img alt="" src="${pageContext.request.contextPath }/bluemoon/images/bluemoonlogo.png" style="height: 100px;">
+								<img alt="" src="${pageContext.request.contextPath }/bluemoon/images/board_img/${info.infoImg}" style="height: 100px;">
 							</div>
 						</div>
 						
