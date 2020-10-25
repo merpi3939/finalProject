@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import site.bluemoon.controller.oceanController;
 import site.bluemoon.dto.AdminOceanNews;
+import site.bluemoon.dto.HotelReserveDTO;
 import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
+import site.bluemoon.mapper.HotelMapper;
 import site.bluemoon.mapper.OceanMapper;
 
 @Repository
@@ -18,6 +20,7 @@ public class OceanDAOImpl implements OceanDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	//예약
 	@Override
 	public int insertOceanReservation(OceanReservationDTO oceanReservation) {
 		return sqlSession.getMapper(OceanMapper.class).insertOceanReservation(oceanReservation);
@@ -35,6 +38,7 @@ public class OceanDAOImpl implements OceanDAO {
 	}
 	
 	//결제
+	
 	@Override
 	public OceanReservationDTO selectOceanPayment(int rsNo) {
 		return sqlSession.getMapper(OceanMapper.class).selectOceanPayment(rsNo);
@@ -46,10 +50,25 @@ public class OceanDAOImpl implements OceanDAO {
 	}
 	
 	//환불	
-
+	
+	@Override
+	public int updateOcean(OceanReservationDTO updateOcean) {
+		return sqlSession.getMapper(OceanMapper.class).updateOcean(updateOcean);
+	}
+	
+	/*
+	@Override
+	public int updateOcean(OceanReservationDTO updateOcean) {
+		return sqlSession.getMapper(OceanMapper.class).updateOcean(updateOcean);
+	}
+	
+	@Override
+	public OceanReservationDTO updateList(int rsNo) {
+		return sqlSession.getMapper(OceanMapper.class).updateList(rsNo);
+	}
+	*/
 	
 	//생생뉴스	
-	
 	@Override
 	public List<AdminOceanNews> selectNewsList() {
 		return sqlSession.getMapper(OceanMapper.class).selectNewsList();

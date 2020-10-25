@@ -280,12 +280,7 @@ div.btns {
 								</tr>
 							</tbody>
 						</table>
-						<div class="btns">
-							
-							<a href='payment?paymentList=${payment.rsNo }' >
-								<span style="color : black;" class="formBtn">환불</span>
-							</a>
-						
+						<div class="btns">	
 							<a href='payment?paymentList=${payment.rsNo }' >
 								<span style="color : black;" class="formBtn">상세 정보</span>
 							</a>
