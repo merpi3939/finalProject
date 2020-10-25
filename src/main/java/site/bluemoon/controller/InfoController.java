@@ -18,6 +18,7 @@ import org.springframework.web.util.HtmlUtils;
 
 import site.bluemoon.dto.InfoBoard;
 import site.bluemoon.dto.User;
+import site.bluemoon.dto.qnaReply;
 import site.bluemoon.service.BoardService;
 import site.bluemoon.util.Pager;
 
@@ -50,7 +51,7 @@ public class InfoController {
 		
 		return "ok";
 	}
-	
+	//공지사항 리스트
 	@RequestMapping(value = "/listNotice")
 	@ResponseBody
 	public Map<String, Object> noticeBoardList(@RequestParam(defaultValue = "1") int pageNum, 
@@ -81,6 +82,7 @@ public class InfoController {
 		
 		return returnMap;
 	}
+	//공지사항 글보기
 	@RequestMapping(value = "/viewNotice/{num}", method = RequestMethod.GET)
 	@ResponseBody
 	public InfoBoard noticeBoardView(@PathVariable int num) {
@@ -100,7 +102,7 @@ public class InfoController {
 
 		return infoBoard; 
 	}
-	
+	//공지사항 수정
 	@RequestMapping(value = "/modifyNotice",method = {RequestMethod.PUT, RequestMethod.PATCH})
 	@ResponseBody
 	public String noticeBoardModify(@RequestBody InfoBoard board) {
@@ -108,6 +110,7 @@ public class InfoController {
 		boardService.modifyInfoBoard(board);
 		return "ok";
 	}
+	//공지사항 삭제
 	@RequestMapping(value = "/removeNotice",method = RequestMethod.PUT)
 	@ResponseBody
 	public String noticeBoardRemove(@RequestBody InfoBoard board) {
@@ -131,7 +134,7 @@ public class InfoController {
 		
 		return "ok";
 	}
-	
+	//qna리스트
 	@RequestMapping(value = "/listQna")
 	@ResponseBody
 	public Map<String, Object> qnaBoardList(@RequestParam(defaultValue = "1") int pageNum, 
@@ -161,20 +164,30 @@ public class InfoController {
 		returnMap.put("pager", pager);
 		return returnMap;
 	}
+	//qna글 보기
 	@RequestMapping(value = "/viewQna/{num}", method = RequestMethod.GET)
 	@ResponseBody
-	public InfoBoard qnaBoardView(@PathVariable int num) {
-		Map<String, Object> notice=new HashMap<String, Object>();
-		notice.put("infoNo", num);
-		notice.put("infoName", "qna");
-		notice.put("infoRemove", 1);
+	public Map<String, Object> qnaBoardView(@PathVariable int num) {
+		Map<String, Object> qna=new HashMap<String, Object>();
+		qna.put("infoNo", num);
+		qna.put("infoName", "qna");
+		qna.put("infoRemove", 1);
 		
-		InfoBoard infoBoard=boardService.findInfoBoard(notice);
+		InfoBoard infoBoard=boardService.findInfoBoard(qna);
 		infoBoard.setInfoContent(HtmlUtils.htmlUnescape(infoBoard.getInfoContent()));
-
-		return infoBoard; 
+		
+		Map<String, Object> qnaReplySet=new HashMap<String, Object>();
+		qnaReplySet.putIfAbsent("qnaBdno", num);
+		qnaReplySet.putIfAbsent("qnaInfoName", "qna");
+		
+		List<qnaReply>qnaReply=boardService.findQnaList(qnaReplySet);
+		
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("qna", infoBoard);
+		map.put("qnaReply", qnaReply);
+		return map; 
 	}
-	
+	//qna 수정
 	@RequestMapping(value = "/modifyQna",method = {RequestMethod.PUT, RequestMethod.PATCH})
 	@ResponseBody
 	public String qnaBoardModify(@RequestBody InfoBoard board) {
@@ -182,11 +195,30 @@ public class InfoController {
 		boardService.modifyInfoBoard(board);
 		return "ok";
 	}
+	//qna 삭제
 	@RequestMapping(value = "/removeQna",method = RequestMethod.PUT)
 	@ResponseBody
 	public String qnaBoardRemove(@RequestBody InfoBoard board) {
 		board.setInfoRemove(4);
 		boardService.modifyInfoBoard(board);
+		return "ok";
+	}
+	
+	//qna 댓글 추가
+	@RequestMapping(value = "/addQnaReply", method = RequestMethod.POST)
+	@ResponseBody
+	public String addQnaReply(@RequestBody qnaReply qnaReply, HttpSession session) {
+		qnaReply.setQnaRpCont(HtmlUtils.htmlEscape(qnaReply.getQnaRpCont()));
+		qnaReply.setQnaInfoName("qna");
+		boardService.addQnaReply(qnaReply);
+		
+		return "ok";
+	}
+	
+	@RequestMapping(value = "/qnaReplyRemove/{num}",method = RequestMethod.DELETE)
+	@ResponseBody
+	public String restBoardRemove(@PathVariable int num) {
+		boardService.removeQnaReply(num);
 		return "ok";
 	}
 }

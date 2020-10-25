@@ -58,4 +58,19 @@
 		</set>
 		where info_no=#{infoNo}
 	</update>
+	
+	<insert id="insertQnaReply">
+		<selectKey resultType="int" keyProperty="qnaQpNo" order="BEFORE">
+			select qnareply_SEQUENCE.nextval from dual
+		</selectKey>
+		insert into qna_reply values(#{qnaQpNo},#{qnaBdNo},#{qnaRpCont},sysdate,#{qnaInfoName})
+	</insert>
+	
+	<select id="selectQnaReply" parameterType="map" resultType="qnaReply">
+		select * from qna_reply where qna_Bd_No=#{qnaBdno} and qna_info_name=#{qnaInfoName}
+	</select>
+	
+	<delete id="deleteQnaReply" parameterType="int">
+		delete from qna_reply where qna_qp_no=#{num}
+	</delete>
 </mapper>

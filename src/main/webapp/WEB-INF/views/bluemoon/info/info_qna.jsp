@@ -41,6 +41,27 @@
     z-index: 100;
     display: none;
 }
+.view_reply dl{
+	position: relative;
+    padding: 5px 20px 20px 20px;
+}
+.text_writer {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    color: #777;
+}
+.replyText {
+	margin: 13px;
+}
+.reply-write {
+	display:none;
+	text-align: right;
+}
+.replyRemoveBtn{
+	cursor: pointer;
+	background-color: lightgray;
+}
 </style>
 </head>
 <body>
@@ -50,6 +71,7 @@
             <h2><strong>Q&A</strong></h2>
     </div>
     <input id="checkSecretUser" hidden="hidden" value="${userInfo.userId }">
+    <input id="checkStateUser" hidden="hidden" value="${userInfo.userState }">
     <div class="table-responsive" style="overflow-x: hidden;">
     		<table class="table" style="margin-bottom: 50px;">
  			<thead>
@@ -154,9 +176,17 @@
 	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
 	    </div> -->
 	    <div class="write-div" id="userCheckBtn">
-	   	 
 	    </div>
+	    <div class="reply-write board-frame">
+	    	<textarea id="reply-Text-form" style="width: 100%;"></textarea>
+	    <div>
+	    	<button type='button' class='write-btn btn' id='replywrite-btn' onclick='replyAdd()' style='margin-bottom: 50px; margin-left: 6px;'>작성</button>;
+	    </div>
+	    </div>
+	    
+		<div class="view_reply board-frame"><!-- view_reply -->
 		
+		</div>
 	</div>
 </div>
 <script type="text/javascript">
@@ -166,6 +196,7 @@ function boardDisplay(pageNum) {
 	var search=$("#search").val();
 	var keyword=$("#keyword").val();
 	var checkSecretUser=$("#checkSecretUser").val();
+	var admin=$("#checkStateUser").val();
 	page=pageNum;
 	$.ajax({
 		type: "GET",
@@ -187,7 +218,7 @@ function boardDisplay(pageNum) {
 				html+="<tr>";
 				html+="<td class='mobile'>"+n+"</td>";
 				html+="<td class='mobile'>"+json.noticeBoardList[i].infoDivi+"</td>";
-				if(json.noticeBoardList[i].infoState==1){
+				if(json.noticeBoardList[i].infoState==1 || admin=='9'){
 					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
 				} else if(checkSecretUser==json.noticeBoardList[i].infoUserId) {
 					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
@@ -244,32 +275,113 @@ function viewDisplay(num) {
 	$(".noticeCon").hide();
 	$(".view").val("");
 	var checkUser=$("#checkSecretUser").val();
+	var admin=$("#checkStateUser").val();
 	var html="";
+	var htmlReply="";
 	$.ajax({
 		type: "GET",
 		url: "viewQna/"+num,
 		dataType: "json",
 		success: function(json) {
-			$("#viewNum").val(json.infoNo);
-			$("#titleView").val(json.infoTitle);
-			$("#contentView").val(json.infoContent);
-			$("#diviTitle").text(json.infoDivi);
-			 if(checkUser==json.infoUserId) {
+			$("#viewNum").val(json.qna.infoNo);
+			$("#titleView").val(json.qna.infoTitle);
+			$("#contentView").val(json.qna.infoContent);
+			$("#diviTitle").text(json.qna.infoDivi);
+			 if(checkUser==json.qna.infoUserId) {
 				html+="<button type='button' class='write-btn btn' id='updateView-btn' onclick='updateViewNotice();' style='margin-bottom: 50px; margin-left: 6px;'>수정</button>";
 				html+="<button type='button' class='write-btn btn' id='remove-btn' onclick='removeNotice();' style='margin-bottom: 50px; margin-left: 6px;'>삭제하기</button>";
 				html+="<button type='button' class='write-btn btn' id='update-btn' onclick='updateNotice();' style='margin-bottom: 50px; margin-left: 6px; display: none;'>수정하기</button>";
 				html+="<button type='button' class='write-btn btn' id='list-btn2' onclick='listView()' style='margin-left: 6px; margin-bottom: 50px;'>목록</button>";
 		    	
+			} else if(admin=='9') {
+				html+="<button type='button' class='write-btn btn' id='reply-write-viewbtn' onclick='replyWrite();' style='margin-bottom: 50px; margin-left: 6px;'>리플작성</button>";
+				html+="<button type='button' class='write-btn btn' id='updateView-btn' onclick='updateViewNotice();' style='margin-bottom: 50px; margin-left: 6px;'>수정</button>";
+				html+="<button type='button' class='write-btn btn' id='remove-btn' onclick='removeNotice();' style='margin-bottom: 50px; margin-left: 6px;'>삭제하기</button>";
+				html+="<button type='button' class='write-btn btn' id='update-btn' onclick='updateNotice();' style='margin-bottom: 50px; margin-left: 6px; display: none;'>수정하기</button>";
+				html+="<button type='button' class='write-btn btn' id='list-btn2' onclick='listView()' style='margin-left: 6px; margin-bottom: 50px;'>목록</button>";							
 			} else {
 				html+="<button type='button' class='write-btn btn' id='list-btn2' onclick='listView()' style='margin-bottom: 50px;'>목록</button>";				
 			}
+		
 			$("#userCheckBtn").html(html);
+			if(json.qnaReply.length==0) {
+				htmlReply="";
+			} 
+			for(var i=0; i<=json.qnaReply.length-1; i++) {
+				htmlReply+="<dl>"
+				htmlReply+="<dt style='border-bottom: 1px solid'>Re:소노호텔앤리조트입니다.</dt>"
+				htmlReply+="<dd class='text_writer'>관리자 <span>"+json.qnaReply[i].qnaRpDate+"</span></dd>"
+				htmlReply+="<p>"
+				htmlReply+=json.qnaReply[i].qnaRpCont
+				htmlReply+="</p>"
+				htmlReply+="</dd>"
+				htmlReply+="<div style='text-align: right;'>"
+				htmlReply+="<c:if test='${userInfo.userState==9 }'>";
+				htmlReply+="<span class='replyRemoveBtn' style='text-align: right' onclick='removeReply("+json.qnaReply[i].qnaQpNo+")'>삭제</span>";
+				htmlReply+="</c:if>";
+				htmlReply+="</div>"
+				htmlReply+="</dl>"
+			} 
+			$(".view_reply").html(htmlReply);
+			
 		},
 		error: function(xhr) {
 			alert("에러코드 = "+xhr.status);
 		}
 	});
 }
+function replyWrite() {
+	$(".reply-write").show(300);
+	$("#reply-Text-form").val("");
+}
+
+function replyAdd() {
+	var replyText=$("#reply-Text-form").val();
+	var num=$("#viewNum").val();
+	if(replyText==""){
+		alert("리플을 입력해주세요");
+		return;
+	}
+	
+	$.ajax({
+		type: "post",
+		url: "addQnaReply",
+		headers: {"content-type":"application/json"},
+		data: JSON.stringify({"qnaBdNo":num, "qnaRpCont":replyText}),
+		dataType: "text",
+		success: function(text) {
+			if(text=="ok") {
+				$(".reply-write").hide(300);
+				viewDisplay(num);
+				
+			}
+		},
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});
+}
+
+function removeReply(num) {
+	var viewNum=$("#viewNum").val();
+	
+		$.ajax({
+			type: "DELETE",
+			url: "qnaReplyRemove/"+num,
+			headers: {"X-HTTP-Method-override":"DELETE"},
+			dataType: "text",
+			success: function(text) {
+				if(text=="ok") {
+					viewDisplay(viewNum);
+				}
+			}, 
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
+			}
+		});
+	
+}
+
 
 function updateViewNotice() {
 	$(".msg").text("");
@@ -413,12 +525,7 @@ $("#list-btn").click(function() {
 	$(".noticeCon").show();
 	$(".writeCon").hide();
 });
-/* $("#list-btn2").click(function() {
-	$(".noticeCon").show();
-	$(".viewCon").hide();
-	updateCancleNotice();
-	boardDisplay(1);
-}); */
+
 function listView() {
 	$(".noticeCon").show();
 	$(".viewCon").hide();
