@@ -13,15 +13,21 @@
 }
 
 @media screen and (max-width:768px) {
-#updateView-btn,#list-btn2,#write-btn,#list-btn,#remove-btn,#update-btn {
-	width: 31%;
-}
-.mobile {
-	display: none;
-}
-.mobileTitle {
-	width:134px;
-}
+	.write-btn {
+		width: 31%;
+	}
+	.mobile {
+		display: none;
+	}
+	.mobileTitle {
+		width:134px;
+	}
+	.view_reply dl{
+		position: inherit !important;
+	}
+	.text_writer {
+    	position: inherit !important;
+	}
 }
 
 .divi{
@@ -311,7 +317,7 @@ function viewDisplay(num) {
 			} 
 			for(var i=0; i<=json.qnaReply.length-1; i++) {
 				htmlReply+="<dl>"
-				htmlReply+="<dt style='border-bottom: 1px solid'>Re:소노호텔앤리조트입니다.</dt>"
+				htmlReply+="<dt style='border-bottom: 1px solid'>Re:안녕하세요 블루문 입니다.</dt>"
 				htmlReply+="<dd class='text_writer'>관리자 <span>"+json.qnaReply[i].qnaRpDate+"</span></dd>"
 				htmlReply+="<p>"
 				htmlReply+=json.qnaReply[i].qnaRpCont
