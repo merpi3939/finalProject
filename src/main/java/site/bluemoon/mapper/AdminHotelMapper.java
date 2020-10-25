@@ -15,6 +15,7 @@ public interface AdminHotelMapper {
 	List<HotelReserveDTO> selectHotelReserveList();
 	List<HotelReserveDTO> selectHotelReserveStateList(int reserveState);
 	int updateHotelReserve(HotelReserveDTO hotelReserve);
+	int selectNewReservation();
 	
 	
 	//È£ÅÚ ¸®ºä

@@ -180,10 +180,13 @@ table td.img {
 									</tr>
 								</tbody>
 							</table>
+							
+							<div>
+								<a href=<c:url value="/event2"/>
+									style="background-image: url('resources/bluemoon/images/ocean_img/event2.jpg');">
+								</a>
+							</div>
 						</div>
-						<!-- <div class="btnWrap">
-							<a href="javascript:eventList();" target="">목록</a>
-						</div> -->
 					</div>
 				</div>
 			</form>

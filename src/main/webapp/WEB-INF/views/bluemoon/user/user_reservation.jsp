@@ -63,7 +63,7 @@
  		</c:forEach>	
 		 </tbody> 
 		</table>    
- 		<div id="message">${message1 }</div>   	
+ 		<div id="message1" style="text-align: center;">${message1 }</div>   	
 	</div>	 
 		
 	<div class="col-md-7 heading-section ftco-animate title-style">
@@ -83,13 +83,13 @@
    			<c:forEach var="hotelList" items="${hotel }"> 		
 	   			<tr>
 	   				<td width="30%">${hotelList.reserveNo }</td>
-	      			<td width="40%"><a class="table-a" href="#">${hotelList.reserveNo }</a></td>
+	      			<td width="40%"><a class="table-a" href=<c:url value="/userReservation?hotelNum=${hotelList.reserveNo }&hotelRoom=${hotelList.reserveRoom }"/>>${hotelList.hotelCategoryName }</a></td>
 				    <td>${fn:substring(hotelList.reserveCheckIn,0,10)}</td>
 				    <td>${fn:substring(hotelList.reserveCheckOut,0,10) }</td>
 	   			</tr>
 	 		</c:forEach>
 		 </tbody>  
 		</table>    
- 		<div id="message">${message2 }</div>   	
+ 		<div id="message2" style="text-align: center;">${message2 }</div>   	
 	</div>	 
 </div>

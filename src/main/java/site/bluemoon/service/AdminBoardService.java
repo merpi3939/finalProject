@@ -11,4 +11,5 @@ public interface AdminBoardService {
 	InfoBoard selectInfo(int infoNo);
 	int updateInfo(InfoBoard infoBoard);
 	int updateInfoState(InfoBoard infoBoard);
+	int selectNewQna();
 }

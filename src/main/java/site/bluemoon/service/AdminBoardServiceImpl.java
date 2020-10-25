@@ -36,4 +36,9 @@ public class AdminBoardServiceImpl implements AdminBoardService {
 		return adminBoardDAO.updateInfoState(infoBoard);
 	}
 
+	@Override
+	public int selectNewQna() {
+		return adminBoardDAO.selectNewQna();
+	}
+
 }

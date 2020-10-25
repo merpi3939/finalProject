@@ -149,7 +149,7 @@
 			<div class="col-md-6">
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">Line Chart 호텔 예약 그래프</h3>
+						<h3 class="panel-title">호텔 예약 그래프</h3>
 					</div>
 					<div class="panel-body">
 		
@@ -191,7 +191,6 @@
 <script src=<c:url value="/admin/js/demo/tables-footable.js"/>></script>
 
 	
-
 
 
 <script>

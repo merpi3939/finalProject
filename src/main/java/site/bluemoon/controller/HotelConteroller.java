@@ -72,11 +72,12 @@ public class HotelConteroller {
 		model.addAttribute("reserveList", hotelReserveService.selectMemreserve(hotel_no));
 		return "bluemoon/hotel/hotel_order";
 	}
-	/*@RequestMapping(value = "/hotelpay", method = RequestMethod.POST)
-	public String hotelpay( HotelPay pay, Model model) {
-		hotelReserveService.addHotelPay(pay);
-		return "bluemoon/hotel/hotel_order";
-	}*/
+	@RequestMapping(value = "/Hotelcansle", method = RequestMethod.GET)
+	public String Hotelcansle(@ModelAttribute("reserveList") HotelReserveDTO reserve) {
+			hotelReserveService.deleteReserve(reserve);		
+			return "bluemoon/hotel/hotel";
+	}
+	
 	@RequestMapping(value = "/hotel_service", method = RequestMethod.GET)
 	public String HotelService() {
 		return "bluemoon/hotel/hotel_service";

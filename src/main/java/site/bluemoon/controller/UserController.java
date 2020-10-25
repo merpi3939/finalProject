@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,7 @@ import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
 import site.bluemoon.exception.LoginAuthFailException;
 import site.bluemoon.exception.UserinfoNotFoundException;
+import site.bluemoon.service.HotelService;
 import site.bluemoon.service.UserService;
 import site.bluemoon.util.NewPassword;
 
@@ -33,6 +35,9 @@ import site.bluemoon.util.NewPassword;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private HotelService hotelService;
+	
 	//약관이동
 	@RequestMapping(value = "/jointerms", method = RequestMethod.GET)
 	public String userJointerms() {
@@ -174,7 +179,8 @@ public class UserController {
 		
 		if(oceanList.size()<=0) {
 			model.addAttribute("message1", "워터파크 예약 정보가 없습니다.");
-		} else if(hotelList.size()<=0) {
+		} 
+		if(hotelList.size()<=0) {
 			model.addAttribute("message2", "호텔 예약 정보가 없습니다.");
 		}
 		
@@ -182,6 +188,14 @@ public class UserController {
 		model.addAttribute("hotel", hotelList);
 		
 		return "bluemoon/user/user_reservation";
+	}
+	//예약 상세정보
+	@RequestMapping(value = "/userReservation", method = RequestMethod.GET)
+	public String userHotelView(@RequestParam(value = "hotelNum") int hotelNum, @RequestParam(value = "hotelRoom") int hotelRoom, Model model) {
+		model.addAttribute("hotelCategoryNo",hotelService.selectHotelCategory(hotelRoom));
+		model.addAttribute("reserveList", hotelService.selectMemreserve(hotelNum));
+		
+		return "bluemoon/hotel/hotel_order";
 	}
 	
 	//회원수정
@@ -231,5 +245,4 @@ public class UserController {
 		return "no";
 	}
 
-	
 }

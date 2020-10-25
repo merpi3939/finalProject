@@ -24,6 +24,7 @@ public class HotelReserveDTO {
 	private String reserveMememail;
 	private int reservePrice;
 	private int reserveState;
+	private String hotelCategoryName;
 	
 	
 	public String getReserveperson() {
@@ -120,6 +121,14 @@ public class HotelReserveDTO {
 
 	public void setReserveState(int reserveState) {
 		this.reserveState = reserveState;
+	}
+
+	public String getHotelCategoryName() {
+		return hotelCategoryName;
+	}
+
+	public void setHotelCategoryName(String hotelCategoryName) {
+		this.hotelCategoryName = hotelCategoryName;
 	}
 	
 	

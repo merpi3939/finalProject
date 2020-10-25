@@ -37,7 +37,7 @@
 </head>
 <body>
 	<tiles:insertAttribute name="header"/>	
-	<c:if test="${fn:contains(path, 'my')}">
+	<c:if test="${fn:contains(path, 'myuser')}">
 		<tiles:insertAttribute name="mypagemenu"/>
 	</c:if>
 	<c:if test="${fn:contains(path, 'info')}">

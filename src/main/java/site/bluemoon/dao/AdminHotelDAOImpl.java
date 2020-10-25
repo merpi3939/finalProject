@@ -79,6 +79,11 @@ public class AdminHotelDAOImpl implements AdminHotelDAO{
 		return sqlSession.getMapper(AdminHotelMapper.class).updateHotelPay(hotelPay);
 	}
 
+	@Override
+	public int selectNewReservation() {
+		return sqlSession.getMapper(AdminHotelMapper.class).selectNewReservation();
+	}
+
 
 
 }

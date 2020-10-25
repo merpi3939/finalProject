@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.HtmlUtils;
 
+import site.bluemoon.dto.HotelReserveDTO;
+import site.bluemoon.dto.OceanChargeDTO;
 import site.bluemoon.dto.OceanNews;
 import site.bluemoon.dto.OceanReservationDTO;
 import site.bluemoon.dto.User;
@@ -25,81 +27,103 @@ import site.bluemoon.service.UserService;
 public class oceanController {
 	@Autowired
 	private OceanService oceanService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AdminWaterparkService adminWaterparkService;
-	
-	//메인, 생생뉴스
+
+	// 메인, 생생뉴스
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String waterPark(Model model) {
-		
+
 		model.addAttribute("newsUserList", adminWaterparkService.getSelectNewsList());
-		 
+
 		return "main";
 	}
 
-	//요금표 리스트
+	// 요금표 리스트
 	@RequestMapping(value = "/ocean_charge")
 	public String oceanReservation(Model model) {
 		model.addAttribute("oceanChaereList", oceanService.getOceanChargeList());
 		return "bluemoon/waterpark/charge";
 	}
-	
-	//요금표 가져옴
+
+	// 요금표 가져옴
 	@RequestMapping(value = "/reservation")
 	public String oceanChargeList(@RequestParam("chargeList") int cgNo, Model model) {
 		model.addAttribute("chargeList", oceanService.getOceanCharge(cgNo));
 		return "bluemoon/waterpark/reservation";
 	}
-	
-	//예약 추가	중
+
+	// 예약 추가 중
 	@RequestMapping(value = "/addOcean", method = RequestMethod.GET)
 	public String addOcean() {
 		return "bluemoon/waterpark/reservation";
 	}
-	
-	
-	//예약 추가 완료, 유저인증
+
+	// 예약 추가 완료, 유저인증
 	@RequestMapping(value = "/addOcean", method = RequestMethod.POST)
-	public String addOcean(@ModelAttribute("addOcean") OceanReservationDTO oceanReservation, Model model, HttpSession session) throws UserinfoNotFoundException {
-		User userId=(User)session.getAttribute("userInfo");
-		User userModify=userService.selectUserId(userId.getUserId());
-		int rsUno=userModify.getUserNo();
+	public String addOcean(@ModelAttribute("addOcean") OceanReservationDTO oceanReservation, Model model,
+			HttpSession session) throws UserinfoNotFoundException {
+		User userId = (User) session.getAttribute("userInfo");
+		User userModify = userService.selectUserId(userId.getUserId());
+		int rsUno = userModify.getUserNo();
 		oceanReservation.setRsUno(rsUno);
-		
+
 		oceanService.addOceanReservation(oceanReservation);
-		return "redirect:/payment_list";
-	}	
-	
-	//결제 리스트
+		return "bluemoon/waterpark/payment_last";
+	}
+
+	// 결제 리스트
 	@RequestMapping(value = "/payment_list")
 	public String oceanPayment(Model model) {
 		model.addAttribute("oceanPaymentList", oceanService.getOceanPaymentList());
 		return "bluemoon/waterpark/payment_list";
 	}
-	
-	
-	//결제 상세페이지
+
+	// 결제 상세페이지
 	@RequestMapping(value = "/payment")
 	public String oceanPaymentList(@RequestParam("paymentList") int rsNo, Model model) {
 		model.addAttribute("paymentList", oceanService.getOceanPayment(rsNo));
+
 		return "bluemoon/waterpark/payment";
 	}
 	
-	//환불
-
+	@RequestMapping(value = "/remove")
+	public String remove(@RequestParam int rsNo) {
+		oceanService.removeOcean(rsNo);
+		return "main";
+	}
+	
 	/*
-	 * //어트랙션
+	// 환불 state 변경
+	@RequestMapping(value = "/seleteOcean/{rsNo}", method = RequestMethod.GET)
+	public String seleteOcean() {
+		return "bluemoon/waterpark/payment";
+	}
+
+	// 환불 state 변경 완료
+	@RequestMapping(value = "/seleteOcean", method = RequestMethod.POST)
+	public String updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean, Model model) {
+		oceanService.updateOcean(updateOcean);
+		return "main";
+	}
+	*/
+	
+	/*
+	 * //환불
 	 * 
-	 * @RequestMapping(value = "/attraction1", method = RequestMethod.GET) public
-	 * String oceanAttracion1() { return "bluemoon/waterpark/attraction1_list"; }
+	 * @RequestMapping(value = "/payment", method = RequestMethod.GET) public String
+	 * updateOcean(@ModelAttribute("updateOcean") OceanReservationDTO updateOcean,
+	 * Model model, @RequestParam("paymentList") int rsNo) {
 	 * 
-	 * //이벤트
+	 * model.addAttribute("paymentList", oceanService.updateList(rsNo));
 	 * 
-	 * @RequestMapping(value = "/event2", method = RequestMethod.GET) public String
-	 * oceanEvent2() { return "bluemoon/waterpark/event2_detail"; }
+	 * oceanService.updateOcean(updateOcean);
+	 * 
+	 * return "main"; }
 	 */
+
 }//

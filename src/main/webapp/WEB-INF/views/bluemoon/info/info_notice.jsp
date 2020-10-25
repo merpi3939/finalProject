@@ -42,9 +42,11 @@
 		</tbody>  
 		</table>
 		<div id="noselcet" style="text-align: center;"></div>   
-		<div style="margin-bottom: 96px;">
-			<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
-		</div>
+		<c:if test="${userInfo.userState==9 }">
+			<div style="margin-bottom: 96px;">
+				<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
+			</div>
+		</c:if>
 		<div class="row mt-5" style="margin-bottom: 20px;">
 			<div class="col text-center">
 				<div class="block-27" id="pageing">
@@ -103,9 +105,11 @@
 	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
 	    </div> -->
 	    <div class="write-div">
+	    <c:if test="${userInfo.userState==9 }">	
 	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>
 	    	<button type="button" class="write-btn btn" id="remove-btn" onclick="removeNotice();" style="margin-bottom: 50px;">삭제하기</button>
 	    	<button type="button" class="write-btn btn" id="update-btn" onclick="updateNotice();" style="margin-bottom: 50px; display: none;">수정하기</button>
+	    </c:if>	
 	    	<button type="button" class="write-btn btn" id="list-btn2" style="margin-bottom: 50px;">목록</button>
 	    </div>
 	</div>

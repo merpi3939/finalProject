@@ -38,6 +38,11 @@ public class AdminHotelServiceImpl implements AdminHotelService {
 		adminHotelDAO.updateHotelReserve(hotelReserve);
 	}
 
+	@Override
+	public int selectNewReservation() {
+		return adminHotelDAO.selectNewReservation();
+	}
+	
 	///////////호텔 후기//////////////
 	@Override
 	public List<HotelComment> selectHotelReviewList() {
@@ -81,6 +86,7 @@ public class AdminHotelServiceImpl implements AdminHotelService {
 	public int updateHotelPay(HotelPay hotelPay) {
 		return adminHotelDAO.updateHotelPay(hotelPay);
 	}
+
 
 	
 

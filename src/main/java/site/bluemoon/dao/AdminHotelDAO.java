@@ -15,7 +15,7 @@ public interface AdminHotelDAO {
 	List<HotelReserveDTO> selectHotelReserveList();
 	List<HotelReserveDTO> selectHotelReserveStateList(int reserveState);
 	int updateHotelReserve(HotelReserveDTO hotelReserve);
-	
+	int selectNewReservation();
 	
 	//È£ÅÚ ¸®ºä
 	List<HotelComment> selectHotelReviewList();

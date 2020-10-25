@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.bluemoon.mapper.OceanMapper">
+
+
+
 	<!-- 호텔 예약 -->
 	<insert id="insertOceanReservation">
 		<selectKey resultType="int" keyProperty="rsNo"
@@ -23,6 +26,24 @@
 		#{rsOption})
 	</insert>
 	
+	<delete id="deleteOcean">
+		delete from ocean_reservation where rs_no=#{rsNo}
+	</delete>
+	
+	<!-- 
+	<update id="updateOcean">
+		update ocean_reservation set rs_state=0 where rs_no=#{rsNo}
+	</update>
+	 -->
+	<!-- 
+	<update id="updateOcean">
+		update ocean_reservation set rs_state=0 where rs_no=#{rsNo}
+	</update>
+	
+	<select id="updateList" resultType="OceanReservationDTO" parameterType="int">
+		select * from ocean_reservation where rs_no=#{rsNo}		
+	</select>
+	-->
 	<select id="selectOceanCharge" resultType="OceanChargeDTO" parameterType="int">
 		select * from ocean_charge where cg_no=#{cgNo}
 	</select>
@@ -31,98 +52,14 @@
 		select * from ocean_charge order by cg_no
 	</select>
 	
-	<!-- 
-	<resultMap type="User" id="User">
-	    <result column="userNo" property="userNo"/>
-	</resultMap>
-	
-	<resultMap type="OceanReservationDTO" id="OceanReservationDTO">
-	    <result column="rsNo" property="rsNo"/>
-	    <result column="rsUno" property="rsUno"/>
-	    <result column="rsName" property="rsName"/>
-	    <result column="rsPhone" property="rsPhone"/>
-	    <result column="rsDate" property="rsDate"/>
-	    <result column="rsUsedate" property="rsUsedate"/>
-	    <result column="rsTicket" property="rsTicket"/>
-	    <result column="rsAdult" property="rsAdult"/>
-	    <result column="rsChild" property="rsChild"/>
-	    <result column="rsState" property="rsState"/>
-	    <result column="rsPrice" property="rsPrice"/>
-	    <result column="rsOption" property="rsOption"/>
-	    <collection property="User" resultMap="User"/>
-	</resultMap>
-	
-	<select id="selectOceanPayment" resultMap="OceanReservationDTO">
-	    SELECT
-			a.rsNo
-	        , a.rsUno
-	        , a.rsName
-	        , a.rsPhone
-	        , a.rsDate
-	        , a.rsUsedate
-	        , a.rsTicket
-	        , a.rsAdult
-	        , a.rsChild
-	        , a.rsState
-	        , a.rsPrice
-	        , a.rsOption
-	        ,b.userNo
-
-	    FROM
-	        OceanReservationDTO a
-	    LEFT JOIN
-	        User b
-	    ON
-	        a.rsUno = b.userNo
-	    WHERE
-	        a.rsUno = #{rsUno}
-	</select>
-	
-	<select id="selectOceanPaymentList" resultType="OceanReservationDTO">
-		SELECT
-			a.rsNo
-	        , a.rsUno
-	        , a.rsName
-	        , a.rsPhone
-	        , a.rsDate
-	        , a.rsUsedate
-	        , a.rsTicket
-	        , a.rsAdult
-	        , a.rsChild
-	        , a.rsState
-	        , a.rsPrice
-	        , a.rsOption
-	        ,b.userNo
-
-	    FROM
-	        OceanReservationDTO a
-	    LEFT JOIN
-	        User b
-	    ON
-	        a.rsUno = b.userNo
-	    order by
-	        a.rsUno
-	</select>
- 	-->
-	
 	<select id="selectOceanPaymentList" resultType="OceanReservationDTO">
 		select * from ocean_reservation order by rs_no
 	</select>
-	
+ 
 	<select id="selectOceanPayment" resultType="OceanReservationDTO" parameterType="int">
-		select * from ocean_reservation where rs_no=#{rsNo}
-		
+		select * from ocean_reservation where rs_no=#{rsNo}		
 	</select>
-	<!-- 
-	<select id="selectNewsList" resultType="OceanNews">
-		select 
-			* 
-		from 
-			ocean_news  
-		order by 
-			news_no
-	</select>
-	 -->
+
 	<resultMap id="newsResultMap" type="AdminOceanNews" >
 		<result property="newsNo" column="news_no"/>
 		<result property="newsDate" column="news_date"/>

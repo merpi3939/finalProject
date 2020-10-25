@@ -220,8 +220,9 @@ table .last {
 							</div>
 							<div class="galleryWrap">
 								<div class="gallery">
-									<div class=""
-										style="background-image: url('images/moon08.jpg');"></div>
+									<a href="#" 
+									style="background-image: url(resources/bluemoon/images/ocean_img/moon08.jpg);">
+								</a>
 								</div>
 			</form>
 

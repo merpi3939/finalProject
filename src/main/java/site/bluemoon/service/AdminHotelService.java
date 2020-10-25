@@ -14,6 +14,7 @@ public interface AdminHotelService {
 	List<HotelReserveDTO> selectHotelReserveList();
 	List<HotelReserveDTO> selectHotelReserveStateList(int reserveState);
 	void updateHotelReserve(HotelReserveDTO hotelReserve);
+	int selectNewReservation();
 	
 	
 	//È£ÅÚ ¸®ºä

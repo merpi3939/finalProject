@@ -68,7 +68,7 @@
 					<table style="width: 90%;" id="searchTable">
 						<tr>
 							<td>게시글 번호</td>
-							<td><input type="" class="form-control" name="infoNo" value="0"></td>
+							<td><input type="text" class="form-control" name="infoNo" value="0"></td>
 							<td>작성자 이름</td>
 							<td><input type="text" class="form-control" name="infoUserName"></td>
 						</tr>
@@ -200,7 +200,7 @@ $(document).ready(function() {
 function infoSubmit() {
 	var start = infoForm.start.value;
 	var end = infoForm.end.value;
-	alert(start);
+	//alert(start);
 	//infoForm.submit();
 	var check=true;
 	if(start!=null && start!=''&& end!=null && end!=''){

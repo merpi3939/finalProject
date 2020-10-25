@@ -66,9 +66,16 @@
 		</tbody>  
 		</table>
 		<div id="noselcet" style="text-align: center;"></div>   
+		<c:if test="${userInfo!=null }">
 		<div style="margin-bottom: 96px;">
 			<button type="button" class="btn noticeBtn" id="noticeWriter">글쓰기</button>
 		</div>
+		</c:if>
+		<c:if test="${userInfo==null }">
+		<div style="margin-bottom: 96px; text-align: right;">
+			<span>로그인 후 글 작성 이용 가능 하십니다.</span>
+		</div>
+		</c:if>
 		<div class="row mt-5" style="margin-bottom: 20px;">
 			<div class="col text-center">
 				<div class="block-27" id="pageing">
@@ -94,7 +101,6 @@
             <h2><strong>Q&A 글쓰기</strong></h2>
     </div>
 	<div class="board-border">
-		<input id="infoUserId" type="hidden" value="${userInfo.userId }">
 		<input id="infoUserName" type="hidden" value="${userInfo.userName }">
 		<label for="title" class="cols-sm-2 control-label board-frame" style="margin-top: 50px;">질문유형</label>
 	    <select class="board-frame qnaList" id="infoDivi">
@@ -117,7 +123,7 @@
 	    <div style="margin-right: 158px;">
 	    	<input type="checkbox" name="check" id="check"><span>비밀글</span>
 	    </div>
-	    	<button type="button" class="write-btn btn" id="write-btn" style="margin-bottom: 50px;">글쓰기</button>	    
+	    	<button type="button" class="write-btn btn" id="write-btn" style="margin-bottom: 50px;">글쓰기</button>
 	    	<button type="button" class="write-btn btn" id="list-btn" style="margin-bottom: 50px;">목록</button>	    
 	    </div>
 	</div>
@@ -147,29 +153,10 @@
 	    <!-- <div>
 	    	<input type="file" class="img-input board-frame" id="img-input-view" accept="image/*" style="display: none;">
 	    </div> -->
-	    <div class="write-div">
-	    	<button type="button" class="write-btn btn" id="reply-btn" onclick="replyWrite();" style="margin-bottom: 50px;">리플작성</button>
-	    	<button type="button" class="write-btn btn" id="updateView-btn" onclick="updateViewNotice();" style="margin-bottom: 50px;">수정</button>
-	    	<button type="button" class="write-btn btn" id="remove-btn" onclick="removeNotice();" style="margin-bottom: 50px;">삭제하기</button>
-	    	<button type="button" class="write-btn btn" id="update-btn" onclick="updateNotice();" style="margin-bottom: 50px; display: none;">수정하기</button>
-	    	<button type="button" class="write-btn btn" id="list-btn2" style="margin-bottom: 50px;">목록</button>
+	    <div class="write-div" id="userCheckBtn">
+	   	 
 	    </div>
-		<!-- 
-		<div class="reply replyWrite board-frame">
-			<textarea class="board-frame" style="height: 221px; border: 1px solid;"></textarea>
-			<div style="text-align: right;">   
-	    		<button type="button" class="write-btn btn" id="reply-btn" style="margin-top: 10px; margin-right: 47px;">작성</button>
-	    	</div>
-		</div>
-		<div class="reply board-frame">
-			<span>작성자 re:</span>
-			<textarea class="board-frame" style="height: 221px; border: 0px;" readonly="readonly"></textarea>
-			<div style="text-align: right;"> 
-				<button type="button" class="write-btn btn" id="reply-btn" style="margin-top: 10px; margin-right: 9px;">수정</button>
-				<button type="button" class="write-btn btn" id="reply-btn" style="margin-top: 10px; ">삭제</button>
-			</div>
-		</div>
-		 -->
+		
 	</div>
 </div>
 <script type="text/javascript">
@@ -256,7 +243,8 @@ function viewDisplay(num) {
 	$(".viewCon").show();
 	$(".noticeCon").hide();
 	$(".view").val("");
-	
+	var checkUser=$("#checkSecretUser").val();
+	var html="";
 	$.ajax({
 		type: "GET",
 		url: "viewQna/"+num,
@@ -266,7 +254,16 @@ function viewDisplay(num) {
 			$("#titleView").val(json.infoTitle);
 			$("#contentView").val(json.infoContent);
 			$("#diviTitle").text(json.infoDivi);
-			
+			 if(checkUser==json.infoUserId) {
+				html+="<button type='button' class='write-btn btn' id='updateView-btn' onclick='updateViewNotice();' style='margin-bottom: 50px; margin-left: 6px;'>수정</button>";
+				html+="<button type='button' class='write-btn btn' id='remove-btn' onclick='removeNotice();' style='margin-bottom: 50px; margin-left: 6px;'>삭제하기</button>";
+				html+="<button type='button' class='write-btn btn' id='update-btn' onclick='updateNotice();' style='margin-bottom: 50px; margin-left: 6px; display: none;'>수정하기</button>";
+				html+="<button type='button' class='write-btn btn' id='list-btn2' onclick='listView()' style='margin-left: 6px; margin-bottom: 50px;'>목록</button>";
+		    	
+			} else {
+				html+="<button type='button' class='write-btn btn' id='list-btn2' onclick='listView()' style='margin-bottom: 50px;'>목록</button>";				
+			}
+			$("#userCheckBtn").html(html);
 		},
 		error: function(xhr) {
 			alert("에러코드 = "+xhr.status);
@@ -364,7 +361,7 @@ function removeNotice() {
 
 $("#write-btn").click(function() {
 	$(".msg").text("");
-	var id=$("#infoUserId").val();	
+	var id=$("#checkSecretUser").val();	
 	var name=$("#infoUserName").val();
 	var divi=$("#infoDivi").val();	
 	var title=$("#title").val();	
@@ -416,17 +413,19 @@ $("#list-btn").click(function() {
 	$(".noticeCon").show();
 	$(".writeCon").hide();
 });
-$("#list-btn2").click(function() {
+/* $("#list-btn2").click(function() {
 	$(".noticeCon").show();
 	$(".viewCon").hide();
 	updateCancleNotice();
 	boardDisplay(1);
-});
-
-function replyWrite() {
-	$(".replyWrite").show(300);
-	
+}); */
+function listView() {
+	$(".noticeCon").show();
+	$(".viewCon").hide();
+	updateCancleNotice();
+	boardDisplay(1);
 }
+
 
 </script>
 </body>
