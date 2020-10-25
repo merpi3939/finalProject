@@ -79,11 +79,11 @@
 	</insert>
 	
 	<!-- 호텔 카테고리 변경 -->
-	<update id="updateHotelCategory">
+	<update id="updateHotelCategory" parameterType="hotelCategory">
 		update HOTEL_CATEGORY 
 			<set>
-				<if test="HotelCategoryName!=null and HotelCategoryName!=''">
-					HOTEL_CATEGORY_NAME=#{HotelCategoryName}
+				<if test="hotelCategoryName!=null and hotelCategoryName!=''">
+					HOTEL_CATEGORY_NAME=#{hotelCategoryName}
 				</if>
 				<if test="hotelCategoryImg1!=null and hotelCategoryImg1!=''">
 					,HOTEL_CATEGORY_IMG1=#{hotelCategoryImg1}
@@ -97,8 +97,8 @@
 				<if test="hotelCategoryImg4!=null and hotelCategoryImg4!=''">
 					,HOTEL_CATEGORY_IMG4=#{hotelCategoryImg4}
 				</if>
-				<if test="HotelCategoryPrice!=null">
-					,HOTEL_CATEGORY_PRICE=#{HotelCategoryPrice}
+				<if test="hotelCategoryPrice!=null">
+					,HOTEL_CATEGORY_PRICE=#{hotelCategoryPrice}
 				</if>
 				<if test="hotelCategoryQty!=null">
 					,HOTEL_CATEGORY_QTY=#{hotelCategoryQty}

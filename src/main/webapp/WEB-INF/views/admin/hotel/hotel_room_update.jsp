@@ -34,13 +34,13 @@
 		<div class="panel">
 		<!--Input Size-->
 		<!--===================================================-->
-		<form class="form-horizontal">
+		<form class="form-horizontal" enctype="multipart/form-data" method="post">
 			<div class="panel-body">
 
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">카테고리번호</label>
 					<div class="col-sm-6">
-						<input class="form-control" id="hotelCategoryNo" name="hotelCategoryNo" value="${category.hotelCategoryNo}">
+						<input class="form-control" id="hotelCategoryNo" name="hotelCategoryNo" value="${category.hotelCategoryNo}" disabled="disabled">
 					</div>
 				</div>
 				<div class="form-group">
@@ -58,25 +58,26 @@
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지1</label>
 					<div class="col-sm-6">
-						<input type="file" name="hotelCategoryImg1">
+						<input type="file" name="img1">
+						<!-- <input multiple="multiple" type="file" name="file"/> -->
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지2</label>
 					<div class="col-sm-6">
-						<input type="file" name="hotelCategoryImg2">
+						<input type="file" name="img2">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지3</label>
 					<div class="col-sm-6">
-						<input type="file" name="hotelCategoryImg3">
+						<input type="file" name="img3">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">이미지4</label>
 					<div class="col-sm-6">
-						<input type="file" name="hotelCategoryImg4">
+						<input type="file" name="img4">
 					</div>
 				</div>
 				<div class="form-group">
@@ -93,7 +94,7 @@
 				<div class="row">
 					<div class="col-sm-9 col-sm-offset-3">
 						<button class="btn btn-primary  fa-lg" type="submit" >수정</button>
-						<button class="btn btn-danger  fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_room_detail?hotelCategoryNo=${hotelCategory.hotelCategoryNo }';">취소</button>
+						<button class="btn btn-danger  fa-lg" type="button" onclick="location.href='${pageContext.request.contextPath }/admin/hotel_room_detail?hotelCategoryNo=${category.hotelCategoryNo }';">취소</button>
 					</div>
 				</div>
 			</div>

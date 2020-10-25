@@ -52,14 +52,8 @@
 				</div>
 				<div class="form-group">
 					<label for="demo-is-inputnormal" class="col-sm-3 control-label">객실 수</label>
-					<div class="col-sm-4">
+					<div class="col-sm-6">
 						<span class="form-control" id="hotelCategoryQty">${category.hotelCategoryQty}</span>
-					</div>
-					<div class="col-sm-2">
-						<input type="text" class="form-control" id="addRoom"></input>
-					</div>
-					<div class="col-sm-1 ">
-						<button class="btn btn-primary">추가</button>
 					</div>
 				</div>
 				<div class="form-group">
