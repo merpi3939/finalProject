@@ -3,6 +3,7 @@ package site.bluemoon.service;
 import java.util.List;
 
 import site.bluemoon.dto.HotelCategory;
+import site.bluemoon.dto.HotelComment;
 import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
 
@@ -16,5 +17,6 @@ public interface HotelService {
 	 void deletePay(HotelPay pay);
 	 void deleteReserve(HotelReserveDTO reserve);
 	 int selectReserveNo();
+	 public List<HotelComment> selecthotelComment(int no);
 	
 }

@@ -34,15 +34,20 @@ public class HotelConteroller {
 	//상세보기 - 리스트에서 선택된 값 가져와서 출력 
 	@RequestMapping(value = "hotel_single")
 	public String HotelSingle(Model model, @RequestParam("hotelCategoryNo") int num) {
+		model.addAttribute("commentList", hotelReserveService.selecthotelComment(num));
 		model.addAttribute("hotelCategoryNo", hotelReserveService.selectHotelCategory(num));
 		return "bluemoon/hotel/hotel_single";
 	}
 	
 	//상세화면의 예약내역 가져오기 
 	@RequestMapping(value = "/Hoteladd", method = RequestMethod.POST)
-	public String Hoteladd(@ModelAttribute("hotel") HotelReserveDTO reserve,HttpSession session
-			,@ModelAttribute("category") HotelCategory category) throws UserinfoNotFoundException {
-		
+	public String Hoteladd(HttpSession session,@ModelAttribute("hotel") HotelReserveDTO reserve,
+			@ModelAttribute("category") HotelCategory category,@ModelAttribute("User") User user1) throws UserinfoNotFoundException {
+		User userId=(User)session.getAttribute("userInfo");
+		User userModify=userService.selectUserId(userId.getUserId());
+		int useP=userModify.getUserPoint();
+		System.out.println(useP);
+		user1.setUserPoint(useP);
 		return "bluemoon/hotel/hotel_pay";
 	}
 	
@@ -50,18 +55,17 @@ public class HotelConteroller {
 	//예약,결제 값 저장
 	@RequestMapping(value = "/hotelinsert", method = RequestMethod.POST)
 	public String Hotelinsert(HttpSession session ,@ModelAttribute HotelReserveDTO reserve,@ModelAttribute  HotelPay pay, Model model) throws UserinfoNotFoundException {
-		int hotel_no=hotelReserveService.selectReserveNo();
-		
 		User userId=(User)session.getAttribute("userInfo");
 		User userModify=userService.selectUserId(userId.getUserId());
 		int memno=userModify.getUserNo();
 		reserve.setReserveMemno(memno);
 		pay.setHotelPayMemno(memno);
+		int hotel_no=hotelReserveService.selectReserveNo();
 		int hotelPrice=pay.getHotelPayPrice();
 		int point=pay.getHotelPayPrice();
 		int pointadd=(int) (point*0.1);
 		System.out.println(pointadd);
-		pay.setHotelMempoint(pointadd);
+		pay.sethotelPayMempoint(pointadd);
 		reserve.setReservePrice(hotelPrice);
 		reserve.setReserveNo(hotel_no);
 		int room=reserve.getReserveRoom();
@@ -82,6 +86,11 @@ public class HotelConteroller {
 	public String HotelService() {
 		return "bluemoon/hotel/hotel_service";
 	}
+	@RequestMapping(value = "/hotel_event", method = RequestMethod.GET)
+	public String hotel_event() {
+		return "bluemoon/hotel/hotel_event";
+	}
+	
 	
 	//회원별 전체 예약 
 	/*@RequestMapping(value = "/hotelAllList", method = RequestMethod.GET)

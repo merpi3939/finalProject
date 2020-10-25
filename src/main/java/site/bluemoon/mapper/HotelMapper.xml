@@ -20,7 +20,7 @@
 	
 	<!-- 결제 테이블 값 저장 -->
 	<insert id="insertHotelPay">
-	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},1,#{hotelPayPrice},#{hotelMempoint},sysdate)
+	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},1,#{hotelPayPrice},#{hotelPayMempoint},sysdate)
 	</insert>
 	
 	<update id="removeReserve">
@@ -72,5 +72,10 @@
 	<!-- 예약번호 시퀀스 요청용 -->
 	<select id="selectReserveNo"  resultType="int">
 		select RESERVE_SEQ.nextval from dual
+	</select>
+	
+	<!-- 호텔 Comment 출력  -->
+	<select id="hotelComment" resultType="HotelComment" parameterType="int" >
+		select * from hotel_comment where comment_room = #{commentRoom}
 	</select>
 </mapper>

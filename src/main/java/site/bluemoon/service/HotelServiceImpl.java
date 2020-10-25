@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import site.bluemoon.dao.HotelDAO;
 import site.bluemoon.dto.HotelCategory;
+import site.bluemoon.dto.HotelComment;
 import site.bluemoon.dto.HotelPay;
 import site.bluemoon.dto.HotelReserveDTO;
 import site.bluemoon.dto.User;
@@ -34,17 +35,31 @@ public class HotelServiceImpl implements HotelService{
 
 	@Override
 	public void addHotelPay(HotelPay pay) {
-		hotelReserveDAO.insertHotelPay(pay);
+		int hotelNo=pay.getHotelPayNo();
+		if (hotelNo!=0) {
+			hotelReserveDAO.insertHotelPay(pay);
+			int hotelPayno=pay.getHotelPayNo();
+			hotelReserveDAO.selectPayNo(hotelPayno);
+			int hotelmem=pay.getHotelPayMemno();
+			User user=new User();
+			user.setUserNo(hotelmem);
+			int hotelPoint=pay.gethotelPayMempoint();
+			int hotelState=pay.getHotelPayState();
+			user.setUserPoint(hotelPoint);
+			System.out.println(hotelState);
+				hotelReserveDAO.updateUserPointPlus(user);
+		}
+		/*hotelReserveDAO.insertHotelPay(pay);
 		int hotelPayno=pay.getHotelPayNo();
 		hotelReserveDAO.selectPayNo(hotelPayno);
 		int hotelmem=pay.getHotelPayMemno();
 		User user=new User();
 		user.setUserNo(hotelmem);
-		int hotelPoint=pay.getHotelMempoint();
+		int hotelPoint=pay.gethotelPayMempoint();
 		int hotelState=pay.getHotelPayState();
 		user.setUserPoint(hotelPoint);
 		System.out.println(hotelState);
-			hotelReserveDAO.updateUserPointPlus(user);
+			hotelReserveDAO.updateUserPointPlus(user);*/
 		
 	}
 
@@ -83,11 +98,7 @@ public class HotelServiceImpl implements HotelService{
 		int reserveno=reserve.getReserveNo();
 		HotelPay pay=hotelReserveDAO.selectPayNo(reserveno);
 		int mem=pay.getHotelPayMemno();
-		int hotelPoint=pay.getHotelMempoint();
-		int hotelp=pay.getHotelPayPrice();
-		System.out.println(mem);
-		System.out.println(hotelp);
-		System.out.println(hotelPoint);
+		int hotelPoint=pay.gethotelPayMempoint();
 		User user=new User();
 		user.setUserNo(mem);
 		user.setUserPoint(hotelPoint);
@@ -97,6 +108,11 @@ public class HotelServiceImpl implements HotelService{
 		
 		
 	}
+
+@Override
+public List<HotelComment> selecthotelComment(int no) {
+	return hotelReserveDAO.hotelComment(no);
+}
 
 	
 
