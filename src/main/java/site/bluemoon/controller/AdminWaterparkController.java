@@ -133,4 +133,5 @@ public class AdminWaterparkController {
 		adminWaterparkService.ModifyReservation(oceanReservationDTO);
 		return "redirect:/admin/prList";
 	}
+	
 }
