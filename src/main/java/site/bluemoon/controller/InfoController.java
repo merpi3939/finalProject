@@ -213,6 +213,11 @@ public class InfoController {
 		qnaReply.setQnaInfoName("QNA");
 		boardService.addQnaReply(qnaReply);
 		
+		InfoBoard infoBoard=new InfoBoard();
+		infoBoard.setInfoNo(qnaReply.getQnaBdNo());
+		infoBoard.setQnaCnt(1);
+		boardService.modifyInfoBoard(infoBoard);
+		
 		return "ok";
 	}
 	

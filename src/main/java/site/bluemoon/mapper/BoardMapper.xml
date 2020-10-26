@@ -55,6 +55,9 @@
 			<if test="infoRemove!=null and infoRemove!=''">
 				info_remove=#{infoRemove}
 			</if>
+			<if test="qnaCnt!=null and qnaCnt!=''">
+				qnaCnt=qnaCnt+#{qnaCnt}
+			</if>
 		</set>
 		where info_no=#{infoNo}
 	</update>

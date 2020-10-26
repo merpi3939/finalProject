@@ -222,15 +222,21 @@ function boardDisplay(pageNum) {
 			var html="";
 			for(var i=0; i<=leng-1; i++) {
 				var no=Number(num)-Number(i);
+				var reply="";
+				
+				if(json.noticeBoardList[i].qnaCnt!="") {
+					reply="["+json.noticeBoardList[i].qnaCnt+"]";
+				}
+				
 				html+="<tr>";
 				html+="<td class='mobile'>"+no+"</td>";
 				html+="<td class='mobile'>"+json.noticeBoardList[i].infoDivi+"</td>";
 				if(json.noticeBoardList[i].infoState==1 || admin=='9'){
-					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
+					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+reply+"</a></td>";
 				} else if(checkSecretUser==json.noticeBoardList[i].infoUserId) {
-					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+"</a></td>";
+					html+="<td><a class=table-a href='javascript:viewDisplay("+json.noticeBoardList[i].infoNo+");'>"+json.noticeBoardList[i].infoTitle+reply+"</a></td>";
 				} else {
-					html+="<td><a class=table-a>작성자 본인만 확인 가능 한 글입니다.</a></td>";
+					html+="<td><a class=table-a>작성자 본인만 확인 가능 한 글입니다."+reply+"</a></td>";
 				}
 				html+="<td>"+json.noticeBoardList[i].infoUserName+"</td>";
 				html+="<td>"+json.noticeBoardList[i].infoDate+"</td>";		

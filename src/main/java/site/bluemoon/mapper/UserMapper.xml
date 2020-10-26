@@ -75,7 +75,7 @@
 	</update>
 	
 	<select id="selectUserWater" resultType="OceanReservationDTO">
-		select * from ocean_reservation where rs_uno=#{rsUno} order by rs_uno desc
+		select * from ocean_reservation where rs_uno=#{rsUno} and rs_state=1 order by rs_uno desc
 	</select>
 
 	<select id="selectUserHotel" resultType="HotelReserveDTO">
