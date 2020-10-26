@@ -409,11 +409,11 @@ div.btns {
 			if (rsAdult == "" || rschild == "") {
 				$("#rsAdultNullMsg").show();
 				result = false;
-			} else if (rsAdult == "" && rschild == "") {
+			} else if (rsAdult == 0) {
 				$("#rsAdultNullMsg").show();
 				result = false;
-			}else if (rschild == 0 && rschild == 0) {
-				$("#rschildNullMsg").show();
+			}else if (rsAdult == 0 && rschild == 0) {
+				$("#rsChildNullMsg").show();
 				result = false;
 			}
 			
