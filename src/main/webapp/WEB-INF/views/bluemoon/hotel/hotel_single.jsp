@@ -498,7 +498,7 @@ p {
    	//아이디 유효성
    	
 
-   	  	//이름 확인 유효성
+   /*	  	//이름 확인 유효성
    	$("#reserveMemname").blur(function() {
    		if (checkName.test($("#reserveMemname").val())) {
 			console.log('true');
@@ -551,41 +551,56 @@ p {
    			$("#emailch").css('color', 'red');
 			$("#reserveMememail").focus();
 		}
-   	 });
+   	 });*/
     //==================================================================
   //서브밋 유효성   	
 	  	$("#hotelCategoryForm").submit(function() {
 	  		var result=true;
 	  		//이름
-	  		if($("#reserveMemname").val()=="") {
-	    			$("#namech").text("체크인 날짜를 선택해 주세요.");
-	    			$("#namech").css('color', 'red');
-	 			$("#reserveMemname").focus();
-	 			result=false;
-	    		 }else{
-	    				console.log('true');
-	    		   		$("#namech").text("");
-	    		 }
+	  		if (checkName.test($("#reserveMemname").val())) {
+			console.log('true');
+	   		$("#namech").text("");
+   		}else if ($("#reserveMemname").val()=="") {
+   			console.log('false');
+   			$("#namech").text("이름을 입력해 주세요.");
+   			$("#namech").css('color', 'red');   		
+			$("#reserveMemname").focus();
+			result=false;
+		}else if (checkName.test($("#reserveMemname").val())!=true) {
+			console.log('false');
+			$("#namech").text("잘못된 문자가 입력되었습니다. 다시 입력해 주세요.");
+			$("#namech").css('color', 'red');
+			$("#reserveMemname").focus();
+			result=false;
+		}
 	  		//전화번호
-	  		if($("#reserveMemphone").val()=="") {
-	    			$("#phonech").text("체크인 날짜를 선택해 주세요.");
-	    			$("#phonech").css('color', 'red');
-	 			$("#reserveMemphone").focus();
-	 			result=false;
-	    		 }else{
-	    				console.log('true');
-	    		   		$("#phonech").text("");
-	    		 }
+	  		 if($("#reserveMemphone").val()=="") {
+   			console.log('false');
+   			$("#phonech").text("전화번호를 입력해 주세요.");
+   			$("#phonech").css('color', 'red');
+			result=false;
+   		 }else{
+   				console.log('true');
+   		   		$("#phonech").text("");
+   		 }
+   		
 	  		//이메일
-	  		if($("#reserveMememail").val()=="") {
-	    			$("#emailch").text("체크인 날짜를 선택해 주세요.");
-	    			$("#emailch").css('color', 'red');
-	 			$("#reserveMememail").focus();
-	 			result=false;
-	    		 }else{
-	    				console.log('true');
-	    		   		$("#datech").text("");
-	    		 }
+	  		if (checkEmail.test($("#reserveMememail").val())) {
+			console.log('true');
+	   		$("#emailch").text("");
+   		}else if ($("#reserveMememail").val()=="") {
+   			console.log('false');
+   			$("#emailch").text("이메일을 입력해 주세요.");
+   			$("#emailch").css('color', 'red');
+			$("#reserveMememail").focus();
+			result=false;
+		}else if (checkEmail.test($("#reserveMememail").val())!=true) {
+   			console.log('false');
+   			$("#emailch").text("올바른 이메일 형식을 입력해 주세요.");
+   			$("#emailch").css('color', 'red');
+			$("#reserveMememail").focus();
+			result=false;
+		}
 	  		//체크인
 	  		 if($("#datepicker1").val()=="") {
 	    			$("#datech").text("체크인 날짜를 선택해 주세요.");

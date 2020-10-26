@@ -75,6 +75,7 @@ public class HotelConteroller {
 		int room=reserve.getReserveRoom();
 		hotelReserveService.addHotelReserve(reserve);
 		pay.setHotelPayNo(hotel_no);
+		pay.setUserPoint(hotelUsePoint);
 		hotelReserveService.addHotelPay(pay);
 		model.addAttribute("hotelCategoryNo", hotelReserveService.selectHotelCategory(room));
 		model.addAttribute("reserveList", hotelReserveService.selectMemreserve(hotel_no));
@@ -113,6 +114,6 @@ public class HotelConteroller {
 		model.addAttribute("AllList", hotelReserveService.selectHotelAllList(no));
 		return "bluemoon/hotel/HotelAllList";
 	}*/
-
+	
 
 }

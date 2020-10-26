@@ -20,7 +20,7 @@
 	
 	<!-- 결제 테이블 값 저장 -->
 	<insert id="insertHotelPay">
-	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},2,#{hotelPayPrice},#{hotelPayMempoint},sysdate)
+	insert into hotel_pay values(#{hotelPayNo},#{hotelPayMemno},#{hotelPayment},2,#{hotelPayPrice},#{hotelPayMempoint},sysdate,#{userPoint})
 	</insert>
 	
 	<update id="removeReserve">
