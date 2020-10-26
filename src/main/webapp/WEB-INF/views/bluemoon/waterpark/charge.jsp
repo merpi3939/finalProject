@@ -344,13 +344,9 @@ a {
 <script type="text/javascript">
 	var date = new Date();
 	var mon = date.setMonth()+1;
-	var select = ${charge.cgSeason };
-	var arr = 10;
 	
 	
-	if(select == '비수기' && mon == arr) {
-		$("#sel").hide();
-	}
+
 </script>
 </body>
 </html>

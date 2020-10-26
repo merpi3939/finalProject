@@ -356,6 +356,7 @@ div.btns {
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<script>		
+	
 		$(function() {
 			 $("#datepicker").datepicker({
 				format : "yyyy-mm-dd",
@@ -363,9 +364,11 @@ div.btns {
 				minDate: 0,
 				todayHighlight : true,
 				autoclose : true
-
-			});
-			 
+				
+				})
+				 .on('changeDate', function(){ // 날짜가 변경 되었을 때 실행
+					 var date=formatDate(new Date());
+				 });
 		});
 
 		$("#form01").submit(function() {
