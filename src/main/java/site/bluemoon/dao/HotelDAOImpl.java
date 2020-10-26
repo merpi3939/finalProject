@@ -64,6 +64,6 @@ public class HotelDAOImpl implements HotelDAO{
 	public List<HotelComment> hotelComment(int no) {
 		return sqlSession.getMapper(HotelMapper.class).hotelComment(no);
 	}
-
+	
 
 }

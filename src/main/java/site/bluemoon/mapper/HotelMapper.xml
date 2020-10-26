@@ -67,11 +67,12 @@
 	</select>-->
 	<!-- 단일행 카테고리 값 출력 -->
 		<select id="selectMemreserve" resultType="HotelReserveDTO" parameterType="int">
-			select * from hotel_reserve where reserve_no =#{no} and reserve_state!=0
+			select * from hotel_reserve where reserve_no =#{no} 
 		</select>
+	
 	<!-- 예약번호 시퀀스 요청용 -->
 	<select id="selectReserveNo"  resultType="int">
-		select RESERVE_SEQ.nextval from dual
+		select RESERVE_SEQ.nextval from dual 
 	</select>
 	
 	<!-- 호텔 Comment 출력  -->

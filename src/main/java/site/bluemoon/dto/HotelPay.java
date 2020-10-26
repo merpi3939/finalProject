@@ -8,7 +8,7 @@ public class HotelPay {
 	private int hotelPayState;
 	private int hotelPayMempoint;
 	private String hotelPayDate;
-	private int userPoint;
+	private int usePoint;
 	
 	public HotelPay() {
 		// TODO Auto-generated constructor stub
@@ -19,11 +19,11 @@ public class HotelPay {
 	}
 
 	public int getUserPoint() {
-		return userPoint;
+		return usePoint;
 	}
 
 	public void setUserPoint(int userPoint) {
-		this.userPoint = userPoint;
+		this.usePoint = userPoint;
 	}
 
 	public void setHotelPayNo(int hotelPayNo) {

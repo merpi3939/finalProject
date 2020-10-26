@@ -495,64 +495,7 @@ p {
 	var checkName=/^[가-힣]{2,10}$/;//Name 유효성 검사 정규식
     var checkPWD=/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^&*_-]).{6,20}$/g;// PASSWORD 유효성 검사 정규식
     var checkEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;//Email 유효성 검사 정규식
-   	//아이디 유효성
-   	
-
-   /*	  	//이름 확인 유효성
-   	$("#reserveMemname").blur(function() {
-   		if (checkName.test($("#reserveMemname").val())) {
-			console.log('true');
-	   		$("#namech").text("");
-			$("#reserveperson").focus();
-   		}else if ($("#reserveMemname").val()=="") {
-   			console.log('false');
-   			$("#namech").text("이름을 입력해 주세요.");
-   			$("#namech").css('color', 'red');   		
-			$("#reserveMemname").focus();
-		}else if (checkName.test($("#reserveMemname").val())!=true) {
-			console.log('false');
-			$("#namech").text("잘못된 문자가 입력되었습니다. 다시 입력해 주세요.");
-			$("#namech").css('color', 'red');
-			$("#reserveMemname").focus();
-		}
-   	})
-	
-		//전화번호 확인 유효성   	
-   	  	$("#reserveMemphone").blur(function() {
-   		 if($("#reserveMemphone").val()=="") {
-   			console.log('false');
-   			$("#phonech").text("전화번호를 입력해 주세요.");
-   			$("#phonech").css('color', 'red');
-			$("#reserveMemphone").focus();
-   		 }else{
-   				console.log('true');
-   		   		$("#phonech").text("");
-   				$("#reserveMememail").focus();
-   		 }
-   		
-   	})
-   	
-
-  
-		
-   		//이메일  확인 유효성   	
-   	  	$("#reserveMememail").blur(function() {
-   		if (checkEmail.test($("#reserveMememail").val())) {
-			console.log('true');
-	   		$("#emailch").text("");
-   		}else if ($("#reserveMememail").val()=="") {
-   			console.log('false');
-   			$("#emailch").text("이메일을 입력해 주세요.");
-   			$("#emailch").css('color', 'red');
-			$("#reserveMememail").focus();
-		}else if (checkEmail.test($("#reserveMememail").val())!=true) {
-   			console.log('false');
-   			$("#emailch").text("올바른 이메일 형식을 입력해 주세요.");
-   			$("#emailch").css('color', 'red');
-			$("#reserveMememail").focus();
-		}
-   	 });*/
-    //==================================================================
+   
   //서브밋 유효성   	
 	  	$("#hotelCategoryForm").submit(function() {
 	  		var result=true;
@@ -573,7 +516,7 @@ p {
 			$("#reserveMemname").focus();
 			result=false;
 		}
-	  		//전화번호
+	  	//전화번호
 	  		 if($("#reserveMemphone").val()=="") {
    			console.log('false');
    			$("#phonech").text("전화번호를 입력해 주세요.");

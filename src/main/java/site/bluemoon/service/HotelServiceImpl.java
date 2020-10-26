@@ -89,14 +89,19 @@ public class HotelServiceImpl implements HotelService{
 	
 		int reserveno=reserve.getReserveNo();
 		HotelPay pay=hotelReserveDAO.selectPayNo(reserveno);
+		int usep=pay.getUserPoint();
 		int mem=pay.getHotelPayMemno();
 		int hotelPoint=pay.gethotelPayMempoint();
+		User user1=new User();
+		user1.setUserNo(mem);
+		user1.setUserPoint(usep);
 		User user=new User();
 		user.setUserNo(mem);
 		user.setUserPoint(hotelPoint);
 			hotelReserveDAO.removeReserve(reserve);
 			hotelReserveDAO.removePay(pay);
 			hotelReserveDAO.updatePointUserMinus(user);
+			hotelReserveDAO.updateUserPointPlus(user1);
 		
 		
 	}
