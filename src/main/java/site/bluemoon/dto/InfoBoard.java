@@ -28,6 +28,7 @@ public class InfoBoard {
 	private int infoState;
 	private int infoRemove;
 	private int infoCount;
+	private int qnaCnt;
 	
 	public InfoBoard() {
 		// TODO Auto-generated constructor stub
@@ -127,6 +128,14 @@ public class InfoBoard {
 
 	public void setInfoRemove(int infoRemove) {
 		this.infoRemove = infoRemove;
+	}
+
+	public int getQnaCnt() {
+		return qnaCnt;
+	}
+
+	public void setQnaCnt(int qnaCnt) {
+		this.qnaCnt = qnaCnt;
 	}
 	
 	

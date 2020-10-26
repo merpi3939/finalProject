@@ -128,7 +128,7 @@ public class InfoController {
 		infoBoard.setInfoContent(HtmlUtils.htmlEscape(infoBoard.getInfoContent()));
 		infoBoard.setInfoUserId(user.getUserId());
 		infoBoard.setInfoUserName(user.getUserName());
-		infoBoard.setInfoName("qna");
+		infoBoard.setInfoName("QNA");
 		infoBoard.setInfoRemove(1);;
 		
 		boardService.addInfoBoard(infoBoard);
@@ -143,7 +143,7 @@ public class InfoController {
 			
 		Map<String, Object> countMap=new HashMap<String, Object>();
 		
-		countMap.put("infoName", "qna");
+		countMap.put("infoName", "QNA");
 		countMap.put("infoRemove", 1);
 		countMap.put("search", search);
 		countMap.put("keyword", keyword);
@@ -155,7 +155,7 @@ public class InfoController {
 		Map<String, Object> pagerMap=new HashMap<String, Object>();
 		pagerMap.put("startRow", pager.getStartRow());
 		pagerMap.put("endRow", pager.getEndRow());
-		pagerMap.put("infoName", "qna");
+		pagerMap.put("infoName", "QNA");
 		pagerMap.put("infoRemove", 1);
 		pagerMap.put("search", search);
 		pagerMap.put("keyword", keyword);
@@ -171,7 +171,7 @@ public class InfoController {
 	public Map<String, Object> qnaBoardView(@PathVariable int num) {
 		Map<String, Object> qna=new HashMap<String, Object>();
 		qna.put("infoNo", num);
-		qna.put("infoName", "qna");
+		qna.put("infoName", "QNA");
 		qna.put("infoRemove", 1);
 		
 		InfoBoard infoBoard=boardService.findInfoBoard(qna);
@@ -179,7 +179,7 @@ public class InfoController {
 		
 		Map<String, Object> qnaReplySet=new HashMap<String, Object>();
 		qnaReplySet.putIfAbsent("qnaBdno", num);
-		qnaReplySet.putIfAbsent("qnaInfoName", "qna");
+		qnaReplySet.putIfAbsent("qnaInfoName", "QNA");
 		
 		List<qnaReply>qnaReply=boardService.findQnaList(qnaReplySet);
 		
@@ -210,7 +210,7 @@ public class InfoController {
 	@ResponseBody
 	public String addQnaReply(@RequestBody qnaReply qnaReply, HttpSession session) {
 		qnaReply.setQnaRpCont(HtmlUtils.htmlEscape(qnaReply.getQnaRpCont()));
-		qnaReply.setQnaInfoName("qna");
+		qnaReply.setQnaInfoName("QNA");
 		boardService.addQnaReply(qnaReply);
 		
 		return "ok";

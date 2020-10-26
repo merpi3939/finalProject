@@ -6,7 +6,7 @@
 			select info_board_sequence.nextval from dual
 		</selectKey>
 		insert into info_board values(#{infoNo},#{infoUserId},#{infoUserName},#{infoTitle},#{infoContent},sysdate,#{infoDivi},#{infoName}
-		,#{infoImg},#{infoState},#{infoCount},#{infoRemove})
+		,#{infoImg},#{infoState},#{infoCount},#{infoRemove},#{qnaCnt})
 	</insert>
 	
 	<select id="selectInfoBoardCount" parameterType="map" resultType="int">
