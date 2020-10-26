@@ -263,7 +263,7 @@ a {
 							</thead>
 							<tbody>
 								<tr>
-									<td class="tr3" rowspan="4">8/17 ~ 8/30</td>
+									<td class="tr3" rowspan="4">7/1 ~ 9/30</td>
 									<td class="tr3" rowspan="2">실내존</td>
 									<td class="tr3">종일권</td>
 									<td class="tr3">60,000</td>
@@ -290,7 +290,7 @@ a {
 									</font></td>
 								</tr>
 								<tr>
-									<td class="tr3" rowspan="4">8/31 ~ 12/31</td>
+									<td class="tr3" rowspan="4">10/1 ~ 12/31</td>
 									<td class="tr3" rowspan="2">실내권</td>
 									<td class="tr3">종일권</td>
 									<td class="tr3">55,000</td>
